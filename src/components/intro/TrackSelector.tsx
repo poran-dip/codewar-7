@@ -1,0 +1,220 @@
+'use client'
+
+import { motion, AnimatePresence } from 'motion/react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+
+type Track = 'codestellation' | 'decode' | null
+
+interface TrackSelectorProps {
+  onTrackChange?: (track: Track) => void
+  selectedTrack: Track
+}
+
+export default function TrackSelector({ onTrackChange, selectedTrack }: TrackSelectorProps) {
+  const [hoveredTrack, setHoveredTrack] = useState<Track>(null)
+  const router = useRouter()
+
+  const activeTrack = selectedTrack || hoveredTrack
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+        e.preventDefault()
+        onTrackChange?.('codestellation')
+      } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+        e.preventDefault()
+        onTrackChange?.('decode')
+      } else if (e.key === 'Escape') {
+        e.preventDefault()
+        onTrackChange?.(null)
+      } else if ((e.key === 'Enter' || e.key === 'f' || e.key === 'F') && selectedTrack) {
+        e.preventDefault()
+        router.push(`/tracks/${selectedTrack}`)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [selectedTrack, router, onTrackChange])
+
+  const handleTrackClick = (track: Track) => {
+    if (selectedTrack === track && track) {
+      router.push(`/tracks/${track}`)
+    } else {
+      onTrackChange?.(track)
+    }
+  }
+
+  return (
+    <div className="relative w-full">
+      {/* Mission briefing label */}
+      <div className="text-center mb-6">
+        <p className="text-sm font-mono text-cyan-400/60 tracking-[0.2em] uppercase">
+          CHOOSE YOUR BATTLEFIELD
+        </p>
+      </div>
+
+      {/* Track Cards Container - Fixed height to prevent layout shift */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 min-h-60">
+        
+        {/* CODESTELLATION Card */}
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={() => handleTrackClick('codestellation')}
+          onMouseEnter={() => setHoveredTrack('codestellation')}
+          onMouseLeave={() => setHoveredTrack(null)}
+          className={`
+            relative group cursor-pointer
+            bg-black/40 backdrop-blur-md
+            border-2 transition-all duration-300
+            clip-path-[polygon(16px_0,100%_0,100%_calc(100%-16px),calc(100%-16px)_100%,0_100%,0_16px)]
+            ${activeTrack === 'codestellation'
+              ? 'border-purple-400/80 shadow-[0_0_40px_rgba(168,85,247,0.5)]'
+              : 'border-purple-500/30 hover:border-purple-400/50'
+            }
+          `}
+        >
+          {/* Corner decorations */}
+          <div className={`absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 transition-colors ${activeTrack === 'codestellation' ? 'border-purple-400' : 'border-purple-500/50'}`} />
+          <div className={`absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 transition-colors ${activeTrack === 'codestellation' ? 'border-purple-400' : 'border-purple-500/50'}`} />
+          <div className={`absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 transition-colors ${activeTrack === 'codestellation' ? 'border-purple-400' : 'border-purple-500/50'}`} />
+          <div className={`absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 transition-colors ${activeTrack === 'codestellation' ? 'border-purple-400' : 'border-purple-500/50'}`} />
+
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-linear-to-br from-purple-900/30 via-purple-800/20 to-indigo-900/30 clip-path-[polygon(16px_0,100%_0,100%_calc(100%-16px),calc(100%-16px)_100%,0_100%,0_16px)]" />
+          
+          {/* Scanline effect */}
+          <div className="absolute inset-0 bg-linear-to-b from-transparent via-purple-500/5 to-transparent pointer-events-none" />
+
+          <div className="relative p-6 md:p-8">
+            {/* Track badge */}
+            <div className="inline-block mb-3 px-3 py-1 bg-purple-500/20 border border-purple-400/30 text-[10px] font-mono text-purple-300 tracking-widest">
+              TRACK_01
+            </div>
+
+            <h2 className="text-2xl md:text-3xl font-black font-mono tracking-tight text-purple-300 mb-2">
+              CODESTELLATION
+            </h2>
+            <p className="text-sm text-purple-200/70 font-mono mb-4">
+              Navigate the Stars of Code
+            </p>
+
+            {/* Stats/Info */}
+            <div className="flex gap-4 text-xs font-mono text-purple-300/60">
+              <div>DIFFICULTY: <span className="text-purple-400">★★★☆☆</span></div>
+            </div>
+          </div>
+
+          {/* Selection indicator */}
+          {selectedTrack === 'codestellation' && (
+            <motion.div
+              layoutId="selectedTrack"
+              className="absolute inset-0 border-2 border-purple-400 clip-path-[polygon(16px_0,100%_0,100%_calc(100%-16px),calc(100%-16px)_100%,0_100%,0_16px)]"
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            />
+          )}
+        </motion.div>
+
+        {/* DECODE Card */}
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={() => handleTrackClick('decode')}
+          onMouseEnter={() => setHoveredTrack('decode')}
+          onMouseLeave={() => setHoveredTrack(null)}
+          className={`
+            relative group cursor-pointer
+            bg-black/40 backdrop-blur-md
+            border-2 transition-all duration-300
+            clip-path-[polygon(16px_0,100%_0,100%_calc(100%-16px),calc(100%-16px)_100%,0_100%,0_16px)]
+            ${activeTrack === 'decode'
+              ? 'border-cyan-400/80 shadow-[0_0_40px_rgba(34,211,238,0.5)]'
+              : 'border-cyan-500/30 hover:border-cyan-400/50'
+            }
+          `}
+        >
+          {/* Corner decorations */}
+          <div className={`absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 transition-colors ${activeTrack === 'decode' ? 'border-cyan-400' : 'border-cyan-500/50'}`} />
+          <div className={`absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 transition-colors ${activeTrack === 'decode' ? 'border-cyan-400' : 'border-cyan-500/50'}`} />
+          <div className={`absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 transition-colors ${activeTrack === 'decode' ? 'border-cyan-400' : 'border-cyan-500/50'}`} />
+          <div className={`absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 transition-colors ${activeTrack === 'decode' ? 'border-cyan-400' : 'border-cyan-500/50'}`} />
+
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-linear-to-bl from-cyan-900/30 via-blue-800/20 to-teal-900/30 clip-path-[polygon(16px_0,100%_0,100%_calc(100%-16px),calc(100%-16px)_100%,0_100%,0_16px)]" />
+          
+          {/* Scanline effect */}
+          <div className="absolute inset-0 bg-linear-to-b from-transparent via-cyan-500/5 to-transparent pointer-events-none" />
+
+          <div className="relative p-6 md:p-8">
+            {/* Track badge */}
+            <div className="inline-block mb-3 px-3 py-1 bg-cyan-500/20 border border-cyan-400/30 text-[10px] font-mono text-cyan-300 tracking-widest">
+              TRACK_02
+            </div>
+
+            <h2 className="text-2xl md:text-3xl font-black font-mono tracking-tight text-cyan-300 mb-2">
+              DECODE STACK
+            </h2>
+            <p className="text-sm text-cyan-200/70 font-mono mb-4">
+              Unravel the Digital Mystery
+            </p>
+
+            {/* Stats/Info */}
+            <div className="flex gap-4 text-xs font-mono text-cyan-300/60">
+              <div>DIFFICULTY: <span className="text-cyan-400">★★★★☆</span></div>
+            </div>
+          </div>
+
+          {/* Selection indicator */}
+          {selectedTrack === 'decode' && (
+            <motion.div
+              layoutId="selectedTrack"
+              className="absolute inset-0 border-2 border-cyan-400 clip-path-[polygon(16px_0,100%_0,100%_calc(100%-16px),calc(100%-16px)_100%,0_100%,0_16px)]"
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            />
+          )}
+        </motion.div>
+
+      </div>
+
+      {/* External Selection Feedback - Below cards */}
+      <AnimatePresence>
+        {selectedTrack && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="mt-6 text-center"
+          >
+            <div className={`inline-flex items-center gap-3 px-6 py-3 font-mono text-xs backdrop-blur-sm border rounded
+              ${selectedTrack === 'codestellation' 
+                ? 'bg-purple-500/10 border-purple-400/30 text-purple-300' 
+                : 'bg-cyan-500/10 border-cyan-400/30 text-cyan-300'
+              }`}
+            >
+              <div className={`w-2 h-2 animate-pulse ${selectedTrack === 'codestellation' ? 'bg-purple-400' : 'bg-cyan-400'}`} />
+              <span>TRACK LOCKED - Press</span>
+              <kbd className={`px-2 py-1 border rounded font-bold
+                ${selectedTrack === 'codestellation' 
+                  ? 'bg-purple-500/20 border-purple-400/30' 
+                  : 'bg-cyan-500/20 border-cyan-400/30'
+                }`}>
+                F
+              </kbd>
+              <span>/</span>
+              <kbd className={`px-2 py-1 border rounded font-bold
+                ${selectedTrack === 'codestellation' 
+                  ? 'bg-purple-500/20 border-purple-400/30' 
+                  : 'bg-cyan-500/20 border-cyan-400/30'
+                }`}>
+                ENTER
+              </kbd>
+              <span> or click again to deploy</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
