@@ -139,7 +139,7 @@ export default function SponsorsPage() {
                     </div>
                     <div className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-3 py-1.5 rounded">
                       <Phone className="w-3 h-3 text-purple-400" />
-                      <span className="font-mono text-purple-200 hidden sm:inline">+91 XXXXX XXXXX</span>
+                      <span className="font-mono text-purple-200 hidden sm:inline">+91 94355 53309</span>
                       <span className="font-mono text-purple-200 sm:hidden">Call</span>
                     </div>
                   </div>
@@ -148,13 +148,13 @@ export default function SponsorsPage() {
                 <div className="absolute inset-0 bg-linear-to-b from-transparent via-purple-500/5 to-transparent pointer-events-none" />
               </div>
             </motion.div>
-
-            {/* System label */}
-            <div className="mt-3 text-center text-[9px] font-mono text-cyan-500/30 tracking-widest">
-              SPONSOR_REGISTRY_v7.0
-            </div>
           </motion.div>
         </div>
+      </div>
+
+      {/* System label */}
+      <div className="hidden md:block absolute bottom-4 left-4 text-[10px] font-mono text-cyan-500/30 tracking-widest">
+        SPONSOR_REGISTRY_v7.0
       </div>
     </main>
   )

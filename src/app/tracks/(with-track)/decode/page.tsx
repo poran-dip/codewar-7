@@ -1,0 +1,155 @@
+'use client'
+
+import { motion } from 'motion/react'
+import { Calendar, Globe, Clock, Users, Terminal, Trophy, Timer, BrainCircuit } from 'lucide-react'
+
+export default function DecodeStackInfo() {
+  const handleRegister = () => {
+    console.log('Registration clicked for Decode Stack')
+    window.alert('Registration opens on February 16, 2026!')
+  }
+
+  const features = [
+    { icon: Terminal, text: 'Competitive programming showdown' },
+    { icon: BrainCircuit, text: '10 carefully curated problems' },
+    { icon: Timer, text: '3 hours of pure problem-solving' },
+    { icon: Trophy, text: 'Fastest correct solutions win' },
+  ]
+
+  return (
+    <section className="min-h-screen flex items-center justify-center py-20">
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.2 }}
+        className="w-full max-w-5xl"
+      >
+        {/* Header */}
+        <div className="relative mb-8">
+          <div className="absolute inset-0 blur-3xl bg-emerald-500/10" />
+          
+          <div className="relative bg-black/40 backdrop-blur-md border-2 border-emerald-500/50 px-6 py-3 clip-path-[polygon(16px_0,100%_0,100%_calc(100%-16px),calc(100%-16px)_100%,0_100%,0_16px)] overflow-hidden">
+            <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-emerald-400" />
+            <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-emerald-400" />
+            <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-emerald-400" />
+            <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-emerald-400" />
+            
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <Terminal className="w-4 h-4 text-emerald-400 animate-pulse" />
+                <h1 className="text-2xl md:text-3xl font-black font-mono tracking-tight text-emerald-300">
+                  DECODE STACK
+                </h1>
+              </div>
+              <div className="hidden md:block text-[10px] font-mono text-emerald-500/50 tracking-widest">
+                TRACK_02_INFO
+              </div>
+            </div>
+            <div className="absolute inset-0 bg-linear-to-b from-transparent via-emerald-500/5 to-transparent pointer-events-none" />
+          </div>
+        </div>
+
+        {/* Main Grid */}
+        <div className="grid md:grid-cols-2 gap-6">
+
+          {/* LEFT */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 }}
+            className="relative bg-black/40 backdrop-blur-md border-2 border-emerald-500/30 clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)] p-6 space-y-6 overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-linear-to-br from-emerald-900/20 to-green-900/20 pointer-events-none" />
+            <div className="absolute inset-0 bg-linear-to-b from-transparent via-emerald-500/5 to-transparent pointer-events-none" />
+
+            <div className="relative">
+              <div className="inline-block mb-4 px-3 py-1 bg-emerald-500/20 border border-emerald-400/30 text-[10px] font-mono text-emerald-300 tracking-widest">
+                MISSION_BRIEF
+              </div>
+
+              <p className="text-sm md:text-base text-emerald-100/80 font-mono leading-relaxed mb-6">
+                A high-intensity competitive programming contest hosted online on Codeforces. 
+                Solve algorithmic challenges under pressure and race against teams across India.
+              </p>
+
+              <div className="grid gap-3">
+                {features.map((feature, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 + i * 0.1 }}
+                    className="flex items-center gap-3 text-sm text-emerald-200/70 font-mono"
+                  >
+                    <div className="p-2 bg-emerald-500/10 border border-emerald-400/20 rounded">
+                      <feature.icon className="w-4 h-4 text-emerald-400" />
+                    </div>
+                    <span>{feature.text}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* RIGHT */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 }}
+            className="space-y-6"
+          >
+            <div className="relative bg-black/40 backdrop-blur-md border-2 border-emerald-500/30 clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)] p-6 overflow-hidden">
+              <div className="absolute inset-0 bg-linear-to-br from-emerald-900/20 to-green-900/20 pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-b from-transparent via-emerald-500/5 to-transparent pointer-events-none" />
+
+              <div className="relative">
+                <div className="inline-block mb-4 px-3 py-1 bg-emerald-500/20 border border-emerald-400/30 text-[10px] font-mono text-emerald-300 tracking-widest">
+                  EVENT_DATA
+                </div>
+
+                <div className="space-y-4">
+                  <Detail icon={Calendar} label="Date" value="February 26, 2026" />
+                  <Detail icon={Globe} label="Mode" value="Online on Codeforces" />
+                  <Detail icon={Clock} label="Duration" value="3 Hours" />
+                  <Detail icon={Users} label="Format" value="Team-based CF scoring" />
+                </div>
+              </div>
+            </div>
+
+            <motion.button
+              onClick={handleRegister}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="relative w-full bg-black/40 backdrop-blur-md border-2 border-emerald-500/50 clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)] px-6 py-4 font-mono font-bold text-base md:text-lg text-emerald-300 hover:border-emerald-400/80 hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all duration-300 group overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-linear-to-br from-emerald-500/20 to-green-600/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+              <span className="relative flex items-center justify-center gap-3">
+                <Terminal className="w-5 h-5" />
+                REGISTER FOR DECODE STACK
+                <div className="w-2 h-2 bg-emerald-400 animate-pulse rounded-full" />
+              </span>
+            </motion.button>
+          </motion.div>
+        </div>
+
+        <div className="mt-6 text-center text-[10px] font-mono text-emerald-500/30 tracking-widest">
+          TRACK_INFO_SYSTEM_v1.0
+        </div>
+      </motion.div>
+    </section>
+  )
+}
+
+function Detail({ icon: Icon, label, value }: { icon: typeof Calendar, label: string, value: string }) {
+  return (
+    <div className="flex items-start gap-3">
+      <div className="p-2 bg-emerald-500/10 border border-emerald-400/20 rounded mt-0.5">
+        <Icon className="w-4 h-4 text-emerald-400" />
+      </div>
+      <div>
+        <p className="text-[10px] font-mono text-emerald-400/60 tracking-widest uppercase mb-1">{label}</p>
+        <p className="text-sm font-mono text-emerald-200">{value}</p>
+      </div>
+    </div>
+  )
+}

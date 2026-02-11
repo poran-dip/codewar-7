@@ -1,18 +1,19 @@
 'use client'
 
 import MiniTrackSelector from "@/components/tracks/MiniTrackSelector"
-import TracksNavbar from "@/components/tracks/TracksNavbar"
-import { usePathname } from "next/navigation"
 import { motion } from "motion/react"
+import EscapeButton from "@/components/tracks/EscapeButton"
+import { useNavMeta } from "@/store/useNavMeta"
 
 export default function TracksLayout({ 
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname()
-  const isCodestellation = pathname.includes('codestellation')
-  const isDecode = pathname.includes('decode')
+  const navMeta = useNavMeta()
+  const isCodestellation = navMeta.currentMeta?.track === 'codestellation'
+  const isDecode = navMeta.currentMeta?.track === 'decode'
+  const hasTrack = isCodestellation || isDecode
 
   return (
     <>
@@ -28,9 +29,13 @@ export default function TracksLayout({
         transition={{ duration: 0.8, ease: 'easeInOut' }}
       />
 
-      <TracksNavbar />
+      <EscapeButton />
       <MiniTrackSelector />
-      <main className="ml-20 pt-24 px-6 pb-12">
+      
+      <main className={`
+        pl-16 md:pl-20 pr-4 md:pr-6 pb-12
+        ${hasTrack ? 'pt-8 md:pt-16' : 'pt-16 md:pt-20'}
+      `}>
         {children}
       </main>
     </>

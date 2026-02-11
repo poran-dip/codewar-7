@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'motion/react'
-import { usePathname, useParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { Home, Trophy, HelpCircle, ScrollText, ChevronUp, ChevronDown } from 'lucide-react'
 import { useNavMeta } from '@/store/useNavMeta'
 
@@ -40,9 +40,9 @@ export default function TracksNavbar() {
         damping: 20,
         delay: 0.3 
       }}
-      className="fixed top-6 md:top-8 left-1/2 -translate-x-1/2 z-50"
+      className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50"
     >
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 md:gap-3">
         {/* Up Arrow Hint */}
         <motion.div
           initial={{ opacity: 0, x: -10 }}
@@ -50,7 +50,7 @@ export default function TracksNavbar() {
           transition={{ delay: 0.5 }}
           className={`
             hidden md:flex items-center justify-center
-            w-8 h-8 rounded
+            w-7 h-7 md:w-8 md:h-8 rounded
             bg-black/60 backdrop-blur-sm
             border transition-colors
             ${canScrollUp 
@@ -58,7 +58,7 @@ export default function TracksNavbar() {
               : 'border-gray-600/20 cursor-not-allowed'}
           `}
         >
-          <ChevronUp className={`w-4 h-4 transition-colors ${
+          <ChevronUp className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-colors ${
             canScrollUp 
               ? accentColor === 'purple' ? 'text-purple-400' : 'text-cyan-400'
               : 'text-gray-600/30'
@@ -71,22 +71,22 @@ export default function TracksNavbar() {
           bg-black/40 backdrop-blur-md
           border-2 transition-colors duration-500
           rounded-lg
-          px-1 py-1
+          px-0.5 py-0.5 md:px-1 md:py-1
           ${accentColor === 'purple' 
             ? 'border-purple-500/50 shadow-[0_0_20px_rgba(168,85,247,0.3)]' 
             : 'border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.3)]'
           }
         `}>
           {/* Corner decorations */}
-          <div className={`absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 transition-colors ${accentColor === 'purple' ? 'border-purple-400' : 'border-cyan-400'}`} />
-          <div className={`absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 transition-colors ${accentColor === 'purple' ? 'border-purple-400' : 'border-cyan-400'}`} />
-          <div className={`absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 transition-colors ${accentColor === 'purple' ? 'border-purple-400' : 'border-cyan-400'}`} />
-          <div className={`absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 transition-colors ${accentColor === 'purple' ? 'border-purple-400' : 'border-cyan-400'}`} />
+          <div className={`absolute -top-0.5 -left-0.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-l-2 transition-colors ${accentColor === 'purple' ? 'border-purple-400' : 'border-cyan-400'}`} />
+          <div className={`absolute -top-0.5 -right-0.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-r-2 transition-colors ${accentColor === 'purple' ? 'border-purple-400' : 'border-cyan-400'}`} />
+          <div className={`absolute -bottom-0.5 -left-0.5 w-2 h-2 md:w-3 md:h-3 border-b-2 border-l-2 transition-colors ${accentColor === 'purple' ? 'border-purple-400' : 'border-cyan-400'}`} />
+          <div className={`absolute -bottom-0.5 -right-0.5 w-2 h-2 md:w-3 md:h-3 border-b-2 border-r-2 transition-colors ${accentColor === 'purple' ? 'border-purple-400' : 'border-cyan-400'}`} />
 
           {/* Scanline effect */}
           <div className={`absolute inset-0 bg-linear-to-b from-transparent to-transparent pointer-events-none ${accentColor === 'purple' ? 'via-purple-500/5' : 'via-cyan-500/5'}`} />
 
-          <ul className="flex items-center gap-1">
+          <ul className="flex items-center gap-0.5 md:gap-1">
             {navItems.map((item) => {
               const Icon = item.icon
               return (
@@ -99,11 +99,12 @@ export default function TracksNavbar() {
                     >
                       <div className={`
                         relative
-                        px-3 py-2 md:px-5 md:py-2.5
-                        font-mono text-xs md:text-sm font-bold
+                        px-3 py-1.5 md:px-6 md:py-2.5
+                        font-mono text-[10px] md:text-sm font-bold
                         tracking-wider
                         transition-all duration-200
-                        clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)]
+                        clip-path-[polygon(6px_0,100%_0,100%_calc(100%-6px),calc(100%-6px)_100%,0_100%,0_6px)]
+                        md:clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)]
                         ${isActive(item.href)
                           ? accentColor === 'purple'
                             ? 'bg-linear-to-br from-purple-500/30 to-indigo-600/30 text-purple-300 shadow-[inset_0_0_20px_rgba(168,85,247,0.4)]'
@@ -115,7 +116,7 @@ export default function TracksNavbar() {
                         {isActive(item.href) && (
                           <motion.div
                             layoutId="activeTrackTab"
-                            className={`absolute inset-0 border clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] ${accentColor === 'purple' ? 'border-purple-400/50' : 'border-cyan-400/50'}`}
+                            className={`absolute inset-0 border clip-path-[polygon(6px_0,100%_0,100%_calc(100%-6px),calc(100%-6px)_100%,0_100%,0_6px)] md:clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] ${accentColor === 'purple' ? 'border-purple-400/50' : 'border-cyan-400/50'}`}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
                           />
                         )}
@@ -124,19 +125,20 @@ export default function TracksNavbar() {
                         <div className={`
                           absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity
                           bg-linear-to-br to-transparent
-                          clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)]
+                          clip-path-[polygon(6px_0,100%_0,100%_calc(100%-6px),calc(100%-6px)_100%,0_100%,0_6px)]
+                          md:clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)]
                           ${accentColor === 'purple' ? 'from-purple-500/10' : 'from-cyan-500/10'}
                         `} />
 
-                        <span className="relative flex items-center gap-2">
-                          <Icon className="w-3.5 h-3.5" />
+                        <span className="relative flex items-center gap-1.5 md:gap-2">
+                          <Icon className="w-3 h-3 md:w-3.5 md:h-3.5" />
                           {item.label}
-                          <span className={`text-[10px] ${accentColor === 'purple' ? 'text-purple-500/60' : 'text-cyan-500/60'}`}>{item.key}</span>
+                          <span className={`text-[8px] md:text-[10px] ${accentColor === 'purple' ? 'text-purple-500/60' : 'text-cyan-500/60'}`}>{item.key}</span>
                         </span>
 
                         {/* Corner accent */}
                         <div className={`
-                          absolute top-0 right-0 w-2 h-2 
+                          absolute top-0 right-0 w-1.5 h-1.5 md:w-2 md:h-2
                           border-t border-r
                           transition-colors
                           ${isActive(item.href) 
@@ -153,7 +155,7 @@ export default function TracksNavbar() {
           </ul>
 
           {/* Bottom accent line */}
-          <div className={`absolute -bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-px bg-linear-to-r from-transparent to-transparent ${accentColor === 'purple' ? 'via-purple-500/50' : 'via-cyan-500/50'}`} />
+          <div className={`absolute -bottom-1.5 md:-bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-px bg-linear-to-r from-transparent to-transparent ${accentColor === 'purple' ? 'via-purple-500/50' : 'via-cyan-500/50'}`} />
         </div>
 
         {/* Down Arrow Hint */}
@@ -163,7 +165,7 @@ export default function TracksNavbar() {
           transition={{ delay: 0.5 }}
           className={`
             hidden md:flex items-center justify-center
-            w-8 h-8 rounded
+            w-7 h-7 md:w-8 md:h-8 rounded
             bg-black/60 backdrop-blur-sm
             border transition-colors
             ${canScrollDown 
@@ -171,7 +173,7 @@ export default function TracksNavbar() {
               : 'border-gray-600/20 cursor-not-allowed'}
           `}
         >
-          <ChevronDown className={`w-4 h-4 transition-colors ${
+          <ChevronDown className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-colors ${
             canScrollDown 
               ? accentColor === 'purple' ? 'text-purple-400' : 'text-cyan-400'
               : 'text-gray-600/30'
@@ -179,8 +181,8 @@ export default function TracksNavbar() {
         </motion.div>
       </div>
 
-      {/* HUD-style info */}
-      <div className={`absolute -bottom-6 left-0 text-[10px] font-mono tracking-widest ${accentColor === 'purple' ? 'text-purple-500/40' : 'text-cyan-500/40'}`}>
+      {/* HUD-style info - hidden on mobile */}
+      <div className={`hidden md:block absolute -bottom-5 left-0 text-[10px] font-mono tracking-widest ${accentColor === 'purple' ? 'text-purple-500/40' : 'text-cyan-500/40'}`}>
         TRACK_NAV_SYS
       </div>
     </motion.nav>

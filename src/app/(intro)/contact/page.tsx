@@ -14,17 +14,17 @@ export default function ContactPage() {
     },
     { 
       title: 'COORDINATORS', 
-      content: '+91 XXXXX XXXXX',
+      content: '+91 94355 53309',
       icon: Phone,
       color: 'purple',
-      href: 'tel:+91XXXXXXXXXX'
+      href: 'tel:+919435553309'
     },
     { 
       title: 'LOCATION', 
       content: 'AEC, Guwahati',
       icon: MapPin,
       color: 'cyan',
-      href: 'https://maps.google.com/?q=Assam+Engineering+College+Guwahati'
+      href: 'https://maps.app.goo.gl/f5BzYNGCuVAi51st6'
     },
   ]
 
@@ -32,19 +32,19 @@ export default function ContactPage() {
     {
       name: 'Instagram',
       icon: Instagram,
-      href: '#',
+      href: 'https://www.instagram.com/codewar_aec2026/',
       color: 'from-purple-500 to-pink-500'
     },
     {
       name: 'LinkedIn',
       icon: Linkedin,
-      href: '#',
+      href: 'https://linkedin.com/company/aec-coding-club',
       color: 'from-blue-500 to-cyan-500'
     },
     {
       name: 'Facebook',
       icon: Facebook,
-      href: '#',
+      href: 'https://www.facebook.com/aeccodingclub/',
       color: 'from-blue-600 to-blue-400'
     }
   ]
@@ -221,13 +221,13 @@ export default function ContactPage() {
                 <span className="text-cyan-500/70">TIP:</span> Contact coordinators for mission briefing
               </div>
             </motion.div>
-
-            {/* System label */}
-            <div className="mt-3 md:mt-4 text-center text-[9px] md:text-[10px] font-mono text-cyan-500/30 tracking-widest">
-              COMM_SYSTEM_v2.0
-            </div>
           </motion.div>
         </div>
+      </div>
+
+      {/* System label */}
+      <div className="hidden md:block absolute bottom-4 left-4 text-[10px] font-mono text-cyan-500/30 tracking-widest">
+        COMM_SYSTEM_v2.0
       </div>
     </main>
   )
