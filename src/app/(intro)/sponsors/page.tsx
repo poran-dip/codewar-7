@@ -35,7 +35,7 @@ export default function SponsorsPage() {
   return (
     <main className="h-screen text-white px-4">
       <div className="h-[105vh]">
-        <div className="h-screen flex items-center justify-center pt-32 pb-16">
+        <div className="h-screen flex items-center justify-center pt-16 md:pt-32 pb-16">
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -134,7 +134,7 @@ export default function SponsorsPage() {
                   <div className="flex gap-3 text-xs">
                     <div className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-3 py-1.5 rounded">
                       <Mail className="w-3 h-3 text-purple-400" />
-                      <span className="font-mono text-purple-200 hidden sm:inline">codewar@aec.edu.in</span>
+                      <span className="font-mono text-purple-200 hidden sm:inline">codewar@aec.ac.in</span>
                       <span className="font-mono text-purple-200 sm:hidden">Email</span>
                     </div>
                     <div className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-3 py-1.5 rounded">
