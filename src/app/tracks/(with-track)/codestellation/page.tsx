@@ -25,7 +25,7 @@ export default function CodestellationInfo() {
         className="w-full max-w-5xl"
       >
         {/* Header */}
-        <div className="relative mb-8">
+        <div className="relative mb-4">
           <div className="absolute inset-0 blur-3xl bg-purple-500/10" />
           
           <div className="relative bg-black/40 backdrop-blur-md border-2 border-purple-500/50 px-6 py-3 clip-path-[polygon(16px_0,100%_0,100%_calc(100%-16px),calc(100%-16px)_100%,0_100%,0_16px)]">
@@ -62,7 +62,7 @@ export default function CodestellationInfo() {
               bg-black/40 backdrop-blur-md
               border-2 border-purple-500/30
               clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
-              p-6 space-y-6
+              p-2 md:p-4
             "
           >
             {/* Corner decorations */}
@@ -88,7 +88,7 @@ export default function CodestellationInfo() {
               </p>
 
               {/* Features Grid */}
-              <div className="grid grid-cols-1 gap-3">
+              <div className="grid grid-cols-1 gap-1 md:gap-2.5">
                 {features.map((feature, i) => (
                   <motion.div
                     key={i}
@@ -112,7 +112,7 @@ export default function CodestellationInfo() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
-            className="space-y-6"
+            className="space-y-4"
           >
             {/* Event Details Card */}
             <div className="
@@ -120,7 +120,7 @@ export default function CodestellationInfo() {
               bg-black/40 backdrop-blur-md
               border-2 border-purple-500/30
               clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
-              p-6
+              p-2 md:p-4
             ">
               {/* Corner decorations */}
               <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-purple-400/60" />
@@ -139,7 +139,7 @@ export default function CodestellationInfo() {
                   EVENT_DATA
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-1 md:space-y-2.5">
                   {/* Date */}
                   <div className="flex items-start gap-3">
                     <div className="p-2 bg-purple-500/10 border border-purple-400/20 rounded mt-0.5">
@@ -197,7 +197,7 @@ export default function CodestellationInfo() {
                 bg-black/40 backdrop-blur-md
                 border-2 border-purple-500/50
                 clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
-                px-6 py-4
+                mx-auto py-2.5
                 font-mono font-bold text-base md:text-lg
                 text-purple-300
                 hover:border-purple-400/80

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, HelpCircle } from 'lucide-react'
 import { useNavMeta } from '@/store/useNavMeta'
 
 export default function FAQItem({
@@ -15,66 +15,96 @@ export default function FAQItem({
   const [open, setOpen] = useState(false)
 
   const navMeta = useNavMeta()
-  const currentTrack = navMeta.currentMeta?.track
-
-  const isCode = currentTrack === 'codestellation'
-  const isDecode = currentTrack === 'decode'
-
-  const theme = {
-    border: isCode ? 'border-purple-500/40' : isDecode ? 'border-green-500/40' : 'border-white/20',
-    glow: isCode ? 'via-purple-500/10' : isDecode ? 'via-green-500/10' : 'via-white/10',
-    text: isCode ? 'text-purple-200' : isDecode ? 'text-green-200' : 'text-white',
-    subtext: isCode ? 'text-purple-100/70' : isDecode ? 'text-green-100/70' : 'text-white/70',
-    accent: isCode ? 'text-purple-400' : isDecode ? 'text-green-400' : 'text-white',
-  }
+  const isCodestellation = navMeta.currentMeta?.track === 'codestellation'
+  const accentColor = isCodestellation ? 'purple' : 'cyan'
 
   return (
     <motion.div
       layout
-      className={`relative bg-black/40 backdrop-blur-md border ${theme.border} px-4 py-3 overflow-hidden cursor-pointer`}
-      transition={{ 
-        delay: 0.1, 
-        type: 'spring', 
-        stiffness: 100 
-      }}
-      whileHover={{ scale: 1.01 }}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ scale: 1.01, x: 4 }}
+      className={`
+        relative
+        bg-black/40 backdrop-blur-md
+        border-2 transition-all duration-300
+        clip-path-[polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)]
+        p-4
+        cursor-pointer
+        group
+        ${open 
+          ? accentColor === 'purple'
+            ? 'border-purple-400/60 shadow-[0_0_20px_rgba(168,85,247,0.3)]'
+            : 'border-cyan-400/60 shadow-[0_0_20px_rgba(6,182,212,0.3)]'
+          : accentColor === 'purple'
+            ? 'border-purple-500/30 hover:border-purple-400/50'
+            : 'border-cyan-500/30 hover:border-cyan-400/50'
+        }
+      `}
     >
-      <div className={`absolute inset-0 bg-linear-to-b from-transparent ${theme.glow} to-transparent pointer-events-none cursor-pointer`} />
+      {/* Corner decorations */}
+      <div className={`absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 transition-colors ${open ? accentColor === 'purple' ? 'border-purple-400' : 'border-cyan-400' : accentColor === 'purple' ? 'border-purple-400/60' : 'border-cyan-400/60'}`} />
+      <div className={`absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 transition-colors ${open ? accentColor === 'purple' ? 'border-purple-400' : 'border-cyan-400' : accentColor === 'purple' ? 'border-purple-400/60' : 'border-cyan-400/60'}`} />
+      <div className={`absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 transition-colors ${open ? accentColor === 'purple' ? 'border-purple-400' : 'border-cyan-400' : accentColor === 'purple' ? 'border-purple-400/60' : 'border-cyan-400/60'}`} />
+      <div className={`absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 transition-colors ${open ? accentColor === 'purple' ? 'border-purple-400' : 'border-cyan-400' : accentColor === 'purple' ? 'border-purple-400/60' : 'border-cyan-400/60'}`} />
 
-      {/* Question row */}
+      {/* Gradient overlay */}
+      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity clip-path-[polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)] ${accentColor === 'purple' ? 'bg-linear-to-br from-purple-900/20 to-indigo-900/20' : 'bg-linear-to-br from-cyan-900/20 to-blue-900/20'}`} />
+      
+      {/* Scanline effect */}
+      <div className={`absolute inset-0 bg-linear-to-b from-transparent to-transparent pointer-events-none ${accentColor === 'purple' ? 'via-purple-500/5' : 'via-cyan-500/5'}`} />
+
+      {/* Question button */}
       <button
         onClick={() => setOpen(!open)}
-        className="relative w-full flex items-center justify-between text-left cursor-pointer"
+        className="relative w-full flex items-start gap-3 text-left"
       >
-        <h3 className={`font-mono text-sm md:text-base font-bold ${theme.text}`}>
-          {question}
-        </h3>
-        <ChevronDown
-          className={`w-4 h-4 transition-transform ${theme.accent} ${open ? 'rotate-180' : ''}`}
-        />
+        <div className={`shrink-0 p-2 rounded transition-all ${open ? accentColor === 'purple' ? 'bg-purple-500/20 border border-purple-400/40' : 'bg-cyan-500/20 border border-cyan-400/40' : accentColor === 'purple' ? 'bg-purple-500/10 border border-purple-400/20' : 'bg-cyan-500/10 border border-cyan-400/20'}`}>
+          <HelpCircle className={`w-4 h-4 ${accentColor === 'purple' ? 'text-purple-400' : 'text-cyan-400'}`} />
+        </div>
+
+        <div className="flex-1">
+          <h3 className={`font-mono text-sm md:text-base font-bold ${accentColor === 'purple' ? 'text-purple-300' : 'text-cyan-300'}`}>
+            {question}
+          </h3>
+        </div>
+
+        <motion.div
+          animate={{ rotate: open ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="shrink-0"
+        >
+          <ChevronDown className={`w-5 h-5 ${accentColor === 'purple' ? 'text-purple-400' : 'text-cyan-400'}`} />
+        </motion.div>
       </button>
 
       {/* Answer */}
       <AnimatePresence initial={false}>
         {open && (
-          <motion.p
-            key="content"
+          <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25 }}
-            className={`mt-3 font-mono text-xs md:text-sm leading-relaxed ${theme.subtext}`}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="overflow-hidden"
           >
-            {answer}
-          </motion.p>
+            <div className="relative pt-4 pl-14">
+              <div className={`absolute left-7 top-0 w-px h-full ${accentColor === 'purple' ? 'bg-purple-500/30' : 'bg-cyan-500/30'}`} />
+              
+              <p className={`font-mono text-xs md:text-sm leading-relaxed ${accentColor === 'purple' ? 'text-purple-100/70' : 'text-cyan-100/70'}`}>
+                {answer}
+              </p>
+
+              <div className={`mt-3 flex items-center gap-2`}>
+                <div className={`w-1.5 h-1.5 rounded-full ${accentColor === 'purple' ? 'bg-purple-400' : 'bg-cyan-400'} animate-pulse`} />
+                <span className={`text-[9px] font-mono tracking-widest ${accentColor === 'purple' ? 'text-purple-400/60' : 'text-cyan-400/60'}`}>
+                  ANSWER_VERIFIED
+                </span>
+              </div>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
-
-      {open && (
-        <div className={`absolute bottom-0.5 right-3 text-[9px] font-mono ${theme.accent} opacity-60 tracking-widest`}>
-          DATA_NODE_EXPANDED
-        </div>
-      )}
     </motion.div>
   )
 }

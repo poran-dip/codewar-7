@@ -8,49 +8,66 @@ export default function CodestellationFAQ() {
   const faqs = [
     {
       question: "Are inter-college teams allowed?",
-      answer:
-        "Yes. Teams can consist of participants from different colleges. Collaboration across institutions is completely allowed.",
+      answer: "Yes. Teams can consist of participants from different colleges. Collaboration across institutions is completely allowed.",
     },
     {
       question: "Can we use any tech stack or programming language?",
-      answer:
-        "Yes. Participants are free to use any programming languages, frameworks, tools, or tech stacks they are comfortable with while building their solution.",
+      answer: "Yes. Participants are free to use any programming languages, frameworks, tools, or tech stacks they are comfortable with while building their solution.",
     },
     {
       question: "How will projects be judged?",
-      answer:
-        "Judging will be based on how effectively the solution addresses the problem statement, feasibility, actual implementation, innovation, and the clarity of the final presentation.",
+      answer: "Judging will be based on how effectively the solution addresses the problem statement, feasibility, actual implementation, innovation, and the clarity of the final presentation.",
     },
   ]
 
   return (
     <section className="h-screen flex items-center justify-center px-4">
-      <motion.div className="w-full max-w-4xl">
-        
-        {/* HEADER (same as system style) */}
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.2 }}
+        className="w-full max-w-4xl"
+      >
+        {/* Compact Header */}
         <div className="relative mb-6">
-          <div className="absolute inset-0 blur-3xl bg-purple-500/10" />
-          <div className="relative bg-black/40 backdrop-blur-md border-2 border-purple-500/50 px-6 py-3 clip-path-[polygon(16px_0,100%_0,100%_calc(100%-16px),calc(100%-16px)_100%,0_100%,0_16px)] overflow-hidden">
+          <div className="relative bg-black/40 backdrop-blur-md border-2 border-purple-500/50 px-6 py-3 clip-path-[polygon(16px_0,100%_0,100%_calc(100%-16px),calc(100%-16px)_100%,0_100%,0_16px)]">
+            <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-purple-400" />
+            <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-purple-400" />
+            <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-purple-400" />
+            <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-purple-400" />
+
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <HelpCircle className="w-4 h-4 text-purple-400 animate-pulse" />
-                <h1 className="text-2xl md:text-3xl font-black font-mono text-purple-300">
-                  FREQUENTLY ASKED QUESTIONS
+                <h1 className="text-2xl md:text-3xl font-black font-mono tracking-tight text-purple-300">
+                  FAQ
                 </h1>
               </div>
               <div className="hidden md:block text-[10px] font-mono text-purple-500/50 tracking-widest">
                 TRACK_01_FAQ
               </div>
             </div>
+            <div className="absolute inset-0 bg-linear-to-b from-transparent via-purple-500/5 to-transparent pointer-events-none" />
           </div>
         </div>
 
+        {/* FAQ Items */}
         <div className="space-y-3">
           {faqs.map((faq, i) => (
-            <FAQItem key={i} {...faq} />
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + i * 0.05 }}
+            >
+              <FAQItem {...faq} />
+            </motion.div>
           ))}
         </div>
 
+        <div className="mt-4 text-center text-[10px] font-mono text-purple-500/30 tracking-widest">
+          FAQ_SYSTEM_v1.0
+        </div>
       </motion.div>
     </section>
   )

@@ -3,8 +3,9 @@
 import Link from 'next/link'
 import { motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
-import { Home, Trophy, HelpCircle, ScrollText, ChevronUp, ChevronDown } from 'lucide-react'
+import { Home, Trophy, HelpCircle, ScrollText, ChevronUp, ChevronDown, X } from 'lucide-react'
 import { useNavMeta } from '@/store/useNavMeta'
+import EscapeButton from './EscapeButton'
 
 export default function TracksNavbar() {
   const pathname = usePathname()
@@ -87,6 +88,26 @@ export default function TracksNavbar() {
           <div className={`absolute inset-0 bg-linear-to-b from-transparent to-transparent pointer-events-none ${accentColor === 'purple' ? 'via-purple-500/5' : 'via-cyan-500/5'}`} />
 
           <ul className="flex items-center gap-0.5 md:gap-1">
+            <div className="md:hidden">
+              <Link href="/">
+                <div
+                  className={`
+                    relative flex items-center justify-center
+                    px-1 py-1.5
+                    ${'bg-gray-900/50 text-gray-400 group-hover:text-' + accentColor + '-400 group-hover:bg-' + accentColor + '-500/10'}
+                  `}
+                >
+                  <div 
+                    className={`
+                      absolute top-0 right-0 w-1.5 h-1.5 md:w-2 md:h-2 border-t border-r
+                      ${accentColor === 'purple' ? 'border-purple-600/30' : 'border-cyan-600/30'}
+                    `} 
+                  />
+                  <X className="w-4 h-4" />
+                </div>
+              </Link>
+            </div>
+
             {navItems.map((item) => {
               const Icon = item.icon
               return (
@@ -99,7 +120,7 @@ export default function TracksNavbar() {
                     >
                       <div className={`
                         relative
-                        px-3 py-1.5 md:px-6 md:py-2.5
+                        px-2.5 py-1.5 md:px-6 md:py-2.5
                         font-mono text-[10px] md:text-sm font-bold
                         tracking-wider
                         transition-all duration-200
@@ -133,7 +154,7 @@ export default function TracksNavbar() {
                         <span className="relative flex items-center gap-1.5 md:gap-2">
                           <Icon className="w-3 h-3 md:w-3.5 md:h-3.5" />
                           {item.label}
-                          <span className={`text-[8px] md:text-[10px] ${accentColor === 'purple' ? 'text-purple-500/60' : 'text-cyan-500/60'}`}>{item.key}</span>
+                          <span className={`hidden md:block text-[8px] md:text-[10px] ${accentColor === 'purple' ? 'text-purple-500/60' : 'text-cyan-500/60'}`}>{item.key}</span>
                         </span>
 
                         {/* Corner accent */}

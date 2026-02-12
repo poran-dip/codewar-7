@@ -30,19 +30,6 @@ export default function IntroHero() {
         transition={{ duration: 0.8, ease: 'easeInOut' }}
       />
 
-      {/* Image Placeholder Overlay */}
-      <motion.div
-        className="fixed inset-0 -z-10 pointer-events-none"
-        animate={{
-          opacity: selectedTrack ? 0.6 : 0.3,
-        }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="w-full h-full bg-[url('/path-to-your-image.png')] bg-cover bg-center opacity-0">
-          {/* Placeholder - replace opacity-0 with actual image */}
-        </div>
-      </motion.div>
-
       {/* TOP HUD - Event Info - More compact */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}

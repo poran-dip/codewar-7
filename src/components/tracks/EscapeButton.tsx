@@ -4,7 +4,6 @@ import { useNavMeta } from "@/store/useNavMeta"
 import { X } from "lucide-react"
 import { motion } from "motion/react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 
 export default function EscapeButton() {
   const navMeta = useNavMeta()
@@ -20,7 +19,7 @@ export default function EscapeButton() {
         damping: 20,
         delay: 0.3 
       }}
-      className="fixed top-4 md:top-6 left-4 md:left-6 z-50"
+      className="hidden md:block fixed top-4 md:top-6 left-4 md:left-6 z-50"
     >
       <Link href="/">
         <motion.div
