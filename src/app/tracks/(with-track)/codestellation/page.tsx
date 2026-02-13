@@ -6,7 +6,7 @@ import { Calendar, MapPin, Clock, Users, Zap, Code2, Lightbulb, Rocket } from 'l
 export default function CodestellationInfo() {
   const handleRegister = () => {
     console.log('Registration clicked for Codestellation')
-    window.alert('Registration opens on February 16, 2026!')
+    window.alert('Registration will open soon!')
   }
 
   const features = [
@@ -158,7 +158,7 @@ export default function CodestellationInfo() {
                     </div>
                     <div>
                       <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Location</p>
-                      <p className="text-xs md:text-sm font-mono text-purple-200">Room 6, Main Building, AEC</p>
+                      <p className="text-xs md:text-sm font-mono text-purple-200">Main Building, AEC</p>
                     </div>
                   </div>
 
@@ -169,7 +169,7 @@ export default function CodestellationInfo() {
                     </div>
                     <div>
                       <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Duration</p>
-                      <p className="text-xs md:text-sm font-mono text-purple-200">24 Hours Non-Stop</p>
+                      <p className="text-xs md:text-sm font-mono text-purple-200">24 Hours</p>
                     </div>
                   </div>
 
@@ -179,8 +179,8 @@ export default function CodestellationInfo() {
                       <Users className="w-3 h-3 md:w-4 md:h-4 text-purple-400" />
                     </div>
                     <div>
-                      <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Registration Opens</p>
-                      <p className="text-xs md:text-sm font-mono text-purple-200">February 16, 2026</p>
+                      <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Registration Closes</p>
+                      <p className="text-xs md:text-sm font-mono text-purple-200">February 20, 2026</p>
                     </div>
                   </div>
                 </div>
@@ -229,7 +229,7 @@ export default function CodestellationInfo() {
             {/* Info note */}
             <div className="hidden md:block text-center">
               <div className="inline-block bg-black/60 backdrop-blur-sm border border-purple-500/20 px-3 py-1.5 md:px-4 md:py-2 font-mono text-[10px] md:text-xs text-purple-400/50 rounded">
-                <span className="text-purple-400/70">NOTE:</span> Registration opens February 16
+                <span className="text-purple-400/70">NOTE:</span> Registration will open soon
               </div>
             </div>
           </motion.div>

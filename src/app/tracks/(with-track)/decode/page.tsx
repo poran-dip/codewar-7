@@ -6,12 +6,12 @@ import { Calendar, Globe, Clock, Users, Terminal, Trophy, Timer, BrainCircuit, Z
 export default function DecodeStackInfo() {
   const handleRegister = () => {
     console.log('Registration clicked for Decode Stack')
-    window.alert('Registration opens on February 16, 2026!')
+    window.alert('Registration will open soon!')
   }
 
   const features = [
     { icon: Terminal, text: 'Competitive programming showdown' },
-    { icon: BrainCircuit, text: '10 carefully curated problems' },
+    { icon: BrainCircuit, text: '7 carefully curated problems' },
     { icon: Timer, text: '3 hours of pure problem-solving' },
     { icon: Trophy, text: 'Fastest correct solutions win' },
   ]
@@ -229,7 +229,7 @@ export default function DecodeStackInfo() {
             {/* Info note */}
             <div className="hidden md:block text-center">
               <div className="inline-block bg-black/60 backdrop-blur-sm border border-cyan-500/20 px-3 py-1.5 md:px-4 md:py-2 font-mono text-[10px] md:text-xs text-cyan-400/50 rounded">
-                <span className="text-cyan-400/70">NOTE:</span> Registration opens February 16
+                <span className="text-cyan-400/70">NOTE:</span> Registration will open soon
               </div>
             </div>
           </motion.div>
