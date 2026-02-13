@@ -33,8 +33,8 @@ export default function TracksLayout({
       <MiniTrackSelector />
       
       <main className={`
-        pl-16 md:pl-20 pr-4 md:pr-6 pb-12
-        ${hasTrack ? 'pt-8 md:pt-16' : 'pt-16 md:pt-20'}
+        pl-4 md:pl-20 pr-4 md:pr-6 pb-16 md:pb-12
+        ${hasTrack ? 'pt-6 md:pt-16' : 'pt-12 md:pt-20'}
       `}>
         {children}
       </main>

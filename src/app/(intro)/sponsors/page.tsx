@@ -43,21 +43,21 @@ export default function SponsorsPage() {
             className="w-full max-w-4xl"
           >
             {/* Compact Header */}
-            <div className="relative mb-6">
-              <div className="relative bg-black/40 backdrop-blur-md border-2 border-cyan-500/50 px-6 py-3 clip-path-[polygon(16px_0,100%_0,100%_calc(100%-16px),calc(100%-16px)_100%,0_100%,0_16px)]">
-                <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-cyan-400" />
-                <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-cyan-400" />
-                <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-cyan-400" />
-                <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-cyan-400" />
+            <div className="relative mb-3 md:mb-6">
+              <div className="relative bg-black/40 backdrop-blur-md border-2 border-cyan-500/50 px-3 py-2 md:px-6 md:py-3 clip-path-[polygon(16px_0,100%_0,100%_calc(100%-16px),calc(100%-16px)_100%,0_100%,0_16px)]">
+                <div className="absolute top-0 left-0 w-3 h-3 md:w-5 md:h-5 border-t-2 border-l-2 border-cyan-400" />
+                <div className="absolute top-0 right-0 w-3 h-3 md:w-5 md:h-5 border-t-2 border-r-2 border-cyan-400" />
+                <div className="absolute bottom-0 left-0 w-3 h-3 md:w-5 md:h-5 border-b-2 border-l-2 border-cyan-400" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 md:w-5 md:h-5 border-b-2 border-r-2 border-cyan-400" />
                 
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <Trophy className="w-4 h-4 text-cyan-400" />
-                    <h1 className="text-2xl md:text-3xl font-black font-mono tracking-tight text-cyan-300">
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <Trophy className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
+                    <h1 className="text-xl md:text-3xl font-black font-mono tracking-tight text-cyan-300">
                       SPONSORS
                     </h1>
                   </div>
-                  <div className="text-[10px] font-mono text-cyan-500/50 tracking-widest">
+                  <div className="text-[8px] md:text-[10px] font-mono text-cyan-500/50 tracking-widest">
                     ALLIANCE_NET
                   </div>
                 </div>
@@ -66,7 +66,7 @@ export default function SponsorsPage() {
             </div>
 
             {/* Compact Sponsor Grid */}
-            <div className="grid grid-cols-3 gap-3 md:gap-4 mb-6">
+            <div className="grid grid-cols-3 gap-2.5 md:gap-4 mb-6">
               {sponsors.map((sponsor, i) => {
                 const colors = getTierColor(sponsor.tier)
                 return (
@@ -112,17 +112,17 @@ export default function SponsorsPage() {
               transition={{ delay: 0.6 }}
               className="relative"
             >
-              <div className="relative bg-black/60 backdrop-blur-md border-2 border-purple-500/40 p-4 md:p-5 clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]">
+              <div className="relative bg-black/60 backdrop-blur-md border-2 border-purple-500/40 p-3 md:p-5 clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]">
                 <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-purple-400/70" />
                 <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-purple-400/70" />
                 <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-purple-400/70" />
                 <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-purple-400/70" />
 
-                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                  <div className="flex items-center gap-3">
-                    <Sparkles className="w-6 h-6 text-purple-400" />
+                <div className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <Sparkles className="w-4 md:w-6 h-4 md:h-6 text-purple-400" />
                     <div>
-                      <h3 className="text-lg md:text-xl font-black font-mono text-purple-300">
+                      <h3 className="text-base md:text-xl font-black font-mono text-purple-300">
                         WANT TO SPONSOR US?
                       </h3>
                       <p className="text-xs text-purple-200/60 font-mono hidden md:block">
@@ -131,16 +131,14 @@ export default function SponsorsPage() {
                     </div>
                   </div>
 
-                  <div className="flex gap-3 text-xs">
-                    <div className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-3 py-1.5 rounded">
-                      <Mail className="w-3 h-3 text-purple-400" />
-                      <span className="font-mono text-purple-200 hidden sm:inline">codewar@aec.ac.in</span>
-                      <span className="font-mono text-purple-200 sm:hidden">Email</span>
+                  <div className="flex flex-col md:flex-row gap-1.5 md:gap-3 text-xs">
+                    <div className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-2 md:px-3 py-1 md:py-1.5 rounded">
+                      <Mail className="w-2.5 md:w-3 h-2.5 md:h-3 text-purple-400" />
+                      <span className="font-mono text-purple-200">codewar@aec.ac.in</span>
                     </div>
-                    <div className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-3 py-1.5 rounded">
-                      <Phone className="w-3 h-3 text-purple-400" />
-                      <span className="font-mono text-purple-200 hidden sm:inline">+91 94355 53309</span>
-                      <span className="font-mono text-purple-200 sm:hidden">Call</span>
+                    <div className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-2 md:px-3 py-1 md:py-1.5 rounded">
+                      <Phone className="w-2.5 md:w-3 h-2.5 md:h-3 text-purple-400" />
+                      <span className="font-mono text-purple-200">+91 94355 53309</span>
                     </div>
                   </div>
                 </div>
