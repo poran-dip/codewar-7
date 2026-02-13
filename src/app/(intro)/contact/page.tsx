@@ -7,10 +7,10 @@ export default function ContactPage() {
   const items = [
     { 
       title: 'EMAIL', 
-      content: 'codewar@aec.ac.in',
+      content: 'aeccodewar@gmail.com',
       icon: Mail,
       color: 'cyan',
-      href: 'mailto:codewar@aec.ac.in'
+      href: 'mailto:aeccodewar@gmail.com'
     },
     { 
       title: 'COORDINATORS', 

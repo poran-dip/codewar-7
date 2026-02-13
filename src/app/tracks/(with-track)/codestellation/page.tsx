@@ -147,7 +147,7 @@ export default function CodestellationInfo() {
                     </div>
                     <div>
                       <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Date</p>
-                      <p className="text-xs md:text-sm font-mono text-purple-200">February 25-26, 2026</p>
+                      <p className="text-xs md:text-sm font-mono text-purple-200">February 26-27, 2026</p>
                     </div>
                   </div>
 

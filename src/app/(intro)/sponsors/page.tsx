@@ -1,24 +1,25 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { Trophy, Mail, Phone, Sparkles } from 'lucide-react'
+import { Trophy, Mail, Phone, Sparkles, FileText } from 'lucide-react'
+import Link from 'next/link'
 
 export default function SponsorsPage() {
   // Placeholder sponsors - replace with real data
   const sponsors = [
-    { tier: 'platinum', name: 'Sponsor 1' },
-    { tier: 'platinum', name: 'Sponsor 2' },
-    { tier: 'gold', name: 'Sponsor 3' },
-    { tier: 'gold', name: 'Sponsor 4' },
-    { tier: 'silver', name: 'Sponsor 5' },
-    { tier: 'silver', name: 'Sponsor 6' },
+    { tier: 'partner', name: 'Digital Ocean', image: '/sponsors/Digital_Ocean.png' },
+    { tier: 'partner', name: 'Xopun Tech', image: '/sponsors/Xopun_Tech.png' },
+    { tier: 'ally', name: 'Tech Variable', image: '/sponsors/Tech_Variable.png' },
+    { tier: 'ally', name: 'Coding Ninjas', image: '/sponsors/Coding_Ninjas.png' },
+    { tier: 'supporter', name: 'GeeksforGeeks', image: '/sponsors/Geeks_For_Geeks.png' },
+    { tier: 'supporter', name: 'Newton School', image: '/sponsors/Newton_School.png' },
   ]
 
   const getTierBorder = (tier: string) => {
     switch(tier) {
-      case 'platinum': return 'border-cyan-400/50 hover:border-cyan-400/80'
-      case 'gold': return 'border-yellow-400/50 hover:border-yellow-400/80'
-      case 'silver': return 'border-purple-400/50 hover:border-purple-400/80'
+      case 'partner': return 'border-cyan-400/50 hover:border-cyan-400/80'
+      case 'ally': return 'border-yellow-400/50 hover:border-yellow-400/80'
+      case 'supporter': return 'border-purple-400/50 hover:border-purple-400/80'
       default: return 'border-cyan-400/50'
     }
   }
@@ -54,7 +55,7 @@ export default function SponsorsPage() {
                   <div className="flex items-center gap-2 md:gap-3">
                     <Trophy className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
                     <h1 className="text-xl md:text-3xl font-black font-mono tracking-tight text-cyan-300">
-                      SPONSORS
+                      PAST SPONSORS
                     </h1>
                   </div>
                   <div className="text-[8px] md:text-[10px] font-mono text-cyan-500/50 tracking-widest">
@@ -66,7 +67,7 @@ export default function SponsorsPage() {
             </div>
 
             {/* Compact Sponsor Grid */}
-            <div className="grid grid-cols-3 gap-2.5 md:gap-4 mb-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 md:gap-4 mb-6">
               {sponsors.map((sponsor, i) => {
                 const colors = getTierColor(sponsor.tier)
                 return (
@@ -78,7 +79,7 @@ export default function SponsorsPage() {
                     whileHover={{ scale: 1.05 }}
                     className={`
                       relative group cursor-pointer
-                      bg-black/40 backdrop-blur-md
+                      backdrop-blur-xl
                       border-2 transition-all duration-300
                       clip-path-[polygon(6px_0,100%_0,100%_calc(100%-6px),calc(100%-6px)_100%,0_100%,0_6px)]
                       ${getTierBorder(sponsor.tier)}
@@ -93,10 +94,12 @@ export default function SponsorsPage() {
                       {sponsor.tier}
                     </div>
 
-                    <div className="relative h-24 md:h-28 flex items-center justify-center p-3">
-                      <div className={`text-[10px] font-mono opacity-40 ${colors.text}`}>
-                        LOGO
-                      </div>
+                    <div className="relative h-16 md:h-28 flex items-center justify-center p-3 md:p-5">
+                      <img
+                        src={sponsor.image}
+                        alt={sponsor.name}
+                        className="max-h-8 md:max-h-20 w-auto object-contain opacity-90 group-hover:opacity-100 transition"
+                      />
                     </div>
 
                     <div className={`absolute inset-0 bg-linear-to-b from-transparent to-transparent pointer-events-none ${colors.glow}`} />
@@ -132,14 +135,18 @@ export default function SponsorsPage() {
                   </div>
 
                   <div className="flex flex-col md:flex-row gap-1.5 md:gap-3 text-xs">
-                    <div className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-2 md:px-3 py-1 md:py-1.5 rounded">
+                    <Link href="mailto:aeccodewar@gmail.com" className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-2 md:px-3 py-1 md:py-1.5 rounded">
                       <Mail className="w-2.5 md:w-3 h-2.5 md:h-3 text-purple-400" />
-                      <span className="font-mono text-purple-200">codewar@aec.ac.in</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-2 md:px-3 py-1 md:py-1.5 rounded">
+                      <span className="font-mono text-purple-200">aeccodewar@gmail.com</span>
+                    </Link>
+                    <Link href="tel:+919435553309" className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-2 md:px-3 py-1 md:py-1.5 rounded">
                       <Phone className="w-2.5 md:w-3 h-2.5 md:h-3 text-purple-400" />
                       <span className="font-mono text-purple-200">+91 94355 53309</span>
-                    </div>
+                    </Link>
+                    <Link href="/sponsors/CodeWar_7.0_Sponsorship_Brochure.pdf" target='_blank' className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-2 md:px-3 py-1 md:py-1.5 rounded">
+                      <FileText className="w-2.5 md:w-3 h-2.5 md:h-3 text-purple-400" />
+                      <span className="font-mono text-purple-200">View Brochure</span>
+                    </Link>
                   </div>
                 </div>
 
