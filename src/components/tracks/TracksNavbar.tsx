@@ -4,14 +4,14 @@ import Link from 'next/link'
 import { motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
 import { Home, Trophy, HelpCircle, ScrollText, ChevronUp, ChevronDown, X } from 'lucide-react'
-import { useNavMeta } from '@/store/useNavMeta'
-import EscapeButton from './EscapeButton'
 
 export default function TracksNavbar() {
   const pathname = usePathname()
-  const navMeta = useNavMeta()
 
-  const track = navMeta.currentMeta?.track
+  const track = pathname.startsWith('/tracks/')
+    ? pathname.split('/')[2]
+    : undefined
+
   const isCodestellation = track === 'codestellation'
   const accentColor = isCodestellation ? 'purple' : 'cyan'
 
