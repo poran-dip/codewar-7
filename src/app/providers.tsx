@@ -3,29 +3,15 @@
 import { useSyncNavMeta } from '@/hooks/useSyncNavMeta'
 import Background3D from '@/components/3d/Background3D'
 import SceneContainer from '@/components/SceneContainer'
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import useSceneScroll, { SceneDirection } from '@/hooks/useSceneScroll'
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback } from 'react'
 import { unlock } from '@/engine/transitionLock'
 import { useNavMeta } from '@/store/useNavMeta'
 
 export function Providers({ children }: { children: React.ReactNode }) {
   useSyncNavMeta()
-  const pathname = usePathname()
   const router = useRouter()
-  const lastPath = useRef(pathname)
-
-  // UNLOCK LOGIC: Only unlock when the pathname actually changes
-  useEffect(() => {
-    if (pathname !== lastPath.current) {
-      const timer = setTimeout(() => {
-        unlock()
-        lastPath.current = pathname
-      }, 1000)
-      
-      return () => clearTimeout(timer)
-    }
-  }, [pathname])
 
   const handleScroll = useCallback((dir: SceneDirection) => {
     const currentMeta = useNavMeta.getState().currentMeta
