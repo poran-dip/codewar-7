@@ -4,6 +4,7 @@ import MiniTrackSelector from "@/components/tracks/MiniTrackSelector"
 import { motion } from "motion/react"
 import EscapeButton from "@/components/tracks/EscapeButton"
 import { useNavMeta } from "@/store/useNavMeta"
+import TracksContainer from "@/components/TracksContainer"
 
 export default function TracksLayout({ 
   children,
@@ -36,7 +37,9 @@ export default function TracksLayout({
         pl-4 md:pl-20 pr-4 md:pr-6 pb-16 md:pb-12
         ${hasTrack ? 'pt-6 md:pt-16' : 'pt-12 md:pt-20'}
       `}>
-        {children}
+        <TracksContainer>
+          {children}
+        </TracksContainer>
       </main>
     </>
   )

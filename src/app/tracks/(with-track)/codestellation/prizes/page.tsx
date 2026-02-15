@@ -9,7 +9,7 @@ export default function CodestellationPrizes() {
       icon: Trophy,
       place: '1st',
       title: 'First Place',
-      reward: '₹15,000',
+      reward: 'TBD',
       text: 'Top scoring team',
       iconColor: 'text-yellow-400',
       iconGlow: 'drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]'
@@ -18,7 +18,7 @@ export default function CodestellationPrizes() {
       icon: Medal,
       place: '2nd',
       title: 'Second Place',
-      reward: '₹10,000',
+      reward: 'TBD',
       text: 'Runner-up team',
       iconColor: 'text-gray-300',
       iconGlow: 'drop-shadow-[0_0_8px_rgba(209,213,219,0.6)]'
@@ -27,12 +27,14 @@ export default function CodestellationPrizes() {
       icon: Award,
       place: '3rd',
       title: 'Third Place',
-      reward: '₹5,000',
+      reward: 'TBD',
       text: 'Third place team',
       iconColor: 'text-orange-400',
       iconGlow: 'drop-shadow-[0_0_8px_rgba(251,146,60,0.6)]'
     },
   ]
+
+  const isConfirmed = false
 
   return (
     <section className="h-screen flex items-center justify-center">
@@ -121,9 +123,9 @@ export default function CodestellationPrizes() {
                     {prize.reward}
                   </div>
                   <div className="hidden md:flex items-center justify-end gap-1 mt-0.5">
-                    <div className="w-1 h-1 bg-green-400 rounded-full animate-pulse" />
-                    <span className="text-[8px] font-mono text-green-400/70 tracking-widest">
-                      VERIFIED
+                    <div className={`w-1 h-1 ${isConfirmed ? 'bg-green-400' : 'bg-yellow-400'} rounded-full animate-pulse`} />
+                    <span className={`text-[8px] font-mono ${isConfirmed ? 'text-green-400/70' : 'text-yellow-400/70'} tracking-widest`}>
+                      {isConfirmed ? 'VERIFIED' : 'AWAITING'}
                     </span>
                   </div>
                 </div>

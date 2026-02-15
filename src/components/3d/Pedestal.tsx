@@ -1,6 +1,6 @@
 'use client'
 
-import { useFrame, useThree } from '@react-three/fiber'
+import { useFrame } from '@react-three/fiber'
 import { useRef, useEffect } from 'react'
 import * as THREE from 'three'
 import { usePathname } from 'next/navigation'
@@ -17,63 +17,7 @@ export default function Pedestal({ position, color, track, deviceTier }: Pedesta
   const coreRef = useRef<THREE.Mesh>(null!)
   const glowRef = useRef<THREE.Mesh>(null!)
   const lightRef = useRef<THREE.PointLight>(null!)
-  const { camera } = useThree()
   const pathname = usePathname()
-
-  // Animate camera to pedestal when track is selected
-  useEffect(() => {
-    const isOnIntro = pathname === '/'
-    const isThisTrackSelected = pathname.includes(`/tracks/${track}`)
-    
-    if (isThisTrackSelected && groupRef.current) {
-      // Smoothly move camera to this pedestal
-      const targetPos = new THREE.Vector3(
-        position[0] * 0.5, // Move towards the pedestal
-        position[1] + 1.5,  // Slightly above
-        position[2] + 3     // In front
-      )
-      
-      const startPos = camera.position.clone()
-      const duration = 1500
-      const startTime = Date.now()
-
-      const animateCamera = () => {
-        const elapsed = Date.now() - startTime
-        const progress = Math.min(elapsed / duration, 1)
-        const eased = 1 - Math.pow(1 - progress, 3) // ease out cubic
-
-        camera.position.lerpVectors(startPos, targetPos, eased)
-        camera.lookAt(position[0], position[1] + 0.5, position[2])
-
-        if (progress < 1) {
-          requestAnimationFrame(animateCamera)
-        }
-      }
-
-      animateCamera()
-    } else if (isOnIntro) {
-      // Return to center position
-      const centerPos = new THREE.Vector3(0, 1, 5)
-      const startPos = camera.position.clone()
-      const duration = 1500
-      const startTime = Date.now()
-
-      const animateCamera = () => {
-        const elapsed = Date.now() - startTime
-        const progress = Math.min(elapsed / duration, 1)
-        const eased = 1 - Math.pow(1 - progress, 3)
-
-        camera.position.lerpVectors(startPos, centerPos, eased)
-        camera.lookAt(0, 0, 0)
-
-        if (progress < 1) {
-          requestAnimationFrame(animateCamera)
-        }
-      }
-
-      animateCamera()
-    }
-  }, [pathname, position, camera, track])
 
   // Add inside the Pedestal component, before the return
   useEffect(() => {
@@ -218,7 +162,7 @@ export default function Pedestal({ position, color, track, deviceTier }: Pedesta
           ref={lightRef}
           color={color}
           intensity={intensity}
-          distance={deviceTier === 'mobile' ? 6 : 8}
+          distance={deviceTier === 'mobile' ? 4 : 8}
           decay={2}
           castShadow={deviceTier === 'desktop'}
         />

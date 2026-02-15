@@ -37,7 +37,7 @@ export default function DecodeStackRules() {
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.2 }}
-        className="w-full max-w-4xl"
+        className="w-full max-w-4xl md:mt-6"
       >
         {/* Compact Header */}
         <div className="relative mb-3 md:mb-6">

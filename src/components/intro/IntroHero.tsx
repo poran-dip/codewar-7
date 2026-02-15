@@ -15,7 +15,7 @@ export default function IntroHero() {
   }, [selectedTrack])
 
   return (
-    <section className="relative z-10 h-full w-full flex flex-col items-center justify-center px-4 md:px-6">
+    <section className="mb-12 md:-mb-10 relative z-10 h-full w-full flex flex-col items-center justify-center px-4 md:px-6">
       
       {/* Dynamic Background Color Overlay */}
       <motion.div
@@ -30,7 +30,7 @@ export default function IntroHero() {
         transition={{ duration: 0.8, ease: 'easeInOut' }}
       />
 
-      {/* TOP HUD - Event Info */}
+      {/* TOP HUD - Event Info with Logos */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -41,10 +41,24 @@ export default function IntroHero() {
           <div className="absolute -top-1 -left-1 md:-top-1.5 md:-left-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-l-2 border-cyan-400/60" />
           <div className="absolute -top-1 -right-1 md:-top-1.5 md:-right-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-r-2 border-cyan-400/60" />
           
-          <div className="bg-black/60 backdrop-blur-sm border border-cyan-500/30 px-2.5 py-1 md:px-4 md:py-2 font-mono">
-            <p className="text-[8px] md:text-[10px] text-cyan-400/60 tracking-[0.15em] md:tracking-[0.3em] uppercase">
-              UDBHAVANAM 13.0 · PYROKINESIS 2026
-            </p>
+          <div className="bg-black/60 backdrop-blur-sm border border-cyan-500/30 px-2.5 py-1.5 md:px-4 md:py-2 font-mono">
+            <div className="flex items-center gap-3">
+              <div className="relative h-4.5 md:h-6">
+                <img 
+                  src="/branding/udbhavanam.png" 
+                  alt="Udbhavanam 13.0"
+                  className="h-full w-auto object-contain opacity-90"
+                />
+              </div>
+              <div className="h-5 w-px bg-linear-to-b from-transparent via-cyan-500/60 to-transparent" />
+              <div className="relative h-4.5 md:h-6">
+                <img 
+                  src="/branding/pyrokinesis.png" 
+                  alt="Pyrokinesis 2026"
+                  className="h-full w-auto object-contain opacity-90"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </motion.div>

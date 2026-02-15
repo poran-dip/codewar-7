@@ -8,6 +8,8 @@ import Sky from './Sky'
 import Ground from './Ground'
 import Pedestal from './Pedestal'
 import Particles from './Particles'
+import CameraController from './CameraController'
+import VolumetricFog from './VolumetricFog'
 
 function Background3D() {
   const [deviceTier, setDeviceTier] = useState<'mobile' | 'tablet' | 'desktop'>('desktop')
@@ -38,9 +40,12 @@ function Background3D() {
         dpr={deviceTier === 'mobile' ? 1 : [1, 2]}
         shadows={deviceTier === 'desktop'}
       >
+        <CameraController deviceTier={deviceTier} />
+
         {/* Cyberpunk dark blue-purple gradient background */}
         <color attach="background" args={['#0a0118']} />
-        <fog attach="fog" args={['#0a0118', 5, 15]} />
+        <fog attach="fog" args={['#0d4d6e', 3, 30]} />
+        <VolumetricFog />
 
         {/* Ambient lighting (reduced since pedestals provide main light) */}
         <ambientLight intensity={0.2} />

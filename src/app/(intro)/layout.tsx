@@ -1,6 +1,7 @@
 'use client'
 
 import IntroNavbar from '@/components/intro/IntroNavbar'
+import IntroSectionsContainer from '@/components/IntroSectionsContainer';
 
 export default function IntroLayout({ 
   children,
@@ -10,7 +11,10 @@ export default function IntroLayout({
   return (
     <>
       <IntroNavbar />
-      {children}
+
+      <IntroSectionsContainer>
+        {children}
+      </IntroSectionsContainer>
     </>
   )
 }

@@ -167,7 +167,50 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              <div className="flex justify-center gap-2.5 md:gap-4">
+              <div className="flex justify-center items-center gap-2.5 md:gap-4">
+                {/* Club Logo - First position */}
+                <Link 
+                  href="https://coding.aec.ac.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ 
+                      delay: 0.8, 
+                      type: 'spring', 
+                      stiffness: 150 
+                    }}
+                    whileHover={{ scale: 1.15, rotate: -5 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="relative group"
+                  >
+                    <div className="relative bg-black/60 backdrop-blur-sm border-2 border-cyan-500/30 p-2.5 md:p-3.5 rounded-lg transition-all duration-300 group-hover:border-cyan-400/60 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]">
+                      {/* Corner accents */}
+                      <div className="absolute top-0 left-0 w-1.5 h-1.5 md:w-2 md:h-2 border-t-2 border-l-2 border-cyan-400/60 transition-colors group-hover:border-cyan-400" />
+                      <div className="absolute bottom-0 right-0 w-1.5 h-1.5 md:w-2 md:h-2 border-b-2 border-r-2 border-cyan-400/60 transition-colors group-hover:border-cyan-400" />
+                      
+                      {/* Gradient background on hover */}
+                      <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity bg-linear-to-br from-cyan-500/20 to-blue-500/20" />
+                      
+                      {/* Logo with filter effects */}
+                      <img 
+                        src="/branding/coding_club.svg" 
+                        alt="AEC Coding Club"
+                        className="w-4 h-4 md:w-6 md:h-6 relative z-10 object-contain transition-all brightness-90 group-hover:brightness-110 group-hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] grayscale-30 group-hover:grayscale-0"
+                      />
+                    </div>
+
+                    {/* Tooltip */}
+                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                      <div className="bg-black/90 backdrop-blur-sm border border-cyan-500/30 px-2 py-1 rounded text-[9px] font-mono text-cyan-300 whitespace-nowrap">
+                        AEC Coding Club
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
+
                 {socialLinks.map((social, i) => (
                   <Link 
                     key={i}
@@ -179,7 +222,7 @@ export default function ContactPage() {
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ 
-                        delay: 0.8 + (i * 0.1), 
+                        delay: 0.8 + ((i + 1) * 0.1), // +1 to account for club logo
                         type: 'spring', 
                         stiffness: 150 
                       }}

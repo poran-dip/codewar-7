@@ -147,7 +147,7 @@ export default function DecodeStackInfo() {
                     </div>
                     <div>
                       <p className="text-[8px] md:text-[10px] font-mono text-cyan-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Date</p>
-                      <p className="text-xs md:text-sm font-mono text-cyan-200">February 26, 2026</p>
+                      <p className="text-xs md:text-sm font-mono text-cyan-200">February 25, 2026</p>
                     </div>
                   </div>
 

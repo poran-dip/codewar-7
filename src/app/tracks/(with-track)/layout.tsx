@@ -1,4 +1,5 @@
 import TracksNavbar from "@/components/tracks/TracksNavbar"
+import TracksSectionsContainer from "@/components/TracksSectionsContainer";
 
 export default function TracksWithTrackLayout({ 
   children,
@@ -9,7 +10,10 @@ export default function TracksWithTrackLayout({
   return (
     <>
       <TracksNavbar />
-      {children}
+
+      <TracksSectionsContainer>
+        {children}
+      </TracksSectionsContainer>
     </>
   )
 }

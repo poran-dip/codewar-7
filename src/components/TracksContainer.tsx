@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { lock, unlock } from '@/engine/transitionLock'
-import { Layer } from '@/store/useNavMeta'
+import { Layer, Track } from '@/store/useNavMeta'
 
 export default function SceneContainer({
   children,
@@ -12,14 +12,16 @@ export default function SceneContainer({
   children: React.ReactNode
 }) {
   const pathname = usePathname()
-  const [sceneKey, setSceneKey] = useState<Layer>('intro')
+  const [sceneKey, setSceneKey] = useState<Track | 'none'>('codestellation')
   const prevSceneKeyRef = useRef(sceneKey)
 
   useEffect(() => {
-    if (pathname.startsWith('/tracks')) {
-      setSceneKey('tracks')
+    if (pathname.includes('codestellation')) {
+      setSceneKey('codestellation')
+    } else if (pathname.includes('decode')) {
+      setSceneKey('decode')
     } else {
-      setSceneKey('intro')
+      setSceneKey('none')
     }
   }, [pathname])
 
