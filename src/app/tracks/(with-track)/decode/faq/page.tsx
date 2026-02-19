@@ -15,11 +15,11 @@ export default function DecodeStackFAQ() {
     },
     {
       question: "Can we use any programming language?",
-      answer: "Yes. Participants can use any programming language supported by Codeforces for solving the problems.",
+      answer: "Yes. Participants can use any programming language supported by GeeksforGeeks platform for solving the problems.",
     },
     {
       question: "How are rankings decided?",
-      answer: "Rankings follow the standard Codeforces scoring system. Teams solving more problems correctly in less time, with fewer incorrect submissions, will rank higher.",
+      answer: "Rankings follow GeeksforGeeks' scoring system. Teams solving more problems correctly in less time, with fewer incorrect submissions, will rank higher.",
     },
   ]
 

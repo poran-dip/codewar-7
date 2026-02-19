@@ -2,13 +2,9 @@
 
 import { motion } from 'motion/react'
 import { Calendar, Globe, Clock, Users, Terminal, Trophy, Timer, BrainCircuit, Zap } from 'lucide-react'
+import Link from 'next/link'
 
 export default function DecodeStackInfo() {
-  const handleRegister = () => {
-    console.log('Registration clicked for Decode Stack')
-    window.alert('Registration will open soon!')
-  }
-
   const features = [
     { icon: Terminal, text: 'Competitive programming showdown' },
     { icon: BrainCircuit, text: '7 carefully curated problems' },
@@ -83,7 +79,7 @@ export default function DecodeStackInfo() {
               </div>
 
               <p className="text-xs md:text-base text-cyan-100/80 font-mono leading-relaxed mb-3 md:mb-6">
-                A high-intensity competitive programming contest hosted online on Codeforces. 
+                A high-intensity competitive programming contest hosted online on GeeksforGeeks. 
                 Solve algorithmic challenges under pressure and race against teams across India.
               </p>
 
@@ -158,7 +154,7 @@ export default function DecodeStackInfo() {
                     </div>
                     <div>
                       <p className="text-[8px] md:text-[10px] font-mono text-cyan-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Mode</p>
-                      <p className="text-xs md:text-sm font-mono text-cyan-200">Online on Codeforces</p>
+                      <p className="text-xs md:text-sm font-mono text-cyan-200">Online on GeeksforGeeks</p>
                     </div>
                   </div>
 
@@ -180,7 +176,7 @@ export default function DecodeStackInfo() {
                     </div>
                     <div>
                       <p className="text-[8px] md:text-[10px] font-mono text-cyan-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Format</p>
-                      <p className="text-xs md:text-sm font-mono text-cyan-200">Team-based CF scoring</p>
+                      <p className="text-xs md:text-sm font-mono text-cyan-200">Team-based scoring</p>
                     </div>
                   </div>
                 </div>
@@ -188,43 +184,49 @@ export default function DecodeStackInfo() {
             </div>
 
             {/* CTA Button */}
-            <motion.button
-              onClick={handleRegister}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="
-                relative w-full
-                bg-black/40 backdrop-blur-md
-                border-2 border-cyan-500/50
-                clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
-                mx-auto py-2 md:py-2.5
-                font-mono font-bold text-sm md:text-lg
-                text-cyan-300
-                hover:border-cyan-400/80
-                hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]
-                transition-all duration-300
-                group
-              "
+            <Link
+              href="https://forms.gle/b9oREftjxRTZJBTJ8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative w-full block mx-auto"
             >
-              {/* Corner decorations */}
-              <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-cyan-400 transition-colors" />
-              <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-cyan-400 transition-colors" />
-              <div className="absolute bottom-0 left-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-l-2 border-cyan-400 transition-colors" />
-              <div className="absolute bottom-0 right-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-r-2 border-cyan-400 transition-colors" />
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="
+                  relative
+                  bg-black/40 backdrop-blur-md
+                  border-2 border-cyan-500/50
+                  clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
+                  py-2 md:py-2.5
+                  font-mono font-bold text-sm md:text-lg
+                  text-cyan-300
+                  hover:border-cyan-400/80
+                  hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]
+                  transition-all duration-300
+                  group
+                "
+              >
+                {/* Corner decorations */}
+                <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-cyan-400 transition-colors" />
+                <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-cyan-400 transition-colors" />
+                <div className="absolute bottom-0 left-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-l-2 border-cyan-400 transition-colors" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-r-2 border-cyan-400 transition-colors" />
 
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-linear-to-br from-cyan-500/20 to-blue-600/20 clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)] opacity-0 group-hover:opacity-100 transition-opacity" />
-              
-              {/* Scanline effect */}
-              <div className="absolute inset-0 bg-linear-to-b from-transparent via-cyan-500/10 to-transparent pointer-events-none" />
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-linear-to-br from-cyan-500/20 to-blue-600/20 clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                
+                {/* Scanline effect */}
+                <div className="absolute inset-0 bg-linear-to-b from-transparent via-cyan-500/10 to-transparent pointer-events-none" />
 
-              <span className="relative flex items-center justify-center gap-2 md:gap-3">
-                <Terminal className="w-4 h-4 md:w-5 md:h-5" />
-                <span className="hidden sm:inline">REGISTER FOR DECODE STACK</span>
-                <span className="sm:hidden">REGISTER NOW</span>
-                <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-cyan-400 animate-pulse rounded-full" />
-              </span>
-            </motion.button>
+                <span className="relative flex items-center justify-center gap-2 md:gap-3">
+                  <Terminal className="w-4 h-4 md:w-5 md:h-5" />
+                  <span className="hidden sm:inline">REGISTER FOR DECODE STACK</span>
+                  <span className="sm:hidden">REGISTER NOW</span>
+                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-cyan-400 animate-pulse rounded-full" />
+                </span>
+              </motion.div>
+            </Link>
 
             {/* Info note */}
             <div className="hidden md:block text-center">

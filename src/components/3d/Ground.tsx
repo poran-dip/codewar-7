@@ -32,10 +32,11 @@ export default function Ground({ deviceTier }: { deviceTier: DeviceTier }) {
         <planeGeometry args={[gridSize, gridSize]} />
         <meshStandardMaterial
           color="#0d0025"
-          metalness={0.8}
-          roughness={0.3}
+          metalness={0.0}
+          roughness={1.0}
           emissive="#1a0040"
           emissiveIntensity={0.2}
+          envMapIntensity={0}
         />
       </mesh>
 

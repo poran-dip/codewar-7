@@ -2,13 +2,9 @@
 
 import { motion } from 'motion/react'
 import { Calendar, MapPin, Clock, Users, Zap, Code2, Lightbulb, Rocket } from 'lucide-react'
+import Link from 'next/link'
 
 export default function CodestellationInfo() {
-  const handleRegister = () => {
-    console.log('Registration clicked for Codestellation')
-    window.alert('Registration will open soon!')
-  }
-
   const features = [
     { icon: Code2, text: 'Build innovative tech solutions' },
     { icon: Lightbulb, text: 'Real-world problem statements' },
@@ -158,7 +154,7 @@ export default function CodestellationInfo() {
                     </div>
                     <div>
                       <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Location</p>
-                      <p className="text-xs md:text-sm font-mono text-purple-200">Main Building, AEC</p>
+                      <p className="text-xs md:text-sm font-mono text-purple-200">ETE Department, AEC</p>
                     </div>
                   </div>
 
@@ -179,8 +175,8 @@ export default function CodestellationInfo() {
                       <Users className="w-3 h-3 md:w-4 md:h-4 text-purple-400" />
                     </div>
                     <div>
-                      <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Registration Closes</p>
-                      <p className="text-xs md:text-sm font-mono text-purple-200">February 20, 2026</p>
+                      <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Problem Statements Release</p>
+                      <p className="text-xs md:text-sm font-mono text-purple-200">February 25, 2026 @ 10 AM</p>
                     </div>
                   </div>
                 </div>
@@ -188,48 +184,54 @@ export default function CodestellationInfo() {
             </div>
 
             {/* CTA Button */}
-            <motion.button
-              onClick={handleRegister}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="
-                relative w-full
-                bg-black/40 backdrop-blur-md
-                border-2 border-purple-500/50
-                clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
-                mx-auto py-2 md:py-2.5
-                font-mono font-bold text-sm md:text-lg
-                text-purple-300
-                hover:border-purple-400/80
-                hover:shadow-[0_0_30px_rgba(168,85,247,0.5)]
-                transition-all duration-300
-                group
-              "
+            <Link
+              href="https://forms.gle/b9oREftjxRTZJBTJ8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative w-full block mx-auto"
             >
-              {/* Corner decorations */}
-              <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-purple-400 transition-colors" />
-              <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-purple-400 transition-colors" />
-              <div className="absolute bottom-0 left-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-l-2 border-purple-400 transition-colors" />
-              <div className="absolute bottom-0 right-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-r-2 border-purple-400 transition-colors" />
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="
+                  relative
+                  bg-black/40 backdrop-blur-md
+                  border-2 border-purple-500/50
+                  clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
+                  py-2 md:py-2.5
+                  font-mono font-bold text-sm md:text-lg
+                  text-purple-300
+                  hover:border-purple-400/80
+                  hover:shadow-[0_0_30px_rgba(168,85,247,0.5)]
+                  transition-all duration-300
+                  group
+                "
+              >
+                {/* Corner decorations */}
+                <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-purple-400 transition-colors" />
+                <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-purple-400 transition-colors" />
+                <div className="absolute bottom-0 left-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-l-2 border-purple-400 transition-colors" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-r-2 border-purple-400 transition-colors" />
 
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-linear-to-br from-purple-500/20 to-indigo-600/20 clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)] opacity-0 group-hover:opacity-100 transition-opacity" />
-              
-              {/* Scanline effect */}
-              <div className="absolute inset-0 bg-linear-to-b from-transparent via-purple-500/10 to-transparent pointer-events-none" />
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-linear-to-br from-purple-500/20 to-indigo-600/20 clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                
+                {/* Scanline effect */}
+                <div className="absolute inset-0 bg-linear-to-b from-transparent via-purple-500/10 to-transparent pointer-events-none" />
 
-              <span className="relative flex items-center justify-center gap-2 md:gap-3">
-                <Rocket className="w-4 h-4 md:w-5 md:h-5" />
-                <span className="hidden sm:inline">REGISTER FOR CODESTELLATION</span>
-                <span className="sm:hidden">REGISTER NOW</span>
-                <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-purple-400 animate-pulse rounded-full" />
-              </span>
-            </motion.button>
+                <span className="relative flex items-center justify-center gap-2 md:gap-3">
+                  <Rocket className="w-4 h-4 md:w-5 md:h-5" />
+                  <span className="hidden sm:inline">REGISTER FOR CODESTELLATION</span>
+                  <span className="sm:hidden">REGISTER NOW</span>
+                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-purple-400 animate-pulse rounded-full" />
+                </span>
+              </motion.div>
+            </Link>
 
             {/* Info note */}
             <div className="hidden md:block text-center">
               <div className="inline-block bg-black/60 backdrop-blur-sm border border-purple-500/20 px-3 py-1.5 md:px-4 md:py-2 font-mono text-[10px] md:text-xs text-purple-400/50 rounded">
-                <span className="text-purple-400/70">NOTE:</span> Registration will open soon
+                Registration <span className="text-purple-400/70">closes</span> on 24 February
               </div>
             </div>
           </motion.div>

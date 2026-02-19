@@ -2,6 +2,7 @@
 
 import { useFrame } from '@react-three/fiber'
 import { useRef, useEffect } from 'react'
+import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 import { usePathname } from 'next/navigation'
 
@@ -19,25 +20,49 @@ export default function Pedestal({ position, color, track, deviceTier }: Pedesta
   const lightRef = useRef<THREE.PointLight>(null!)
   const pathname = usePathname()
 
-  // Add inside the Pedestal component, before the return
+  const { scene } = useGLTF('/3d/pillar.glb')
+
+  // Clone scene so two instances don't share the same object
+  const clonedScene = useRef(scene.clone())
+
+  // Apply emissive color to the GLB materials
+  useEffect(() => {
+    clonedScene.current.traverse((child) => {
+      if ((child as THREE.Mesh).isMesh) {
+        const mesh = child as THREE.Mesh
+        mesh.material = (mesh.material as THREE.Material).clone()
+        const mat = mesh.material as THREE.MeshStandardMaterial
+        mat.color.set('#6a6a8a')
+        mat.emissive = new THREE.Color(color)
+        mat.emissiveIntensity = 0.2  // keep it subtle so original colors aren't washed out
+        mat.metalness = 0.3
+        mat.roughness = 0.7
+        mesh.castShadow = true
+      }
+    })
+  }, [color])
+
   useEffect(() => {
     const handleTrackSelected = (e: CustomEvent) => {
       if (e.detail === track && groupRef.current) {
-        // Trigger a subtle pedestal activation animation
-        const material = (groupRef.current.children[0] as THREE.Mesh).material as THREE.MeshStandardMaterial
-        const originalEmissive = material.emissiveIntensity
-        
-        let progress = 0
-        const animate = () => {
-          progress += 0.05
-          if (progress <= 1) {
-            material.emissiveIntensity = originalEmissive + Math.sin(progress * Math.PI) * 2
-            requestAnimationFrame(animate)
-          } else {
-            material.emissiveIntensity = originalEmissive
+        clonedScene.current.traverse((child) => {
+          if ((child as THREE.Mesh).isMesh) {
+            const mat = (child as THREE.Mesh).material as THREE.MeshStandardMaterial
+            const originalEmissive = mat.emissiveIntensity
+
+            let progress = 0
+            const animate = () => {
+              progress += 0.1
+              if (progress <= 1) {
+                mat.emissiveIntensity = originalEmissive + Math.sin(progress * Math.PI) * 2
+                requestAnimationFrame(animate)
+              } else {
+                mat.emissiveIntensity = originalEmissive
+              }
+            }
+            animate()
           }
-        }
-        animate()
+        })
       }
     }
 
@@ -47,7 +72,7 @@ export default function Pedestal({ position, color, track, deviceTier }: Pedesta
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime()
-    
+
     // Animate core rotation and float
     if (coreRef.current) {
       coreRef.current.rotation.y += 0.015
@@ -78,56 +103,15 @@ export default function Pedestal({ position, color, track, deviceTier }: Pedesta
 
   return (
     <group ref={groupRef} position={position}>
-      {/* Base platform */}
-      <mesh position={[0, -0.9, 0]} castShadow>
-        <cylinderGeometry args={[0.8, 1, 0.2, 8]} />
-        <meshStandardMaterial
-          color="#0a0a1a"
-          metalness={0.9}
-          roughness={0.2}
-          emissive={color}
-          emissiveIntensity={0.2}
-        />
-      </mesh>
-
-      {/* Middle pillar section */}
-      <mesh position={[0, -0.4, 0]} castShadow>
-        <cylinderGeometry args={[0.5, 0.6, 1, 8]} />
-        <meshStandardMaterial
-          color="#0d0d20"
-          metalness={0.95}
-          roughness={0.15}
-          emissive={color}
-          emissiveIntensity={0.3}
-        />
-      </mesh>
-
-      {/* Top pillar section */}
-      <mesh position={[0, 0.2, 0]} castShadow>
-        <cylinderGeometry args={[0.4, 0.5, 0.8, 8]} />
-        <meshStandardMaterial
-          color="#0d0d20"
-          metalness={0.95}
-          roughness={0.15}
-          emissive={color}
-          emissiveIntensity={0.4}
-        />
-      </mesh>
-
-      {/* Top cap - where the core sits */}
-      <mesh position={[0, 0.7, 0]} castShadow>
-        <cylinderGeometry args={[0.5, 0.4, 0.2, 8]} />
-        <meshStandardMaterial
-          color={color}
-          metalness={1}
-          roughness={0.05}
-          emissive={color}
-          emissiveIntensity={1.5}
-        />
-      </mesh>
+      {/* GLB Pillar Model */}
+      <primitive
+        object={clonedScene.current}
+        scale={[0.3, 0.3, 0.3]}       // tweak this if the pillar is too big/small
+        position={[0, -1, 0]}   // tweak Y to sit flush on the ground
+      />
 
       {/* Floating Core above the pedestal */}
-      <group position={[0, 1.5, 0]}>
+      <group position={[0, 1.85, 0]}>
         {/* Outer glow sphere */}
         <mesh ref={glowRef}>
           <sphereGeometry args={[0.6, 16, 16]} />
@@ -141,7 +125,7 @@ export default function Pedestal({ position, color, track, deviceTier }: Pedesta
 
         {/* Main core */}
         <mesh ref={coreRef} castShadow>
-          <icosahedronGeometry args={[0.4, deviceTier === 'desktop' ? 1 : 0]} />
+          <sphereGeometry args={[0.4, 32, 32]} />
           <meshStandardMaterial
             color={color}
             emissive={color}
@@ -167,20 +151,8 @@ export default function Pedestal({ position, color, track, deviceTier }: Pedesta
           castShadow={deviceTier === 'desktop'}
         />
       </group>
-
-      {/* Decorative rings around the pillar */}
-      {[0.3, -0.1, -0.5].map((y, i) => (
-        <mesh key={i} position={[0, y, 0]}>
-          <torusGeometry args={[0.55 + i * 0.05, 0.02, 8, 16]} />
-          <meshStandardMaterial
-            color={color}
-            emissive={color}
-            emissiveIntensity={0.8}
-            metalness={1}
-            roughness={0.1}
-          />
-        </mesh>
-      ))}
     </group>
   )
 }
+
+useGLTF.preload('/3d/pillar.glb')

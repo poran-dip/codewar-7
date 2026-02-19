@@ -9,7 +9,7 @@ export default function DecodeStackPrizes() {
       icon: Trophy,
       place: '1st',
       title: 'First Place',
-      reward: 'TBD',
+      reward: '₹6,000 ',
       text: 'Highest rank on scoreboard',
       iconColor: 'text-yellow-400',
       iconGlow: 'drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]'
@@ -18,7 +18,7 @@ export default function DecodeStackPrizes() {
       icon: Medal,
       place: '2nd',
       title: 'Second Place',
-      reward: 'TBD',
+      reward: '₹4,000',
       text: 'Second highest ranked team',
       iconColor: 'text-gray-300',
       iconGlow: 'drop-shadow-[0_0_8px_rgba(209,213,219,0.6)]'
@@ -27,14 +27,12 @@ export default function DecodeStackPrizes() {
       icon: Award,
       place: '3rd',
       title: 'Third Place',
-      reward: 'TBD',
+      reward: '₹2,000',
       text: 'Third highest ranked team',
       iconColor: 'text-orange-400',
       iconGlow: 'drop-shadow-[0_0_8px_rgba(251,146,60,0.6)]'
     },
   ]
-
-  const isConfirmed = false
 
   return (
     <section className="h-screen flex items-center justify-center">
@@ -123,9 +121,9 @@ export default function DecodeStackPrizes() {
                     {prize.reward}
                   </div>
                   <div className="hidden md:flex items-center justify-end gap-1 mt-0.5">
-                    <div className={`w-1 h-1 ${isConfirmed ? 'bg-green-400' : 'bg-yellow-400'} rounded-full animate-pulse`} />
-                    <span className={`text-[8px] font-mono ${isConfirmed ? 'text-green-400/70' : 'text-yellow-400/70'} tracking-widest`}>
-                      {isConfirmed ? 'VERIFIED' : 'AWAITING'}
+                    <div className="w-1 h-1 bg-green-400 rounded-full animate-pulse" />
+                    <span className="text-[8px] font-mono text-green-400/70 tracking-widest">
+                      VERIFIED
                     </span>
                   </div>
                 </div>

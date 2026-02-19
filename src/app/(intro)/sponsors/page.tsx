@@ -7,29 +7,29 @@ import Link from 'next/link'
 export default function SponsorsPage() {
   // Placeholder sponsors - replace with real data
   const sponsors = [
-    { tier: 'partner', name: 'Digital Ocean', image: '/sponsors/Digital_Ocean.png' },
-    { tier: 'partner', name: 'Xopun Tech', image: '/sponsors/Xopun_Tech.png' },
-    { tier: 'ally', name: 'Tech Variable', image: '/sponsors/Tech_Variable.png' },
-    { tier: 'ally', name: 'Coding Ninjas', image: '/sponsors/Coding_Ninjas.png' },
-    { tier: 'supporter', name: 'GeeksforGeeks', image: '/sponsors/Geeks_For_Geeks.png' },
-    { tier: 'supporter', name: 'Newton School', image: '/sponsors/Newton_School.png' },
+    { tier: 'title', name: 'GeeksforGeeks', image: '/sponsors/Geeks_For_Geeks.png' },
+    { tier: 'associate', name: 'Coding Panda', image: '/sponsors/Coding_Pandas.png' },
+    { tier: 'past', name: 'Digital Ocean', image: '/sponsors/Digital_Ocean.png' },
+    { tier: 'past', name: 'Xopun Tech', image: '/sponsors/Xopun_Tech.png' },
+    { tier: 'past', name: 'Tech Variable', image: '/sponsors/Tech_Variable.png' },
+    { tier: 'past', name: 'Coding Ninjas', image: '/sponsors/Coding_Ninjas.png' },
   ]
 
   const getTierBorder = (tier: string) => {
     switch(tier) {
-      case 'partner': return 'border-cyan-400/50 hover:border-cyan-400/80'
-      case 'ally': return 'border-yellow-400/50 hover:border-yellow-400/80'
-      case 'supporter': return 'border-purple-400/50 hover:border-purple-400/80'
-      default: return 'border-cyan-400/50'
+      case 'title': return 'border-yellow-400/50 hover:border-yellow-400/80'
+      case 'associate': return 'border-purple-400/50 hover:border-purple-400/80'
+      case 'food': return 'border-blue-400/50 hover:border-blue-400/80'
+      default: return 'border-zinc-400/50 hover:border-zinc-400/80'
     }
   }
 
   const getTierColor = (tier: string) => {
     switch(tier) {
-      case 'platinum': return { bg: 'bg-cyan-500/20', border: 'border-cyan-400/30', text: 'text-cyan-300', corner: 'border-cyan-400/70', glow: 'via-cyan-500/5' }
-      case 'gold': return { bg: 'bg-yellow-500/20', border: 'border-yellow-400/30', text: 'text-yellow-300', corner: 'border-yellow-400/70', glow: 'via-yellow-500/5' }
-      case 'silver': return { bg: 'bg-purple-500/20', border: 'border-purple-400/30', text: 'text-purple-300', corner: 'border-purple-400/70', glow: 'via-purple-500/5' }
-      default: return { bg: 'bg-cyan-500/20', border: 'border-cyan-400/30', text: 'text-cyan-300', corner: 'border-cyan-400/70', glow: 'via-cyan-500/5' }
+      case 'title': return { bg: 'bg-yellow-500/20', border: 'border-yellow-400/30', text: 'text-yellow-300', corner: 'border-yellow-400/70', glow: 'via-yellow-500/5' }
+      case 'associate': return { bg: 'bg-purple-500/20', border: 'border-purple-400/30', text: 'text-purple-300', corner: 'border-purple-400/70', glow: 'via-purple-500/5' }
+      case 'food': return { bg: 'bg-blue-500/20', border: 'border-blue-400/30', text: 'text-blue-300', corner: 'border-blue-400/70', glow: 'via-blue-500/5' }
+      default: return { bg: 'bg-zinc-500/20', border: 'border-zinc-400/30', text: 'text-zinc-300', corner: 'border-zinc-400/70', glow: 'via-zinc-500/5' }
     }
   }
 
@@ -55,7 +55,7 @@ export default function SponsorsPage() {
                   <div className="flex items-center gap-2 md:gap-3">
                     <Trophy className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
                     <h1 className="text-xl md:text-3xl font-black font-mono tracking-tight text-cyan-300">
-                      PAST SPONSORS
+                      SPONSORS
                     </h1>
                   </div>
                   <div className="text-[8px] md:text-[10px] font-mono text-cyan-500/50 tracking-widest">

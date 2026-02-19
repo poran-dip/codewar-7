@@ -3,6 +3,7 @@
 import { motion } from 'motion/react'
 import TrackSelector from './TrackSelector'
 import { useEffect, useState } from 'react'
+import { unlock } from '@/engine/transitionLock'
 
 export default function IntroHero() {
   const [selectedTrack, setSelectedTrack] = useState<'codestellation' | 'decode' | null>(null)
@@ -11,6 +12,8 @@ export default function IntroHero() {
     if (selectedTrack) {
       const event = new CustomEvent('trackSelected', { detail: selectedTrack })
       window.dispatchEvent(event)
+    } else {
+      unlock()
     }
   }, [selectedTrack])
 

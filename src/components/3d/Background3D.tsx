@@ -3,6 +3,7 @@
 import { Canvas } from '@react-three/fiber'
 import { Suspense, useEffect, useState, memo } from 'react'
 import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing'
+import { Environment } from '@react-three/drei'
 
 import Sky from './Sky'
 import Ground from './Ground'
@@ -31,7 +32,7 @@ function Background3D() {
     return () => window.removeEventListener('resize', updateDeviceTier)
   }, [])
 
-  const xOffset = deviceTier === 'mobile' ? 2.5 : deviceTier === 'tablet' ? 3.5 : 4.5
+  const xOffset = deviceTier === 'mobile' ? 2.5 : deviceTier === 'tablet' ? 3.5 : 5
 
   return (
     <div className="fixed inset-0 -z-10">
@@ -40,6 +41,7 @@ function Background3D() {
         dpr={deviceTier === 'mobile' ? 1 : [1, 2]}
         shadows={deviceTier === 'desktop'}
       >
+        <Environment preset="night" />
         <CameraController deviceTier={deviceTier} />
 
         {/* Cyberpunk dark blue-purple gradient background */}
@@ -54,6 +56,7 @@ function Background3D() {
           groundColor="#1a0033"
           intensity={0.4}
         />
+        <directionalLight position={[0, 10, -1]} intensity={0.4} color="#b0c4ff" />
 
         <Suspense fallback={null}>
           <Sky />
