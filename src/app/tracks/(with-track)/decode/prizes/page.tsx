@@ -156,7 +156,7 @@ export default function DecodeStackPrizes() {
         </motion.div>
 
         <div className="mb-8 md:mb-0 mt-2 md:mt-3 text-center text-[8px] md:text-[10px] font-mono text-cyan-500/30 tracking-widest">
-          REWARD_SYSTEM_v1.0
+          REWARD_SYSTEM_v7.0
         </div>
       </motion.div>
     </section>

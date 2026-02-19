@@ -191,39 +191,41 @@ export default function DecodeStackInfo() {
               className="relative w-full block mx-auto"
             >
               <motion.div
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 className="
-                  relative
-                  bg-black/40 backdrop-blur-md
-                  border-2 border-cyan-500/50
+                  relative overflow-hidden
+                  border-2 border-cyan-400
                   clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
                   py-2 md:py-2.5
                   font-mono font-bold text-sm md:text-lg
-                  text-cyan-300
-                  hover:border-cyan-400/80
-                  hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]
+                  text-white
+                  shadow-[0_0_25px_rgba(6,182,212,0.6),inset_0_0_25px_rgba(6,182,212,0.15)]
+                  hover:shadow-[0_0_50px_rgba(6,182,212,0.9),inset_0_0_40px_rgba(6,182,212,0.3)]
                   transition-all duration-300
                   group
                 "
               >
+                {/* Animated background fill */}
+                <div className="absolute inset-0 bg-linear-to-r from-cyan-900 via-cyan-700 to-cyan-900 opacity-90" />
+
+                {/* Shimmer sweep */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-500 bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+
+                {/* Scanline */}
+                <div className="absolute inset-0 bg-linear-to-b from-transparent via-white/5 to-transparent pointer-events-none" />
+
                 {/* Corner decorations */}
-                <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-cyan-400 transition-colors" />
-                <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-cyan-400 transition-colors" />
-                <div className="absolute bottom-0 left-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-l-2 border-cyan-400 transition-colors" />
-                <div className="absolute bottom-0 right-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-r-2 border-cyan-400 transition-colors" />
+                <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-white/70" />
+                <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-white/70" />
+                <div className="absolute bottom-0 left-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-l-2 border-white/70" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-r-2 border-white/70" />
 
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-linear-to-br from-cyan-500/20 to-blue-600/20 clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)] opacity-0 group-hover:opacity-100 transition-opacity" />
-                
-                {/* Scanline effect */}
-                <div className="absolute inset-0 bg-linear-to-b from-transparent via-cyan-500/10 to-transparent pointer-events-none" />
-
-                <span className="relative flex items-center justify-center gap-2 md:gap-3">
+                <span className="relative flex items-center justify-center gap-2 md:gap-3 uppercase">
                   <Terminal className="w-4 h-4 md:w-5 md:h-5" />
-                  <span className="hidden sm:inline">REGISTER FOR DECODE STACK</span>
-                  <span className="sm:hidden">REGISTER NOW</span>
-                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-cyan-400 animate-pulse rounded-full" />
+                  <span className="hidden sm:inline">Register for Decode Stack</span>
+                  <span className="sm:hidden">Register Now</span>
+                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white animate-pulse rounded-full" />
                 </span>
               </motion.div>
             </Link>
@@ -231,7 +233,7 @@ export default function DecodeStackInfo() {
             {/* Info note */}
             <div className="hidden md:block text-center">
               <div className="inline-block bg-black/60 backdrop-blur-sm border border-cyan-500/20 px-3 py-1.5 md:px-4 md:py-2 font-mono text-[10px] md:text-xs text-cyan-400/50 rounded">
-                <span className="text-cyan-400/70">NOTE:</span> Registration will open soon
+                <span className="text-cyan-400/70">NOTE:</span> Slots filling up fast
               </div>
             </div>
           </motion.div>
@@ -240,7 +242,7 @@ export default function DecodeStackInfo() {
 
         {/* System label */}
         <div className="mb-8 md:mb-0 md:mt-6 text-center text-[8px] md:text-[10px] font-mono text-cyan-500/30 tracking-widest">
-          TRACK_INFO_SYSTEM_v1.0
+          TRACK_INFO_SYSTEM_v7.0
         </div>
       </motion.div>
     </section>

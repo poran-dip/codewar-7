@@ -73,7 +73,7 @@ export default function CodestellationFAQ() {
         </div>
 
         <div className="mb-8 md:mb-0 mt-3 md:mt-4 text-center text-[8px] md:text-[10px] font-mono text-purple-500/30 tracking-widest">
-          FAQ_SYSTEM_v1.0
+          FAQ_SYSTEM_v7.0
         </div>
       </motion.div>
     </section>

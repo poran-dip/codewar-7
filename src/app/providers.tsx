@@ -103,6 +103,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
     // Only navigate if we have a valid next route
     if (nextRoute) {
       router.push(nextRoute)
+    } else {
+      unlock()
     }
     // If no valid route (at boundary), don't lock - just let it go
   }, [router])

@@ -191,39 +191,41 @@ export default function CodestellationInfo() {
               className="relative w-full block mx-auto"
             >
               <motion.div
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 className="
-                  relative
-                  bg-black/40 backdrop-blur-md
-                  border-2 border-purple-500/50
+                  relative overflow-hidden
+                  border-2 border-purple-400
                   clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
                   py-2 md:py-2.5
                   font-mono font-bold text-sm md:text-lg
-                  text-purple-300
-                  hover:border-purple-400/80
-                  hover:shadow-[0_0_30px_rgba(168,85,247,0.5)]
+                  text-white
+                  shadow-[0_0_25px_rgba(168,85,247,0.6),inset_0_0_25px_rgba(168,85,247,0.15)]
+                  hover:shadow-[0_0_50px_rgba(168,85,247,0.9),inset_0_0_40px_rgba(168,85,247,0.3)]
                   transition-all duration-300
                   group
                 "
               >
-                {/* Corner decorations */}
-                <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-purple-400 transition-colors" />
-                <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-purple-400 transition-colors" />
-                <div className="absolute bottom-0 left-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-l-2 border-purple-400 transition-colors" />
-                <div className="absolute bottom-0 right-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-r-2 border-purple-400 transition-colors" />
-
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-linear-to-br from-purple-500/20 to-indigo-600/20 clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                {/* Animated background fill */}
+                <div className="absolute inset-0 bg-linear-to-r from-purple-900 via-purple-700 to-purple-900 opacity-90" />
                 
-                {/* Scanline effect */}
-                <div className="absolute inset-0 bg-linear-to-b from-transparent via-purple-500/10 to-transparent pointer-events-none" />
+                {/* Shimmer sweep */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-500 bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-12" />
 
-                <span className="relative flex items-center justify-center gap-2 md:gap-3">
+                {/* Scanline */}
+                <div className="absolute inset-0 bg-linear-to-b from-transparent via-white/5 to-transparent pointer-events-none" />
+
+                {/* Corner decorations */}
+                <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-white/70" />
+                <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-white/70" />
+                <div className="absolute bottom-0 left-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-l-2 border-white/70" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-r-2 border-white/70" />
+
+                <span className="relative flex items-center justify-center gap-2 md:gap-3 uppercase">
                   <Rocket className="w-4 h-4 md:w-5 md:h-5" />
-                  <span className="hidden sm:inline">REGISTER FOR CODESTELLATION</span>
-                  <span className="sm:hidden">REGISTER NOW</span>
-                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-purple-400 animate-pulse rounded-full" />
+                  <span className="hidden sm:inline">Register for Codestellation</span>
+                  <span className="sm:hidden">Register Now</span>
+                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white animate-pulse rounded-full" />
                 </span>
               </motion.div>
             </Link>
@@ -231,7 +233,7 @@ export default function CodestellationInfo() {
             {/* Info note */}
             <div className="hidden md:block text-center">
               <div className="inline-block bg-black/60 backdrop-blur-sm border border-purple-500/20 px-3 py-1.5 md:px-4 md:py-2 font-mono text-[10px] md:text-xs text-purple-400/50 rounded">
-                Registration <span className="text-purple-400/70">closes</span> on 24 February
+                <span className="text-purple-400/70">NOTE:</span> Limited slots available
               </div>
             </div>
           </motion.div>
@@ -240,7 +242,7 @@ export default function CodestellationInfo() {
 
         {/* System label */}
         <div className="mb-8 md:mb-0 md:mt-6 text-center text-[8px] md:text-[10px] font-mono text-purple-500/30 tracking-widest">
-          TRACK_INFO_SYSTEM_v1.0
+          TRACK_INFO_SYSTEM_v7.0
         </div>
       </motion.div>
     </section>

@@ -124,8 +124,20 @@ export default function IntroHero() {
       </motion.div>
 
       {/* System label - hidden on mobile */}
-      <div className="hidden md:block absolute bottom-4 left-4 text-[10px] font-mono text-cyan-500/30 tracking-widest">
+      <div className="hidden md:block absolute bottom-6 left-4 text-[10px] font-mono text-cyan-500/30 tracking-widest">
         TRACK_SELECT_v7.0
+      </div>
+
+      {/* CC Attribution */}
+      <div className="hidden md:block absolute bottom-6 right-4 text-[10px] font-mono text-cyan-500/20 tracking-wide">
+        <a
+          href="https://poly.pizza/m/8AJVYPEBVqt"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-cyan-500/50 transition-colors"
+        >
+          "Simple Pillar" by Troctzul [CC-BY]
+        </a>
       </div>
 
     </section>
