@@ -233,7 +233,7 @@ export default function DecodeStackInfo() {
             {/* Info note */}
             <div className="hidden md:block text-center">
               <div className="inline-block bg-black/60 backdrop-blur-sm border border-cyan-500/20 px-3 py-1.5 md:px-4 md:py-2 font-mono text-[10px] md:text-xs text-cyan-400/50 rounded">
-                <span className="text-cyan-400/70">NOTE:</span> Slots filling up fast
+                <span className="text-cyan-400/70">NOTE:</span> Contest link shared after registration
               </div>
             </div>
           </motion.div>

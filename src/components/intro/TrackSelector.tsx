@@ -101,10 +101,21 @@ export default function TrackSelector({ onTrackChange, selectedTrack }: TrackSel
               Navigate the Stars of Code
             </p>
 
-            {/* Stats/Info */}
-            <div className="flex gap-2 md:gap-3 text-[9px] md:text-xs lg:text-sm font-mono text-purple-300/60">
-              <div>DIFFICULTY: <span className="text-purple-400">★★★☆☆</span></div>
-            </div>
+            {/* Registration */}
+            <a        
+              href="https://forms.gle/b9oREftjxRTZJBTJ8"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="relative inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 font-mono text-[9px] md:text-xs font-bold uppercase tracking-widest text-white border border-purple-400/60 bg-purple-500/20 hover:bg-purple-500/40 hover:border-purple-400 transition-all duration-200 group"
+            >
+              <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-purple-300/70 group-hover:border-white" />
+              <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-purple-300/70 group-hover:border-white" />
+              <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-purple-300/70 group-hover:border-white" />
+              <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-purple-300/70 group-hover:border-white" />
+              <span>Register</span>
+              <div className="w-1 h-1 bg-purple-300 animate-pulse rounded-full group-hover:bg-white" />
+            </a>
           </div>
 
           {/* Selection indicator */}
@@ -160,10 +171,21 @@ export default function TrackSelector({ onTrackChange, selectedTrack }: TrackSel
               Unravel the Digital Mystery
             </p>
 
-            {/* Stats/Info */}
-            <div className="flex gap-2 md:gap-3 text-[9px] md:text-xs lg:text-sm font-mono text-cyan-300/60">
-              <div>DIFFICULTY: <span className="text-cyan-400">★★★★☆</span></div>
-            </div>
+            {/* Registration */}
+            <a      
+              href="https://forms.gle/b9oREftjxRTZJBTJ8"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="relative inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 font-mono text-[9px] md:text-xs font-bold uppercase tracking-widest text-white border border-cyan-400/60 bg-cyan-500/20 hover:bg-cyan-500/40 hover:border-cyan-400 transition-all duration-200 group"
+            >
+              <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-cyan-300/70 group-hover:border-white" />
+              <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-cyan-300/70 group-hover:border-white" />
+              <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-cyan-300/70 group-hover:border-white" />
+              <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-cyan-300/70 group-hover:border-white" />
+              <span>Register</span>
+              <div className="w-1 h-1 bg-cyan-300 animate-pulse rounded-full group-hover:bg-white" />
+            </a>
           </div>
 
           {/* Selection indicator */}
