@@ -22,47 +22,36 @@ export default function Pedestal({ position, color, track, deviceTier }: Pedesta
 
   const { scene } = useGLTF('/3d/pillar.glb')
 
-  // Clone scene so two instances don't share the same object
-  const clonedScene = useRef(scene.clone())
+  const clonedScene = useRef<THREE.Group | null>(null)
+  if (!clonedScene.current) clonedScene.current = scene.clone()
 
-  // Apply emissive color to the GLB materials
+  const pulseRef = useRef(0)
+
+  const emissiveMatsRef = useRef<THREE.MeshStandardMaterial[]>([])
+
   useEffect(() => {
-    clonedScene.current.traverse((child) => {
+    const mats: THREE.MeshStandardMaterial[] = []
+    clonedScene.current!.traverse((child) => {
       if ((child as THREE.Mesh).isMesh) {
         const mesh = child as THREE.Mesh
         mesh.material = (mesh.material as THREE.Material).clone()
         const mat = mesh.material as THREE.MeshStandardMaterial
         mat.color.set('#6a6a8a')
         mat.emissive = new THREE.Color(color)
-        mat.emissiveIntensity = 0.2  // keep it subtle so original colors aren't washed out
+        mat.emissiveIntensity = 0.2
         mat.metalness = 0.3
         mat.roughness = 0.7
         mesh.castShadow = true
+        mats.push(mat)
       }
     })
+    emissiveMatsRef.current = mats
   }, [color])
 
   useEffect(() => {
     const handleTrackSelected = (e: CustomEvent) => {
-      if (e.detail === track && groupRef.current) {
-        clonedScene.current.traverse((child) => {
-          if ((child as THREE.Mesh).isMesh) {
-            const mat = (child as THREE.Mesh).material as THREE.MeshStandardMaterial
-            const originalEmissive = mat.emissiveIntensity
-
-            let progress = 0
-            const animate = () => {
-              progress += 0.1
-              if (progress <= 1) {
-                mat.emissiveIntensity = originalEmissive + Math.sin(progress * Math.PI) * 2
-                requestAnimationFrame(animate)
-              } else {
-                mat.emissiveIntensity = originalEmissive
-              }
-            }
-            animate()
-          }
-        })
+      if (e.detail === track) {
+        pulseRef.current = 0.001
       }
     }
 
@@ -72,6 +61,20 @@ export default function Pedestal({ position, color, track, deviceTier }: Pedesta
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime()
+
+    if (pulseRef.current > 0) {
+      pulseRef.current += 0.1
+      const intensity = 0.2 + Math.sin(pulseRef.current * Math.PI) * 2
+      for (const mat of emissiveMatsRef.current) {
+        mat.emissiveIntensity = intensity
+      }
+      if (pulseRef.current >= 1) {
+        for (const mat of emissiveMatsRef.current) {
+          mat.emissiveIntensity = 0.2
+        }
+        pulseRef.current = 0
+      }
+    }
 
     // Animate core rotation and float
     if (coreRef.current) {
@@ -106,8 +109,8 @@ export default function Pedestal({ position, color, track, deviceTier }: Pedesta
       {/* GLB Pillar Model */}
       <primitive
         object={clonedScene.current}
-        scale={[0.3, 0.3, 0.3]}       // tweak this if the pillar is too big/small
-        position={[0, -1, 0]}   // tweak Y to sit flush on the ground
+        scale={[0.3, 0.3, 0.3]}
+        position={[0, -1, 0]}
       />
 
       {/* Floating Core above the pedestal */}
