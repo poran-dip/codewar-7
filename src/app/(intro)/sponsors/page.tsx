@@ -5,14 +5,13 @@ import { Trophy, Mail, Phone, Sparkles, FileText } from 'lucide-react'
 import Link from 'next/link'
 
 export default function SponsorsPage() {
-  // Placeholder sponsors - replace with real data
   const sponsors = [
-    { tier: 'title', name: 'GeeksforGeeks', image: '/sponsors/Geeks_For_Geeks.png' },
-    { tier: 'associate', name: 'Coding Panda', image: '/sponsors/Coding_Pandas.png' },
-    { tier: 'past', name: 'Digital Ocean', image: '/sponsors/Digital_Ocean.png' },
-    { tier: 'past', name: 'Xopun Tech', image: '/sponsors/Xopun_Tech.png' },
-    { tier: 'past', name: 'Tech Variable', image: '/sponsors/Tech_Variable.png' },
-    { tier: 'past', name: 'Coding Ninjas', image: '/sponsors/Coding_Ninjas.png' },
+    { tier: 'title', name: 'GeeksforGeeks', image: '/sponsors/Geeks_For_Geeks.png', bgColor: 'bg-neutral-300/60' },
+    { tier: 'associate', name: 'Coding Panda', image: '/sponsors/Coding_Pandas.png', bgColor: 'bg-neutral-700/60' },
+    { tier: 'past', name: 'Coding Ninjas', image: '/sponsors/Coding_Ninjas.png', bgColor: 'bg-neutral-300/60' },
+    { tier: 'past', name: 'Digital Ocean', image: '/sponsors/Digital_Ocean.png', bgColor: 'bg-neutral-700/60' },
+    { tier: 'past', name: 'Tech Variable', image: '/sponsors/Tech_Variable.png', bgColor: 'bg-neutral-300/60' },
+    { tier: 'past', name: 'Newton School', image: '/sponsors/Newton_School.png', bgColor: 'bg-neutral-700/60' },
   ]
 
   const getTierBorder = (tier: string) => {
@@ -90,11 +89,12 @@ export default function SponsorsPage() {
                     <div className={`absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 ${colors.corner}`} />
                     <div className={`absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 ${colors.corner}`} />
 
-                    <div className={`absolute top-1 right-1 px-1.5 py-0.5 text-[7px] font-mono tracking-widest uppercase ${colors.bg} border ${colors.border} ${colors.text}`}>
+                    <div className={`absolute top-1 right-1 z-10 px-1.5 py-0.5 text-[7px] font-mono tracking-widest uppercase ${colors.bg} border ${colors.border} ${colors.text}`}>
                       {sponsor.tier}
                     </div>
 
-                    <div className="relative h-16 md:h-28 flex items-center justify-center p-3 md:p-5">
+                    {/* Logo container with per-sponsor bg */}
+                    <div className={`relative h-16 md:h-28 flex items-center justify-center p-3 md:p-5 rounded-sm backdrop-blur-3xl ${sponsor.bgColor}`}>
                       <img
                         src={sponsor.image}
                         alt={sponsor.name}

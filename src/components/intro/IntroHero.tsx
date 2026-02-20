@@ -33,37 +33,31 @@ export default function IntroHero() {
         transition={{ duration: 0.8, ease: 'easeInOut' }}
       />
 
-      {/* TOP HUD - Event Info with Logos */}
+      {/* TOP HUD - Circular Logos */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, type: 'spring', stiffness: 100 }}
-        className="mb-2 md:mb-4"
+        className="mb-1.5 md:mb-2"
       >
-        <div className="relative">
+        <div className="bg-neutral-100/10 backdrop-blur-sm border border-cyan-500/30 px-3 py-2 md:px-5 md:py-2.5 relative">
+          {/* Decorations */}
           <div className="absolute -top-1 -left-1 md:-top-1.5 md:-left-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-l-2 border-cyan-400/60" />
           <div className="absolute -top-1 -right-1 md:-top-1.5 md:-right-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-r-2 border-cyan-400/60" />
-          
-          <div className="bg-black/60 backdrop-blur-sm border border-cyan-500/30 px-2.5 py-1.5 md:px-4 md:py-2 font-mono">
-            <div className="flex items-center gap-3">
-              <div className="relative h-4.5 md:h-6">
-                <img 
-                  src="/branding/udbhavanam.png" 
-                  alt="Udbhavanam 13.0"
-                  className="h-full w-auto object-contain opacity-90"
-                />
-              </div>
-              <div className="h-5 w-px bg-linear-to-b from-transparent via-cyan-500/60 to-transparent" />
-              <div className="relative h-4.5 md:h-6">
-                <img 
-                  src="/branding/pyrokinesis.png" 
-                  alt="Pyrokinesis 2026"
-                  className="h-full w-auto object-contain opacity-90"
-                />
-              </div>
+
+          {/* Logos */}
+          <div className="flex flex-col items-center gap-1.5">
+            <div className="flex items-center justify-center gap-4 md:gap-6">
+              <img src="/branding/udbhavanam_logo_circular.png" alt="Udbhavanam 13.0" className="w-9 h-9 md:w-14 md:h-14 object-contain" />
+              <div className="h-12 w-px bg-linear-to-b from-transparent via-cyan-200/60 to-transparent" />
+              <img src="/branding/pyrokinesis_logo_circular.png" alt="Pyrokinesis 2026" className="w-9 h-9 md:w-14 md:h-14 object-contain" />
             </div>
           </div>
         </div>
+
+        <p className="pt-2 text-center text-[9px] md:text-xs font-mono text-cyan-400/60 tracking-widest uppercase">
+          PRESENTS
+        </p>
       </motion.div>
 
       {/* MAIN TITLE - Center */}
