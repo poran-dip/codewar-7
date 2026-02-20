@@ -1,55 +1,52 @@
 'use client'
 
-import { AnimatePresence, motion } from 'motion/react'
+import { motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { lock, unlock } from '@/engine/transitionLock'
-import { Layer, Track } from '@/store/useNavMeta'
+import { Track } from '@/store/useNavMeta'
 
-export default function SceneContainer({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+const TRACK_ORDER: Record<Track, number> = {
+  codestellation: 0,
+  decode: 1,
+}
+
+export default function TracksContainer({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const [sceneKey, setSceneKey] = useState<Track | 'none'>('codestellation')
-  const prevSceneKeyRef = useRef(sceneKey)
+  const prevSceneKeyRef = useRef<Track | 'none'>(sceneKey)
+  const directionRef = useRef<1 | -1>(1)
 
   useEffect(() => {
-    if (pathname.includes('codestellation')) {
-      setSceneKey('codestellation')
-    } else if (pathname.includes('decode')) {
-      setSceneKey('decode')
-    } else {
-      setSceneKey('none')
+    const newKey: Track | 'none' = pathname.includes('codestellation')
+      ? 'codestellation'
+      : pathname.includes('decode')
+      ? 'decode'
+      : 'none'
+
+    if (prevSceneKeyRef.current !== newKey) {
+      const prevOrder = prevSceneKeyRef.current !== 'none' ? TRACK_ORDER[prevSceneKeyRef.current] : 0
+      const nextOrder = newKey !== 'none' ? TRACK_ORDER[newKey] : 0
+      directionRef.current = nextOrder >= prevOrder ? 1 : -1
+
+      lock()
+      prevSceneKeyRef.current = newKey
+      setSceneKey(newKey)
     }
   }, [pathname])
 
-  useEffect(() => {
-    if (prevSceneKeyRef.current !== sceneKey) {
-      lock()
-      prevSceneKeyRef.current = sceneKey
-    }
-  }, [sceneKey])
+  const xIn = `${directionRef.current * -6}%`
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={sceneKey}
-        initial={{ opacity: 0, y: 40, scale: 0.98 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: -40, scale: 0.98 }}
-        transition={{
-          duration: 0.7,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-        onAnimationComplete={() => {
-          unlock()
-        }}
-        className="absolute inset-0"
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    <motion.div
+      key={sceneKey}
+      initial={{ opacity: 0.5, x: xIn, scale: 0.99 }}
+      animate={{ opacity: 1, x: 0, scale: 1 }}
+      transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
+      onAnimationComplete={unlock}
+      className="absolute inset-0"
+    >
+      {children}
+    </motion.div>
   )
 }
