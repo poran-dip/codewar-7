@@ -8,9 +8,10 @@ import { TrackSection } from '@/store/useNavMeta'
 
 const SECTION_ORDER: Record<TrackSection, number> = {
   '': 0,
-  rules: 1,
-  prizes: 2,
-  faq: 3,
+  ps: 1,
+  rules: 2,
+  prizes: 3,
+  faq: 4,
 }
 
 export default function TracksSectionsContainer({ children }: { children: React.ReactNode }) {
@@ -26,6 +27,8 @@ export default function TracksSectionsContainer({ children }: { children: React.
       ? 'prizes'
       : pathname.includes('faq')
       ? 'faq'
+      : pathname.includes('ps')
+      ? 'ps'
       : ''
 
     if (prevSceneKeyRef.current !== newKey) {

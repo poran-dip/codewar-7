@@ -1,7 +1,7 @@
 import { SectionByLayer, RouteMeta } from '@/store/useNavMeta'
 
 const INTRO_ORDER: SectionByLayer['intro'][] = ['', 'contact', 'sponsors']
-const TRACK_ORDER: SectionByLayer['tracks'][] = ['', 'prizes', 'faq', 'rules']
+const TRACK_ORDER: SectionByLayer['tracks'][] = ['', 'ps', 'prizes', 'faq', 'rules']
 
 export function getSectionIndex(meta: RouteMeta): number {
   if (meta.section === undefined) return -1

@@ -26,7 +26,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
     if (dir === 'up' || dir === 'down') {
       if (currentMeta.layer === 'intro') {
-        if (dir === 'down') nextRoute = `/tracks/codestellation${section}`
+        if (dir === 'down') nextRoute = '/tracks/codestellation'
       } else if (currentMeta.layer === 'tracks') {
         if (currentMeta.track === 'codestellation') {
           nextRoute = dir === 'down' ? `/tracks/decode${section}` : '/'
@@ -47,7 +47,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
       } else if (currentMeta.layer === 'tracks' && currentMeta.track) {
         const TRACK_SECTIONS: Record<string, string[]> = {
-          codestellation: ['', 'rules', 'prizes', 'faq'],
+          codestellation: ['', 'ps', 'rules', 'prizes', 'faq'],
           decode:         ['', 'rules', 'prizes', 'faq'],
         }
         const sections = TRACK_SECTIONS[currentMeta.track] ?? ['', 'rules', 'prizes', 'faq']

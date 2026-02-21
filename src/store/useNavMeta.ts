@@ -4,7 +4,7 @@ import { getSectionIndex } from '@/lib/getSectionIndex'
 export type Layer = 'intro' | 'tracks'
 export type Track = 'codestellation' | 'decode'
 export type IntroSection = '' | 'contact' | 'sponsors'
-export type TrackSection = '' | 'rules' | 'prizes' |  'faq'
+export type TrackSection = '' | 'ps' | 'rules' | 'prizes' |  'faq'
 
 export type SectionByLayer = {
   intro: IntroSection
