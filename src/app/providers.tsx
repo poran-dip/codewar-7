@@ -15,98 +15,64 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   const handleScroll = useCallback((dir: SceneDirection) => {
     const currentMeta = useNavMeta.getState().currentMeta
-    
+
     if (!currentMeta) {
       unlock()
       return
     }
 
     let nextRoute: string | null = null
+    const section = currentMeta.section ? `/${currentMeta.section}` : ''
 
-    // Handle up/down navigation
     if (dir === 'up' || dir === 'down') {
       if (currentMeta.layer === 'intro') {
-        const INTRO_SECTIONS = ['', 'contact', 'sponsors']
-        const currentIndex = INTRO_SECTIONS.indexOf(currentMeta.section || '')
-        const nextIndex = dir === 'down' ? currentIndex + 1 : currentIndex - 1
-        const nextSection = INTRO_SECTIONS[nextIndex]
-
-        if (nextIndex === 0) {
-          nextRoute = '/'
-        } else if (nextSection) {
-          nextRoute = `/${nextSection}`
-        } else if (dir === 'down' && nextIndex >= INTRO_SECTIONS.length) {
-          nextRoute = '/tracks/codestellation'
-        }
-      } else if (currentMeta.layer === 'tracks' && currentMeta.track) {
-        const TRACK_SECTIONS = ['', 'rules', 'prizes', 'faq']
-        const currentIndex = TRACK_SECTIONS.indexOf(currentMeta.section || '')
-        const nextIndex = dir === 'down' ? currentIndex + 1 : currentIndex - 1
-        const nextSection = TRACK_SECTIONS[nextIndex]
-
-        if (nextIndex === 0) {
-          nextRoute = `/tracks/${currentMeta.track}`
-        } else if (nextSection) {
-          nextRoute = `/tracks/${currentMeta.track}/${nextSection}`
-        } else if (dir === 'up' && nextIndex < 0) {
-          nextRoute = '/sponsors'
+        if (dir === 'down') nextRoute = `/tracks/codestellation${section}`
+      } else if (currentMeta.layer === 'tracks') {
+        if (currentMeta.track === 'codestellation') {
+          nextRoute = dir === 'down' ? `/tracks/decode${section}` : '/'
+        } else if (currentMeta.track === 'decode') {
+          if (dir === 'up') nextRoute = `/tracks/codestellation${section}`
         }
       }
     }
-    
-    // Handle left/right navigation (track switching)
+
     else if (dir === 'left' || dir === 'right') {
-      if (currentMeta.layer === 'tracks') {
-        const newTrack = currentMeta.track === 'codestellation' ? 'decode' : 'codestellation'
-        const section = currentMeta.section || ''
-        nextRoute = section ? `/tracks/${newTrack}/${section}` : `/tracks/${newTrack}`
-      }
-    }
-    
-    // Handle exit (go back to intro)
-    else if (dir === 'exit') {
-      if (currentMeta.layer === 'tracks') {
-        nextRoute = '/'
+      if (currentMeta.layer === 'intro') {
+        const SECTIONS = ['', 'contact', 'sponsors']
+        const currentIndex = SECTIONS.indexOf(currentMeta.section || '')
+        const nextIndex = dir === 'right' ? currentIndex + 1 : currentIndex - 1
+        const next = SECTIONS[nextIndex]
+        if (nextIndex === 0) nextRoute = '/'
+        else if (next !== undefined) nextRoute = `/${next}`
+
+      } else if (currentMeta.layer === 'tracks' && currentMeta.track) {
+        const TRACK_SECTIONS: Record<string, string[]> = {
+          codestellation: ['', 'rules', 'prizes', 'faq'],
+          decode:         ['', 'rules', 'prizes', 'faq'],
+        }
+        const sections = TRACK_SECTIONS[currentMeta.track] ?? ['', 'rules', 'prizes', 'faq']
+        const currentIndex = sections.indexOf(currentMeta.section || '')
+        const nextIndex = dir === 'right' ? currentIndex + 1 : currentIndex - 1
+        const next = sections[nextIndex]
+        if (nextIndex === 0) nextRoute = `/tracks/${currentMeta.track}`
+        else if (next !== undefined) nextRoute = `/tracks/${currentMeta.track}/${next}`
       }
     }
 
     else if (dir === 'nav1') {
-      if (currentMeta.layer === 'intro') {
-        nextRoute = '/'
-      } else if (currentMeta.layer === 'tracks') {
-        nextRoute = `/tracks/${currentMeta.track}`
-      }
+      nextRoute = currentMeta.layer === 'intro' ? '/' : `/tracks/${currentMeta.track}`
+    } else if (dir === 'nav2') {
+      nextRoute = currentMeta.layer === 'intro' ? '/contact' : `/tracks/${currentMeta.track}/rules`
+    } else if (dir === 'nav3') {
+      nextRoute = currentMeta.layer === 'intro' ? '/sponsors' : `/tracks/${currentMeta.track}/prizes`
+    } else if (dir === 'nav4') {
+      if (currentMeta.layer === 'tracks') nextRoute = `/tracks/${currentMeta.track}/faq`
+    } else if (dir === 'exit') {
+      if (currentMeta.layer === 'tracks') nextRoute = '/'
     }
 
-    else if (dir === 'nav2') {
-      if (currentMeta.layer === 'intro') {
-        nextRoute = '/contact'
-      } else if (currentMeta.layer === 'tracks') {
-        nextRoute = `/tracks/${currentMeta.track}/rules`
-      }
-    }
-
-    else if (dir === 'nav3') {
-      if (currentMeta.layer === 'intro') {
-        nextRoute = '/sponsors'
-      } else if (currentMeta.layer === 'tracks') {
-        nextRoute = `/tracks/${currentMeta.track}/prizes`
-      }
-    }
-
-    else if (dir === 'nav4') {
-      if (currentMeta.layer === 'tracks') {
-        nextRoute = `/tracks/${currentMeta.track}/faq`
-      }
-    }
-
-    // Only navigate if we have a valid next route
-    if (nextRoute) {
-      router.push(nextRoute)
-    } else {
-      unlock()
-    }
-    // If no valid route (at boundary), don't lock - just let it go
+    if (nextRoute) router.push(nextRoute)
+    else unlock()
   }, [router])
 
   useSceneScroll(handleScroll)

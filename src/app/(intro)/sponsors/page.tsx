@@ -6,12 +6,12 @@ import Link from 'next/link'
 
 export default function SponsorsPage() {
   const sponsors = [
-    { tier: 'title', name: 'GeeksforGeeks', image: '/sponsors/Geeks_For_Geeks.png', bgColor: 'bg-neutral-300/60' },
-    { tier: 'associate', name: 'Coding Panda', image: '/sponsors/Coding_Pandas.png', bgColor: 'bg-neutral-700/60' },
-    { tier: 'past', name: 'Coding Ninjas', image: '/sponsors/Coding_Ninjas.png', bgColor: 'bg-neutral-300/60' },
-    { tier: 'past', name: 'Digital Ocean', image: '/sponsors/Digital_Ocean.png', bgColor: 'bg-neutral-700/60' },
-    { tier: 'past', name: 'Tech Variable', image: '/sponsors/Tech_Variable.png', bgColor: 'bg-neutral-300/60' },
-    { tier: 'past', name: 'Newton School', image: '/sponsors/Newton_School.png', bgColor: 'bg-neutral-700/60' },
+    { tier: 'title', name: 'GeeksforGeeks', image: '/sponsors/Geeks_For_Geeks.png', bgColor: 'bg-neutral-300/60', order: 'order-1' },
+    { tier: 'associate', name: 'Coding Panda', image: '/sponsors/Coding_Pandas.png', bgColor: 'bg-neutral-700/60', order: 'order-2' },
+    { tier: 'food', name: 'Quick Bites', image: '/sponsors/Quick_Bites.png', bgColor: 'bg-neutral-300/60', order: 'order-4 md:order-3' },
+    { tier: 'associate', name: 'Loti Ghoti', image: '/sponsors/Loti_Ghoti.png', bgColor: 'bg-neutral-700/60', order: 'order-3 md:order-4' },
+    { tier: 'past', name: 'Coding Ninjas', image: '/sponsors/Coding_Ninjas.png', bgColor: 'bg-neutral-300/60', order: 'order-5' },
+    { tier: 'past', name: 'Digital Ocean', image: '/sponsors/Digital_Ocean.png', bgColor: 'bg-neutral-700/60', order: 'order-6' },
   ]
 
   const getTierBorder = (tier: string) => {
@@ -81,6 +81,7 @@ export default function SponsorsPage() {
                       backdrop-blur-xl
                       border-2 transition-all duration-300
                       clip-path-[polygon(6px_0,100%_0,100%_calc(100%-6px),calc(100%-6px)_100%,0_100%,0_6px)]
+                      ${sponsor.order}
                       ${getTierBorder(sponsor.tier)}
                     `}
                   >
@@ -98,7 +99,7 @@ export default function SponsorsPage() {
                       <img
                         src={sponsor.image}
                         alt={sponsor.name}
-                        className="max-h-8 md:max-h-20 w-auto object-contain opacity-90 group-hover:opacity-100 transition"
+                        className="max-h-16 md:max-h-28 w-auto object-contain opacity-90 group-hover:opacity-100 transition"
                       />
                     </div>
 

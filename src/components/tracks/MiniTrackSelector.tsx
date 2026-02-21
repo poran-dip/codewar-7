@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import { motion } from "motion/react"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useNavMeta } from "@/store/useNavMeta"
 
@@ -25,23 +25,6 @@ export default function MiniTrackSelector() {
   const currentSection = navMeta.currentMeta?.section
   
   const activeTrack = tracks.find(t => t.id === currentTrack)
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
-        e.preventDefault()
-        const section = currentSection === currentTrack ? '' : `/${currentSection}`
-        router.push(`/tracks/codestellation${section}`)
-      } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
-        e.preventDefault()
-        const section = currentSection === currentTrack ? '' : `/${currentSection}`
-        router.push(`/tracks/decode${section}`)
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [currentTrack, currentSection, router])
 
   const handleTrackClick = (trackId: string) => {
     const section = currentSection === currentTrack ? '' : `/${currentSection}`

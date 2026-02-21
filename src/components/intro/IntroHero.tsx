@@ -33,32 +33,35 @@ export default function IntroHero() {
         transition={{ duration: 0.8, ease: 'easeInOut' }}
       />
 
-      {/* TOP HUD - Circular Logos */}
-      <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, type: 'spring', stiffness: 100 }}
-        className="mb-1.5 md:mb-2"
-      >
-        <div className="bg-neutral-300/60 backdrop-blur-sm border border-cyan-500/30 px-3 py-2 md:px-5 md:py-2.5 relative">
-          {/* Decorations */}
-          <div className="absolute -top-1 -left-1 md:-top-1.5 md:-left-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-l-2 border-cyan-400/60" />
-          <div className="absolute -top-1 -right-1 md:-top-1.5 md:-right-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-r-2 border-cyan-400/60" />
+{/* TOP HUD - Logos */}
+<motion.div
+  initial={{ opacity: 0, y: -30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.2, type: 'spring', stiffness: 100 }}
+  className="mb-1.5 md:mb-2 w-full"
+>
+  {/* Udbhavanam - top left */}
+  <div className="hidden md:block absolute top-4 left-4">
+    <img src="/branding/udbhavanam_logo_circular.png" alt="Udbhavanam 13.0" className="w-16 h-16 object-contain" />
+  </div>
 
-          {/* Logos */}
-          <div className="flex flex-col items-center gap-1.5">
-            <div className="flex items-center justify-center gap-4 md:gap-6">
-              <img src="/branding/udbhavanam_logo_circular.png" alt="Udbhavanam 13.0" className="w-9 h-9 md:w-14 md:h-14 object-contain" />
-              <div className="h-12 w-px bg-linear-to-b from-transparent via-cyan-200/60 to-transparent" />
-              <img src="/branding/pyrokinesis_logo_circular.png" alt="Pyrokinesis 2026" className="w-9 h-9 md:w-14 md:h-14 object-contain" />
-            </div>
-          </div>
-        </div>
+  {/* Pyrokinesis - top right */}
+  <div className="hidden md:block absolute top-4 right-4">
+    <img src="/branding/pyrokinesis_logo_circular.png" alt="Pyrokinesis 2026" className="w-16 h-16 object-contain" />
+  </div>
 
-        <p className="pt-2 text-center text-[9px] md:text-xs font-mono text-cyan-400/60 tracking-widest uppercase">
-          PRESENTS
-        </p>
-      </motion.div>
+  {/* GFG - center */}
+  <div className="flex flex-col items-center gap-1.5">
+    <p className="text-center text-[9px] md:text-xs font-mono text-cyan-400/60 tracking-widest uppercase">
+      POWERED BY
+    </p>
+    <div className="bg-neutral-300/60 backdrop-blur-sm border border-cyan-500/30 px-3 py-2 md:px-5 md:py-2.5 relative">
+      <div className="absolute -top-1 -left-1 md:-top-1.5 md:-left-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-l-2 border-cyan-400/60" />
+      <div className="absolute -top-1 -right-1 md:-top-1.5 md:-right-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-r-2 border-cyan-400/60" />
+      <img src="/sponsors/GeeksforGeeks.png" alt="GeeksforGeeks" className="w-auto h-9 md:h-14 object-contain" />
+    </div>
+  </div>
+</motion.div>
 
       {/* MAIN TITLE - Center */}
       <motion.div
@@ -107,8 +110,8 @@ export default function IntroHero() {
           <div className="absolute -bottom-0.5 -right-0.5 md:-bottom-1 md:-right-1 w-2 h-2 md:w-2.5 md:h-2.5 border-b-2 border-r-2 border-cyan-400/60" />
           
           <div className="flex items-center gap-1.5 md:gap-2 text-[8px] md:text-[10px] text-cyan-400/70">
-            <kbd className="px-1.5 py-0.5 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-300 hidden md:inline font-bold">←</kbd>
-            <kbd className="px-1.5 py-0.5 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-300 hidden md:inline font-bold">→</kbd>
+            <kbd className="px-1.5 py-0.5 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-300 hidden md:inline font-bold">Q</kbd>
+            <kbd className="px-1.5 py-0.5 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-300 hidden md:inline font-bold">E</kbd>
             <span className="text-cyan-500/50 hidden md:inline">|</span>
             <kbd className="px-1.5 py-0.5 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-300 hidden md:inline font-bold">ENTER</kbd>
             <span className="text-cyan-500/50 hidden md:inline">|</span>

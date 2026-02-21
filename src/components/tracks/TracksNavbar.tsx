@@ -2,11 +2,12 @@
 
 import Link from 'next/link'
 import { motion } from 'motion/react'
-import { usePathname } from 'next/navigation'
-import { Home, Trophy, HelpCircle, ScrollText, ChevronUp, ChevronDown, X } from 'lucide-react'
+import { usePathname, useRouter } from 'next/navigation'
+import { Home, Trophy, HelpCircle, ScrollText, ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 export default function TracksNavbar() {
   const pathname = usePathname()
+  const router = useRouter()
 
   const track = pathname.startsWith('/tracks/')
     ? pathname.split('/')[2]
@@ -28,8 +29,8 @@ export default function TracksNavbar() {
   }
 
   const currentIndex = navItems.findIndex(item => isActive(item.href))
-  const canScrollUp = currentIndex > 0
-  const canScrollDown = currentIndex < navItems.length - 1
+  const canScrollLeft = currentIndex > 0
+  const canScrollRight = currentIndex < navItems.length - 1
 
   return (
     <motion.nav
@@ -44,27 +45,28 @@ export default function TracksNavbar() {
       className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50"
     >
       <div className="flex items-center gap-2 md:gap-3">
-        {/* Up Arrow Hint */}
-        <motion.div
+        {/* Left Arrow Hint */}
+        <motion.button
+          onClick={() => canScrollLeft && router.push(navItems[currentIndex - 1].href)}
           initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: canScrollUp ? 1 : 0.2, x: 0 }}
+          animate={{ opacity: canScrollLeft ? 1 : 0.2, x: 0 }}
           transition={{ delay: 0.5 }}
           className={`
             hidden md:flex items-center justify-center
             w-7 h-7 md:w-8 md:h-8 rounded
             bg-black/60 backdrop-blur-sm
             border transition-colors
-            ${canScrollUp 
+            ${canScrollLeft 
               ? `border-${accentColor}-500/30 cursor-pointer` 
               : 'border-gray-600/20 cursor-not-allowed'}
           `}
         >
-          <ChevronUp className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-colors ${
-            canScrollUp 
+          <ChevronLeft className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-colors ${
+            canScrollLeft 
               ? accentColor === 'purple' ? 'text-purple-400' : 'text-cyan-400'
               : 'text-gray-600/30'
           }`} />
-        </motion.div>
+        </motion.button>
 
         {/* Main container */}
         <div className={`
@@ -179,27 +181,28 @@ export default function TracksNavbar() {
           <div className={`absolute -bottom-1.5 md:-bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-px bg-linear-to-r from-transparent to-transparent ${accentColor === 'purple' ? 'via-purple-500/50' : 'via-cyan-500/50'}`} />
         </div>
 
-        {/* Down Arrow Hint */}
-        <motion.div
+        {/* Right Arrow Hint */}
+        <motion.button
+          onClick={() => canScrollRight && router.push(navItems[currentIndex + 1].href)}
           initial={{ opacity: 0, x: 10 }}
-          animate={{ opacity: canScrollDown ? 1 : 0.2, x: 0 }}
+          animate={{ opacity: canScrollRight ? 1 : 0.2, x: 0 }}
           transition={{ delay: 0.5 }}
           className={`
             hidden md:flex items-center justify-center
             w-7 h-7 md:w-8 md:h-8 rounded
             bg-black/60 backdrop-blur-sm
             border transition-colors
-            ${canScrollDown 
+            ${canScrollRight 
               ? `border-${accentColor}-500/30 cursor-pointer` 
               : 'border-gray-600/20 cursor-not-allowed'}
           `}
         >
-          <ChevronDown className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-colors ${
-            canScrollDown 
+          <ChevronRight className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-colors ${
+            canScrollRight 
               ? accentColor === 'purple' ? 'text-purple-400' : 'text-cyan-400'
               : 'text-gray-600/30'
           }`} />
-        </motion.div>
+        </motion.button>
       </div>
 
       {/* HUD-style info - hidden on mobile */}

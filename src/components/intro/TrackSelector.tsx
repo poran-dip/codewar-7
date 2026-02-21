@@ -19,10 +19,10 @@ export default function TrackSelector({ onTrackChange, selectedTrack }: TrackSel
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+      if (e.key === 'q' || e.key === 'Q') {
         e.preventDefault()
         onTrackChange?.('codestellation')
-      } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+      } else if (e.key === 'e' || e.key === 'E') {
         e.preventDefault()
         onTrackChange?.('decode')
       } else if (e.key === 'Escape') {
