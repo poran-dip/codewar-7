@@ -135,6 +135,17 @@ export default function IntroHero() {
         TRACK_SELECT_v7.0
       </div>
 
+      {/* Credits */}
+      <div className="absolute bottom-0 md:bottom-10 right-4 text-[10px] font-mono text-cyan-500/20 tracking-wide">
+        <a
+          href="https://porandip.vercel.app"
+          target="_blank"
+          className="hover:text-cyan-500/50 transition-colors"
+        >
+          Built by Poran Dip
+        </a>
+      </div>
+
       {/* CC Attribution */}
       <div className="hidden md:block absolute bottom-6 right-4 text-[10px] font-mono text-cyan-500/20 tracking-wide">
         <a
