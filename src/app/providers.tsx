@@ -5,13 +5,21 @@ import Background3D from '@/components/3d/Background3D'
 import SceneContainer from '@/components/SceneContainer'
 import { useRouter } from 'next/navigation'
 import useSceneScroll, { SceneDirection } from '@/hooks/useSceneScroll'
-import { useCallback } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { unlock } from '@/engine/transitionLock'
 import { useNavMeta } from '@/store/useNavMeta'
+import SceneLoader, { SceneLoaderHandle } from '@/components/SceneLoader'
 
 export function Providers({ children }: { children: React.ReactNode }) {
   useSyncNavMeta()
   const router = useRouter()
+
+  const [mounted, setMounted] = useState<boolean>(false)
+  const loaderRef = useRef<SceneLoaderHandle>(null)
+
+  const dismiss = useCallback(() => {
+    loaderRef.current?.finish()
+  }, [])
 
   const handleScroll = useCallback((dir: SceneDirection) => {
     const currentMeta = useNavMeta.getState().currentMeta
@@ -81,7 +89,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <Background3D />
+      {!mounted && <SceneLoader ref={loaderRef} onDone={() => setMounted(true)} />}
+      <Background3D onReady={dismiss} />
       <SceneContainer>{children}</SceneContainer>
     </>
   )

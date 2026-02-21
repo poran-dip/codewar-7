@@ -12,7 +12,7 @@ import Particles from './Particles'
 import CameraController from './CameraController'
 import VolumetricFog from './VolumetricFog'
 
-function Background3D() {
+function Background3D({ onReady }: { onReady?: () => void }) {
   const [deviceTier, setDeviceTier] = useState<'mobile' | 'tablet' | 'desktop'>('desktop')
   const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -39,6 +39,7 @@ function Background3D() {
   return (
     <div className="fixed inset-0 -z-10">
       <Canvas
+        onCreated={() => onReady?.()}
         camera={{ position: [0, 1, 5], fov: 50 }}
         dpr={deviceTier === 'mobile' ? 1 : [1, 1.5]}
         shadows={deviceTier === 'desktop'}
