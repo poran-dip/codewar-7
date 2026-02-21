@@ -3,7 +3,7 @@
 import { isLocked, lock } from '@/engine/transitionLock'
 import { useEffect } from 'react'
 
-export type SceneDirection = 'up' | 'down' | 'left' | 'right' | 'enter' | 'exit' | 'nav1' | 'nav2' | 'nav3' | 'nav4'
+export type SceneDirection = 'up' | 'down' | 'left' | 'right' | 'enter' | 'exit' | 'nav1' | 'nav2' | 'nav3' | 'nav4' | 'nav5'
 
 export default function useSceneScroll(
   onDirection: (dir: SceneDirection) => void
@@ -75,6 +75,7 @@ export default function useSceneScroll(
       else if (e.key === '2') { e.preventDefault(); lock(); onDirection('nav2'); return }
       else if (e.key === '3') { e.preventDefault(); lock(); onDirection('nav3'); return }
       else if (e.key === '4') { e.preventDefault(); lock(); onDirection('nav4'); return }
+      else if (e.key === '5') { e.preventDefault(); lock(); onDirection('nav5'); return }
 
       if (direction) {
         e.preventDefault()

@@ -33,35 +33,45 @@ export default function IntroHero() {
         transition={{ duration: 0.8, ease: 'easeInOut' }}
       />
 
-{/* TOP HUD - Logos */}
-<motion.div
-  initial={{ opacity: 0, y: -30 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.2, type: 'spring', stiffness: 100 }}
-  className="mb-1.5 md:mb-2 w-full"
->
-  {/* Udbhavanam - top left */}
-  <div className="hidden md:block absolute top-4 left-4">
-    <img src="/branding/udbhavanam_logo_circular.png" alt="Udbhavanam 13.0" className="w-16 h-16 object-contain" />
-  </div>
+      {/* TOP HUD - Logos */}
+      <motion.div
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, type: 'spring', stiffness: 100 }}
+        className="mb-1.5 md:mb-2 w-full"
+      >
+        {/* Udbhavanam - top left */}
+        <div className="hidden md:block absolute top-4 left-4">
+          <img src="/branding/udbhavanam_logo_circular.png" alt="Udbhavanam 13.0" className="w-16 h-16 object-contain" />
+        </div>
 
-  {/* Pyrokinesis - top right */}
-  <div className="hidden md:block absolute top-4 right-4">
-    <img src="/branding/pyrokinesis_logo_circular.png" alt="Pyrokinesis 2026" className="w-16 h-16 object-contain" />
-  </div>
+        {/* Pyrokinesis - top right */}
+        <div className="hidden md:block absolute top-4 right-4">
+          <img src="/branding/pyrokinesis_logo_circular.png" alt="Pyrokinesis 2026" className="w-16 h-16 object-contain" />
+        </div>
 
-  {/* GFG - center */}
-  <div className="flex flex-col items-center gap-1.5">
-    <p className="text-center text-[9px] md:text-xs font-mono text-cyan-400/60 tracking-widest uppercase">
-      POWERED BY
-    </p>
-    <div className="bg-neutral-300/60 backdrop-blur-sm border border-cyan-500/30 px-3 py-2 md:px-5 md:py-2.5 relative">
-      <div className="absolute -top-1 -left-1 md:-top-1.5 md:-left-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-l-2 border-cyan-400/60" />
-      <div className="absolute -top-1 -right-1 md:-top-1.5 md:-right-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-r-2 border-cyan-400/60" />
-      <img src="/sponsors/GeeksforGeeks.png" alt="GeeksforGeeks" className="w-auto h-9 md:h-14 object-contain" />
-    </div>
-  </div>
-</motion.div>
+        <div className="flex flex-col items-center gap-1">
+          <div className="grid grid-cols-2 gap-2 md:gap-3 w-fit">
+            <p className="text-center text-[9px] md:text-xs font-mono text-cyan-400/60 tracking-widest uppercase">
+              POWERED BY
+            </p>
+            <p className="text-center text-[9px] md:text-xs font-mono text-cyan-400/60 tracking-widest uppercase">
+              CO-POWERED BY
+            </p>
+
+            <div className="bg-neutral-300/60 backdrop-blur-sm border border-cyan-500/30 px-3 py-1 md:px-4 md:py-2 relative flex items-center justify-center">
+              <div className="absolute -top-1 -left-1 md:-top-1.5 md:-left-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-l-2 border-cyan-400/60" />
+              <div className="absolute -top-1 -right-1 md:-top-1.5 md:-right-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-r-2 border-cyan-400/60" />
+              <img src="/sponsors/GeeksforGeeks.png" alt="GeeksforGeeks" className="h-9 md:h-10 object-contain" />
+            </div>
+            <div className="bg-neutral-700/60 backdrop-blur-sm border border-cyan-500/30 px-3 py-1 md:px-4 md:py-2 relative flex items-center justify-center">
+              <div className="absolute -top-1 -left-1 md:-top-1.5 md:-left-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-l-2 border-cyan-400/60" />
+              <div className="absolute -top-1 -right-1 md:-top-1.5 md:-right-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-r-2 border-cyan-400/60" />
+              <img src="/sponsors/XT_Academy.png" alt="XT Academy" className="h-9 md:h-10 object-contain" />
+            </div>
+          </div>
+        </div>
+      </motion.div>
 
       {/* MAIN TITLE - Center */}
       <motion.div

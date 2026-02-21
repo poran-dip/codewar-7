@@ -62,11 +62,13 @@ export function Providers({ children }: { children: React.ReactNode }) {
     else if (dir === 'nav1') {
       nextRoute = currentMeta.layer === 'intro' ? '/' : `/tracks/${currentMeta.track}`
     } else if (dir === 'nav2') {
-      nextRoute = currentMeta.layer === 'intro' ? '/contact' : `/tracks/${currentMeta.track}/rules`
+      nextRoute = currentMeta.layer === 'intro' ? '/contact' : currentMeta.track === 'codestellation' ? `/tracks/codestellation/ps` : `/tracks/decode/rules`
     } else if (dir === 'nav3') {
-      nextRoute = currentMeta.layer === 'intro' ? '/sponsors' : `/tracks/${currentMeta.track}/prizes`
+      nextRoute = currentMeta.layer === 'intro' ? '/sponsors' : currentMeta.track === 'codestellation' ? `/tracks/codestellation/rules` : `/tracks/decode/prizes`
     } else if (dir === 'nav4') {
-      if (currentMeta.layer === 'tracks') nextRoute = `/tracks/${currentMeta.track}/faq`
+      if (currentMeta.layer === 'tracks') nextRoute = currentMeta.track === 'codestellation' ? `/tracks/codestellation/prizes` : `/tracks/decode/faq`
+    } else if (dir === 'nav5') {
+      if (currentMeta.layer === 'tracks' && currentMeta.track === 'codestellation') nextRoute = `/tracks/codestellation/faq`
     } else if (dir === 'exit') {
       if (currentMeta.layer === 'tracks') nextRoute = '/'
     }

@@ -5,32 +5,23 @@ import { Trophy, Mail, Phone, Sparkles, FileText } from 'lucide-react'
 import Link from 'next/link'
 
 export default function SponsorsPage() {
+  const tierColors: Record<string, { bg: string; border: string; text: string; glow: string }> = {
+    title:     { bg: 'bg-yellow-500/20', border: 'border-yellow-400/30', text: 'text-yellow-300', glow: 'via-yellow-500/5' },
+    associate: { bg: 'bg-purple-500/20', border: 'border-purple-400/30', text: 'text-purple-300', glow: 'via-purple-500/5' },
+    food:      { bg: 'bg-blue-500/20',   border: 'border-blue-400/30',   text: 'text-blue-300',   glow: 'via-blue-500/5'   },
+    learning:  { bg: 'bg-blue-500/20',   border: 'border-blue-400/30',   text: 'text-blue-300',   glow: 'via-blue-500/5'   },
+    merch:     { bg: 'bg-blue-500/20',   border: 'border-blue-400/30',   text: 'text-blue-300',   glow: 'via-blue-500/5'   },
+    past:      { bg: 'bg-zinc-500/20',   border: 'border-zinc-400/30',   text: 'text-zinc-300',   glow: 'via-zinc-500/5'   },
+  }
+
   const sponsors = [
-    { tier: 'title', name: 'GeeksforGeeks', image: '/sponsors/Geeks_For_Geeks.png', bgColor: 'bg-neutral-300/60', order: 'order-1' },
-    { tier: 'associate', name: 'Coding Panda', image: '/sponsors/Coding_Pandas.png', bgColor: 'bg-neutral-700/60', order: 'order-2' },
-    { tier: 'food', name: 'Quick Bites', image: '/sponsors/Quick_Bites.png', bgColor: 'bg-neutral-300/60', order: 'order-4 md:order-3' },
-    { tier: 'associate', name: 'Loti Ghoti', image: '/sponsors/Loti_Ghoti.png', bgColor: 'bg-neutral-700/60', order: 'order-3 md:order-4' },
-    { tier: 'past', name: 'Coding Ninjas', image: '/sponsors/Coding_Ninjas.png', bgColor: 'bg-neutral-300/60', order: 'order-5' },
-    { tier: 'past', name: 'Digital Ocean', image: '/sponsors/Digital_Ocean.png', bgColor: 'bg-neutral-700/60', order: 'order-6' },
+    { tier: 'title',     name: 'GeeksforGeeks', image: '/sponsors/Geeks_For_Geeks.png', bgColor: 'bg-neutral-300/60', corner: 'border-yellow-400/70', cn: 'border-yellow-400/50 hover:border-yellow-400/80 order-1' },
+    { tier: 'associate', name: 'XT Academy',    image: '/sponsors/XT_Academy.png',      bgColor: 'bg-neutral-700/60', corner: 'border-purple-400/70', cn: 'border-purple-400/50 hover:border-purple-400/80 order-2' },
+    { tier: 'merch',     name: 'Loti Ghoti',    image: '/sponsors/Loti_Ghoti.png',      bgColor: 'bg-neutral-700/60', corner: 'border-blue-400/70',   cn: 'border-blue-400/50 hover:border-blue-400/80 order-3 md:order-4' },
+    { tier: 'learning',  name: 'Coding Panda',  image: '/sponsors/Coding_Pandas.png',   bgColor: 'bg-neutral-300/60', corner: 'border-blue-400/70',   cn: 'border-blue-400/50 hover:border-blue-400/80 order-4 md:order-3' },
+    { tier: 'food',      name: 'Quick Bites',   image: '/sponsors/Quick_Bites.png',     bgColor: 'bg-neutral-300/60', corner: 'border-blue-400/70',   cn: 'border-blue-400/50 hover:border-blue-400/80 order-5' },
+    { tier: 'past',      name: 'Digital Ocean', image: '/sponsors/Digital_Ocean.png',   bgColor: 'bg-neutral-700/60', corner: 'border-zinc-400/70',   cn: 'border-zinc-400/50 hover:border-zinc-400/80 order-6' },
   ]
-
-  const getTierBorder = (tier: string) => {
-    switch(tier) {
-      case 'title': return 'border-yellow-400/50 hover:border-yellow-400/80'
-      case 'associate': return 'border-purple-400/50 hover:border-purple-400/80'
-      case 'food': return 'border-blue-400/50 hover:border-blue-400/80'
-      default: return 'border-zinc-400/50 hover:border-zinc-400/80'
-    }
-  }
-
-  const getTierColor = (tier: string) => {
-    switch(tier) {
-      case 'title': return { bg: 'bg-yellow-500/20', border: 'border-yellow-400/30', text: 'text-yellow-300', corner: 'border-yellow-400/70', glow: 'via-yellow-500/5' }
-      case 'associate': return { bg: 'bg-purple-500/20', border: 'border-purple-400/30', text: 'text-purple-300', corner: 'border-purple-400/70', glow: 'via-purple-500/5' }
-      case 'food': return { bg: 'bg-blue-500/20', border: 'border-blue-400/30', text: 'text-blue-300', corner: 'border-blue-400/70', glow: 'via-blue-500/5' }
-      default: return { bg: 'bg-zinc-500/20', border: 'border-zinc-400/30', text: 'text-zinc-300', corner: 'border-zinc-400/70', glow: 'via-zinc-500/5' }
-    }
-  }
 
   return (
     <main className="h-screen text-white px-4">
@@ -49,7 +40,7 @@ export default function SponsorsPage() {
                 <div className="absolute top-0 right-0 w-3 h-3 md:w-5 md:h-5 border-t-2 border-r-2 border-cyan-400" />
                 <div className="absolute bottom-0 left-0 w-3 h-3 md:w-5 md:h-5 border-b-2 border-l-2 border-cyan-400" />
                 <div className="absolute bottom-0 right-0 w-3 h-3 md:w-5 md:h-5 border-b-2 border-r-2 border-cyan-400" />
-                
+
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 md:gap-3">
                     <Trophy className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
@@ -68,7 +59,7 @@ export default function SponsorsPage() {
             {/* Compact Sponsor Grid */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 md:gap-4 mb-6">
               {sponsors.map((sponsor, i) => {
-                const colors = getTierColor(sponsor.tier)
+                const colors = tierColors[sponsor.tier]
                 return (
                   <motion.div
                     key={i}
@@ -81,14 +72,13 @@ export default function SponsorsPage() {
                       backdrop-blur-xl
                       border-2 transition-all duration-300
                       clip-path-[polygon(6px_0,100%_0,100%_calc(100%-6px),calc(100%-6px)_100%,0_100%,0_6px)]
-                      ${sponsor.order}
-                      ${getTierBorder(sponsor.tier)}
+                      ${sponsor.cn}
                     `}
                   >
-                    <div className={`absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 ${colors.corner}`} />
-                    <div className={`absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 ${colors.corner}`} />
-                    <div className={`absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 ${colors.corner}`} />
-                    <div className={`absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 ${colors.corner}`} />
+                    <div className={`absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 ${sponsor.corner}`} />
+                    <div className={`absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 ${sponsor.corner}`} />
+                    <div className={`absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 ${sponsor.corner}`} />
+                    <div className={`absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 ${sponsor.corner}`} />
 
                     <div className={`absolute top-1 right-1 z-10 px-1.5 py-0.5 text-[7px] font-mono tracking-widest uppercase ${colors.bg} border ${colors.border} ${colors.text}`}>
                       {sponsor.tier}

@@ -10,6 +10,7 @@ export default function DecodeStackPrizes() {
       place: '1st',
       title: 'First Place',
       reward: '₹6,000 ',
+      sponsorPerks: 'goodies from GeeksforGeeks',
       text: 'Highest rank on scoreboard',
       iconColor: 'text-yellow-400',
       iconGlow: 'drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]'
@@ -19,7 +20,8 @@ export default function DecodeStackPrizes() {
       place: '2nd',
       title: 'Second Place',
       reward: '₹4,000',
-      text: 'Second highest ranked team',
+      sponsorPerks: 'goodies from GeeksforGeeks',
+      text: 'Second highest ranked participant',
       iconColor: 'text-gray-300',
       iconGlow: 'drop-shadow-[0_0_8px_rgba(209,213,219,0.6)]'
     },
@@ -28,7 +30,8 @@ export default function DecodeStackPrizes() {
       place: '3rd',
       title: 'Third Place',
       reward: '₹2,000',
-      text: 'Third highest ranked team',
+      sponsorPerks: 'goodies from GeeksforGeeks',
+      text: 'Third highest ranked participant',
       iconColor: 'text-orange-400',
       iconGlow: 'drop-shadow-[0_0_8px_rgba(251,146,60,0.6)]'
     },
@@ -119,14 +122,15 @@ export default function DecodeStackPrizes() {
                 <div className="text-right shrink-0">
                   <div className="text-base md:text-2xl font-mono font-black text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
                     {prize.reward}
-                  </div>
-                  <div className="hidden md:flex items-center justify-end gap-1 mt-0.5">
-                    <div className="w-1 h-1 bg-green-400 rounded-full animate-pulse" />
-                    <span className="text-[8px] font-mono text-green-400/70 tracking-widest">
-                      VERIFIED
-                    </span>
+                    <p className="text-[8px] md:text-[9px] font-mono text-cyan-400/50 mt-0.5 max-w-35 md:max-w-80">+ {prize.sponsorPerks}</p>
                   </div>
                 </div>
+              </div>
+              <div className="hidden md:flex absolute bottom-1 right-3 items-center gap-1">
+                <div className="w-1 h-1 bg-green-400 rounded-full animate-pulse" />
+                <span className="text-[8px] font-mono text-green-400/70 tracking-widest">
+                  VERIFIED
+                </span>
               </div>
             </motion.div>
           ))}
@@ -137,21 +141,15 @@ export default function DecodeStackPrizes() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="
-            mt-3 md:mt-4
-            relative
-            bg-black/30 backdrop-blur-md
-            border border-cyan-500/20
-            px-3 py-2 md:px-4 md:py-2.5
-            text-center
-          "
+          className="mt-3 md:mt-4 relative bg-black/30 backdrop-blur-md border border-cyan-500/20 px-3 py-2.5 md:px-4 md:py-3"
         >
           <div className="absolute inset-0 bg-linear-to-b from-transparent via-cyan-500/5 to-transparent pointer-events-none" />
-          <div className="relative flex items-center justify-center gap-2">
-            <Sparkles className="w-3 h-3 md:w-3.5 md:h-3.5 text-cyan-400" />
-            <p className="text-[11px] md:text-sm font-mono font-bold text-cyan-200">
-              All participants receive certificates
-            </p>
+          <div className="relative space-y-1.5 md:space-y-2 text-center">
+            <div className="flex items-center justify-center gap-2">
+              <Sparkles className="w-3 h-3 md:w-3.5 md:h-3.5 text-cyan-400" />
+              <p className="text-xs md:text-sm font-mono font-bold text-cyan-200">All participants receive certificates</p>
+            </div>
+            <p className="text-[9px] md:text-[10px] font-mono text-cyan-400/50">+ sponsor perks</p>
           </div>
         </motion.div>
 

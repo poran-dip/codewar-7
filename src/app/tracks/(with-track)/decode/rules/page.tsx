@@ -1,33 +1,33 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { Shield, Code, Search, BotOff, Video } from 'lucide-react'
+import { Shield, Code, Search, BotOff, Video, ShieldCheck } from 'lucide-react'
 
 export default function DecodeStackRules() {
   const rules = [
     {
       icon: Code,
       title: "Original Solutions Only",
-      text: "All solutions submitted must be written entirely by the team. No external help is allowed, including AI tools, search engines, books, references, or assistance from other individuals.",
-      shortText: "All solutions must be written by your team. No external help, AI tools, or references allowed."
+      text: "All solutions must be written entirely by the participant. No external problem-solving help is allowed, including assistance from other individuals or AI tools.",
+      shortText: "Write all solutions yourself. No external problem-solving help or AI tools."
     },
     {
       icon: Search,
       title: "Syntax Lookup Allowed",
-      text: "Participants may look up syntax-related queries or language documentation if needed, provided no problem-solving help is obtained.",
-      shortText: "Syntax and language documentation lookup is allowed. No problem-solving help."
+      text: "Participants may refer to official language documentation or syntax-related resources, provided no problem-solving guidance is obtained.",
+      shortText: "Syntax and official documentation lookup allowed. No problem-solving help."
     },
     {
       icon: BotOff,
       title: "AI Tools Strictly Prohibited",
-      text: "AI-assisted tools such as GitHub Copilot or any LLM-based autocomplete must be turned off in the IDE. Use of such tools will result in immediate disqualification.",
-      shortText: "AI tools like Copilot must be disabled. Usage leads to instant disqualification."
+      text: "AI-assisted tools such as GitHub Copilot or any LLM-based autocomplete must be disabled in the IDE. Use of such tools will result in immediate disqualification.",
+      shortText: "AI tools like Copilot must be disabled. Usage results in disqualification."
     },
     {
-      icon: Video,
-      title: "Mandatory Screen & Webcam Recording",
-      text: "Participants must record their full screen and webcam in the specified format for submission. Detailed setup instructions will be provided via a tutorial video link.",
-      shortText: "Full screen and webcam recording required. Tutorial video will guide setup."
+      icon: ShieldCheck,
+      title: "Platform Proctoring Applies",
+      text: "The event will be conducted on the GeeksforGeeks platform. All participants are subject to the platform’s built-in proctoring and anti-cheat mechanisms.",
+      shortText: "GeeksforGeeks platform proctoring and anti-cheat rules apply."
     },
   ]
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { Calendar, MapPin, Clock, Users, Zap, Code2, Lightbulb, Rocket } from 'lucide-react'
+import { Calendar, MapPin, Clock, Users, Zap, Code2, Lightbulb, Rocket, Trophy } from 'lucide-react'
 import Link from 'next/link'
 
 export default function CodestellationInfo() {
@@ -147,17 +147,6 @@ export default function CodestellationInfo() {
                     </div>
                   </div>
 
-                  {/* Location */}
-                  <div className="flex items-start gap-2 md:gap-3">
-                    <div className="p-1.5 md:p-2 bg-purple-500/10 border border-purple-400/20 rounded mt-0.5">
-                      <MapPin className="w-3 h-3 md:w-4 md:h-4 text-purple-400" />
-                    </div>
-                    <div>
-                      <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Location</p>
-                      <p className="text-xs md:text-sm font-mono text-purple-200">ETE Department, AEC</p>
-                    </div>
-                  </div>
-
                   {/* Duration */}
                   <div className="flex items-start gap-2 md:gap-3">
                     <div className="p-1.5 md:p-2 bg-purple-500/10 border border-purple-400/20 rounded mt-0.5">
@@ -169,14 +158,25 @@ export default function CodestellationInfo() {
                     </div>
                   </div>
 
-                  {/* Registration */}
+                  {/* Location */}
                   <div className="flex items-start gap-2 md:gap-3">
                     <div className="p-1.5 md:p-2 bg-purple-500/10 border border-purple-400/20 rounded mt-0.5">
-                      <Users className="w-3 h-3 md:w-4 md:h-4 text-purple-400" />
+                      <MapPin className="w-3 h-3 md:w-4 md:h-4 text-purple-400" />
                     </div>
                     <div>
-                      <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Problem Statements Release</p>
-                      <p className="text-xs md:text-sm font-mono text-purple-200">February 25, 2026 @ 10 AM</p>
+                      <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Location</p>
+                      <p className="text-xs md:text-sm font-mono text-purple-200">ETE Department, AEC</p>
+                    </div>
+                  </div>
+
+                  {/* Prizes */}
+                  <div className="flex items-start gap-2 md:gap-3">
+                    <div className="p-1.5 md:p-2 bg-purple-500/10 border border-purple-400/20 rounded mt-0.5">
+                      <Trophy className="w-3 h-3 md:w-4 md:h-4 text-purple-400" />
+                    </div>
+                    <div>
+                      <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Prizes</p>
+                      <p className="text-xs md:text-sm font-mono text-purple-200">₹18,000+ in cash & sponsor perks</p>
                     </div>
                   </div>
                 </div>

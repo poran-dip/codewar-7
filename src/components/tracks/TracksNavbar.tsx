@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'motion/react'
 import { usePathname, useRouter } from 'next/navigation'
-import { Home, Trophy, HelpCircle, ScrollText, ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { Home, Trophy, HelpCircle, ScrollText, ChevronLeft, ChevronRight, X, FileCode } from 'lucide-react'
 
 export default function TracksNavbar() {
   const pathname = usePathname()
@@ -16,12 +16,22 @@ export default function TracksNavbar() {
   const isCodestellation = track === 'codestellation'
   const accentColor = isCodestellation ? 'purple' : 'cyan'
 
-  const navItems = [
-    { label: 'INFO', href: `/tracks/${track}`, key: '[1]', icon: Home },
-    { label: 'RULES', href: `/tracks/${track}/rules`, key: '[2]', icon: ScrollText },
-    { label: 'PRIZES', href: `/tracks/${track}/prizes`, key: '[3]', icon: Trophy },
-    { label: 'FAQ', href: `/tracks/${track}/faq`, key: '[4]', icon: HelpCircle },
+  const codestellationNavItems = [
+    { label: 'INFO', href: `/tracks/codestellation`, key: '[1]', icon: Home },
+    { label: 'PS', href: `/tracks/codestellation/ps`, key: '[2]', icon: FileCode },
+    { label: 'RULES', href: `/tracks/codestellation/rules`, key: '[3]', icon: ScrollText },
+    { label: 'PRIZES', href: `/tracks/codestellation/prizes`, key: '[4]', icon: Trophy },
+    { label: 'FAQ', href: `/tracks/codestellation/faq`, key: '[5]', icon: HelpCircle },
   ]
+
+  const decodeNavItems = [
+    { label: 'INFO', href: `/tracks/decode`, key: '[1]', icon: Home },
+    { label: 'RULES', href: `/tracks/decode/rules`, key: '[2]', icon: ScrollText },
+    { label: 'PRIZES', href: `/tracks/decode/prizes`, key: '[3]', icon: Trophy },
+    { label: 'FAQ', href: `/tracks/decode/faq`, key: '[4]', icon: HelpCircle },
+  ]
+
+  const navItems = isCodestellation ? codestellationNavItems : decodeNavItems
 
   const isActive = (href: string) => {
     if (href === `/tracks/${track}`) return pathname === href

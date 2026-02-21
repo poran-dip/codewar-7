@@ -10,8 +10,8 @@ export default function DecodeStackFAQ() {
 
   const faqs = [
     {
-      question: "Are inter-college teams allowed?",
-      answer: "Yes. Teams may include participants from different colleges. Cross-institution teams are permitted.",
+      question: "Is it a solo event?",
+      answer: "Yes. Participants must register and participate individually. Team participation is not allowed.",
     },
     {
       question: "Can we use any programming language?",
@@ -19,7 +19,7 @@ export default function DecodeStackFAQ() {
     },
     {
       question: "How are rankings decided?",
-      answer: "Rankings follow GeeksforGeeks' scoring system. Teams solving more problems correctly in less time, with fewer incorrect submissions, will rank higher.",
+      answer: "Rankings follow GeeksforGeeks' scoring system. Participants solving more problems correctly in less time, with fewer incorrect submissions, will rank higher.",
     },
   ]
 
