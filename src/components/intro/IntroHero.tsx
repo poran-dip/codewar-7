@@ -40,7 +40,7 @@ export default function IntroHero() {
         transition={{ delay: 0.2, type: 'spring', stiffness: 100 }}
         className="mb-1.5 md:mb-2"
       >
-        <div className="bg-neutral-100/10 backdrop-blur-sm border border-cyan-500/30 px-3 py-2 md:px-5 md:py-2.5 relative">
+        <div className="bg-neutral-300/60 backdrop-blur-sm border border-cyan-500/30 px-3 py-2 md:px-5 md:py-2.5 relative">
           {/* Decorations */}
           <div className="absolute -top-1 -left-1 md:-top-1.5 md:-left-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-l-2 border-cyan-400/60" />
           <div className="absolute -top-1 -right-1 md:-top-1.5 md:-right-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-r-2 border-cyan-400/60" />
