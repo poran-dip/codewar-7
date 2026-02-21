@@ -142,7 +142,7 @@ export default function IntroHero() {
           target="_blank"
           className="hover:text-cyan-500/50 transition-colors"
         >
-          Built by Poran Dip
+          Website built by Poran Dip
         </a>
       </div>
 
