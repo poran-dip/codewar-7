@@ -50,7 +50,7 @@ export default function IntroHero() {
           <img src="/branding/pyrokinesis_logo_circular.png" alt="Pyrokinesis 2026" className="w-16 h-16 object-contain" />
         </div>
 
-        <div className="flex flex-col items-center gap-1">
+        <div className="flex flex-col items-center">
           <div className="grid grid-cols-2 gap-2 md:gap-3 w-fit">
             <p className="text-center text-[9px] md:text-xs font-mono text-cyan-400/60 tracking-widest uppercase">
               POWERED BY
@@ -59,15 +59,38 @@ export default function IntroHero() {
               CO-POWERED BY
             </p>
 
-            <div className="bg-neutral-300/60 backdrop-blur-sm border border-cyan-500/30 px-3 py-1 md:px-4 md:py-2 relative flex items-center justify-center">
-              <div className="absolute -top-1 -left-1 md:-top-1.5 md:-left-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-l-2 border-cyan-400/60" />
-              <div className="absolute -top-1 -right-1 md:-top-1.5 md:-right-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-r-2 border-cyan-400/60" />
-              <img src="/sponsors/GeeksforGeeks.png" alt="GeeksforGeeks" className="h-9 md:h-10 object-contain" />
+            <div className="relative">
+              {/* Glow backdrop - same as title */}
+              <div className="absolute inset-0 blur-xl bg-cyan-500/20" />
+
+              <div className="relative bg-white/90 backdrop-blur-md border border-cyan-500/50 px-3 py-1 md:px-4 md:py-2
+                clip-path-[polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)]
+                md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
+                flex items-center justify-center">
+
+                {/* corner brackets */}
+                <div className="absolute -top-1.5 -left-1.5 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-cyan-400" />
+                <div className="hidden md:block absolute -top-1.5 -right-1.5 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-cyan-400" />
+                <img src="/sponsors/Geeks_For_Geeks.png" alt="GeeksforGeeks" className="h-6 object-contain drop-shadow-[0_0_8px_rgba(6,182,212,0.6)]" />
+                
+              </div>
             </div>
-            <div className="bg-neutral-700/60 backdrop-blur-sm border border-cyan-500/30 px-3 py-1 md:px-4 md:py-2 relative flex items-center justify-center">
-              <div className="absolute -top-1 -left-1 md:-top-1.5 md:-left-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-l-2 border-cyan-400/60" />
-              <div className="absolute -top-1 -right-1 md:-top-1.5 md:-right-1.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-r-2 border-cyan-400/60" />
-              <img src="/sponsors/XT_Academy.png" alt="XT Academy" className="h-9 md:h-10 object-contain" />
+            <div className="relative">
+              {/* Glow backdrop - same as title */}
+              <div className="absolute inset-0 blur-xl bg-cyan-500/20" />
+
+              <div className="relative bg-white/90 backdrop-blur-md border border-cyan-500/50 px-3 py-1 md:px-4 md:py-2
+                clip-path-[polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)]
+                md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
+                flex items-center justify-center">
+
+                {/* corner brackets */}
+                <div className="hidden md:block absolute -top-1.5 -left-1.5 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-cyan-400" />
+                <div className="absolute -top-1.5 -right-1.5 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-cyan-400" />
+
+                <img src="/sponsors/XT_Academy.png" alt="XT Academy" className="h-6 object-contain drop-shadow-[0_0_8px_rgba(6,182,212,0.6)]" />
+                
+              </div>
             </div>
           </div>
         </div>
@@ -135,24 +158,20 @@ export default function IntroHero() {
         TRACK_SELECT_v7.0
       </div>
 
-      {/* Credits */}
-      <div className="absolute bottom-0 md:bottom-10 right-4 text-[10px] font-mono text-cyan-500/20 tracking-wide">
+      {/* Credits + CC Attribution */}
+      <div className="fixed bottom-0 right-4 flex flex-col items-end gap-1">
         <a
           href="https://porandip.vercel.app"
           target="_blank"
-          className="hover:text-cyan-500/50 transition-colors"
+          className="text-[9px] md:text-[10px] font-mono text-cyan-500/20 tracking-wide hover:text-cyan-500/50 transition-colors"
         >
           Website built by Poran Dip
         </a>
-      </div>
-
-      {/* CC Attribution */}
-      <div className="hidden md:block absolute bottom-6 right-4 text-[10px] font-mono text-cyan-500/20 tracking-wide">
         <a
           href="https://poly.pizza/m/8AJVYPEBVqt"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-cyan-500/50 transition-colors"
+          className="hidden md:block text-[10px] font-mono text-cyan-500/20 tracking-wide hover:text-cyan-500/50 transition-colors"
         >
           "Simple Pillar" by Troctzul [CC-BY]
         </a>

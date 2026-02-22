@@ -20,7 +20,7 @@ export default function CodestellationPrizes() {
       place: '2nd',
       title: 'Second Place',
       reward: '₹5,000',
-      sponsorPerks: 'goodies from GeeksforGeeks + free access to 4-Month DSA Program by Coding Pandas',
+      sponsorPerks: 'goodies from GeeksforGeeks + 75% off 4-Month DSA Program by Coding Pandas',
       text: 'Runner-up team',
       iconColor: 'text-gray-300',
       iconGlow: 'drop-shadow-[0_0_8px_rgba(209,213,219,0.6)]'
@@ -30,7 +30,7 @@ export default function CodestellationPrizes() {
       place: '3rd',
       title: 'Third Place',
       reward: '₹3,000',
-      sponsorPerks: 'goodies from GeeksforGeeks + free access to 4-Month DSA Program by Coding Pandas',
+      sponsorPerks: 'goodies from GeeksforGeeks + 50% off 4-Month DSA Program by Coding Pandas',
       text: 'Third place team',
       iconColor: 'text-orange-400',
       iconGlow: 'drop-shadow-[0_0_8px_rgba(251,146,60,0.6)]'

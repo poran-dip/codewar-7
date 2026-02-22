@@ -37,9 +37,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
         if (dir === 'down') nextRoute = '/tracks/codestellation'
       } else if (currentMeta.layer === 'tracks') {
         if (currentMeta.track === 'codestellation') {
-          nextRoute = dir === 'down' ? `/tracks/decode${section}` : '/'
+          nextRoute = dir === 'down' ? `/tracks/decode` : '/'
         } else if (currentMeta.track === 'decode') {
-          if (dir === 'up') nextRoute = `/tracks/codestellation${section}`
+          if (dir === 'up') nextRoute = `/tracks/codestellation`
         }
       }
     }
