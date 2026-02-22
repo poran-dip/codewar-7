@@ -165,7 +165,7 @@ export default function IntroHero() {
           target="_blank"
           className="text-[9px] md:text-[10px] font-mono text-cyan-500/20 tracking-wide hover:text-cyan-500/50 transition-colors"
         >
-          Website built by Poran Dip
+          Designed & developed by Poran Dip
         </a>
         <a
           href="https://poly.pizza/m/8AJVYPEBVqt"
