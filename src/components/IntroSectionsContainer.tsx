@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useEffectEvent } from 'react'
 import { lock, unlock } from '@/engine/transitionLock'
 import { IntroSection } from '@/store/useNavMeta'
 
@@ -15,8 +15,13 @@ const INTRO_ORDER: Record<IntroSection, number> = {
 export default function IntroSectionsContainer({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const [sceneKey, setSceneKey] = useState<IntroSection>('')
+  const [direction, setDirection] = useState<1 | -1>(1)
   const prevSceneKeyRef = useRef(sceneKey)
-  const directionRef = useRef<1 | -1>(1)
+
+  const handleSceneChange = useEffectEvent((newKey: IntroSection, newDirection: 1 | -1) => {
+    setDirection(newDirection)
+    setSceneKey(newKey)
+  })
 
   useEffect(() => {
     const newKey: IntroSection = pathname.includes('contact')
@@ -28,16 +33,15 @@ export default function IntroSectionsContainer({ children }: { children: React.R
     if (prevSceneKeyRef.current !== newKey) {
       const prevOrder = INTRO_ORDER[prevSceneKeyRef.current]
       const nextOrder = INTRO_ORDER[newKey]
-      directionRef.current = nextOrder >= prevOrder ? 1 : -1
+      const newDirection = nextOrder >= prevOrder ? 1 : -1
 
       lock()
       prevSceneKeyRef.current = newKey
-      setSceneKey(newKey)
+      handleSceneChange(newKey, newDirection)
     }
   }, [pathname])
 
-  const yExit = directionRef.current === 1 ? -16 : 16
-  const yEnter = directionRef.current === 1 ? 22 : -22
+  const yEnter = direction === 1 ? 22 : -22
 
   return (
     <motion.div

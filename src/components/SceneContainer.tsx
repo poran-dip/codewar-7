@@ -2,27 +2,32 @@
 
 import { motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useEffectEvent } from 'react'
 import { lock, unlock } from '@/engine/transitionLock'
 import { Layer } from '@/store/useNavMeta'
 
 export default function SceneContainer({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const [sceneKey, setSceneKey] = useState<Layer>('intro')
+  const [direction, setDirection] = useState<'forward' | 'back'>('forward')
   const prevSceneKeyRef = useRef(sceneKey)
-  const directionRef = useRef<'forward' | 'back'>('forward')
+
+  const handleSceneChange = useEffectEvent((newKey: Layer, newDirection: 'forward' | 'back') => {
+    setDirection(newDirection)
+    setSceneKey(newKey)
+  })
 
   useEffect(() => {
     const newKey: Layer = pathname.startsWith('/tracks') ? 'tracks' : 'intro'
     if (prevSceneKeyRef.current !== newKey) {
-      directionRef.current = newKey === 'tracks' ? 'forward' : 'back'
+      const newDirection = newKey === 'tracks' ? 'forward' : 'back'
       lock()
       prevSceneKeyRef.current = newKey
-      setSceneKey(newKey)
+      handleSceneChange(newKey, newDirection)
     }
   }, [pathname])
 
-  const enterScale = directionRef.current === 'forward' ? 0.92 : 1.08
+  const enterScale = direction === 'forward' ? 0.92 : 1.08
 
   return (
     <motion.div

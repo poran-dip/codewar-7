@@ -73,7 +73,7 @@ const IntroNavbar = () => {
           <div className="absolute inset-0 bg-linear-to-b from-transparent via-cyan-500/5 to-transparent pointer-events-none" />
 
           <ul className="flex items-center gap-0.5 md:gap-1">
-            {navItems.map((item, index) => (
+            {navItems.map((item) => (
               <li key={item.href}>
                 <Link href={item.href}>
                   <motion.div

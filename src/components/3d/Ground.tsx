@@ -18,11 +18,11 @@ export default function Ground({ deviceTier }: { deviceTier: DeviceTier }) {
   }, [])
 
   useFrame(({ clock }) => {
-    if (deviceTier === 'mobile' || gridMatsRef.current.length === 0) return
+    if (deviceTier === 'mobile' || !gridMatsRef.current || gridMatsRef.current.length === 0) return
     const opacity = 0.4 + Math.sin(clock.getElapsedTime() * 0.5) * 0.1
-    for (const mat of gridMatsRef.current) {
+    gridMatsRef.current.forEach((mat) => {
       mat.opacity = opacity
-    }
+    })
   })
 
   const gridSize = deviceTier === 'mobile' ? 20 : deviceTier === 'tablet' ? 25 : 30

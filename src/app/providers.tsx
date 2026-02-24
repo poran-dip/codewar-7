@@ -30,7 +30,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
     }
 
     let nextRoute: string | null = null
-    const section = currentMeta.section ? `/${currentMeta.section}` : ''
 
     if (dir === 'up' || dir === 'down') {
       if (currentMeta.layer === 'intro') {

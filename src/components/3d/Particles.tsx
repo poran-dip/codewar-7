@@ -1,7 +1,7 @@
 'use client'
 
 import { useFrame } from '@react-three/fiber'
-import { useMemo, useRef } from 'react'
+import { useState, useRef } from 'react'
 import * as THREE from 'three'
 
 type DeviceTier = 'mobile' | 'tablet' | 'desktop'
@@ -12,7 +12,7 @@ export default function Particles({ deviceTier }: { deviceTier: DeviceTier }) {
 
   const particleCount = deviceTier === 'mobile' ? 100 : deviceTier === 'tablet' ? 150 : 250
 
-  const { positions, colors, sizes } = useMemo(() => {
+  const [{ positions, colors, sizes }] = useState(() => {
     const positions = new Float32Array(particleCount * 3)
     const colors = new Float32Array(particleCount * 3)
     const sizes = new Float32Array(particleCount)
@@ -37,7 +37,7 @@ export default function Particles({ deviceTier }: { deviceTier: DeviceTier }) {
     }
 
     return { positions, colors, sizes }
-  }, [particleCount])
+  })
 
   useFrame(({ clock }) => {
     if (ref.current) {

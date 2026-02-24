@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useEffectEvent } from 'react'
 import { lock, unlock } from '@/engine/transitionLock'
 import { TrackSection } from '@/store/useNavMeta'
 
@@ -17,8 +17,13 @@ const SECTION_ORDER: Record<TrackSection, number> = {
 export default function TracksSectionsContainer({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const [sceneKey, setSceneKey] = useState<TrackSection>('')
+  const [direction, setDirection] = useState<1 | -1>(1)
   const prevSceneKeyRef = useRef(sceneKey)
-  const directionRef = useRef<1 | -1>(1)
+
+  const handleSceneChange = useEffectEvent((newKey: TrackSection, newDirection: 1 | -1) => {
+    setDirection(newDirection)
+    setSceneKey(newKey)
+  })
 
   useEffect(() => {
     const newKey: TrackSection = pathname.includes('rules')
@@ -34,15 +39,15 @@ export default function TracksSectionsContainer({ children }: { children: React.
     if (prevSceneKeyRef.current !== newKey) {
       const prevOrder = SECTION_ORDER[prevSceneKeyRef.current]
       const nextOrder = SECTION_ORDER[newKey]
-      directionRef.current = nextOrder >= prevOrder ? 1 : -1
+      const newDirection = nextOrder >= prevOrder ? 1 : -1
 
       lock()
       prevSceneKeyRef.current = newKey
-      setSceneKey(newKey)
+      handleSceneChange(newKey, newDirection)
     }
   }, [pathname])
 
-  const xIn = `${directionRef.current * 3}%`
+  const xIn = `${direction * 3}%`
 
   return (
     <motion.div

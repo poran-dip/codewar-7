@@ -173,7 +173,7 @@ export default function IntroHero() {
           rel="noopener noreferrer"
           className="hidden md:block text-[10px] font-mono text-cyan-500/20 tracking-wide hover:text-cyan-500/50 transition-colors"
         >
-          "Simple Pillar" by Troctzul [CC-BY]
+          &quot;Simple Pillar&quot; by Troctzul [CC-BY]
         </a>
       </div>
 
