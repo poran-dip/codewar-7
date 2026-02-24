@@ -10,7 +10,7 @@ export default function DecodeStackFAQ() {
 
   const faqs = [
     {
-      question: "How do I register for the contest?",
+      question: "How do I register for Decode Stack?",
       answer: "Click the Register button and fill out the Google Form. After submission, you will be redirected to the GeeksforGeeks platform to finalize your registration.",
     },
     {

@@ -1,35 +1,41 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { Shield, Github, Library, Gavel } from 'lucide-react'
+import { Shield, Github, Users, MapPin, FileText } from 'lucide-react'
 
 export default function CodestellationRules() {
   const rules = [
     {
+      icon: Users,
+      title: "Team Composition",
+      text: "Each team must consist of 1 to 4 members with one designated team leader. A participant may be part of only one team throughout the hackathon.",
+      shortText: "1–4 members per team. One team per participant."
+    },
+    {
       icon: Github,
       title: "Build During the Hackathon",
-      text: "All project work must be completed during the official hackathon duration. The GitHub repository submitted must have been created after the hackathon start time.",
-      shortText: "All work must be done during the hackathon. GitHub repo must be created after start time."
+      text: "All development work must be carried out during the official 24-hour hackathon period. Projects must not be pre-built or reused from previous events.",
+      shortText: "All work must be done during the hackathon."
     },
     {
       icon: Shield,
-      title: 'Original Team Work',
-      text: "The final submission must primarily be the work of the participating team. Projects must not be copied or reused from previously built solutions.",
-      shortText: "Submission must be your team's original work. No copying or reusing previous projects."
+      title: "Original Team Work",
+      text: "The final submission must primarily be the original work of the participating team. Copying, reusing, or repurposing existing projects is strictly prohibited.",
+      shortText: "Original work only. No reused projects."
     },
     {
-      icon: Library,
-      title: "Use of Libraries & Resources",
-      text: "Teams are allowed to use external libraries, frameworks, APIs, and learning resources.",
-      shortText: "External libraries, frameworks, APIs, and resources are allowed."
+      icon: MapPin,
+      title: "Mandatory Offline Presence",
+      text: "All registered teams must be physically present at the venue for the final offline presentation and evaluation.",
+      shortText: "Offline presence required for final evaluation."
     },
     {
-      icon: Gavel,
-      title: "Fair Play & Conduct",
-      text: "Participants are expected to maintain fair play, follow ethical coding practices, and respect other teams. Any form of plagiarism or misconduct may lead to disqualification.",
-      shortText: "Maintain fair play and ethical practices. Plagiarism leads to disqualification."
-    },
-  ]
+      icon: FileText,
+      title: "Submission Requirements",
+      text: "Teams must submit the required project materials, including a code repository, presentation slides (PDF), and a working demo or MVP link.",
+      shortText: "Code, PDF slides, and working demo required."
+    }
+  ];
 
   return (
     <section className="h-screen flex items-center justify-center">
@@ -37,7 +43,7 @@ export default function CodestellationRules() {
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.2 }}
-        className="w-full max-w-4xl"
+        className="w-full max-w-4xl md:mt-16"
       >
         {/* Compact Header */}
         <div className="relative mb-3 md:mb-6">
@@ -76,7 +82,7 @@ export default function CodestellationRules() {
                 bg-black/40 backdrop-blur-md
                 border-2 border-purple-500/30
                 clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)]
-                p-2 md:p-4
+                p-2 md:p-3
                 group
                 hover:border-purple-400/50
                 hover:shadow-[0_0_20px_rgba(168,85,247,0.2)]
