@@ -5,6 +5,8 @@ import { motion } from "motion/react"
 import EscapeButton from "@/components/tracks/EscapeButton"
 import { useNavMeta } from "@/store/useNavMeta"
 import TracksContainer from "@/components/TracksContainer"
+import { PSModalProvider } from "@/store/PSModalContext"
+import PSModal from "@/components/tracks/PSModal"
 
 export default function TracksLayout({ 
   children,
@@ -17,7 +19,7 @@ export default function TracksLayout({
   const hasTrack = isCodestellation || isDecode
 
   return (
-    <>
+    <PSModalProvider>
       <motion.div
         className="fixed inset-0 -z-10 pointer-events-none"
         animate={{
@@ -41,6 +43,8 @@ export default function TracksLayout({
           {children}
         </TracksContainer>
       </main>
-    </>
+
+      <PSModal />
+    </PSModalProvider>
   )
 }

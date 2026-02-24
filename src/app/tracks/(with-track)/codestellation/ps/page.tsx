@@ -3,8 +3,19 @@
 import { motion } from 'motion/react'
 import { FileCode, Lock } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { ProblemStatement } from '@/lib/types'
+import { ProblemStatement } from '@/data/ps'
 import PSItem from '@/components/tracks/PSItem'
+import { AlertTriangle, BookOpen, Briefcase, Building2, MessageSquare, Stethoscope, Store } from 'lucide-react'
+
+const ICON_MAP: Record<string, React.ComponentType<any>> = {
+  'Healthcare': Stethoscope,
+  'EdTech': BookOpen,
+  'FinTech': Store,
+  'CivicTech': Building2,
+  'Opportunities': Briefcase,
+  'Crisis': AlertTriangle,
+  'Accessibility': MessageSquare,
+}
 
 function useCountdown(target: Date) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
@@ -36,7 +47,6 @@ export default function CodestellationPS() {
   const [releaseAt, setReleaseAt] = useState(new Date('2026-02-25T10:00:00+05:30'))
   const [loading, setLoading] = useState<boolean>(true)
   const [problemStatements, setProblemStatements] = useState<ProblemStatement[]>([])
-  const [openId, setOpenId] = useState<string | null>(null)
 
   useEffect(() => {
     fetch('/api/ps')
@@ -44,7 +54,13 @@ export default function CodestellationPS() {
       .then(data => {
         setReleased(data.released)
         if (data.releaseAt) setReleaseAt(new Date(data.releaseAt))
-        if (data.problemStatements) setProblemStatements(data.problemStatements)
+        if (data.problemStatements) {
+          const enrichedPS = data.problemStatements.map((ps: any) => ({
+            ...ps,
+            icon: ICON_MAP[ps.category] || Stethoscope,
+          }))
+          setProblemStatements(enrichedPS)
+        }
       })
       .finally(() => setLoading(false))
   }, [])
@@ -59,7 +75,11 @@ export default function CodestellationPS() {
           .then(data => {
             if (data.released) {
               setReleased(true)
-              setProblemStatements(data.problemStatements)
+              const enrichedPS = data.problemStatements.map((ps: any) => ({
+                ...ps,
+                icon: ICON_MAP[ps.category] || Stethoscope,
+              }))
+              setProblemStatements(enrichedPS)
             }
           })
       }, 2000)
@@ -73,7 +93,7 @@ export default function CodestellationPS() {
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.2 }}
-        className="w-full max-w-5xl"
+        className="w-full max-w-5xl md:mt-2"
       >
         {/* Header */}
         <div className="relative mb-3 md:mb-4">
@@ -161,7 +181,7 @@ export default function CodestellationPS() {
           <p className="text-center text-purple-300/50 font-mono text-sm tracking-widest animate-pulse">LOADING...</p>
         )}
 
-        {/* PS Items - no box, just like FAQ */}
+        {/* PS Items */}
         {released && !loading && (
           <div className="space-y-2 md:space-y-3">
             {problemStatements.map((ps, i) => (
@@ -171,11 +191,7 @@ export default function CodestellationPS() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + i * 0.05 }}
               >
-                <PSItem
-                  ps={ps}
-                  isOpen={openId === ps.id}
-                  onToggle={() => setOpenId(openId === ps.id ? null : ps.id)}
-                />
+                <PSItem ps={ps} />
               </motion.div>
             ))}
           </div>

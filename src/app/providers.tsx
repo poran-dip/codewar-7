@@ -22,6 +22,12 @@ export function Providers({ children }: { children: React.ReactNode }) {
   }, [])
 
   const handleScroll = useCallback((dir: SceneDirection) => {
+    const isModalOpen = document.querySelector('[data-ps-modal-open="true"]')
+      if (isModalOpen) {
+        unlock()
+        return
+      }
+
     const currentMeta = useNavMeta.getState().currentMeta
 
     if (!currentMeta) {
