@@ -14,7 +14,7 @@ export default function CodestellationRules() {
     {
       icon: Github,
       title: "Build During the Hackathon",
-      text: "All development work must be carried out during the official 24-hour hackathon period. Projects must not be pre-built or reused from previous events.",
+      text: "All development work must be carried out during the official 24-hour hackathon period. Projects must not be pre-built or reused from previous events. Code repository must be created after commencement of hackathon.",
       shortText: "All work must be done during the hackathon."
     },
     {
