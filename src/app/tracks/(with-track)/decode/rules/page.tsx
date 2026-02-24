@@ -1,34 +1,40 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { Shield, Code, Search, BotOff, Video, ShieldCheck } from 'lucide-react'
+import { Shield, Code, BotOff, ShieldCheck, MonitorOff, User } from 'lucide-react'
 
 export default function DecodeStackRules() {
   const rules = [
     {
       icon: Code,
       title: "Original Solutions Only",
-      text: "All solutions must be written entirely by the participant. No external problem-solving help is allowed, including assistance from other individuals or AI tools.",
-      shortText: "Write all solutions yourself. No external problem-solving help or AI tools."
-    },
-    {
-      icon: Search,
-      title: "Syntax Lookup Allowed",
-      text: "Participants may refer to official language documentation or syntax-related resources, provided no problem-solving guidance is obtained.",
-      shortText: "Syntax and official documentation lookup allowed. No problem-solving help."
+      text: "All solutions must be written entirely by the participant during the contest. External assistance from individuals, forums, or communities is strictly prohibited.",
+      shortText: "Write all solutions yourself. No external help."
     },
     {
       icon: BotOff,
-      title: "AI Tools Strictly Prohibited",
-      text: "AI-assisted tools such as GitHub Copilot or any LLM-based autocomplete must be disabled in the IDE. Use of such tools will result in immediate disqualification.",
-      shortText: "AI tools like Copilot must be disabled. Usage results in disqualification."
+      title: "No AI Assistance",
+      text: "Use of any AI-powered tools or automated code generation, in any form, is strictly prohibited during the contest.",
+      shortText: "AI assistance is strictly prohibited."
+    },
+    {
+      icon: User,
+      title: "Solo Participation Only",
+      text: "This is a solo event. Participants must register and compete individually. Team participation is not allowed.",
+      shortText: "Solo event only. No teams."
     },
     {
       icon: ShieldCheck,
-      title: "Platform Proctoring Applies",
-      text: "The event will be conducted on the GeeksforGeeks platform. All participants are subject to the platform’s built-in proctoring and anti-cheat mechanisms.",
-      shortText: "GeeksforGeeks platform proctoring and anti-cheat rules apply."
+      title: "Platform & Proctoring Rules",
+      text: "The contest will be conducted exclusively on the GeeksforGeeks platform. All participants are subject to the platform’s built-in proctoring and anti-cheat mechanisms.",
+      shortText: "GeeksforGeeks platform rules and proctoring apply."
     },
+    {
+      icon: MonitorOff,
+      title: "No External Tabs or Devices",
+      text: "Opening additional browser tabs, applications, calculators, mobile phones, or other electronic devices during the contest is not permitted.",
+      shortText: "No other tabs, apps, or devices allowed."
+    }
   ]
 
   return (
@@ -37,7 +43,7 @@ export default function DecodeStackRules() {
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.2 }}
-        className="w-full max-w-4xl md:mt-6"
+        className="w-full max-w-4xl md:mt-16"
       >
         {/* Compact Header */}
         <div className="relative mb-3 md:mb-6">
@@ -76,7 +82,7 @@ export default function DecodeStackRules() {
                 bg-black/40 backdrop-blur-md
                 border-2 border-cyan-500/30
                 clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)]
-                p-2 md:p-4
+                p-2 md:p-3
                 group
                 hover:border-cyan-400/50
                 hover:shadow-[0_0_20px_rgba(6,182,212,0.2)]

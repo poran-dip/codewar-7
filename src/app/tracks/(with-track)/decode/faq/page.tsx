@@ -10,16 +10,24 @@ export default function DecodeStackFAQ() {
 
   const faqs = [
     {
-      question: "Is it a solo event?",
-      answer: "Yes. Participants must register and participate individually. Team participation is not allowed.",
+      question: "How do I register for the contest?",
+      answer: "Click the Register button and fill out the Google Form. After submission, you will be redirected to the GeeksforGeeks platform to finalize your registration.",
     },
     {
-      question: "Can we use any programming language?",
-      answer: "Yes. Participants can use any programming language supported by GeeksforGeeks platform for solving the problems.",
+      question: "Which programming languages are allowed?",
+      answer: "Participants may use any programming language supported by the GeeksforGeeks platform.",
+    },
+    {
+      question: "Can I switch between problems or submit multiple times?",
+      answer: "Yes. You may attempt problems in any order and submit multiple times. Penalty time will be applied for incorrect submissions as per the platform's scoring system.",
     },
     {
       question: "How are rankings decided?",
-      answer: "Rankings follow GeeksforGeeks' scoring system. Participants solving more problems correctly in less time, with fewer incorrect submissions, will rank higher.",
+      answer: "Rankings are based on the number of problems solved, penalty time for incorrect submissions, and faster correct submission time in case of ties.",
+    },
+    {
+      question: "When will prizes be awarded?",
+      answer: "Prizes will be awarded after the contest concludes and all submissions have been reviewed and verified through the platform’s anti-cheat and validation processes.",
     },
   ]
 
@@ -29,7 +37,7 @@ export default function DecodeStackFAQ() {
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.2 }}
-        className="w-full max-w-4xl"
+        className="w-full max-w-4xl md:mt-12"
       >
         {/* Compact Header */}
         <div className="relative mb-3 md:mb-6">
