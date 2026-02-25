@@ -184,56 +184,51 @@ export default function CodestellationInfo() {
             </div>
 
             {/* CTA Button */}
-            <Link
-              href="https://forms.gle/b9oREftjxRTZJBTJ8"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative w-full block mx-auto"
-            >
+            <div className="relative w-full block mx-auto cursor-not-allowed">
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 className="
                   relative overflow-hidden
-                  border-2 border-purple-400
+                  border-2 border-gray-400/50
                   clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
                   py-2 md:py-2.5
                   font-mono font-bold text-sm md:text-lg
-                  text-white
-                  shadow-[0_0_25px_rgba(168,85,247,0.6),inset_0_0_25px_rgba(168,85,247,0.15)]
-                  hover:shadow-[0_0_50px_rgba(168,85,247,0.9),inset_0_0_40px_rgba(168,85,247,0.3)]
+                  text-gray-500/50
+                  shadow-[0_0_8px_rgba(168,85,247,0.15),inset_0_0_8px_rgba(168,85,247,0.05)]
                   transition-all duration-300
                   group
+                  pointer-events-none
                 "
               >
                 {/* Animated background fill */}
-                <div className="absolute inset-0 bg-linear-to-r from-purple-900 via-purple-700 to-purple-900 opacity-90" />
+                <div className="absolute inset-0 bg-linear-to-r from-gray-900 via-gray-700 to-gray-900 opacity-30" />
                 
                 {/* Shimmer sweep */}
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-500 bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-12" />
 
                 {/* Scanline */}
-                <div className="absolute inset-0 bg-linear-to-b from-transparent via-white/5 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-b from-transparent via-gray-500/30 to-transparent pointer-events-none" />
 
                 {/* Corner decorations */}
-                <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-white/70" />
-                <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-white/70" />
-                <div className="absolute bottom-0 left-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-l-2 border-white/70" />
-                <div className="absolute bottom-0 right-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-r-2 border-white/70" />
+                <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-white/30" />
+                <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-white/30" />
+                <div className="absolute bottom-0 left-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-l-2 border-white/30" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-r-2 border-white/30" />
 
                 <span className="relative flex items-center justify-center gap-2 md:gap-3 uppercase">
                   <Rocket className="w-4 h-4 md:w-5 md:h-5" />
-                  <span className="hidden sm:inline">Register for Codestellation</span>
-                  <span className="sm:hidden">Register Now</span>
-                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white animate-pulse rounded-full" />
+                  <span className="hidden sm:inline line-through">Register for Codestellation</span>
+                  <span className="sm:hidden line-through">Register Now</span>
+                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white/40 rounded-full" />
                 </span>
               </motion.div>
-            </Link>
+            </div>
 
             {/* Info note */}
             <div className="hidden md:block text-center">
               <div className="inline-block bg-black/60 backdrop-blur-sm border border-purple-500/20 px-3 py-1.5 md:px-4 md:py-2 font-mono text-[10px] md:text-xs text-purple-400/50 rounded">
-                <span className="text-purple-400/70">NOTE:</span> Limited slots available
+                <span className="text-purple-400/70">NOTE:</span> Registrations have closed!
               </div>
             </div>
           </motion.div>
