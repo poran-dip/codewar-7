@@ -97,7 +97,7 @@ export default function PSModal() {
 
                 {/* Looking For */}
                 <div>
-                  <h3 className="text-xs md:text-sm font-mono font-bold text-purple-300 mb-2 tracking-widest">WHAT WE'RE LOOKING FOR</h3>
+                  <h3 className="text-xs md:text-sm font-mono font-bold text-purple-300 mb-2 tracking-widest">WHAT WE&apos;RE LOOKING FOR</h3>
                   <p className="font-mono text-xs md:text-sm leading-relaxed text-purple-100/70">
                     {selectedPS.lookingFor}
                   </p>

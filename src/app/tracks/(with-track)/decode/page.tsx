@@ -2,7 +2,6 @@
 
 import { motion } from 'motion/react'
 import { Calendar, Globe, Clock, Terminal, Trophy, Timer, BrainCircuit, Zap } from 'lucide-react'
-import Link from 'next/link'
 
 export default function DecodeStackInfo() {
   const features = [

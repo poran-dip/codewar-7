@@ -1,13 +1,13 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { FileCode, Lock } from 'lucide-react'
+import { FileCode, Lock, LucideIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { ProblemStatement } from '@/data/ps'
 import PSItem from '@/components/tracks/PSItem'
 import { AlertTriangle, BookOpen, Briefcase, Building2, MessageSquare, Stethoscope, Store } from 'lucide-react'
 
-const ICON_MAP: Record<string, React.ComponentType<any>> = {
+const ICON_MAP: Record<string, LucideIcon> = {
   'Healthcare': Stethoscope,
   'EdTech': BookOpen,
   'FinTech': Store,
@@ -55,7 +55,7 @@ export default function CodestellationPS() {
         setReleased(data.released)
         if (data.releaseAt) setReleaseAt(new Date(data.releaseAt))
         if (data.problemStatements) {
-          const enrichedPS = data.problemStatements.map((ps: any) => ({
+          const enrichedPS = data.problemStatements.map((ps: ProblemStatement) => ({
             ...ps,
             icon: ICON_MAP[ps.category] || Stethoscope,
           }))
@@ -75,7 +75,7 @@ export default function CodestellationPS() {
           .then(data => {
             if (data.released) {
               setReleased(true)
-              const enrichedPS = data.problemStatements.map((ps: any) => ({
+              const enrichedPS = data.problemStatements.map((ps: ProblemStatement) => ({
                 ...ps,
                 icon: ICON_MAP[ps.category] || Stethoscope,
               }))

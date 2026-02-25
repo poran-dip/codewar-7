@@ -1,5 +1,5 @@
 import { LucideIcon } from "lucide-react";
-import { Activity, AlertTriangle, BookOpen, Briefcase, Building2, CreditCard, Globe, Leaf, MessageSquare, Stethoscope, Store, Video } from "lucide-react";
+import { AlertTriangle, BookOpen, Briefcase, Building2, MessageSquare, Stethoscope, Store } from "lucide-react";
 
 export interface ProblemStatement {
   id: string;

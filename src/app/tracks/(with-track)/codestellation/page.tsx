@@ -2,7 +2,6 @@
 
 import { motion } from 'motion/react'
 import { Calendar, MapPin, Clock, Users, Zap, Code2, Lightbulb, Rocket, Trophy } from 'lucide-react'
-import Link from 'next/link'
 
 export default function CodestellationInfo() {
   const features = [
