@@ -8,9 +8,10 @@ const CATEGORY_COLORS: Record<string, string> = {
   'Healthcare': 'text-rose-300 bg-rose-500/10 border-rose-400/20',
   'EdTech': 'text-blue-300 bg-blue-500/10 border-blue-400/20',
   'FinTech': 'text-emerald-300 bg-emerald-500/10 border-emerald-400/20',
-  'Fitness': 'text-orange-300 bg-orange-500/10 border-orange-400/20',
-  'Sustainability': 'text-green-300 bg-green-500/10 border-green-400/20',
-  'E-Gov': 'text-yellow-300 bg-yellow-500/10 border-yellow-400/20',
+  'CivicTech': 'text-yellow-300 bg-yellow-500/10 border-yellow-400/20',
+  'Opportunities': 'text-indigo-300 bg-indigo-500/10 border-indigo-400/20',
+  'Crisis': 'text-red-300 bg-red-500/10 border-red-400/20',
+  'Accessibility': 'text-purple-300 bg-purple-500/10 border-purple-400/20',
 }
 
 export default function PSModal() {
