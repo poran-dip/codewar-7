@@ -10,7 +10,7 @@ interface PSResponse {
   problemStatements?: ProblemStatement[]
 }
 
-const PS_RELEASE = new Date('2026-02-25T09:50:00+05:30')
+const PS_RELEASE = new Date('2026-02-25T10:00:00+05:30')
 
 export async function GET(): Promise<NextResponse<PSResponse>> {
   const now = new Date()
