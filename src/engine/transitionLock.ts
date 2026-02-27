@@ -1,11 +1,11 @@
-let locked = false
+let locked = false;
 
-export const isLocked = () => locked
+export const isLocked = () => locked;
 
 export const lock = () => {
-  locked = true
-}
+  locked = true;
+};
 
 export const unlock = () => {
-  locked = false
-}
+  locked = false;
+};

@@ -1,27 +1,97 @@
-'use client'
+"use client";
 
-import { motion } from 'motion/react'
-import { Trophy, Mail, Phone, Sparkles, FileText } from 'lucide-react'
-import Link from 'next/link'
+import { motion } from "motion/react";
+import { Trophy, Mail, Phone, Sparkles, FileText } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function SponsorsPage() {
-  const tierColors: Record<string, { bg: string; border: string; text: string; glow: string }> = {
-    title:     { bg: 'bg-yellow-500/20', border: 'border-yellow-600/30', text: 'text-yellow-800', glow: 'via-yellow-500/5' },
-    associate: { bg: 'bg-purple-500/20', border: 'border-purple-600/30', text: 'text-purple-800', glow: 'via-purple-500/5' },
-    food:      { bg: 'bg-blue-500/20',   border: 'border-blue-600/30',   text: 'text-blue-800',   glow: 'via-blue-500/5'   },
-    learning:  { bg: 'bg-blue-500/20',   border: 'border-blue-600/30',   text: 'text-blue-800',   glow: 'via-blue-500/5'   },
-    gifting:   { bg: 'bg-blue-500/20',   border: 'border-blue-600/30',   text: 'text-blue-800',   glow: 'via-blue-500/5'   },
-    past:      { bg: 'bg-zinc-500/20',   border: 'border-zinc-600/30',   text: 'text-zinc-800',   glow: 'via-zinc-500/5'   },
-  }
+  const tierColors: Record<
+    string,
+    { bg: string; border: string; text: string; glow: string }
+  > = {
+    title: {
+      bg: "bg-yellow-500/20",
+      border: "border-yellow-600/30",
+      text: "text-yellow-800",
+      glow: "via-yellow-500/5",
+    },
+    associate: {
+      bg: "bg-purple-500/20",
+      border: "border-purple-600/30",
+      text: "text-purple-800",
+      glow: "via-purple-500/5",
+    },
+    food: {
+      bg: "bg-blue-500/20",
+      border: "border-blue-600/30",
+      text: "text-blue-800",
+      glow: "via-blue-500/5",
+    },
+    learning: {
+      bg: "bg-blue-500/20",
+      border: "border-blue-600/30",
+      text: "text-blue-800",
+      glow: "via-blue-500/5",
+    },
+    gifting: {
+      bg: "bg-blue-500/20",
+      border: "border-blue-600/30",
+      text: "text-blue-800",
+      glow: "via-blue-500/5",
+    },
+    past: {
+      bg: "bg-zinc-500/20",
+      border: "border-zinc-600/30",
+      text: "text-zinc-800",
+      glow: "via-zinc-500/5",
+    },
+  };
 
   const sponsors = [
-    { tier: 'title',     name: 'GeeksforGeeks', image: '/sponsors/Geeks_For_Geeks.png', corner: 'border-yellow-400/70', cn: 'border-yellow-400/50 hover:border-yellow-400/80' },
-    { tier: 'associate', name: 'XT Academy',    image: '/sponsors/XT_Academy.png',      corner: 'border-purple-400/70', cn: 'border-purple-400/50 hover:border-purple-400/80' },
-    { tier: 'learning',  name: 'Coding Panda',  image: '/sponsors/Coding_Pandas.png',   corner: 'border-blue-400/70',   cn: 'border-blue-400/50 hover:border-blue-400/80' },
-    { tier: 'gifting',   name: 'Loti Ghoti',    image: '/sponsors/Loti_Ghoti.png',      corner: 'border-blue-400/70',   cn: 'border-blue-400/50 hover:border-blue-400/80' },
-    { tier: 'food',      name: 'Quick Bites',   image: '/sponsors/Quick_Bites.png',     corner: 'border-blue-400/70',   cn: 'border-blue-400/50 hover:border-blue-400/80' },
-    { tier: 'past',      name: 'Digital Ocean', image: '/sponsors/Digital_Ocean.png',   corner: 'border-zinc-400/70',   cn: 'border-zinc-400/50 hover:border-zinc-400/80' },
-  ]
+    {
+      tier: "title",
+      name: "GeeksforGeeks",
+      image: "/sponsors/Geeks_For_Geeks.png",
+      corner: "border-yellow-400/70",
+      cn: "border-yellow-400/50 hover:border-yellow-400/80",
+    },
+    {
+      tier: "associate",
+      name: "XT Academy",
+      image: "/sponsors/XT_Academy.png",
+      corner: "border-purple-400/70",
+      cn: "border-purple-400/50 hover:border-purple-400/80",
+    },
+    {
+      tier: "learning",
+      name: "Coding Panda",
+      image: "/sponsors/Coding_Pandas.png",
+      corner: "border-blue-400/70",
+      cn: "border-blue-400/50 hover:border-blue-400/80",
+    },
+    {
+      tier: "gifting",
+      name: "Loti Ghoti",
+      image: "/sponsors/Loti_Ghoti.png",
+      corner: "border-blue-400/70",
+      cn: "border-blue-400/50 hover:border-blue-400/80",
+    },
+    {
+      tier: "food",
+      name: "Quick Bites",
+      image: "/sponsors/Quick_Bites.png",
+      corner: "border-blue-400/70",
+      cn: "border-blue-400/50 hover:border-blue-400/80",
+    },
+    {
+      tier: "past",
+      name: "Digital Ocean",
+      image: "/sponsors/Digital_Ocean.png",
+      corner: "border-zinc-400/70",
+      cn: "border-zinc-400/50 hover:border-zinc-400/80",
+    },
+  ];
 
   return (
     <main className="h-screen text-white px-4">
@@ -30,7 +100,12 @@ export default function SponsorsPage() {
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.2 }}
+            transition={{
+              type: "spring",
+              stiffness: 120,
+              damping: 20,
+              delay: 0.2,
+            }}
             className="w-full max-w-4xl"
           >
             {/* Compact Header */}
@@ -59,13 +134,17 @@ export default function SponsorsPage() {
             {/* Compact Sponsor Grid */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 md:gap-4 mb-6">
               {sponsors.map((sponsor, i) => {
-                const colors = tierColors[sponsor.tier]
+                const colors = tierColors[sponsor.tier];
                 return (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.3 + (i * 0.05), type: 'spring', stiffness: 100 }}
+                    transition={{
+                      delay: 0.3 + i * 0.05,
+                      type: "spring",
+                      stiffness: 100,
+                    }}
                     whileHover={{ scale: 1.05 }}
                     className={`
                       relative group cursor-pointer
@@ -75,27 +154,41 @@ export default function SponsorsPage() {
                       ${sponsor.cn}
                     `}
                   >
-                    <div className={`absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 ${sponsor.corner}`} />
-                    <div className={`absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 ${sponsor.corner}`} />
-                    <div className={`absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 ${sponsor.corner}`} />
-                    <div className={`absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 ${sponsor.corner}`} />
+                    <div
+                      className={`absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 ${sponsor.corner}`}
+                    />
+                    <div
+                      className={`absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 ${sponsor.corner}`}
+                    />
+                    <div
+                      className={`absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 ${sponsor.corner}`}
+                    />
+                    <div
+                      className={`absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 ${sponsor.corner}`}
+                    />
 
-                    <div className={`absolute top-1 right-1 z-10 px-1.5 py-0.5 text-[7px] font-mono tracking-widest uppercase ${colors.bg} border ${colors.border} ${colors.text}`}>
+                    <div
+                      className={`absolute top-1 right-1 z-10 px-1.5 py-0.5 text-[7px] font-mono tracking-widest uppercase ${colors.bg} border ${colors.border} ${colors.text}`}
+                    >
                       {sponsor.tier}
                     </div>
 
                     {/* Logo container with per-sponsor bg */}
                     <div className="relative h-16 md:h-28 flex items-center justify-center p-3 md:p-5 rounded-sm backdrop-blur-3xl bg-white/60">
-                      <img
+                      <Image
                         src={sponsor.image}
                         alt={sponsor.name}
+                        width={200}
+                        height={112}
                         className="max-h-16 md:max-h-28 w-auto object-contain opacity-90 group-hover:opacity-100 transition"
                       />
                     </div>
 
-                    <div className={`absolute inset-0 bg-linear-to-b from-transparent to-transparent pointer-events-none ${colors.glow}`} />
+                    <div
+                      className={`absolute inset-0 bg-linear-to-b from-transparent to-transparent pointer-events-none ${colors.glow}`}
+                    />
                   </motion.div>
-                )
+                );
               })}
             </div>
 
@@ -126,17 +219,33 @@ export default function SponsorsPage() {
                   </div>
 
                   <div className="flex flex-col md:flex-row gap-1.5 md:gap-3 text-xs">
-                    <Link href="mailto:aeccodewar@gmail.com" className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-2 md:px-3 py-1 md:py-1.5 rounded">
+                    <Link
+                      href="mailto:aeccodewar@gmail.com"
+                      className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-2 md:px-3 py-1 md:py-1.5 rounded"
+                    >
                       <Mail className="w-2.5 md:w-3 h-2.5 md:h-3 text-purple-400" />
-                      <span className="font-mono text-purple-200">aeccodewar@gmail.com</span>
+                      <span className="font-mono text-purple-200">
+                        aeccodewar@gmail.com
+                      </span>
                     </Link>
-                    <Link href="tel:+919435553309" className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-2 md:px-3 py-1 md:py-1.5 rounded">
+                    <Link
+                      href="tel:+919435553309"
+                      className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-2 md:px-3 py-1 md:py-1.5 rounded"
+                    >
                       <Phone className="w-2.5 md:w-3 h-2.5 md:h-3 text-purple-400" />
-                      <span className="font-mono text-purple-200">+91 94355 53309</span>
+                      <span className="font-mono text-purple-200">
+                        +91 94355 53309
+                      </span>
                     </Link>
-                    <Link href="/sponsors/CodeWar_7.0_Sponsorship_Brochure.pdf" target='_blank' className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-2 md:px-3 py-1 md:py-1.5 rounded">
+                    <Link
+                      href="/sponsors/CodeWar_7.0_Sponsorship_Brochure.pdf"
+                      target="_blank"
+                      className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-2 md:px-3 py-1 md:py-1.5 rounded"
+                    >
                       <FileText className="w-2.5 md:w-3 h-2.5 md:h-3 text-purple-400" />
-                      <span className="font-mono text-purple-200">View Brochure</span>
+                      <span className="font-mono text-purple-200">
+                        View Brochure
+                      </span>
                     </Link>
                   </div>
                 </div>
@@ -153,5 +262,5 @@ export default function SponsorsPage() {
         SPONSOR_REGISTRY_v7.0
       </div>
     </main>
-  )
+  );
 }

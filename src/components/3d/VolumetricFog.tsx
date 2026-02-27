@@ -1,16 +1,16 @@
-import { useRef } from 'react'
-import { useFrame } from '@react-three/fiber'
-import * as THREE from 'three'
+import { useRef } from "react";
+import { useFrame } from "@react-three/fiber";
+import * as THREE from "three";
 
 export default function VolumetricFog() {
-  const fogRef = useRef<THREE.Mesh>(null!)
+  const fogRef = useRef<THREE.Mesh>(null!);
 
   useFrame(({ clock }) => {
     if (fogRef.current) {
       // Slowly drift the fog
-      fogRef.current.rotation.y = clock.getElapsedTime() * 0.02
+      fogRef.current.rotation.y = clock.getElapsedTime() * 0.02;
     }
-  })
+  });
 
   return (
     <>
@@ -50,5 +50,5 @@ export default function VolumetricFog() {
         />
       </mesh>
     </>
-  )
+  );
 }

@@ -1,48 +1,51 @@
-'use client'
+"use client";
 
-import { motion } from 'motion/react'
-import { Trophy, Medal, Award, Sparkles } from 'lucide-react'
+import { motion } from "motion/react";
+import { Trophy, Medal, Award, Sparkles } from "lucide-react";
 
 export default function CodestellationPrizes() {
   const prizes = [
     {
       icon: Trophy,
-      place: '1st',
-      title: 'First Place',
-      reward: '₹10,000',
-      sponsorPerks: 'goodies from GeeksforGeeks + free access to a 4-Month DSA Program by Coding Pandas',
-      text: 'Top scoring team',
-      iconColor: 'text-yellow-400',
-      iconGlow: 'drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]'
+      place: "1st",
+      title: "First Place",
+      reward: "₹10,000",
+      sponsorPerks:
+        "goodies from GeeksforGeeks + free access to a 4-Month DSA Program by Coding Pandas",
+      text: "Top scoring team",
+      iconColor: "text-yellow-400",
+      iconGlow: "drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]",
     },
     {
       icon: Medal,
-      place: '2nd',
-      title: 'Second Place',
-      reward: '₹5,000',
-      sponsorPerks: 'goodies from GeeksforGeeks + 75% off a 4-Month DSA Program by Coding Pandas',
-      text: 'Runner-up team',
-      iconColor: 'text-gray-300',
-      iconGlow: 'drop-shadow-[0_0_8px_rgba(209,213,219,0.6)]'
+      place: "2nd",
+      title: "Second Place",
+      reward: "₹5,000",
+      sponsorPerks:
+        "goodies from GeeksforGeeks + 75% off a 4-Month DSA Program by Coding Pandas",
+      text: "Runner-up team",
+      iconColor: "text-gray-300",
+      iconGlow: "drop-shadow-[0_0_8px_rgba(209,213,219,0.6)]",
     },
     {
       icon: Award,
-      place: '3rd',
-      title: 'Third Place',
-      reward: '₹3,000',
-      sponsorPerks: 'goodies from GeeksforGeeks + 50% off a 4-Month DSA Program by Coding Pandas',
-      text: 'Third place team',
-      iconColor: 'text-orange-400',
-      iconGlow: 'drop-shadow-[0_0_8px_rgba(251,146,60,0.6)]'
+      place: "3rd",
+      title: "Third Place",
+      reward: "₹3,000",
+      sponsorPerks:
+        "goodies from GeeksforGeeks + 50% off a 4-Month DSA Program by Coding Pandas",
+      text: "Third place team",
+      iconColor: "text-orange-400",
+      iconGlow: "drop-shadow-[0_0_8px_rgba(251,146,60,0.6)]",
     },
-  ]
+  ];
 
   return (
     <section className="h-screen flex items-center justify-center">
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.2 }}
+        transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.2 }}
         className="w-full max-w-4xl"
       >
         {/* Compact Header */}
@@ -75,7 +78,11 @@ export default function CodestellationPrizes() {
               key={i}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + i * 0.05, type: 'spring', stiffness: 100 }}
+              transition={{
+                delay: 0.3 + i * 0.05,
+                type: "spring",
+                stiffness: 100,
+              }}
               whileHover={{ scale: 1.01, y: -2 }}
               className="
                 relative
@@ -97,7 +104,7 @@ export default function CodestellationPrizes() {
 
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-linear-to-br from-purple-900/20 to-indigo-900/20 clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)] opacity-0 group-hover:opacity-100 transition-opacity" />
-              
+
               {/* Scanline effect */}
               <div className="absolute inset-0 bg-linear-to-b from-transparent via-purple-500/5 to-transparent pointer-events-none" />
 
@@ -105,7 +112,9 @@ export default function CodestellationPrizes() {
                 {/* Left: Icon + Details */}
                 <div className="flex items-center gap-2 md:gap-3 flex-1 min-w-0">
                   <div className="p-1.5 md:p-2.5 bg-purple-500/10 border-2 border-purple-400/20 rounded group-hover:scale-110 group-hover:bg-purple-500/20 transition-all shrink-0">
-                    <prize.icon className={`w-4 h-4 md:w-5 md:h-5 ${prize.iconColor} ${prize.iconGlow}`} />
+                    <prize.icon
+                      className={`w-4 h-4 md:w-5 md:h-5 ${prize.iconColor} ${prize.iconGlow}`}
+                    />
                   </div>
 
                   <div className="flex-1 min-w-0">
@@ -122,7 +131,9 @@ export default function CodestellationPrizes() {
                 <div className="text-right shrink-0">
                   <div className="text-base md:text-2xl font-mono font-black text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
                     {prize.reward}
-                    <p className="text-[8px] md:text-[9px] font-mono text-purple-400/50 mt-0.5 max-w-35 md:max-w-80">+ {prize.sponsorPerks}</p>
+                    <p className="text-[8px] md:text-[9px] font-mono text-purple-400/50 mt-0.5 max-w-35 md:max-w-80">
+                      + {prize.sponsorPerks}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -147,9 +158,13 @@ export default function CodestellationPrizes() {
           <div className="relative space-y-1.5 md:space-y-2 text-center">
             <div className="flex items-center justify-center gap-2">
               <Sparkles className="w-3 h-3 md:w-3.5 md:h-3.5 text-purple-400" />
-              <p className="text-xs md:text-sm font-mono font-bold text-purple-200">All participants receive certificates</p>
+              <p className="text-xs md:text-sm font-mono font-bold text-purple-200">
+                All participants receive certificates
+              </p>
             </div>
-            <p className="text-[9px] md:text-[10px] font-mono text-purple-400/50">+ 25% off a 4-Month DSA Program by Coding Pandas</p>
+            <p className="text-[9px] md:text-[10px] font-mono text-purple-400/50">
+              + 25% off a 4-Month DSA Program by Coding Pandas
+            </p>
           </div>
         </motion.div>
 
@@ -158,5 +173,5 @@ export default function CodestellationPrizes() {
         </div>
       </motion.div>
     </section>
-  )
+  );
 }

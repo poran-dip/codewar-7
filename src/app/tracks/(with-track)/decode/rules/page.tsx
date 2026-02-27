@@ -1,7 +1,14 @@
-'use client'
+"use client";
 
-import { motion } from 'motion/react'
-import { Shield, Code, BotOff, ShieldCheck, MonitorOff, User } from 'lucide-react'
+import { motion } from "motion/react";
+import {
+  Shield,
+  Code,
+  BotOff,
+  ShieldCheck,
+  MonitorOff,
+  User,
+} from "lucide-react";
 
 export default function DecodeStackRules() {
   const rules = [
@@ -9,40 +16,40 @@ export default function DecodeStackRules() {
       icon: Code,
       title: "Original Solutions Only",
       text: "All solutions must be written entirely by the participant during the contest. External assistance from individuals, forums, or communities is strictly prohibited.",
-      shortText: "Write all solutions yourself. No external help."
+      shortText: "Write all solutions yourself. No external help.",
     },
     {
       icon: BotOff,
       title: "No AI Assistance",
       text: "Use of any AI-powered tools or automated code generation, in any form, is strictly prohibited during the contest.",
-      shortText: "AI assistance is strictly prohibited."
+      shortText: "AI assistance is strictly prohibited.",
     },
     {
       icon: User,
       title: "Solo Participation Only",
       text: "This is a solo event. Participants must register and compete individually. Team participation is not allowed.",
-      shortText: "Solo event only. No teams."
+      shortText: "Solo event only. No teams.",
     },
     {
       icon: ShieldCheck,
       title: "Platform & Proctoring Rules",
       text: "The contest will be conducted exclusively on the GeeksforGeeks platform. All participants are subject to the platform’s built-in proctoring and anti-cheat mechanisms.",
-      shortText: "GeeksforGeeks platform rules and proctoring apply."
+      shortText: "GeeksforGeeks platform rules and proctoring apply.",
     },
     {
       icon: MonitorOff,
       title: "No External Tabs or Devices",
       text: "Opening additional browser tabs, applications, calculators, mobile phones, or other electronic devices during the contest is not permitted.",
-      shortText: "No other tabs, apps, or devices allowed."
-    }
-  ]
+      shortText: "No other tabs, apps, or devices allowed.",
+    },
+  ];
 
   return (
     <section className="h-screen flex items-center justify-center">
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.2 }}
+        transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.2 }}
         className="w-full max-w-4xl md:mt-16"
       >
         {/* Compact Header */}
@@ -75,7 +82,11 @@ export default function DecodeStackRules() {
               key={i}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + i * 0.05, type: 'spring', stiffness: 100 }}
+              transition={{
+                delay: 0.3 + i * 0.05,
+                type: "spring",
+                stiffness: 100,
+              }}
               whileHover={{ scale: 1.01, x: 2 }}
               className="
                 relative
@@ -97,7 +108,7 @@ export default function DecodeStackRules() {
 
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-linear-to-br from-cyan-900/20 to-blue-900/20 clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)] opacity-0 group-hover:opacity-100 transition-opacity" />
-              
+
               {/* Scanline effect */}
               <div className="absolute inset-0 bg-linear-to-b from-transparent via-cyan-500/5 to-transparent pointer-events-none" />
 
@@ -148,5 +159,5 @@ export default function DecodeStackRules() {
         </div>
       </motion.div>
     </section>
-  )
+  );
 }

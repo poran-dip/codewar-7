@@ -1,19 +1,19 @@
-'use client'
+"use client";
 
-import { motion } from 'motion/react'
-import { useRouter } from 'next/navigation'
+import { motion } from "motion/react";
+import { useRouter } from "next/navigation";
 
 export default function NotFound() {
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <section className="relative z-10 h-full w-full flex flex-col items-center justify-center px-4 md:px-6">
-
       {/* Background glow */}
       <motion.div
         className="fixed inset-0 -z-10 pointer-events-none"
         animate={{
-          background: 'radial-gradient(circle at center, rgba(147, 51, 234, 0.2) 0%, rgba(88, 28, 135, 0.1) 50%, transparent 100%)',
+          background:
+            "radial-gradient(circle at center, rgba(147, 51, 234, 0.2) 0%, rgba(88, 28, 135, 0.1) 50%, transparent 100%)",
         }}
       />
 
@@ -21,7 +21,7 @@ export default function NotFound() {
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, type: 'spring', stiffness: 100 }}
+        transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
         className="mb-4 md:mb-6"
       >
         <div className="relative">
@@ -39,7 +39,7 @@ export default function NotFound() {
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.4, type: 'spring', stiffness: 120 }}
+        transition={{ delay: 0.4, type: "spring", stiffness: 120 }}
         className="relative z-20 mb-4 md:mb-8"
       >
         <div className="relative">
@@ -72,10 +72,10 @@ export default function NotFound() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, type: 'spring', stiffness: 100 }}
+        transition={{ delay: 0.8, type: "spring", stiffness: 100 }}
       >
         <button
-          onClick={() => router.push('/')}
+          onClick={() => router.push("/")}
           className="relative group bg-black/60 backdrop-blur-sm border border-cyan-500/40 px-5 py-2.5 md:px-8 md:py-3 font-mono text-xs md:text-sm text-cyan-400 hover:text-cyan-200 hover:border-cyan-400/70 hover:bg-cyan-500/10 transition-all duration-200 tracking-widest uppercase"
         >
           <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-cyan-400/60 group-hover:border-cyan-400" />
@@ -91,5 +91,5 @@ export default function NotFound() {
         ERR_404_v7.0
       </div>
     </section>
-  )
+  );
 }

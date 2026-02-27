@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import { motion } from 'motion/react'
-import { Shield, Github, Users, MapPin, FileText } from 'lucide-react'
+import { motion } from "motion/react";
+import { Shield, Github, Users, MapPin, FileText } from "lucide-react";
 
 export default function CodestellationRules() {
   const rules = [
@@ -9,32 +9,32 @@ export default function CodestellationRules() {
       icon: Users,
       title: "Team Composition",
       text: "Each team must consist of 1 to 4 members with one designated team leader. A participant may be part of only one team throughout the hackathon.",
-      shortText: "1–4 members per team. One team per participant."
+      shortText: "1–4 members per team. One team per participant.",
     },
     {
       icon: Github,
       title: "Build During the Hackathon",
       text: "All development work must be carried out during the official 24-hour hackathon period. Projects must not be pre-built or reused from previous events. Code repository must be created after commencement of hackathon.",
-      shortText: "All work must be done during the hackathon."
+      shortText: "All work must be done during the hackathon.",
     },
     {
       icon: Shield,
       title: "Original Team Work",
       text: "The final submission must primarily be the original work of the participating team. Copying, reusing, or repurposing existing projects is strictly prohibited.",
-      shortText: "Original work only. No reused projects."
+      shortText: "Original work only. No reused projects.",
     },
     {
       icon: MapPin,
       title: "Mandatory Offline Presence",
       text: "All registered teams must be physically present at the venue for the final offline presentation and evaluation.",
-      shortText: "Offline presence required for final evaluation."
+      shortText: "Offline presence required for final evaluation.",
     },
     {
       icon: FileText,
       title: "Submission Requirements",
       text: "Teams must submit the required project materials, including a code repository, presentation slides (PDF), and a working demo or MVP link.",
-      shortText: "Code, PDF slides, and working demo required."
-    }
+      shortText: "Code, PDF slides, and working demo required.",
+    },
   ];
 
   return (
@@ -42,7 +42,7 @@ export default function CodestellationRules() {
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.2 }}
+        transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.2 }}
         className="w-full max-w-4xl md:mt-16"
       >
         {/* Compact Header */}
@@ -75,7 +75,11 @@ export default function CodestellationRules() {
               key={i}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + i * 0.05, type: 'spring', stiffness: 100 }}
+              transition={{
+                delay: 0.3 + i * 0.05,
+                type: "spring",
+                stiffness: 100,
+              }}
               whileHover={{ scale: 1.01, x: 2 }}
               className="
                 relative
@@ -97,7 +101,7 @@ export default function CodestellationRules() {
 
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-linear-to-br from-purple-900/20 to-indigo-900/20 clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)] opacity-0 group-hover:opacity-100 transition-opacity" />
-              
+
               {/* Scanline effect */}
               <div className="absolute inset-0 bg-linear-to-b from-transparent via-purple-500/5 to-transparent pointer-events-none" />
 
@@ -148,5 +152,5 @@ export default function CodestellationRules() {
         </div>
       </motion.div>
     </section>
-  )
+  );
 }

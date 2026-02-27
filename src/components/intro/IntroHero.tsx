@@ -1,53 +1,68 @@
-'use client'
+"use client";
 
-import { motion } from 'motion/react'
-import TrackSelector from './TrackSelector'
-import { useEffect, useState } from 'react'
-import { unlock } from '@/engine/transitionLock'
+import { motion } from "motion/react";
+import TrackSelector from "./TrackSelector";
+import { useEffect, useState } from "react";
+import { unlock } from "@/engine/transitionLock";
+import Image from "next/image";
 
 export default function IntroHero() {
-  const [selectedTrack, setSelectedTrack] = useState<'codestellation' | 'decode' | null>(null)
+  const [selectedTrack, setSelectedTrack] = useState<
+    "codestellation" | "decode" | null
+  >(null);
 
   useEffect(() => {
     if (selectedTrack) {
-      const event = new CustomEvent('trackSelected', { detail: selectedTrack })
-      window.dispatchEvent(event)
+      const event = new CustomEvent("trackSelected", { detail: selectedTrack });
+      window.dispatchEvent(event);
     } else {
-      unlock()
+      unlock();
     }
-  }, [selectedTrack])
+  }, [selectedTrack]);
 
   return (
     <section className="mb-12 md:-mb-10 relative z-10 h-full w-full flex flex-col items-center justify-center px-4 md:px-6">
-      
       {/* Dynamic Background Color Overlay */}
       <motion.div
         className="fixed inset-0 -z-10 pointer-events-none"
         animate={{
-          background: selectedTrack === 'codestellation'
-            ? 'radial-gradient(circle at center, rgba(88, 28, 135, 0.3) 0%, rgba(49, 46, 129, 0.2) 50%, transparent 100%)'
-            : selectedTrack === 'decode'
-            ? 'radial-gradient(circle at center, rgba(8, 145, 178, 0.3) 0%, rgba(30, 64, 175, 0.2) 50%, transparent 100%)'
-            : 'radial-gradient(circle at center, transparent 0%, transparent 100%)',
+          background:
+            selectedTrack === "codestellation"
+              ? "radial-gradient(circle at center, rgba(88, 28, 135, 0.3) 0%, rgba(49, 46, 129, 0.2) 50%, transparent 100%)"
+              : selectedTrack === "decode"
+                ? "radial-gradient(circle at center, rgba(8, 145, 178, 0.3) 0%, rgba(30, 64, 175, 0.2) 50%, transparent 100%)"
+                : "radial-gradient(circle at center, transparent 0%, transparent 100%)",
         }}
-        transition={{ duration: 0.8, ease: 'easeInOut' }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
       />
 
       {/* TOP HUD - Logos */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, type: 'spring', stiffness: 100 }}
+        transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
         className="mb-1.5 md:mb-2 w-full"
       >
         {/* Udbhavanam - top left */}
         <div className="hidden md:block absolute top-4 left-4">
-          <img src="/branding/udbhavanam_logo_circular.png" alt="Udbhavanam 13.0" className="w-16 h-16 object-contain" />
+          <Image
+            src="/branding/udbhavanam_logo_circular.png"
+            alt="Udbhavanam 13.0"
+            width={64}
+            height={64}
+            className="w-16 h-16 object-contain"
+          />
         </div>
 
         {/* Pyrokinesis - top right */}
         <div className="hidden md:block absolute top-4 right-4">
-          <img src="/branding/pyrokinesis_logo_circular.png" alt="Pyrokinesis 2026" className="w-16 h-16 object-contain" />
+          <Image
+            src="/branding/pyrokinesis_logo_circular.png"
+            alt="Pyrokinesis 2026"
+            width={64}
+            height={64}
+            className="w-16 h-16 object-contain"
+          />
         </div>
 
         <div className="flex flex-col items-center">
@@ -63,33 +78,48 @@ export default function IntroHero() {
               {/* Glow backdrop - same as title */}
               <div className="absolute inset-0 blur-xl bg-cyan-500/20" />
 
-              <div className="relative bg-white/90 backdrop-blur-md border border-cyan-500/50 px-3 py-1 md:px-4 md:py-2
+              <div
+                className="relative bg-white/90 backdrop-blur-md border border-cyan-500/50 px-3 py-1 md:px-4 md:py-2
                 clip-path-[polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)]
                 md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
-                flex items-center justify-center">
-
+                flex items-center justify-center"
+              >
                 {/* corner brackets */}
                 <div className="absolute -top-1.5 -left-1.5 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-cyan-400" />
                 <div className="hidden md:block absolute -top-1.5 -right-1.5 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-cyan-400" />
-                <img src="/sponsors/Geeks_For_Geeks.png" alt="GeeksforGeeks" className="h-6 object-contain drop-shadow-[0_0_8px_rgba(6,182,212,0.6)]" />
-                
+
+                <Image
+                  src="/sponsors/Geeks_For_Geeks.png"
+                  alt="GeeksforGeeks"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className="h-6 w-auto object-contain drop-shadow-[0_0_8px_rgba(6,182,212,0.6)]"
+                />
               </div>
             </div>
             <div className="relative">
               {/* Glow backdrop - same as title */}
               <div className="absolute inset-0 blur-xl bg-cyan-500/20" />
 
-              <div className="relative bg-white/90 backdrop-blur-md border border-cyan-500/50 px-3 py-1 md:px-4 md:py-2
+              <div
+                className="relative bg-white/90 backdrop-blur-md border border-cyan-500/50 px-3 py-1 md:px-4 md:py-2
                 clip-path-[polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)]
                 md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
-                flex items-center justify-center">
-
+                flex items-center justify-center"
+              >
                 {/* corner brackets */}
                 <div className="hidden md:block absolute -top-1.5 -left-1.5 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-cyan-400" />
                 <div className="absolute -top-1.5 -right-1.5 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-cyan-400" />
 
-                <img src="/sponsors/XT_Academy.png" alt="XT Academy" className="h-6 object-contain drop-shadow-[0_0_8px_rgba(6,182,212,0.6)]" />
-                
+                <Image
+                  src="/sponsors/XT_Academy.png"
+                  alt="XT Academy"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className="h-6 w-auto object-contain drop-shadow-[0_0_8px_rgba(6,182,212,0.6)]"
+                />
               </div>
             </div>
           </div>
@@ -100,18 +130,18 @@ export default function IntroHero() {
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.4, type: 'spring', stiffness: 120 }}
+        transition={{ delay: 0.4, type: "spring", stiffness: 120 }}
         className="relative z-20 mb-3 md:mb-6"
       >
         <div className="relative">
           <div className="absolute inset-0 blur-xl md:blur-3xl bg-cyan-500/20" />
-          
+
           <div className="relative bg-black/40 backdrop-blur-md border-2 border-cyan-500/50 px-4 py-2 md:px-8 md:py-4 clip-path-[polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]">
             <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-cyan-400" />
             <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-cyan-400" />
             <div className="absolute bottom-0 left-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-l-2 border-cyan-400" />
             <div className="absolute bottom-0 right-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-r-2 border-cyan-400" />
-            
+
             <h1 className="text-2xl md:text-4xl lg:text-5xl font-black tracking-tight font-mono text-cyan-300 drop-shadow-[0_0_30px_rgba(6,182,212,0.8)]">
               CODEWAR 7.0
             </h1>
@@ -125,10 +155,13 @@ export default function IntroHero() {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, type: 'spring', stiffness: 100 }}
+        transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
         className="relative z-20 w-full max-w-5xl"
       >
-        <TrackSelector onTrackChange={setSelectedTrack} selectedTrack={selectedTrack} />
+        <TrackSelector
+          onTrackChange={setSelectedTrack}
+          selectedTrack={selectedTrack}
+        />
       </motion.div>
 
       {/* BOTTOM HUD - Controls */}
@@ -141,12 +174,18 @@ export default function IntroHero() {
         <div className="relative bg-black/80 backdrop-blur-sm border border-cyan-500/30 px-2.5 py-1 md:px-4 md:py-2 font-mono">
           <div className="absolute -bottom-0.5 -left-0.5 md:-bottom-1 md:-left-1 w-2 h-2 md:w-2.5 md:h-2.5 border-b-2 border-l-2 border-cyan-400/60" />
           <div className="absolute -bottom-0.5 -right-0.5 md:-bottom-1 md:-right-1 w-2 h-2 md:w-2.5 md:h-2.5 border-b-2 border-r-2 border-cyan-400/60" />
-          
+
           <div className="flex items-center gap-1.5 md:gap-2 text-[8px] md:text-[10px] text-cyan-400/70">
-            <kbd className="px-1.5 py-0.5 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-300 hidden md:inline font-bold">Q</kbd>
-            <kbd className="px-1.5 py-0.5 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-300 hidden md:inline font-bold">E</kbd>
+            <kbd className="px-1.5 py-0.5 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-300 hidden md:inline font-bold">
+              Q
+            </kbd>
+            <kbd className="px-1.5 py-0.5 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-300 hidden md:inline font-bold">
+              E
+            </kbd>
             <span className="text-cyan-500/50 hidden md:inline">|</span>
-            <kbd className="px-1.5 py-0.5 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-300 hidden md:inline font-bold">ENTER</kbd>
+            <kbd className="px-1.5 py-0.5 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-300 hidden md:inline font-bold">
+              ENTER
+            </kbd>
             <span className="text-cyan-500/50 hidden md:inline">|</span>
             <span className="text-cyan-400/50 inline">2x CLICK</span>
           </div>
@@ -176,7 +215,6 @@ export default function IntroHero() {
           &quot;Simple Pillar&quot; by Troctzul [CC-BY]
         </a>
       </div>
-
     </section>
-  )
+  );
 }

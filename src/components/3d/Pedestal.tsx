@@ -1,108 +1,121 @@
-'use client'
+"use client";
 
-import { useFrame } from '@react-three/fiber'
-import { useRef, useEffect } from 'react'
-import { useGLTF } from '@react-three/drei'
-import * as THREE from 'three'
-import { usePathname } from 'next/navigation'
+import { useFrame } from "@react-three/fiber";
+import { useRef, useEffect } from "react";
+import { useGLTF } from "@react-three/drei";
+import * as THREE from "three";
+import { usePathname } from "next/navigation";
 
 type PedestalProps = {
-  position: [number, number, number]
-  color: string
-  track: 'codestellation' | 'decode'
-  deviceTier: 'mobile' | 'tablet' | 'desktop'
-}
+  position: [number, number, number];
+  color: string;
+  track: "codestellation" | "decode";
+  deviceTier: "mobile" | "tablet" | "desktop";
+};
 
-export default function Pedestal({ position, color, track, deviceTier }: PedestalProps) {
-  const groupRef = useRef<THREE.Group>(null!)
-  const coreRef = useRef<THREE.Mesh>(null!)
-  const glowRef = useRef<THREE.Mesh>(null!)
-  const lightRef = useRef<THREE.PointLight>(null!)
-  const pathname = usePathname()
+export default function Pedestal({
+  position,
+  color,
+  track,
+  deviceTier,
+}: PedestalProps) {
+  const groupRef = useRef<THREE.Group>(null!);
+  const coreRef = useRef<THREE.Mesh>(null!);
+  const glowRef = useRef<THREE.Mesh>(null!);
+  const lightRef = useRef<THREE.PointLight>(null!);
+  const pathname = usePathname();
 
-  const { scene } = useGLTF('/3d/pillar.glb')
+  const { scene } = useGLTF("/3d/pillar.glb");
 
-  const clonedScene = useRef<THREE.Group | null>(null)
-  if (!clonedScene.current) clonedScene.current = scene.clone()
+  const clonedScene = useRef<THREE.Group | null>(null);
+  if (!clonedScene.current) clonedScene.current = scene.clone();
 
-  const pulseRef = useRef(0)
+  const pulseRef = useRef(0);
 
-  const emissiveMatsRef = useRef<THREE.MeshStandardMaterial[]>([])
+  const emissiveMatsRef = useRef<THREE.MeshStandardMaterial[]>([]);
 
   useEffect(() => {
-    const mats: THREE.MeshStandardMaterial[] = []
+    const mats: THREE.MeshStandardMaterial[] = [];
     clonedScene.current!.traverse((child) => {
       if ((child as THREE.Mesh).isMesh) {
-        const mesh = child as THREE.Mesh
-        mesh.material = (mesh.material as THREE.Material).clone()
-        const mat = mesh.material as THREE.MeshStandardMaterial
-        mat.color.set('#6a6a8a')
-        mat.emissive = new THREE.Color(color)
-        mat.emissiveIntensity = 0.2
-        mat.metalness = 0.3
-        mat.roughness = 0.7
-        mesh.castShadow = true
-        mats.push(mat)
+        const mesh = child as THREE.Mesh;
+        mesh.material = (mesh.material as THREE.Material).clone();
+        const mat = mesh.material as THREE.MeshStandardMaterial;
+        mat.color.set("#6a6a8a");
+        mat.emissive = new THREE.Color(color);
+        mat.emissiveIntensity = 0.2;
+        mat.metalness = 0.3;
+        mat.roughness = 0.7;
+        mesh.castShadow = true;
+        mats.push(mat);
       }
-    })
-    emissiveMatsRef.current = mats
-  }, [color])
+    });
+    emissiveMatsRef.current = mats;
+  }, [color]);
 
   useEffect(() => {
     const handleTrackSelected = (e: CustomEvent) => {
       if (e.detail === track) {
-        pulseRef.current = 0.001
+        pulseRef.current = 0.001;
       }
-    }
+    };
 
-    window.addEventListener('trackSelected', handleTrackSelected as EventListener)
-    return () => window.removeEventListener('trackSelected', handleTrackSelected as EventListener)
-  }, [track])
+    window.addEventListener(
+      "trackSelected",
+      handleTrackSelected as EventListener,
+    );
+    return () =>
+      window.removeEventListener(
+        "trackSelected",
+        handleTrackSelected as EventListener,
+      );
+  }, [track]);
 
   useFrame(({ clock }) => {
-    const t = clock.getElapsedTime()
+    const t = clock.getElapsedTime();
 
     if (pulseRef.current > 0) {
-      pulseRef.current += 0.1
-      const intensity = 0.2 + Math.sin(pulseRef.current * Math.PI) * 2
+      pulseRef.current += 0.1;
+      const intensity = 0.2 + Math.sin(pulseRef.current * Math.PI) * 2;
       for (const mat of emissiveMatsRef.current) {
-        mat.emissiveIntensity = intensity
+        // eslint-disable-next-line react-hooks/immutability
+        mat.emissiveIntensity = intensity;
       }
       if (pulseRef.current >= 1) {
         for (const mat of emissiveMatsRef.current) {
-          mat.emissiveIntensity = 0.2
+          mat.emissiveIntensity = 0.2;
         }
-        pulseRef.current = 0
+        pulseRef.current = 0;
       }
     }
 
     // Animate core rotation and float
     if (coreRef.current) {
-      coreRef.current.rotation.y += 0.015
-      coreRef.current.rotation.x = Math.sin(t * 0.5) * 0.15
-      coreRef.current.position.y = Math.sin(t * 1.5) * 0.1
+      coreRef.current.rotation.y += 0.015;
+      coreRef.current.rotation.x = Math.sin(t * 0.5) * 0.15;
+      coreRef.current.position.y = Math.sin(t * 1.5) * 0.1;
     }
 
     // Pulse the glow
     if (glowRef.current) {
-      glowRef.current.rotation.y -= 0.01
-      const scale = 1 + Math.sin(t * 2) * 0.15
-      glowRef.current.scale.setScalar(scale)
+      glowRef.current.rotation.y -= 0.01;
+      const scale = 1 + Math.sin(t * 2) * 0.15;
+      glowRef.current.scale.setScalar(scale);
     }
 
     // Pulse the light intensity
     if (lightRef.current) {
-      lightRef.current.intensity = 3 + Math.sin(t * 2) * 0.5
+      lightRef.current.intensity = 3 + Math.sin(t * 2) * 0.5;
     }
 
     // Slight pedestal breathing
     if (groupRef.current) {
-      groupRef.current.position.y = position[1] + Math.sin(t * 0.8) * 0.02
+      groupRef.current.position.y = position[1] + Math.sin(t * 0.8) * 0.02;
     }
-  })
+  });
 
-  const isActive = pathname.includes(`/tracks/${track}`)
-  const intensity = isActive ? 5 : 3
+  const isActive = pathname.includes(`/tracks/${track}`);
+  const intensity = isActive ? 5 : 3;
 
   return (
     <group ref={groupRef} position={position}>
@@ -149,13 +162,13 @@ export default function Pedestal({ position, color, track, deviceTier }: Pedesta
           ref={lightRef}
           color={color}
           intensity={intensity}
-          distance={deviceTier === 'mobile' ? 4 : 8}
+          distance={deviceTier === "mobile" ? 4 : 8}
           decay={2}
-          castShadow={deviceTier === 'desktop'}
+          castShadow={deviceTier === "desktop"}
         />
       </group>
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/3d/pillar.glb')
+useGLTF.preload("/3d/pillar.glb");

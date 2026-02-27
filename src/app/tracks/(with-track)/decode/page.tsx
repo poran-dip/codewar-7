@@ -1,34 +1,43 @@
-'use client'
+"use client";
 
-import { motion } from 'motion/react'
-import { Calendar, Globe, Clock, Terminal, Trophy, Timer, BrainCircuit, Zap } from 'lucide-react'
+import { motion } from "motion/react";
+import {
+  Calendar,
+  Globe,
+  Clock,
+  Terminal,
+  Trophy,
+  Timer,
+  BrainCircuit,
+  Zap,
+} from "lucide-react";
 
 export default function DecodeStackInfo() {
   const features = [
-    { icon: Terminal, text: 'Competitive programming showdown' },
-    { icon: BrainCircuit, text: '7 carefully curated problems' },
-    { icon: Timer, text: '3 hours of pure problem-solving' },
-    { icon: Trophy, text: 'Fastest correct solutions win' },
-  ]
+    { icon: Terminal, text: "Competitive programming showdown" },
+    { icon: BrainCircuit, text: "7 carefully curated problems" },
+    { icon: Timer, text: "3 hours of pure problem-solving" },
+    { icon: Trophy, text: "Fastest correct solutions win" },
+  ];
 
   return (
     <section className="min-h-screen flex items-center justify-center py-8 md:py-20">
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.2 }}
+        transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.2 }}
         className="w-full max-w-5xl"
       >
         {/* Header */}
         <div className="relative mb-3 md:mb-4">
           <div className="absolute inset-0 blur-3xl bg-cyan-500/10" />
-          
+
           <div className="relative bg-black/40 backdrop-blur-md border-2 border-cyan-500/50 px-3 py-2 md:px-6 md:py-3 clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)] md:clip-path-[polygon(16px_0,100%_0,100%_calc(100%-16px),calc(100%-16px)_100%,0_100%,0_16px)]">
             <div className="absolute top-0 left-0 w-3 h-3 md:w-5 md:h-5 border-t-2 border-l-2 border-cyan-400" />
             <div className="absolute top-0 right-0 w-3 h-3 md:w-5 md:h-5 border-t-2 border-r-2 border-cyan-400" />
             <div className="absolute bottom-0 left-0 w-3 h-3 md:w-5 md:h-5 border-b-2 border-l-2 border-cyan-400" />
             <div className="absolute bottom-0 right-0 w-3 h-3 md:w-5 md:h-5 border-b-2 border-r-2 border-cyan-400" />
-            
+
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 md:gap-3">
                 <Zap className="w-3 h-3 md:w-4 md:h-4 text-cyan-400 animate-pulse" />
@@ -46,7 +55,6 @@ export default function DecodeStackInfo() {
 
         {/* Main Grid */}
         <div className="grid md:grid-cols-2 gap-3 md:gap-6">
-          
           {/* LEFT - About the Track */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -68,7 +76,7 @@ export default function DecodeStackInfo() {
 
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-linear-to-br from-cyan-900/20 to-blue-900/20 clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]" />
-            
+
             {/* Scanline effect */}
             <div className="absolute inset-0 bg-linear-to-b from-transparent via-cyan-500/5 to-transparent pointer-events-none" />
 
@@ -78,8 +86,9 @@ export default function DecodeStackInfo() {
               </div>
 
               <p className="text-xs md:text-base text-cyan-100/80 font-mono leading-relaxed mb-3 md:mb-6">
-                A high-intensity competitive programming contest hosted online on GeeksforGeeks. 
-                Solve algorithmic challenges under pressure and race against teams across India.
+                A high-intensity competitive programming contest hosted online
+                on GeeksforGeeks. Solve algorithmic challenges under pressure
+                and race against teams across India.
               </p>
 
               {/* Features Grid - Hidden on mobile */}
@@ -110,13 +119,15 @@ export default function DecodeStackInfo() {
             className="space-y-3 md:space-y-4"
           >
             {/* Event Details Card */}
-            <div className="
+            <div
+              className="
               relative
               bg-black/40 backdrop-blur-md
               border-2 border-cyan-500/30
               clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
               px-2 py-1 md:px-4 md:py-4 pb-2
-            ">
+            "
+            >
               {/* Corner decorations */}
               <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-cyan-400/60" />
               <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-cyan-400/60" />
@@ -125,7 +136,7 @@ export default function DecodeStackInfo() {
 
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-linear-to-br from-cyan-900/20 to-blue-900/20 clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]" />
-              
+
               {/* Scanline effect */}
               <div className="absolute inset-0 bg-linear-to-b from-transparent via-cyan-500/5 to-transparent pointer-events-none" />
 
@@ -141,8 +152,12 @@ export default function DecodeStackInfo() {
                       <Calendar className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
                     </div>
                     <div>
-                      <p className="text-[8px] md:text-[10px] font-mono text-cyan-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Date</p>
-                      <p className="text-xs md:text-sm font-mono text-cyan-200">February 25, 2026</p>
+                      <p className="text-[8px] md:text-[10px] font-mono text-cyan-400/60 tracking-widest uppercase mb-0.5 md:mb-1">
+                        Date
+                      </p>
+                      <p className="text-xs md:text-sm font-mono text-cyan-200">
+                        February 25, 2026
+                      </p>
                     </div>
                   </div>
 
@@ -152,8 +167,12 @@ export default function DecodeStackInfo() {
                       <Globe className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
                     </div>
                     <div>
-                      <p className="text-[8px] md:text-[10px] font-mono text-cyan-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Mode</p>
-                      <p className="text-xs md:text-sm font-mono text-cyan-200">Online (GeeksforGeeks)</p>
+                      <p className="text-[8px] md:text-[10px] font-mono text-cyan-400/60 tracking-widest uppercase mb-0.5 md:mb-1">
+                        Mode
+                      </p>
+                      <p className="text-xs md:text-sm font-mono text-cyan-200">
+                        Online (GeeksforGeeks)
+                      </p>
                     </div>
                   </div>
 
@@ -163,8 +182,12 @@ export default function DecodeStackInfo() {
                       <Clock className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
                     </div>
                     <div>
-                      <p className="text-[8px] md:text-[10px] font-mono text-cyan-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Duration</p>
-                      <p className="text-xs md:text-sm font-mono text-cyan-200">3 Hours</p>
+                      <p className="text-[8px] md:text-[10px] font-mono text-cyan-400/60 tracking-widest uppercase mb-0.5 md:mb-1">
+                        Duration
+                      </p>
+                      <p className="text-xs md:text-sm font-mono text-cyan-200">
+                        3 Hours
+                      </p>
                     </div>
                   </div>
 
@@ -174,8 +197,12 @@ export default function DecodeStackInfo() {
                       <Trophy className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
                     </div>
                     <div>
-                      <p className="text-[8px] md:text-[10px] font-mono text-cyan-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Prizes</p>
-                      <p className="text-xs md:text-sm font-mono text-cyan-200">₹12,000+ in cash & sponsor perks</p>
+                      <p className="text-[8px] md:text-[10px] font-mono text-cyan-400/60 tracking-widest uppercase mb-0.5 md:mb-1">
+                        Prizes
+                      </p>
+                      <p className="text-xs md:text-sm font-mono text-cyan-200">
+                        ₹12,000+ in cash & sponsor perks
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -217,7 +244,9 @@ export default function DecodeStackInfo() {
 
                 <span className="relative flex items-center justify-center gap-2 md:gap-3 uppercase">
                   <Terminal className="w-4 h-4 md:w-5 md:h-5" />
-                  <span className="hidden sm:inline line-through">Register for Decode Stack</span>
+                  <span className="hidden sm:inline line-through">
+                    Register for Decode Stack
+                  </span>
                   <span className="sm:hidden line-through">Register Now</span>
                   <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white/40 animate-pulse rounded-full" />
                 </span>
@@ -227,11 +256,11 @@ export default function DecodeStackInfo() {
             {/* Info note */}
             <div className="hidden md:block text-center">
               <div className="inline-block bg-black/60 backdrop-blur-sm border border-cyan-500/20 px-3 py-1.5 md:px-4 md:py-2 font-mono text-[10px] md:text-xs text-cyan-400/50 rounded">
-                <span className="text-cyan-400/70">NOTE:</span> Registrations have closed!
+                <span className="text-cyan-400/70">NOTE:</span> Registrations
+                have closed!
               </div>
             </div>
           </motion.div>
-
         </div>
 
         {/* System label */}
@@ -240,5 +269,5 @@ export default function DecodeStackInfo() {
         </div>
       </motion.div>
     </section>
-  )
+  );
 }

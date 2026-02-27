@@ -1,98 +1,126 @@
-'use client'
+"use client";
 
-import { motion } from 'motion/react'
-import { FileCode, Lock, LucideIcon } from 'lucide-react'
-import { useEffect, useState } from 'react'
-import { ProblemStatement } from '@/data/ps'
-import PSItem from '@/components/tracks/PSItem'
-import { AlertTriangle, BookOpen, Briefcase, Building2, MessageSquare, Stethoscope, Store } from 'lucide-react'
+import { motion } from "motion/react";
+import { FileCode, Lock, LucideIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ProblemStatement } from "@/data/ps";
+import PSItem from "@/components/tracks/PSItem";
+import {
+  AlertTriangle,
+  BookOpen,
+  Briefcase,
+  Building2,
+  MessageSquare,
+  Stethoscope,
+  Store,
+} from "lucide-react";
 
 const ICON_MAP: Record<string, LucideIcon> = {
-  'Healthcare': Stethoscope,
-  'EdTech': BookOpen,
-  'FinTech': Store,
-  'CivicTech': Building2,
-  'Opportunities': Briefcase,
-  'Crisis': AlertTriangle,
-  'Accessibility': MessageSquare,
-}
+  Healthcare: Stethoscope,
+  EdTech: BookOpen,
+  FinTech: Store,
+  CivicTech: Building2,
+  Opportunities: Briefcase,
+  Crisis: AlertTriangle,
+  Accessibility: MessageSquare,
+};
 
 function useCountdown(target: Date) {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
     const tick = () => {
-      const diff = target.getTime() - Date.now()
+      const diff = target.getTime() - Date.now();
       if (diff <= 0) {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-        return
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
       }
       setTimeLeft({
         days: Math.floor(diff / 86400000),
         hours: Math.floor((diff % 86400000) / 3600000),
         minutes: Math.floor((diff % 3600000) / 60000),
         seconds: Math.floor((diff % 60000) / 1000),
-      })
-    }
-    tick()
-    const id = setInterval(tick, 1000)
-    return () => clearInterval(id)
-  }, [target])
+      });
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [target]);
 
-  return timeLeft
+  return timeLeft;
 }
 
 export default function CodestellationPS() {
-  const [released, setReleased] = useState<boolean>(false)
-  const [releaseAt, setReleaseAt] = useState(new Date('2026-02-25T10:00:00+05:30'))
-  const [loading, setLoading] = useState<boolean>(true)
-  const [problemStatements, setProblemStatements] = useState<ProblemStatement[]>([])
+  const [released, setReleased] = useState<boolean>(false);
+  const [releaseAt, setReleaseAt] = useState(
+    new Date("2026-02-25T10:00:00+05:30"),
+  );
+  const [loading, setLoading] = useState<boolean>(true);
+  const [problemStatements, setProblemStatements] = useState<
+    ProblemStatement[]
+  >([]);
 
   useEffect(() => {
-    fetch('/api/ps')
-      .then(res => res.json())
-      .then(data => {
-        setReleased(data.released)
-        if (data.releaseAt) setReleaseAt(new Date(data.releaseAt))
+    fetch("/api/ps")
+      .then((res) => res.json())
+      .then((data) => {
+        setReleased(data.released);
+        if (data.releaseAt) setReleaseAt(new Date(data.releaseAt));
         if (data.problemStatements) {
-          const enrichedPS = data.problemStatements.map((ps: ProblemStatement) => ({
-            ...ps,
-            icon: ICON_MAP[ps.category] || Stethoscope,
-          }))
-          setProblemStatements(enrichedPS)
+          const enrichedPS = data.problemStatements.map(
+            (ps: ProblemStatement) => ({
+              ...ps,
+              icon: ICON_MAP[ps.category] || Stethoscope,
+            }),
+          );
+          setProblemStatements(enrichedPS);
         }
       })
-      .finally(() => setLoading(false))
-  }, [])
+      .finally(() => setLoading(false));
+  }, []);
 
-  const { days, hours, minutes, seconds } = useCountdown(releaseAt)
+  const { days, hours, minutes, seconds } = useCountdown(releaseAt);
 
   useEffect(() => {
-    if (!released && !loading && days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+    if (
+      !released &&
+      !loading &&
+      days === 0 &&
+      hours === 0 &&
+      minutes === 0 &&
+      seconds === 0
+    ) {
       const id = setTimeout(() => {
-        fetch('/api/ps')
-          .then(res => res.json())
-          .then(data => {
+        fetch("/api/ps")
+          .then((res) => res.json())
+          .then((data) => {
             if (data.released) {
-              setReleased(true)
-              const enrichedPS = data.problemStatements.map((ps: ProblemStatement) => ({
-                ...ps,
-                icon: ICON_MAP[ps.category] || Stethoscope,
-              }))
-              setProblemStatements(enrichedPS)
+              setReleased(true);
+              const enrichedPS = data.problemStatements.map(
+                (ps: ProblemStatement) => ({
+                  ...ps,
+                  icon: ICON_MAP[ps.category] || Stethoscope,
+                }),
+              );
+              setProblemStatements(enrichedPS);
             }
-          })
-      }, 2000)
-      return () => clearTimeout(id)
+          });
+      }, 2000);
+      return () => clearTimeout(id);
     }
-  }, [released, loading, days, hours, minutes, seconds])
+  }, [released, loading, days, hours, minutes, seconds]);
 
   return (
     <section className="min-h-screen flex items-center justify-center py-8 md:py-20">
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.2 }}
+        transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.2 }}
         className="w-full max-w-5xl md:mt-2"
       >
         {/* Header */}
@@ -142,10 +170,10 @@ export default function CodestellationPS() {
               {/* Countdown */}
               <div className="flex items-end gap-3 md:gap-6" aria-live="polite">
                 {[
-                  { value: days, label: 'DAYS' },
-                  { value: hours, label: 'HRS' },
-                  { value: minutes, label: 'MIN' },
-                  { value: seconds, label: 'SEC' },
+                  { value: days, label: "DAYS" },
+                  { value: hours, label: "HRS" },
+                  { value: minutes, label: "MIN" },
+                  { value: seconds, label: "SEC" },
                 ].map(({ value, label }, i) => (
                   <div key={label} className="flex items-start gap-3 md:gap-6">
                     <div className="flex flex-col items-center">
@@ -153,15 +181,25 @@ export default function CodestellationPS() {
                         key={value}
                         initial={{ opacity: 0.5, y: -4 }}
                         animate={{ opacity: 1, y: 0 }}
-                        style={{ fontSize: 'clamp(32px, 8vw, 72px)' }}
+                        style={{ fontSize: "clamp(32px, 8vw, 72px)" }}
                         className="font-black font-mono text-purple-300 drop-shadow-[0_0_20px_rgba(168,85,247,0.6)] tabular-nums"
                       >
-                        {String(value).padStart(2, '0')}
+                        {String(value).padStart(2, "0")}
                       </motion.div>
-                      <span className="text-[8px] md:text-[10px] font-mono text-purple-500/60 tracking-widest mt-1">{label}</span>
+                      <span className="text-[8px] md:text-[10px] font-mono text-purple-500/60 tracking-widest mt-1">
+                        {label}
+                      </span>
                     </div>
                     {i < 3 && (
-                      <span style={{ fontSize: 'clamp(32px, 8vw, 72px)', lineHeight: 1 }} className="font-mono text-purple-500/40 translate-y-[15%]">:</span>
+                      <span
+                        style={{
+                          fontSize: "clamp(32px, 8vw, 72px)",
+                          lineHeight: 1,
+                        }}
+                        className="font-mono text-purple-500/40 translate-y-[15%]"
+                      >
+                        :
+                      </span>
                     )}
                   </div>
                 ))}
@@ -169,7 +207,13 @@ export default function CodestellationPS() {
 
               <div className="text-[9px] md:text-[10px] font-mono text-purple-500/40 tracking-widest">
                 <div className="text-[9px] md:text-[10px] font-mono text-purple-500/40 tracking-widest">
-                  {releaseAt.toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Asia/Kolkata' }).toUpperCase()}
+                  {releaseAt
+                    .toLocaleString("en-IN", {
+                      dateStyle: "medium",
+                      timeStyle: "short",
+                      timeZone: "Asia/Kolkata",
+                    })
+                    .toUpperCase()}
                 </div>
               </div>
             </div>
@@ -178,7 +222,9 @@ export default function CodestellationPS() {
 
         {/* Loading */}
         {loading && (
-          <p className="text-center text-purple-300/50 font-mono text-sm tracking-widest animate-pulse">LOADING...</p>
+          <p className="text-center text-purple-300/50 font-mono text-sm tracking-widest animate-pulse">
+            LOADING...
+          </p>
         )}
 
         {/* PS Items */}
@@ -202,5 +248,5 @@ export default function CodestellationPS() {
         </div>
       </motion.div>
     </section>
-  )
+  );
 }

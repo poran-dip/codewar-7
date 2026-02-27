@@ -1,6 +1,6 @@
-import * as THREE from 'three'
-import { useRef } from 'react'
-import { useFrame } from '@react-three/fiber'
+import * as THREE from "three";
+import { useRef } from "react";
+import { useFrame } from "@react-three/fiber";
 
 const vertexShader = `
   varying vec3 vPosition;
@@ -8,7 +8,7 @@ const vertexShader = `
     vPosition = position;
     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
   }
-`
+`;
 
 const fragmentShader = `
   uniform float time;
@@ -34,16 +34,16 @@ const fragmentShader = `
     
     gl_FragColor = vec4(gradient, 1.0);
   }
-`
+`;
 
 export default function Sky() {
-  const materialRef = useRef<THREE.ShaderMaterial>(null!)
+  const materialRef = useRef<THREE.ShaderMaterial>(null!);
 
   useFrame(({ clock }) => {
     if (materialRef.current) {
-      materialRef.current.uniforms.time.value = clock.getElapsedTime() * 0.1
+      materialRef.current.uniforms.time.value = clock.getElapsedTime() * 0.1;
     }
-  })
+  });
 
   return (
     <mesh scale={[-1, 1, 1]}>
@@ -54,9 +54,9 @@ export default function Sky() {
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
         uniforms={{
-          time: { value: 0 }
+          time: { value: 0 },
         }}
       />
     </mesh>
-  )
+  );
 }

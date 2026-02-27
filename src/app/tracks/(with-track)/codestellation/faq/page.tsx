@@ -1,33 +1,38 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { motion } from 'motion/react'
-import { HelpCircle } from 'lucide-react'
-import FAQItem from '@/components/tracks/FAQItem'
+import { useState } from "react";
+import { motion } from "motion/react";
+import { HelpCircle } from "lucide-react";
+import FAQItem from "@/components/tracks/FAQItem";
 
 export default function CodestellationFAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs = [
     {
       question: "How do I register for Codestellation?",
-      answer: "Click the Register button and complete the Google Form. After submission, your team will be added to the official WhatsApp group for announcements and coordination.",
+      answer:
+        "Click the Register button and complete the Google Form. After submission, your team will be added to the official WhatsApp group for announcements and coordination.",
     },
     {
       question: "Are inter-college or cross-year teams allowed?",
-      answer: "Yes. Teams may include members from different colleges, years, or specializations. Collaboration across institutions is encouraged.",
+      answer:
+        "Yes. Teams may include members from different colleges, years, or specializations. Collaboration across institutions is encouraged.",
     },
     {
       question: "Can we use any tech stack or programming language?",
-      answer: "Yes. Teams are free to use any programming languages, frameworks, tools, APIs, or platforms while building their solution.",
+      answer:
+        "Yes. Teams are free to use any programming languages, frameworks, tools, APIs, or platforms while building their solution.",
     },
     {
       question: "How will projects be judged?",
-      answer: "Projects will be evaluated based on functionality, user experience, technical complexity, innovation, and presentation quality.",
+      answer:
+        "Projects will be evaluated based on functionality, user experience, technical complexity, innovation, and presentation quality.",
     },
     {
       question: "Who owns the intellectual property (IP) of our project?",
-      answer: "Your team retains full ownership and intellectual property rights of your project. You are free to use, modify, publish, or commercialize your work as you see fit.",
+      answer:
+        "Your team retains full ownership and intellectual property rights of your project. You are free to use, modify, publish, or commercialize your work as you see fit.",
     },
   ];
 
@@ -36,7 +41,7 @@ export default function CodestellationFAQ() {
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.2 }}
+        transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.2 }}
         className="w-full max-w-4xl md:mt-12"
       >
         {/* Compact Header */}
@@ -71,8 +76,8 @@ export default function CodestellationFAQ() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + i * 0.05 }}
             >
-              <FAQItem 
-                {...faq} 
+              <FAQItem
+                {...faq}
                 isOpen={openIndex === i}
                 onToggle={() => setOpenIndex(openIndex === i ? null : i)}
               />
@@ -85,5 +90,5 @@ export default function CodestellationFAQ() {
         </div>
       </motion.div>
     </section>
-  )
+  );
 }

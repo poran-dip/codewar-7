@@ -1,46 +1,55 @@
-'use client'
+"use client";
 
-import { motion } from 'motion/react'
-import { usePathname } from 'next/navigation'
-import { useEffect, useRef, useState, useEffectEvent } from 'react'
-import { lock, unlock } from '@/engine/transitionLock'
-import { Track } from '@/store/useNavMeta'
+import { motion } from "motion/react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState, useEffectEvent } from "react";
+import { lock, unlock } from "@/engine/transitionLock";
+import { Track } from "@/store/useNavMeta";
 
 const TRACK_ORDER: Record<Track, number> = {
   codestellation: 0,
   decode: 1,
-}
+};
 
-export default function TracksContainer({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname()
-  const [sceneKey, setSceneKey] = useState<Track | 'none'>('codestellation')
-  const [direction, setDirection] = useState<1 | -1>(1)
-  const prevSceneKeyRef = useRef<Track | 'none'>(sceneKey)
+export default function TracksContainer({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const pathname = usePathname();
+  const [sceneKey, setSceneKey] = useState<Track | "none">("codestellation");
+  const [direction, setDirection] = useState<1 | -1>(1);
+  const prevSceneKeyRef = useRef<Track | "none">(sceneKey);
 
-  const handleSceneChange = useEffectEvent((newKey: Track | 'none', newDirection: 1 | -1) => {
-    setDirection(newDirection)
-    setSceneKey(newKey)
-  })
+  const handleSceneChange = useEffectEvent(
+    (newKey: Track | "none", newDirection: 1 | -1) => {
+      setDirection(newDirection);
+      setSceneKey(newKey);
+    },
+  );
 
   useEffect(() => {
-    const newKey: Track | 'none' = pathname.includes('codestellation')
-      ? 'codestellation'
-      : pathname.includes('decode')
-      ? 'decode'
-      : 'none'
+    const newKey: Track | "none" = pathname.includes("codestellation")
+      ? "codestellation"
+      : pathname.includes("decode")
+        ? "decode"
+        : "none";
 
     if (prevSceneKeyRef.current !== newKey) {
-      const prevOrder = prevSceneKeyRef.current !== 'none' ? TRACK_ORDER[prevSceneKeyRef.current] : 0
-      const nextOrder = newKey !== 'none' ? TRACK_ORDER[newKey] : 0
-      const newDirection = nextOrder >= prevOrder ? 1 : -1
+      const prevOrder =
+        prevSceneKeyRef.current !== "none"
+          ? TRACK_ORDER[prevSceneKeyRef.current]
+          : 0;
+      const nextOrder = newKey !== "none" ? TRACK_ORDER[newKey] : 0;
+      const newDirection = nextOrder >= prevOrder ? 1 : -1;
 
-      lock()
-      prevSceneKeyRef.current = newKey
-      handleSceneChange(newKey, newDirection)
+      lock();
+      prevSceneKeyRef.current = newKey;
+      handleSceneChange(newKey, newDirection);
     }
-  }, [pathname])
+  }, [pathname]);
 
-  const xIn = `${direction * -6}%`
+  const xIn = `${direction * -6}%`;
 
   return (
     <motion.div
@@ -53,5 +62,5 @@ export default function TracksContainer({ children }: { children: React.ReactNod
     >
       {children}
     </motion.div>
-  )
+  );
 }

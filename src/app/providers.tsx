@@ -1,102 +1,129 @@
-'use client'
+"use client";
 
-import { useSyncNavMeta } from '@/hooks/useSyncNavMeta'
-import Background3D from '@/components/3d/Background3D'
-import SceneContainer from '@/components/SceneContainer'
-import { useRouter } from 'next/navigation'
-import useSceneScroll, { SceneDirection } from '@/hooks/useSceneScroll'
-import { useCallback, useRef, useState } from 'react'
-import { unlock } from '@/engine/transitionLock'
-import { useNavMeta } from '@/store/useNavMeta'
-import SceneLoader, { SceneLoaderHandle } from '@/components/SceneLoader'
+import { useSyncNavMeta } from "@/hooks/useSyncNavMeta";
+import Background3D from "@/components/3d/Background3D";
+import SceneContainer from "@/components/SceneContainer";
+import { useRouter } from "next/navigation";
+import useSceneScroll, { SceneDirection } from "@/hooks/useSceneScroll";
+import { useCallback, useRef, useState } from "react";
+import { unlock } from "@/engine/transitionLock";
+import { useNavMeta } from "@/store/useNavMeta";
+import SceneLoader, { SceneLoaderHandle } from "@/components/SceneLoader";
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  useSyncNavMeta()
-  const router = useRouter()
+  useSyncNavMeta();
+  const router = useRouter();
 
-  const [mounted, setMounted] = useState<boolean>(false)
-  const loaderRef = useRef<SceneLoaderHandle>(null)
+  const [mounted, setMounted] = useState<boolean>(false);
+  const loaderRef = useRef<SceneLoaderHandle>(null);
 
   const dismiss = useCallback(() => {
-    loaderRef.current?.finish()
-  }, [])
+    loaderRef.current?.finish();
+  }, []);
 
-  const handleScroll = useCallback((dir: SceneDirection) => {
-    const isModalOpen = document.querySelector('[data-ps-modal-open="true"]')
+  const handleScroll = useCallback(
+    (dir: SceneDirection) => {
+      const isModalOpen = document.querySelector('[data-ps-modal-open="true"]');
       if (isModalOpen) {
-        unlock()
-        return
+        unlock();
+        return;
       }
 
-    const currentMeta = useNavMeta.getState().currentMeta
+      const currentMeta = useNavMeta.getState().currentMeta;
 
-    if (!currentMeta) {
-      unlock()
-      return
-    }
+      if (!currentMeta) {
+        unlock();
+        return;
+      }
 
-    let nextRoute: string | null = null
+      let nextRoute: string | null = null;
 
-    if (dir === 'up' || dir === 'down') {
-      if (currentMeta.layer === 'intro') {
-        if (dir === 'down') nextRoute = '/tracks/codestellation'
-      } else if (currentMeta.layer === 'tracks') {
-        if (currentMeta.track === 'codestellation') {
-          nextRoute = dir === 'down' ? `/tracks/decode` : '/'
-        } else if (currentMeta.track === 'decode') {
-          if (dir === 'up') nextRoute = `/tracks/codestellation`
+      if (dir === "up" || dir === "down") {
+        if (currentMeta.layer === "intro") {
+          if (dir === "down") nextRoute = "/tracks/codestellation";
+        } else if (currentMeta.layer === "tracks") {
+          if (currentMeta.track === "codestellation") {
+            nextRoute = dir === "down" ? `/tracks/decode` : "/";
+          } else if (currentMeta.track === "decode") {
+            if (dir === "up") nextRoute = `/tracks/codestellation`;
+          }
         }
-      }
-    }
-
-    else if (dir === 'left' || dir === 'right') {
-      if (currentMeta.layer === 'intro') {
-        const SECTIONS = ['', 'contact', 'sponsors']
-        const currentIndex = SECTIONS.indexOf(currentMeta.section || '')
-        const nextIndex = dir === 'right' ? currentIndex + 1 : currentIndex - 1
-        const next = SECTIONS[nextIndex]
-        if (nextIndex === 0) nextRoute = '/'
-        else if (next !== undefined) nextRoute = `/${next}`
-
-      } else if (currentMeta.layer === 'tracks' && currentMeta.track) {
-        const TRACK_SECTIONS: Record<string, string[]> = {
-          codestellation: ['', 'ps', 'rules', 'prizes', 'faq'],
-          decode:         ['', 'rules', 'prizes', 'faq'],
+      } else if (dir === "left" || dir === "right") {
+        if (currentMeta.layer === "intro") {
+          const SECTIONS = ["", "contact", "sponsors"];
+          const currentIndex = SECTIONS.indexOf(currentMeta.section || "");
+          const nextIndex =
+            dir === "right" ? currentIndex + 1 : currentIndex - 1;
+          const next = SECTIONS[nextIndex];
+          if (nextIndex === 0) nextRoute = "/";
+          else if (next !== undefined) nextRoute = `/${next}`;
+        } else if (currentMeta.layer === "tracks" && currentMeta.track) {
+          const TRACK_SECTIONS: Record<string, string[]> = {
+            codestellation: ["", "ps", "rules", "prizes", "faq"],
+            decode: ["", "rules", "prizes", "faq"],
+          };
+          const sections = TRACK_SECTIONS[currentMeta.track] ?? [
+            "",
+            "rules",
+            "prizes",
+            "faq",
+          ];
+          const currentIndex = sections.indexOf(currentMeta.section || "");
+          const nextIndex =
+            dir === "right" ? currentIndex + 1 : currentIndex - 1;
+          const next = sections[nextIndex];
+          if (nextIndex === 0) nextRoute = `/tracks/${currentMeta.track}`;
+          else if (next !== undefined)
+            nextRoute = `/tracks/${currentMeta.track}/${next}`;
         }
-        const sections = TRACK_SECTIONS[currentMeta.track] ?? ['', 'rules', 'prizes', 'faq']
-        const currentIndex = sections.indexOf(currentMeta.section || '')
-        const nextIndex = dir === 'right' ? currentIndex + 1 : currentIndex - 1
-        const next = sections[nextIndex]
-        if (nextIndex === 0) nextRoute = `/tracks/${currentMeta.track}`
-        else if (next !== undefined) nextRoute = `/tracks/${currentMeta.track}/${next}`
+      } else if (dir === "nav1") {
+        nextRoute =
+          currentMeta.layer === "intro" ? "/" : `/tracks/${currentMeta.track}`;
+      } else if (dir === "nav2") {
+        nextRoute =
+          currentMeta.layer === "intro"
+            ? "/contact"
+            : currentMeta.track === "codestellation"
+              ? `/tracks/codestellation/ps`
+              : `/tracks/decode/rules`;
+      } else if (dir === "nav3") {
+        nextRoute =
+          currentMeta.layer === "intro"
+            ? "/sponsors"
+            : currentMeta.track === "codestellation"
+              ? `/tracks/codestellation/rules`
+              : `/tracks/decode/prizes`;
+      } else if (dir === "nav4") {
+        if (currentMeta.layer === "tracks")
+          nextRoute =
+            currentMeta.track === "codestellation"
+              ? `/tracks/codestellation/prizes`
+              : `/tracks/decode/faq`;
+      } else if (dir === "nav5") {
+        if (
+          currentMeta.layer === "tracks" &&
+          currentMeta.track === "codestellation"
+        )
+          nextRoute = `/tracks/codestellation/faq`;
+      } else if (dir === "exit") {
+        if (currentMeta.layer === "tracks") nextRoute = "/";
       }
-    }
 
-    else if (dir === 'nav1') {
-      nextRoute = currentMeta.layer === 'intro' ? '/' : `/tracks/${currentMeta.track}`
-    } else if (dir === 'nav2') {
-      nextRoute = currentMeta.layer === 'intro' ? '/contact' : currentMeta.track === 'codestellation' ? `/tracks/codestellation/ps` : `/tracks/decode/rules`
-    } else if (dir === 'nav3') {
-      nextRoute = currentMeta.layer === 'intro' ? '/sponsors' : currentMeta.track === 'codestellation' ? `/tracks/codestellation/rules` : `/tracks/decode/prizes`
-    } else if (dir === 'nav4') {
-      if (currentMeta.layer === 'tracks') nextRoute = currentMeta.track === 'codestellation' ? `/tracks/codestellation/prizes` : `/tracks/decode/faq`
-    } else if (dir === 'nav5') {
-      if (currentMeta.layer === 'tracks' && currentMeta.track === 'codestellation') nextRoute = `/tracks/codestellation/faq`
-    } else if (dir === 'exit') {
-      if (currentMeta.layer === 'tracks') nextRoute = '/'
-    }
+      if (nextRoute) router.push(nextRoute);
+      else unlock();
+    },
+    [router],
+  );
 
-    if (nextRoute) router.push(nextRoute)
-    else unlock()
-  }, [router])
-
-  useSceneScroll(handleScroll)
+  useSceneScroll(handleScroll);
 
   return (
     <>
-      {!mounted && <SceneLoader ref={loaderRef} onDone={() => setMounted(true)} />}
+      {!mounted && (
+        <SceneLoader ref={loaderRef} onDone={() => setMounted(true)} />
+      )}
       <Background3D onReady={dismiss} />
       <SceneContainer>{children}</SceneContainer>
     </>
-  )
+  );
 }

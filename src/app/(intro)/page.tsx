@@ -1,4 +1,4 @@
-import IntroHero from "@/components/intro/IntroHero"
+import IntroHero from "@/components/intro/IntroHero";
 
 const IntroPage = () => {
   return (
@@ -9,7 +9,7 @@ const IntroPage = () => {
         </div>
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default IntroPage
+export default IntroPage;

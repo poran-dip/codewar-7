@@ -1,21 +1,21 @@
-'use client'
+"use client";
 
-import { forwardRef, useImperativeHandle, useState } from 'react'
+import { forwardRef, useImperativeHandle, useState } from "react";
 
 export type SceneLoaderHandle = {
-  finish: () => void
-}
+  finish: () => void;
+};
 
 const SceneLoader = forwardRef<SceneLoaderHandle, { onDone?: () => void }>(
   ({ onDone }, ref) => {
-    const [fading, setFading] = useState(false)
+    const [fading, setFading] = useState(false);
 
     useImperativeHandle(ref, () => ({
       finish: () => {
-        setFading(true)
-        setTimeout(() => onDone?.(), 700)
+        setFading(true);
+        setTimeout(() => onDone?.(), 700);
       },
-    }))
+    }));
 
     return (
       <>
@@ -55,9 +55,9 @@ const SceneLoader = forwardRef<SceneLoaderHandle, { onDone?: () => void }>(
         <div
           className="fixed inset-0 z-9999 flex items-center justify-center overflow-hidden transition-opacity duration-700"
           style={{
-            background: '#0a0118',
+            background: "#0a0118",
             opacity: fading ? 0 : 1,
-            pointerEvents: fading ? 'none' : 'all',
+            pointerEvents: fading ? "none" : "all",
           }}
         >
           {/* Perspective grid */}
@@ -69,7 +69,8 @@ const SceneLoader = forwardRef<SceneLoaderHandle, { onDone?: () => void }>(
           <div
             className="absolute inset-0"
             style={{
-              background: 'linear-gradient(to bottom, #0a0118 0%, transparent 35%, transparent 65%, #0a0118 100%)',
+              background:
+                "linear-gradient(to bottom, #0a0118 0%, transparent 35%, transparent 65%, #0a0118 100%)",
             }}
           />
 
@@ -77,39 +78,32 @@ const SceneLoader = forwardRef<SceneLoaderHandle, { onDone?: () => void }>(
           <div
             className="absolute size-90 rounded-full blur-2xl"
             style={{
-              background: 'radial-gradient(circle, rgba(156,39,176,0.3) 0%, transparent 70%)',
+              background:
+                "radial-gradient(circle, rgba(156,39,176,0.3) 0%, transparent 70%)",
             }}
           />
 
           {/* Orb */}
           <div className="relative z-10 size-24">
             {/* Ring 1 */}
-            <div
-              className="sl-spin-cw-14 absolute inset-0 rounded-full border border-[rgba(0,229,255,0.4)] border-t-transparent"
-            />
+            <div className="sl-spin-cw-14 absolute inset-0 rounded-full border border-[rgba(0,229,255,0.4)] border-t-transparent" />
             {/* Ring 2 */}
-            <div
-              className="sl-spin-ccw-18 absolute inset-2.5 rounded-full border border-[rgba(156,39,176,0.55)] border-b-transparent"
-            />
+            <div className="sl-spin-ccw-18 absolute inset-2.5 rounded-full border border-[rgba(156,39,176,0.55)] border-b-transparent" />
             {/* Ring 3 */}
-            <div
-              className="sl-spin-cw-24 absolute inset-5 rounded-full border border-[rgba(0,229,255,0.3)] border-l-transparent"
-            />
+            <div className="sl-spin-cw-24 absolute inset-5 rounded-full border border-[rgba(0,229,255,0.3)] border-l-transparent" />
 
             {/* Core */}
             <div className="sl-core" />
 
             {/* Center dot */}
-            <div
-              className="sl-float absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_6px_3px_rgba(255,255,255,0.9)]"
-            />
+            <div className="sl-float absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_6px_3px_rgba(255,255,255,0.9)]" />
           </div>
         </div>
       </>
-    )
-  }
-)
+    );
+  },
+);
 
-SceneLoader.displayName = 'SceneLoader'
+SceneLoader.displayName = "SceneLoader";
 
-export default SceneLoader
+export default SceneLoader;

@@ -1,5 +1,13 @@
 import { LucideIcon } from "lucide-react";
-import { AlertTriangle, BookOpen, Briefcase, Building2, MessageSquare, Stethoscope, Store } from "lucide-react";
+import {
+  AlertTriangle,
+  BookOpen,
+  Briefcase,
+  Building2,
+  MessageSquare,
+  Stethoscope,
+  Store,
+} from "lucide-react";
 
 export interface ProblemStatement {
   id: string;

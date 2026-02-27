@@ -1,42 +1,47 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { motion } from 'motion/react'
-import { HelpCircle } from 'lucide-react'
-import FAQItem from '@/components/tracks/FAQItem'
+import { useState } from "react";
+import { motion } from "motion/react";
+import { HelpCircle } from "lucide-react";
+import FAQItem from "@/components/tracks/FAQItem";
 
 export default function DecodeStackFAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs = [
     {
       question: "How do I register for Decode Stack?",
-      answer: "Click the Register button and fill out the Google Form. After submission, you will be redirected to the GeeksforGeeks platform to finalize your registration.",
+      answer:
+        "Click the Register button and fill out the Google Form. After submission, you will be redirected to the GeeksforGeeks platform to finalize your registration.",
     },
     {
       question: "Which programming languages are allowed?",
-      answer: "Participants may use any programming language supported by the GeeksforGeeks platform.",
+      answer:
+        "Participants may use any programming language supported by the GeeksforGeeks platform.",
     },
     {
       question: "Can I switch between problems or submit multiple times?",
-      answer: "Yes. You may attempt problems in any order and submit multiple times. Penalty time will be applied for incorrect submissions as per the platform's scoring system.",
+      answer:
+        "Yes. You may attempt problems in any order and submit multiple times. Penalty time will be applied for incorrect submissions as per the platform's scoring system.",
     },
     {
       question: "How are rankings decided?",
-      answer: "Rankings are based on the number of problems solved, penalty time for incorrect submissions, and faster correct submission time in case of ties.",
+      answer:
+        "Rankings are based on the number of problems solved, penalty time for incorrect submissions, and faster correct submission time in case of ties.",
     },
     {
       question: "When will prizes be awarded?",
-      answer: "Prizes will be awarded after the contest concludes and all submissions have been reviewed and verified through the platform’s anti-cheat and validation processes.",
+      answer:
+        "Prizes will be awarded after the contest concludes and all submissions have been reviewed and verified through the platform’s anti-cheat and validation processes.",
     },
-  ]
+  ];
 
   return (
     <section className="h-screen flex items-center justify-center">
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.2 }}
+        transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.2 }}
         className="w-full max-w-4xl md:mt-12"
       >
         {/* Compact Header */}
@@ -71,8 +76,8 @@ export default function DecodeStackFAQ() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + i * 0.05 }}
             >
-              <FAQItem 
-                {...faq} 
+              <FAQItem
+                {...faq}
                 isOpen={openIndex === i}
                 onToggle={() => setOpenIndex(openIndex === i ? null : i)}
               />
@@ -85,5 +90,5 @@ export default function DecodeStackFAQ() {
         </div>
       </motion.div>
     </section>
-  )
+  );
 }

@@ -1,32 +1,34 @@
-'use client'
+"use client";
 
-import { motion } from 'motion/react'
-import TrackSelector from '@/components/intro/TrackSelector'
-import { useState, useEffect } from 'react'
-import { Cpu } from 'lucide-react'
+import { motion } from "motion/react";
+import TrackSelector from "@/components/intro/TrackSelector";
+import { useState, useEffect } from "react";
+import { Cpu } from "lucide-react";
 
 export default function TracksHubHero() {
-  const [selectedTrack, setSelectedTrack] = useState<'codestellation' | 'decode' | null>(null)
+  const [selectedTrack, setSelectedTrack] = useState<
+    "codestellation" | "decode" | null
+  >(null);
 
   useEffect(() => {
     if (selectedTrack) {
-      const event = new CustomEvent('trackSelected', { detail: selectedTrack })
-      window.dispatchEvent(event)
+      const event = new CustomEvent("trackSelected", { detail: selectedTrack });
+      window.dispatchEvent(event);
     }
-  }, [selectedTrack])
+  }, [selectedTrack]);
 
   return (
     <section className="relative z-10 h-full w-full flex flex-col items-center justify-center px-4 md:px-6">
-
       {/* Dynamic ambient glow */}
       <motion.div
         className="fixed inset-0 -z-10 pointer-events-none"
         animate={{
-          background: selectedTrack === 'codestellation'
-            ? 'radial-gradient(circle at center, rgba(88, 28, 135, 0.25) 0%, rgba(49, 46, 129, 0.18) 50%, transparent 100%)'
-            : selectedTrack === 'decode'
-            ? 'radial-gradient(circle at center, rgba(8, 145, 178, 0.25) 0%, rgba(30, 64, 175, 0.18) 50%, transparent 100%)'
-            : 'radial-gradient(circle at center, rgba(6,182,212,0.15) 0%, transparent 70%)',
+          background:
+            selectedTrack === "codestellation"
+              ? "radial-gradient(circle at center, rgba(88, 28, 135, 0.25) 0%, rgba(49, 46, 129, 0.18) 50%, transparent 100%)"
+              : selectedTrack === "decode"
+                ? "radial-gradient(circle at center, rgba(8, 145, 178, 0.25) 0%, rgba(30, 64, 175, 0.18) 50%, transparent 100%)"
+                : "radial-gradient(circle at center, rgba(6,182,212,0.15) 0%, transparent 70%)",
         }}
         transition={{ duration: 0.8 }}
       />
@@ -50,7 +52,7 @@ export default function TracksHubHero() {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.2, type: 'spring', stiffness: 120 }}
+        transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
         className="relative mb-6"
       >
         <div className="absolute inset-0 blur-3xl bg-cyan-500/10" />
@@ -62,7 +64,8 @@ export default function TracksHubHero() {
             SELECT A TRACK
           </h1>
           <p className="text-xs md:text-sm text-cyan-400/60 mt-2 max-w-md">
-            Load track-specific environments, rulesets, objectives, and reward protocols.
+            Load track-specific environments, rulesets, objectives, and reward
+            protocols.
           </p>
         </div>
       </motion.div>
@@ -74,14 +77,16 @@ export default function TracksHubHero() {
         transition={{ delay: 0.4 }}
         className="w-full max-w-3xl"
       >
-        <TrackSelector onTrackChange={setSelectedTrack} selectedTrack={selectedTrack} />
+        <TrackSelector
+          onTrackChange={setSelectedTrack}
+          selectedTrack={selectedTrack}
+        />
       </motion.div>
 
       {/* STATUS LINE */}
       <div className="mt-6 text-[10px] font-mono text-cyan-500/40 tracking-widest">
         STATUS: AWAITING SECTOR INITIALIZATION
       </div>
-
     </section>
-  )
+  );
 }

@@ -1,34 +1,44 @@
-'use client'
+"use client";
 
-import { motion } from 'motion/react'
-import { Calendar, MapPin, Clock, Users, Zap, Code2, Lightbulb, Rocket, Trophy } from 'lucide-react'
+import { motion } from "motion/react";
+import {
+  Calendar,
+  MapPin,
+  Clock,
+  Users,
+  Zap,
+  Code2,
+  Lightbulb,
+  Rocket,
+  Trophy,
+} from "lucide-react";
 
 export default function CodestellationInfo() {
   const features = [
-    { icon: Code2, text: 'Build innovative tech solutions' },
-    { icon: Lightbulb, text: 'Real-world problem statements' },
-    { icon: Users, text: 'Team-based competition' },
-    { icon: Rocket, text: 'Ship a working prototype' },
-  ]
+    { icon: Code2, text: "Build innovative tech solutions" },
+    { icon: Lightbulb, text: "Real-world problem statements" },
+    { icon: Users, text: "Team-based competition" },
+    { icon: Rocket, text: "Ship a working prototype" },
+  ];
 
   return (
     <section className="min-h-screen flex items-center justify-center py-8 md:py-20">
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.2 }}
+        transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.2 }}
         className="w-full max-w-5xl"
       >
         {/* Header */}
         <div className="relative mb-3 md:mb-4">
           <div className="absolute inset-0 blur-3xl bg-purple-500/10" />
-          
+
           <div className="relative bg-black/40 backdrop-blur-md border-2 border-purple-500/50 px-3 py-2 md:px-6 md:py-3 clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)] md:clip-path-[polygon(16px_0,100%_0,100%_calc(100%-16px),calc(100%-16px)_100%,0_100%,0_16px)]">
             <div className="absolute top-0 left-0 w-3 h-3 md:w-5 md:h-5 border-t-2 border-l-2 border-purple-400" />
             <div className="absolute top-0 right-0 w-3 h-3 md:w-5 md:h-5 border-t-2 border-r-2 border-purple-400" />
             <div className="absolute bottom-0 left-0 w-3 h-3 md:w-5 md:h-5 border-b-2 border-l-2 border-purple-400" />
             <div className="absolute bottom-0 right-0 w-3 h-3 md:w-5 md:h-5 border-b-2 border-r-2 border-purple-400" />
-            
+
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 md:gap-3">
                 <Zap className="w-3 h-3 md:w-4 md:h-4 text-purple-400 animate-pulse" />
@@ -46,7 +56,6 @@ export default function CodestellationInfo() {
 
         {/* Main Grid */}
         <div className="grid md:grid-cols-2 gap-3 md:gap-6">
-          
           {/* LEFT - About the Track */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -68,7 +77,7 @@ export default function CodestellationInfo() {
 
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-linear-to-br from-purple-900/20 to-indigo-900/20 clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]" />
-            
+
             {/* Scanline effect */}
             <div className="absolute inset-0 bg-linear-to-b from-transparent via-purple-500/5 to-transparent pointer-events-none" />
 
@@ -78,8 +87,9 @@ export default function CodestellationInfo() {
               </div>
 
               <p className="text-xs md:text-base text-purple-100/80 font-mono leading-relaxed mb-3 md:mb-6">
-                A 24-hour hackathon where teams build innovative tech solutions to real-world problem statements. 
-                Collaborate, code, and create working prototypes that make an impact.
+                A 24-hour hackathon where teams build innovative tech solutions
+                to real-world problem statements. Collaborate, code, and create
+                working prototypes that make an impact.
               </p>
 
               {/* Features Grid - Hidden on mobile */}
@@ -110,13 +120,15 @@ export default function CodestellationInfo() {
             className="space-y-3 md:space-y-4"
           >
             {/* Event Details Card */}
-            <div className="
+            <div
+              className="
               relative
               bg-black/40 backdrop-blur-md
               border-2 border-purple-500/30
               clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
               px-2 py-1 md:px-4 md:py-4 pb-2
-            ">
+            "
+            >
               {/* Corner decorations */}
               <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-purple-400/60" />
               <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-purple-400/60" />
@@ -125,7 +137,7 @@ export default function CodestellationInfo() {
 
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-linear-to-br from-purple-900/20 to-indigo-900/20 clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]" />
-              
+
               {/* Scanline effect */}
               <div className="absolute inset-0 bg-linear-to-b from-transparent via-purple-500/5 to-transparent pointer-events-none" />
 
@@ -141,8 +153,12 @@ export default function CodestellationInfo() {
                       <Calendar className="w-3 h-3 md:w-4 md:h-4 text-purple-400" />
                     </div>
                     <div>
-                      <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Date</p>
-                      <p className="text-xs md:text-sm font-mono text-purple-200">February 25-26, 2026</p>
+                      <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">
+                        Date
+                      </p>
+                      <p className="text-xs md:text-sm font-mono text-purple-200">
+                        February 25-26, 2026
+                      </p>
                     </div>
                   </div>
 
@@ -152,8 +168,12 @@ export default function CodestellationInfo() {
                       <Clock className="w-3 h-3 md:w-4 md:h-4 text-purple-400" />
                     </div>
                     <div>
-                      <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Duration</p>
-                      <p className="text-xs md:text-sm font-mono text-purple-200">24 Hours</p>
+                      <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">
+                        Duration
+                      </p>
+                      <p className="text-xs md:text-sm font-mono text-purple-200">
+                        24 Hours
+                      </p>
                     </div>
                   </div>
 
@@ -163,8 +183,12 @@ export default function CodestellationInfo() {
                       <MapPin className="w-3 h-3 md:w-4 md:h-4 text-purple-400" />
                     </div>
                     <div>
-                      <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Location</p>
-                      <p className="text-xs md:text-sm font-mono text-purple-200">ETE Department, AEC</p>
+                      <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">
+                        Location
+                      </p>
+                      <p className="text-xs md:text-sm font-mono text-purple-200">
+                        ETE Department, AEC
+                      </p>
                     </div>
                   </div>
 
@@ -174,8 +198,12 @@ export default function CodestellationInfo() {
                       <Trophy className="w-3 h-3 md:w-4 md:h-4 text-purple-400" />
                     </div>
                     <div>
-                      <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">Prizes</p>
-                      <p className="text-xs md:text-sm font-mono text-purple-200">₹18,000+ in cash & sponsor perks</p>
+                      <p className="text-[8px] md:text-[10px] font-mono text-purple-400/60 tracking-widest uppercase mb-0.5 md:mb-1">
+                        Prizes
+                      </p>
+                      <p className="text-xs md:text-sm font-mono text-purple-200">
+                        ₹18,000+ in cash & sponsor perks
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -202,7 +230,7 @@ export default function CodestellationInfo() {
               >
                 {/* Animated background fill */}
                 <div className="absolute inset-0 bg-linear-to-r from-gray-900 via-gray-700 to-gray-900 opacity-30" />
-                
+
                 {/* Shimmer sweep */}
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-500 bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-12" />
 
@@ -217,7 +245,9 @@ export default function CodestellationInfo() {
 
                 <span className="relative flex items-center justify-center gap-2 md:gap-3 uppercase">
                   <Rocket className="w-4 h-4 md:w-5 md:h-5" />
-                  <span className="hidden sm:inline line-through">Register for Codestellation</span>
+                  <span className="hidden sm:inline line-through">
+                    Register for Codestellation
+                  </span>
                   <span className="sm:hidden line-through">Register Now</span>
                   <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white/40 rounded-full" />
                 </span>
@@ -227,11 +257,11 @@ export default function CodestellationInfo() {
             {/* Info note */}
             <div className="hidden md:block text-center">
               <div className="inline-block bg-black/60 backdrop-blur-sm border border-purple-500/20 px-3 py-1.5 md:px-4 md:py-2 font-mono text-[10px] md:text-xs text-purple-400/50 rounded">
-                <span className="text-purple-400/70">NOTE:</span> Registrations have closed!
+                <span className="text-purple-400/70">NOTE:</span> Registrations
+                have closed!
               </div>
             </div>
           </motion.div>
-
         </div>
 
         {/* System label */}
@@ -240,5 +270,5 @@ export default function CodestellationInfo() {
         </div>
       </motion.div>
     </section>
-  )
+  );
 }
