@@ -52,7 +52,7 @@ export default function SponsorsPage() {
     {
       tier: "title",
       name: "GeeksforGeeks",
-      image: "/sponsors/Geeks_For_Geeks.png",
+      image: "/sponsors/GeeksforGeeks.png",
       corner: "border-yellow-400/70",
       cn: "border-yellow-400/50 hover:border-yellow-400/80",
     },

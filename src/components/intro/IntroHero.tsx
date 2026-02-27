@@ -46,7 +46,7 @@ export default function IntroHero() {
         {/* Udbhavanam - top left */}
         <div className="hidden md:block absolute top-4 left-4">
           <Image
-            src="/branding/udbhavanam_logo_circular.png"
+            src="/branding/udbhavanam.png"
             alt="Udbhavanam 13.0"
             width={64}
             height={64}
@@ -57,7 +57,7 @@ export default function IntroHero() {
         {/* Pyrokinesis - top right */}
         <div className="hidden md:block absolute top-4 right-4">
           <Image
-            src="/branding/pyrokinesis_logo_circular.png"
+            src="/branding/pyrokinesis.png"
             alt="Pyrokinesis 2026"
             width={64}
             height={64}
@@ -89,7 +89,7 @@ export default function IntroHero() {
                 <div className="hidden md:block absolute -top-1.5 -right-1.5 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-cyan-400" />
 
                 <Image
-                  src="/sponsors/Geeks_For_Geeks.png"
+                  src="/sponsors/GeeksforGeeks.png"
                   alt="GeeksforGeeks"
                   width={0}
                   height={0}
