@@ -222,9 +222,37 @@ export default function CodestellationPS() {
 
         {/* Loading */}
         {loading && (
-          <p className="text-center text-purple-300/50 font-mono text-sm tracking-widest animate-pulse">
-            LOADING...
-          </p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="relative bg-black/40 backdrop-blur-md border-2 border-purple-500/30 clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)] px-4 py-8 md:px-6 md:py-10"
+          >
+            <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-purple-400/60" />
+            <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-purple-400/60" />
+            <div className="absolute bottom-0 left-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-l-2 border-purple-400/60" />
+            <div className="absolute bottom-0 right-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-r-2 border-purple-400/60" />
+
+            <div className="flex flex-col items-center justify-center gap-4 h-30 md:h-35">
+              <div className="flex items-center gap-1.5 h-10">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <motion.div
+                    key={i}
+                    className="w-1 bg-purple-400/70"
+                    animate={{ height: ["8px", "24px", "8px"] }}
+                    transition={{
+                      duration: 0.8,
+                      repeat: Infinity,
+                      delay: i * 0.12,
+                      ease: "easeInOut",
+                    }}
+                  />
+                ))}
+              </div>
+              <p className="text-[10px] font-mono text-purple-500/50 tracking-widest uppercase">
+                Fetching problem statements...
+              </p>
+            </div>
+          </motion.div>
         )}
 
         {/* PS Items */}
