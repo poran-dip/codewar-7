@@ -11,7 +11,7 @@ export default function CodestellationPrizes() {
       title: "First Place",
       reward: "₹10,000",
       sponsorPerks:
-        "goodies from GeeksforGeeks + free access to a 4-Month DSA Program by Coding Pandas",
+        "trophy + goodies from GeeksforGeeks",
       text: "Top scoring team",
       iconColor: "text-yellow-400",
       iconGlow: "drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]",
@@ -22,7 +22,7 @@ export default function CodestellationPrizes() {
       title: "Second Place",
       reward: "₹5,000",
       sponsorPerks:
-        "goodies from GeeksforGeeks + 75% off a 4-Month DSA Program by Coding Pandas",
+        "trophy + goodies from GeeksforGeeks",
       text: "Runner-up team",
       iconColor: "text-gray-300",
       iconGlow: "drop-shadow-[0_0_8px_rgba(209,213,219,0.6)]",
@@ -33,7 +33,7 @@ export default function CodestellationPrizes() {
       title: "Third Place",
       reward: "₹3,000",
       sponsorPerks:
-        "goodies from GeeksforGeeks + 50% off a 4-Month DSA Program by Coding Pandas",
+        "trophy + goodies from GeeksforGeeks",
       text: "Third place team",
       iconColor: "text-orange-400",
       iconGlow: "drop-shadow-[0_0_8px_rgba(251,146,60,0.6)]",
@@ -163,7 +163,7 @@ export default function CodestellationPrizes() {
               </p>
             </div>
             <p className="text-[9px] md:text-[10px] font-mono text-purple-400/50">
-              + 25% off a 4-Month DSA Program by Coding Pandas
+              + internship opportunities
             </p>
           </div>
         </motion.div>
