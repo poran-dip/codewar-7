@@ -10,7 +10,7 @@ export default function DecodeStackPrizes() {
       place: '1st',
       title: 'First Place',
       reward: '₹6,000 ',
-      sponsorPerks: 'goodies from GeeksforGeeks',
+      sponsorPerks: 'certificates + leaderboard recognition',
       text: 'Highest rank on scoreboard',
       iconColor: 'text-yellow-400',
       iconGlow: 'drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]'
@@ -20,7 +20,7 @@ export default function DecodeStackPrizes() {
       place: '2nd',
       title: 'Second Place',
       reward: '₹4,000',
-      sponsorPerks: 'goodies from GeeksforGeeks',
+      sponsorPerks: 'certificates + leaderboard recognition',
       text: 'Second highest ranked participant',
       iconColor: 'text-gray-300',
       iconGlow: 'drop-shadow-[0_0_8px_rgba(209,213,219,0.6)]'
@@ -30,7 +30,7 @@ export default function DecodeStackPrizes() {
       place: '3rd',
       title: 'Third Place',
       reward: '₹2,000',
-      sponsorPerks: 'goodies from GeeksforGeeks',
+      sponsorPerks: 'certificates + leaderboard recognition',
       text: 'Third highest ranked participant',
       iconColor: 'text-orange-400',
       iconGlow: 'drop-shadow-[0_0_8px_rgba(251,146,60,0.6)]'
@@ -149,7 +149,7 @@ export default function DecodeStackPrizes() {
               <Sparkles className="w-3 h-3 md:w-3.5 md:h-3.5 text-cyan-400" />
               <p className="text-xs md:text-sm font-mono font-bold text-cyan-200">All participants receive certificates</p>
             </div>
-            <p className="text-[9px] md:text-[10px] font-mono text-cyan-400/50">+ sponsor perks</p>
+            <p className="text-[9px] md:text-[10px] font-mono text-cyan-400/50">+ official leaderboard listing</p>
           </div>
         </motion.div>
 
