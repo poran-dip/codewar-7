@@ -1,7 +1,7 @@
 "use client";
 
+import { Award, Medal, Sparkles, Trophy } from "lucide-react";
 import { motion } from "motion/react";
-import { Trophy, Medal, Award, Sparkles } from "lucide-react";
 
 export default function DecodeStackPrizes() {
   const prizes = [
@@ -72,7 +72,7 @@ export default function DecodeStackPrizes() {
         <div className="space-y-2 md:space-y-3">
           {prizes.map((prize, i) => (
             <motion.div
-              key={i}
+              key={prize.place}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{

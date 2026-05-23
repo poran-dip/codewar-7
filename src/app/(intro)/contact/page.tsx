@@ -1,16 +1,16 @@
 "use client";
-import { motion } from "motion/react";
 import {
-  Mail,
-  Phone,
-  MapPin,
-  Radio,
+  Facebook,
   Instagram,
   Linkedin,
-  Facebook,
+  Mail,
+  MapPin,
+  Phone,
+  Radio,
 } from "lucide-react";
-import Link from "next/link";
+import { motion } from "motion/react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ContactPage() {
   const items = [
@@ -100,7 +100,7 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-5">
               {items.map((item, i) => (
                 <Link
-                  key={i}
+                  key={item.title}
                   href={item.href}
                   target={item.href.startsWith("http") ? "_blank" : undefined}
                   rel={
@@ -258,7 +258,7 @@ export default function ContactPage() {
 
                 {socialLinks.map((social, i) => (
                   <Link
-                    key={i}
+                    key={social.name}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"

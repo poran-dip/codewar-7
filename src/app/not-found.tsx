@@ -75,6 +75,7 @@ export default function NotFound() {
         transition={{ delay: 0.8, type: "spring", stiffness: 100 }}
       >
         <button
+          type="button"
           onClick={() => router.push("/")}
           className="relative group bg-black/60 backdrop-blur-sm border border-cyan-500/40 px-5 py-2.5 md:px-8 md:py-3 font-mono text-xs md:text-sm text-cyan-400 hover:text-cyan-200 hover:border-cyan-400/70 hover:bg-cyan-500/10 transition-all duration-200 tracking-widest uppercase"
         >

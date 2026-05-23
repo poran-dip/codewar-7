@@ -1,18 +1,18 @@
 "use client";
 
-import Link from "next/link";
-import { motion } from "motion/react";
-import { usePathname, useRouter } from "next/navigation";
 import {
-  Home,
-  Trophy,
-  HelpCircle,
-  ScrollText,
   ChevronLeft,
   ChevronRight,
-  X,
   FileCode,
+  HelpCircle,
+  Home,
+  ScrollText,
+  Trophy,
+  X,
 } from "lucide-react";
+import { motion } from "motion/react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function TracksNavbar() {
   const pathname = usePathname();
@@ -74,7 +74,7 @@ export default function TracksNavbar() {
 
   const isActive = (href: string) => {
     if (href === `/tracks/${track}`) return pathname === href;
-    return pathname === href || pathname.startsWith(href + "/");
+    return pathname === href || pathname.startsWith(`${href}/`);
   };
 
   const currentIndex = navItems.findIndex((item) => isActive(item.href));
@@ -166,7 +166,7 @@ export default function TracksNavbar() {
                   className={`
                     relative flex items-center justify-center
                     px-1 py-1.5
-                    ${"bg-gray-900/50 text-gray-400 group-hover:text-" + accentColor + "-400 group-hover:bg-" + accentColor + "-500/10"}
+                    ${`bg-gray-900/50 text-gray-400 group-hover:text-${accentColor}-400 group-hover:bg-${accentColor}-500/10`}
                   `}
                 >
                   <div

@@ -1,7 +1,7 @@
 "use client";
 
-import { isLocked, lock } from "@/engine/transitionLock";
 import { useEffect } from "react";
+import { isLocked, lock } from "@/engine/transitionLock";
 
 export type SceneDirection =
   | "up"

@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, AnimatePresence } from "motion/react";
-import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type Track = "codestellation" | "decode" | null;
 
@@ -117,6 +117,7 @@ export default function TrackSelector({
 
             {/* Select/Enter */}
             <button
+              type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 handleTrackClick("codestellation");
@@ -200,6 +201,7 @@ export default function TrackSelector({
 
             {/* Select/Enter */}
             <button
+              type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 handleTrackClick("decode");

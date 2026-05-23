@@ -1,7 +1,7 @@
 "use client";
 
 import { useFrame } from "@react-three/fiber";
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
 import * as THREE from "three";
 
 type DeviceTier = "mobile" | "tablet" | "desktop";

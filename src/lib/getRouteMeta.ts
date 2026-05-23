@@ -1,4 +1,4 @@
-import { RouteMeta } from "@/store/useNavMeta";
+import type { RouteMeta } from "@/store/useNavMeta";
 
 export function getRouteMetaFromPath(path: string): RouteMeta {
   const parts = path.split("/").filter(Boolean);

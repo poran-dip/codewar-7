@@ -1,7 +1,7 @@
 "use client";
 
+import { Award, Medal, Sparkles, Trophy } from "lucide-react";
 import { motion } from "motion/react";
-import { Trophy, Medal, Award, Sparkles } from "lucide-react";
 
 export default function CodestellationPrizes() {
   const prizes = [
@@ -10,8 +10,7 @@ export default function CodestellationPrizes() {
       place: "1st",
       title: "First Place",
       reward: "₹10,000",
-      sponsorPerks:
-        "trophy + goodies from GeeksforGeeks",
+      sponsorPerks: "trophy + goodies from GeeksforGeeks",
       text: "Top scoring team",
       iconColor: "text-yellow-400",
       iconGlow: "drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]",
@@ -21,8 +20,7 @@ export default function CodestellationPrizes() {
       place: "2nd",
       title: "Second Place",
       reward: "₹5,000",
-      sponsorPerks:
-        "trophy + goodies from GeeksforGeeks",
+      sponsorPerks: "trophy + goodies from GeeksforGeeks",
       text: "Runner-up team",
       iconColor: "text-gray-300",
       iconGlow: "drop-shadow-[0_0_8px_rgba(209,213,219,0.6)]",
@@ -32,8 +30,7 @@ export default function CodestellationPrizes() {
       place: "3rd",
       title: "Third Place",
       reward: "₹3,000",
-      sponsorPerks:
-        "trophy + goodies from GeeksforGeeks",
+      sponsorPerks: "trophy + goodies from GeeksforGeeks",
       text: "Third place team",
       iconColor: "text-orange-400",
       iconGlow: "drop-shadow-[0_0_8px_rgba(251,146,60,0.6)]",
@@ -75,7 +72,7 @@ export default function CodestellationPrizes() {
         <div className="space-y-2 md:space-y-3">
           {prizes.map((prize, i) => (
             <motion.div
-              key={i}
+              key={prize.place}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{

@@ -1,9 +1,9 @@
 "use client";
 
+import { FileText, Mail, Phone, Sparkles, Trophy } from "lucide-react";
 import { motion } from "motion/react";
-import { Trophy, Mail, Phone, Sparkles, FileText } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function SponsorsPage() {
   const tierColors: Record<
@@ -137,7 +137,7 @@ export default function SponsorsPage() {
                 const colors = tierColors[sponsor.tier];
                 return (
                   <motion.div
-                    key={i}
+                    key={sponsor.name}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{

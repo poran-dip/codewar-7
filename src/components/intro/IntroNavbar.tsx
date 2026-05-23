@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { motion } from "motion/react";
-import { usePathname, useRouter } from "next/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "motion/react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 const IntroNavbar = () => {
   const pathname = usePathname();
@@ -17,7 +17,7 @@ const IntroNavbar = () => {
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
-    return pathname === href || pathname.startsWith(href + "/");
+    return pathname === href || pathname.startsWith(`${href}/`);
   };
 
   const currentIndex = navItems.findIndex((item) => isActive(item.href));

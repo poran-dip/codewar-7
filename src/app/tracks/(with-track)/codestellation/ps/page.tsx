@@ -1,19 +1,22 @@
 "use client";
 
-import { motion } from "motion/react";
-import { FileCode, Lock, LucideIcon, WifiOff } from "lucide-react";
-import { useEffect, useState } from "react";
-import { ProblemStatement } from "@/data/ps";
-import PSItem from "@/components/tracks/PSItem";
 import {
   AlertTriangle,
   BookOpen,
   Briefcase,
   Building2,
+  FileCode,
+  Lock,
+  type LucideIcon,
   MessageSquare,
   Stethoscope,
   Store,
+  WifiOff,
 } from "lucide-react";
+import { motion } from "motion/react";
+import { useEffect, useState } from "react";
+import PSItem from "@/components/tracks/PSItem";
+import type { ProblemStatement } from "@/data/ps";
 
 const ICON_MAP: Record<string, LucideIcon> = {
   Healthcare: Stethoscope,
@@ -85,7 +88,11 @@ export default function CodestellationPS() {
           setProblemStatements(enrichedPS);
         }
       })
-      .catch((e) => setError(e instanceof Error ? e.message : "Failed to load problem statements"))
+      .catch((e) =>
+        setError(
+          e instanceof Error ? e.message : "Failed to load problem statements",
+        ),
+      )
       .finally(() => setLoading(false));
   }, []);
 

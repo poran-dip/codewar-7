@@ -2,9 +2,9 @@
 
 import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState, useEffectEvent } from "react";
+import { useEffect, useEffectEvent, useRef, useState } from "react";
 import { lock, unlock } from "@/engine/transitionLock";
-import { Layer } from "@/store/useNavMeta";
+import type { Layer } from "@/store/useNavMeta";
 
 export default function SceneContainer({
   children,

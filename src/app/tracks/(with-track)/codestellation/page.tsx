@@ -1,17 +1,17 @@
 "use client";
 
-import { motion } from "motion/react";
 import {
   Calendar,
-  MapPin,
   Clock,
-  Users,
-  Zap,
   Code2,
   Lightbulb,
+  MapPin,
   Rocket,
   Trophy,
+  Users,
+  Zap,
 } from "lucide-react";
+import { motion } from "motion/react";
 
 export default function CodestellationInfo() {
   const features = [
@@ -96,7 +96,7 @@ export default function CodestellationInfo() {
               <div className="hidden md:grid grid-cols-1 gap-2.5">
                 {features.map((feature, i) => (
                   <motion.div
-                    key={i}
+                    key={feature.text}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 + i * 0.1 }}

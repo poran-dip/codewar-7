@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "motion/react";
 import { HelpCircle } from "lucide-react";
+import { motion } from "motion/react";
+import { useState } from "react";
 import FAQItem from "@/components/tracks/FAQItem";
 
 export default function DecodeStackFAQ() {
@@ -71,7 +71,7 @@ export default function DecodeStackFAQ() {
         <div className="space-y-2 md:space-y-3">
           {faqs.map((faq, i) => (
             <motion.div
-              key={i}
+              key={faq.question}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + i * 0.05 }}

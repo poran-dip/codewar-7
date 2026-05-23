@@ -1,9 +1,9 @@
 "use client";
 
-import { useNavMeta } from "@/store/useNavMeta";
 import { X } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
+import { useNavMeta } from "@/store/useNavMeta";
 
 export default function EscapeButton() {
   const navMeta = useNavMeta();

@@ -1,6 +1,6 @@
 // app/api/ps/route.ts
 import { NextResponse } from "next/server";
-import { problemsData, ProblemStatement } from "@/data/ps";
+import { type ProblemStatement, problemsData } from "@/data/ps";
 
 export const dynamic = "force-dynamic";
 

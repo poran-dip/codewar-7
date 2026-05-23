@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "motion/react";
-import TrackSelector from "@/components/intro/TrackSelector";
-import { useState, useEffect } from "react";
 import { Cpu } from "lucide-react";
+import { motion } from "motion/react";
+import { useEffect, useState } from "react";
+import TrackSelector from "@/components/intro/TrackSelector";
 
 export default function TracksHubHero() {
   const [selectedTrack, setSelectedTrack] = useState<

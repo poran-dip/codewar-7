@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "motion/react";
-import TrackSelector from "./TrackSelector";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { unlock } from "@/engine/transitionLock";
-import Image from "next/image";
+import TrackSelector from "./TrackSelector";
 
 export default function IntroHero() {
   const [selectedTrack, setSelectedTrack] = useState<
@@ -203,6 +203,7 @@ export default function IntroHero() {
           href="https://porandip.vercel.app"
           target="_blank"
           className="text-[9px] md:text-[10px] font-mono text-cyan-500/20 tracking-wide hover:text-cyan-500/50 transition-colors"
+          rel="noopener"
         >
           Designed & developed by Poran Dip
         </a>

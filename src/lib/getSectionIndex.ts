@@ -1,4 +1,4 @@
-import { SectionByLayer, RouteMeta } from "@/store/useNavMeta";
+import type { RouteMeta, SectionByLayer } from "@/store/useNavMeta";
 
 const INTRO_ORDER: SectionByLayer["intro"][] = ["", "contact", "sponsors"];
 const TRACK_ORDER: SectionByLayer["tracks"][] = [

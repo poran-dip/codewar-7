@@ -1,7 +1,7 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
-import { ProblemStatement } from "@/data/ps";
+import { createContext, type ReactNode, useContext, useState } from "react";
+import type { ProblemStatement } from "@/data/ps";
 
 interface PSModalContextType {
   selectedPS: ProblemStatement | null;

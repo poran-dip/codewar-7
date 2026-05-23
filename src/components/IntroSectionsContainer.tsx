@@ -2,9 +2,9 @@
 
 import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState, useEffectEvent } from "react";
+import { useEffect, useEffectEvent, useRef, useState } from "react";
 import { lock, unlock } from "@/engine/transitionLock";
-import { IntroSection } from "@/store/useNavMeta";
+import type { IntroSection } from "@/store/useNavMeta";
 
 const INTRO_ORDER: Record<IntroSection, number> = {
   "": 0,

@@ -1,16 +1,16 @@
 "use client";
 
-import { motion } from "motion/react";
 import {
-  Calendar,
-  Globe,
-  Clock,
-  Terminal,
-  Trophy,
-  Timer,
   BrainCircuit,
+  Calendar,
+  Clock,
+  Globe,
+  Terminal,
+  Timer,
+  Trophy,
   Zap,
 } from "lucide-react";
+import { motion } from "motion/react";
 
 export default function DecodeStackInfo() {
   const features = [
@@ -95,7 +95,7 @@ export default function DecodeStackInfo() {
               <div className="hidden md:grid grid-cols-1 gap-2.5">
                 {features.map((feature, i) => (
                   <motion.div
-                    key={i}
+                    key={feature.text}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 + i * 0.1 }}

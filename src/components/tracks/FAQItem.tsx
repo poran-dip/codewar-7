@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, HelpCircle } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { useNavMeta } from "@/store/useNavMeta";
 
 export default function FAQItem({
@@ -70,6 +70,7 @@ export default function FAQItem({
 
       {/* Question button */}
       <button
+        type="button"
         onClick={onToggle}
         className="relative w-full flex items-start gap-2 md:gap-3 text-left"
       >

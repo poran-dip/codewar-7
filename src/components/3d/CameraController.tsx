@@ -1,10 +1,10 @@
 "use client";
 
-import { isLocked } from "@/engine/transitionLock";
 import { useFrame, useThree } from "@react-three/fiber";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { isLocked } from "@/engine/transitionLock";
 
 const _breathingOffset = new THREE.Vector3();
 const _lookAtOffset = new THREE.Vector3();

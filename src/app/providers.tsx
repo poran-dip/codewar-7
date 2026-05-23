@@ -1,14 +1,14 @@
 "use client";
 
-import { useSyncNavMeta } from "@/hooks/useSyncNavMeta";
+import { useRouter } from "next/navigation";
+import { useCallback, useRef, useState } from "react";
 import Background3D from "@/components/3d/Background3D";
 import SceneContainer from "@/components/SceneContainer";
-import { useRouter } from "next/navigation";
-import useSceneScroll, { SceneDirection } from "@/hooks/useSceneScroll";
-import { useCallback, useRef, useState } from "react";
+import SceneLoader, { type SceneLoaderHandle } from "@/components/SceneLoader";
 import { unlock } from "@/engine/transitionLock";
+import useSceneScroll, { type SceneDirection } from "@/hooks/useSceneScroll";
+import { useSyncNavMeta } from "@/hooks/useSyncNavMeta";
 import { useNavMeta } from "@/store/useNavMeta";
-import SceneLoader, { SceneLoaderHandle } from "@/components/SceneLoader";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   useSyncNavMeta();

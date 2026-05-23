@@ -1,9 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { motion } from "motion/react";
-import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "motion/react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useNavMeta } from "@/store/useNavMeta";
 
 const tracks = [

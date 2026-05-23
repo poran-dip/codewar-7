@@ -2,9 +2,9 @@
 
 import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState, useEffectEvent } from "react";
+import { useEffect, useEffectEvent, useRef, useState } from "react";
 import { lock, unlock } from "@/engine/transitionLock";
-import { Track } from "@/store/useNavMeta";
+import type { Track } from "@/store/useNavMeta";
 
 const TRACK_ORDER: Record<Track, number> = {
   codestellation: 0,

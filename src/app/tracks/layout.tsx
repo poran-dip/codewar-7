@@ -1,12 +1,12 @@
 "use client";
 
-import MiniTrackSelector from "@/components/tracks/MiniTrackSelector";
 import { motion } from "motion/react";
-import EscapeButton from "@/components/tracks/EscapeButton";
-import { useNavMeta } from "@/store/useNavMeta";
 import TracksContainer from "@/components/TracksContainer";
-import { PSModalProvider } from "@/store/PSModalContext";
+import EscapeButton from "@/components/tracks/EscapeButton";
+import MiniTrackSelector from "@/components/tracks/MiniTrackSelector";
 import PSModal from "@/components/tracks/PSModal";
+import { PSModalProvider } from "@/store/PSModalContext";
+import { useNavMeta } from "@/store/useNavMeta";
 
 export default function TracksLayout({
   children,

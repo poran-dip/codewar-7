@@ -1,15 +1,14 @@
 "use client";
 
-import { Canvas } from "@react-three/fiber";
-import { Suspense, useEffect, useState, useRef, memo } from "react";
-import { EffectComposer, Bloom, Vignette } from "@react-three/postprocessing";
 import { Environment } from "@react-three/drei";
-
-import Sky from "./Sky";
-import Ground from "./Ground";
-import Pedestal from "./Pedestal";
-import Particles from "./Particles";
+import { Canvas } from "@react-three/fiber";
+import { Bloom, EffectComposer, Vignette } from "@react-three/postprocessing";
+import { memo, Suspense, useEffect, useRef, useState } from "react";
 import CameraController from "./CameraController";
+import Ground from "./Ground";
+import Particles from "./Particles";
+import Pedestal from "./Pedestal";
+import Sky from "./Sky";
 import VolumetricFog from "./VolumetricFog";
 
 function Background3D({ onReady }: { onReady?: () => void }) {

@@ -1,7 +1,7 @@
 "use client";
 
+import { FileText, Github, MapPin, Shield, Users } from "lucide-react";
 import { motion } from "motion/react";
-import { Shield, Github, Users, MapPin, FileText } from "lucide-react";
 
 export default function CodestellationRules() {
   const rules = [
@@ -72,7 +72,7 @@ export default function CodestellationRules() {
         <div className="space-y-2 md:space-y-3">
           {rules.map((rule, i) => (
             <motion.div
-              key={i}
+              key={rule.title}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{

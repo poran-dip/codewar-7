@@ -1,7 +1,7 @@
 "use client";
 
-import IntroNavbar from "@/components/intro/IntroNavbar";
 import IntroSectionsContainer from "@/components/IntroSectionsContainer";
+import IntroNavbar from "@/components/intro/IntroNavbar";
 
 export default function IntroLayout({
   children,

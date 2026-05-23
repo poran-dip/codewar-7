@@ -1,10 +1,10 @@
 "use client";
 
-import { useFrame } from "@react-three/fiber";
-import { useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
-import * as THREE from "three";
+import { useFrame } from "@react-three/fiber";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
 
 type PedestalProps = {
   position: [number, number, number];

@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { useNavMeta } from "@/store/useNavMeta";
+import { useEffect } from "react";
 import { getRouteMetaFromPath } from "@/lib/getRouteMeta";
+import { useNavMeta } from "@/store/useNavMeta";
 
 export function useSyncNavMeta() {
   const pathname = usePathname();

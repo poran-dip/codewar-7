@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "motion/react";
 import { ZoomIn } from "lucide-react";
-import { ProblemStatement } from "@/data/ps";
+import { motion } from "motion/react";
+import type { ProblemStatement } from "@/data/ps";
 import { usePSModal } from "@/store/PSModalContext";
 
 const CATEGORY_COLORS: Record<string, string> = {

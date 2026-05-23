@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { usePSModal } from "@/store/PSModalContext";
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -63,6 +63,7 @@ export default function PSModal() {
 
               {/* Close button */}
               <button
+                type="button"
                 onClick={closeModal}
                 className="absolute top-3 right-3 md:top-4 md:right-4 z-10 p-1.5 rounded hover:bg-purple-500/20 transition-colors"
                 aria-label="Close modal"
@@ -123,8 +124,8 @@ export default function PSModal() {
                       FOCUS AREAS
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                      {selectedPS.focusAreas.map((area, i) => (
-                        <div key={i} className="flex items-start gap-2">
+                      {selectedPS.focusAreas.map((area) => (
+                        <div key={area} className="flex items-start gap-2">
                           <div className="shrink-0 w-1.5 h-1.5 rounded-full bg-purple-400 mt-1.5" />
                           <span className="font-mono text-xs md:text-sm text-purple-100/70">
                             {area}
@@ -143,8 +144,11 @@ export default function PSModal() {
                         CONSTRAINTS
                       </h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        {selectedPS.constraints.map((constraint, i) => (
-                          <div key={i} className="flex items-start gap-2">
+                        {selectedPS.constraints.map((constraint) => (
+                          <div
+                            key={constraint}
+                            className="flex items-start gap-2"
+                          >
                             <div className="shrink-0 w-1.5 h-1.5 rounded-full bg-purple-400 mt-1.5" />
                             <span className="font-mono text-xs md:text-sm text-purple-100/60">
                               {constraint}

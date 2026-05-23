@@ -1,9 +1,9 @@
-import { LucideIcon } from "lucide-react";
 import {
   AlertTriangle,
   BookOpen,
   Briefcase,
   Building2,
+  type LucideIcon,
   MessageSquare,
   Stethoscope,
   Store,
