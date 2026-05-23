@@ -202,7 +202,7 @@ export default function IntroHero() {
         <a
           href="https://porandip.vercel.app"
           target="_blank"
-          className="text-[9px] md:text-[10px] font-mono text-cyan-500/20 tracking-wide hover:text-cyan-500/50 transition-colors"
+          className="text-[9px] md:text-[10px] font-mono text-cyan-500/50 tracking-wide hover:text-cyan-500/80 transition-colors"
           rel="noopener"
         >
           Designed & developed by Poran Dip
@@ -211,7 +211,7 @@ export default function IntroHero() {
           href="https://poly.pizza/m/8AJVYPEBVqt"
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden md:block text-[10px] font-mono text-cyan-500/20 tracking-wide hover:text-cyan-500/50 transition-colors"
+          className="hidden md:block text-[10px] font-mono text-cyan-500/50 tracking-wide hover:text-cyan-500/80 transition-colors"
         >
           &quot;Simple Pillar&quot; by Troctzul [CC-BY]
         </a>
