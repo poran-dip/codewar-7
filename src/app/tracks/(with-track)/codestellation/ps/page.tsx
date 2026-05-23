@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { FileCode, Lock, LucideIcon } from "lucide-react";
+import { FileCode, Lock, LucideIcon, WifiOff } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ProblemStatement } from "@/data/ps";
 import PSItem from "@/components/tracks/PSItem";
@@ -61,13 +61,17 @@ export default function CodestellationPS() {
     new Date("2026-02-25T10:00:00+05:30"),
   );
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string>("");
   const [problemStatements, setProblemStatements] = useState<
     ProblemStatement[]
   >([]);
 
   useEffect(() => {
     fetch("/api/ps")
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
       .then((data) => {
         setReleased(data.released);
         if (data.releaseAt) setReleaseAt(new Date(data.releaseAt));
@@ -81,6 +85,7 @@ export default function CodestellationPS() {
           setProblemStatements(enrichedPS);
         }
       })
+      .catch((e) => setError(e instanceof Error ? e.message : "Failed to load problem statements"))
       .finally(() => setLoading(false));
   }, []);
 
@@ -250,6 +255,27 @@ export default function CodestellationPS() {
               </div>
               <p className="text-[10px] font-mono text-purple-500/50 tracking-widest uppercase">
                 Fetching problem statements...
+              </p>
+            </div>
+          </motion.div>
+        )}
+
+        {/* Error */}
+        {error && !loading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="relative bg-black/40 backdrop-blur-md border-2 border-red-500/30 clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)] px-4 py-8 md:px-6 md:py-10"
+          >
+            <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-red-400/60" />
+            <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-red-400/60" />
+            <div className="absolute bottom-0 left-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-l-2 border-red-400/60" />
+            <div className="absolute bottom-0 right-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-r-2 border-red-400/60" />
+
+            <div className="flex flex-col items-center justify-center gap-4 h-30 md:h-35">
+              <WifiOff className="w-6 h-6 text-red-400/70" />
+              <p className="text-[10px] font-mono text-red-500/50 tracking-widest uppercase">
+                {error}
               </p>
             </div>
           </motion.div>
