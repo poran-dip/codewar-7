@@ -9,4 +9,5 @@ node_modules
 
 docs/
 *.md
+screenshots/
 .DS_Store
