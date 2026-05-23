@@ -1,7 +1,15 @@
 {
-  "name": "codewar-2026",
-  "version": "0.1.0",
+  "name": "codewar-7",
+  "version": "1.0.0",
   "private": true,
+  "description": "Immersive event website for Pyrokinesis' annual coding competition",
+  "author": "Poran Dip <porandip0@gmail.com>",
+  "license": "UNLICENSED",
+  "homepage": "https://codewar.aec.ac.in",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/poran-dip/codewar-7"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

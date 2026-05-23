@@ -1,6 +1,8 @@
 {
   "name": "CodeWar 7.0",
   "short_name": "CodeWar",
+  "description": "Unleash the power of your creativity!",
+  "start_url": "/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

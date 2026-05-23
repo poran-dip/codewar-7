@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "CodeWar 7.0",
-  description: "Unleash your creativity",
+  description: "Unleash the power of your creativity!",
 };
 
 export default function RootLayout({
