@@ -5,6 +5,7 @@ import { Canvas } from "@react-three/fiber";
 import { Bloom, EffectComposer, Vignette } from "@react-three/postprocessing";
 import { memo, Suspense, useEffect, useRef, useState } from "react";
 import CameraController from "./CameraController";
+import FPSMeter from "./FPSMeter"; // TEMP: remove after measuring
 import Ground from "./Ground";
 import Particles from "./Particles";
 import Pedestal from "./Pedestal";
@@ -41,6 +42,7 @@ function Background3D({ onReady }: { onReady?: () => void }) {
 
   return (
     <div className="fixed inset-0 -z-10">
+      <FPSMeter deviceTier={deviceTier} />
       <Canvas
         onCreated={() => onReady?.()}
         camera={{ position: [0, 1, 5], fov: 50 }}
