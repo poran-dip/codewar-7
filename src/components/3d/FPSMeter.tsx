@@ -3,12 +3,38 @@
 import { useEffect, useRef, useState } from "react";
 
 export default function FPSMeter({ deviceTier }: { deviceTier: string }) {
+  const [visible, setVisible] = useState(false);
   const [stats, setStats] = useState({ fps: 0, min: Infinity, avg: 0 });
   const frames = useRef<number[]>([]);
   const lastTime = useRef(performance.now());
   const rafId = useRef<number | null>(null);
 
   useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement;
+      const isTyping =
+        target.tagName === "INPUT" ||
+        target.tagName === "TEXTAREA" ||
+        target.isContentEditable;
+
+      if (
+        !isTyping &&
+        e.key.toLowerCase() === "f" &&
+        !e.metaKey &&
+        !e.ctrlKey &&
+        !e.altKey
+      ) {
+        setVisible((v) => !v);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    if (!visible) return;
+
     const tick = () => {
       const now = performance.now();
       const delta = now - lastTime.current;
@@ -20,9 +46,14 @@ export default function FPSMeter({ deviceTier }: { deviceTier: string }) {
 
       const min = Math.min(...frames.current);
       const avg =
-        frames.current.reduce((a, b) => a + b, 0) / frames.current.length;
+        frames.current.reduce((a: number, b: number) => a + b, 0) /
+        frames.current.length;
 
-      setStats({ fps: Math.round(fps), min: Math.round(min), avg: Math.round(avg) });
+      setStats({
+        fps: Math.round(fps),
+        min: Math.round(min),
+        avg: Math.round(avg),
+      });
 
       rafId.current = requestAnimationFrame(tick);
     };
@@ -30,7 +61,9 @@ export default function FPSMeter({ deviceTier }: { deviceTier: string }) {
     return () => {
       if (rafId.current) cancelAnimationFrame(rafId.current);
     };
-  }, []);
+  }, [visible]);
+
+  if (!visible) return null;
 
   return (
     <div
@@ -48,7 +81,8 @@ export default function FPSMeter({ deviceTier }: { deviceTier: string }) {
         pointerEvents: "none",
       }}
     >
-      tier: {deviceTier} | fps: {stats.fps} | min: {stats.min} | avg: {stats.avg}
+      tier: {deviceTier} | fps: {stats.fps} | min: {stats.min} | avg:{" "}
+      {stats.avg}
     </div>
   );
 }
