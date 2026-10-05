@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #67c9ed;
+  --foreground: #2b1b12;
+  --ink: #2b1b12;
+  --cream: #fff8df;
+  --grass: #4eaf55;
+  --sun: #ffd34e;
+  --brick: #c86c35;
+  --sky: #67c9ed;
 }
 
 @theme inline {
@@ -18,4 +24,38 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   height: 100vh;
   overflow: hidden;
+}
+
+button, a { -webkit-tap-highlight-color: transparent; }
+::selection { background: var(--sun); color: var(--ink); }
+
+.pixel-button {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--ink);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-pixel), monospace;
+  font-size: 0.65rem;
+  line-height: 1.6;
+  text-transform: uppercase;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.pixel-button:hover, .pixel-button:focus-visible { transform: translate(-2px, -2px); }
+.pixel-button:focus-visible { outline: 4px solid var(--sun); outline-offset: 3px; }
+.pixel-panel { border: 4px solid var(--ink); box-shadow: 8px 8px 0 rgba(43, 27, 18, 0.92); }
+
+/* Keep the older track screens legible over the new world scene. */
+[class*="bg-black/40"], [class*="bg-black/50"], [class*="bg-black/60"], [class*="bg-gray-900/50"] {
+  background-color: rgba(255, 248, 223, 0.68) !important;
+  backdrop-filter: blur(5px);
+}
+[class*="border-purple"], [class*="border-cyan"] { border-color: rgba(43, 27, 18, 0.45) !important; }
+[class*="text-purple"], [class*="text-cyan"], [class*="text-gray-"] { color: var(--ink) !important; }
+[class*="shadow-[0_0_"], [class*="drop-shadow-[0_0_"] { filter: none !important; box-shadow: 4px 4px 0 rgba(43, 27, 18, 0.3) !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 }
