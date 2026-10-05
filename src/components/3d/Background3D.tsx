@@ -3,8 +3,8 @@
 import { Canvas } from "@react-three/fiber";
 import { memo, Suspense, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import CameraController from "./CameraController";
-import RetroWorld from "./RetroWorld";
+import CameraController from "./3d/CameraController";
+import RetroWorld from "./3d/RetroWorld";
 
 function Background3D({ onReady }: { onReady?: () => void }) {
   const pathname = usePathname();
