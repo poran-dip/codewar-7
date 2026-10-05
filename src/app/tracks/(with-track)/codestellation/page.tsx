@@ -47,7 +47,7 @@ export default function CodestellationInfo() {
                 </h1>
               </div>
               <div className="hidden md:block text-[10px] font-mono text-purple-500/50 tracking-widest">
-                TRACK_01_INFO
+                WORLD 01
               </div>
             </div>
             <div className="absolute inset-0 bg-linear-to-b from-transparent via-purple-500/5 to-transparent pointer-events-none" />
@@ -83,7 +83,7 @@ export default function CodestellationInfo() {
 
             <div className="relative">
               <div className="inline-block mb-2 md:mb-4 px-2 py-0.5 md:px-3 md:py-1 bg-purple-500/20 border border-purple-400/30 text-[8px] md:text-[10px] font-mono text-purple-300 tracking-widest">
-                MISSION_BRIEF
+                YOUR MISSION
               </div>
 
               <p className="text-xs md:text-base text-purple-100/80 font-mono leading-relaxed mb-3 md:mb-6">
@@ -143,7 +143,7 @@ export default function CodestellationInfo() {
 
               <div className="relative">
                 <div className="inline-block mb-2 md:mb-4 px-2 py-0.5 md:px-3 md:py-1 bg-purple-500/20 border border-purple-400/30 text-[8px] md:text-[10px] font-mono text-purple-300 tracking-widest">
-                  EVENT_DATA
+                  LEVEL DETAILS
                 </div>
 
                 <div className="space-y-1 md:space-y-2.5">
@@ -266,7 +266,7 @@ export default function CodestellationInfo() {
 
         {/* System label */}
         <div className="mb-8 md:mb-0 md:mt-6 text-center text-[8px] md:text-[10px] font-mono text-purple-500/30 tracking-widest">
-          TRACK_INFO_SYSTEM_v7.0
+          CODESTELLATION WORLD
         </div>
       </motion.div>
     </section>

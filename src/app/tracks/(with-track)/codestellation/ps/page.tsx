@@ -305,7 +305,7 @@ export default function CodestellationPS() {
         )}
 
         <div className="mb-8 md:mb-0 md:mt-6 text-center text-[8px] md:text-[10px] font-mono text-purple-500/30 tracking-widest">
-          PS_SYSTEM_v7.0
+          PS_SYSTEM_v8.0
         </div>
       </motion.div>
     </section>

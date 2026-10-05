@@ -37,11 +37,11 @@ function Background3D({ onReady }: { onReady?: () => void }) {
       <Canvas
         onCreated={() => onReady?.()}
         camera={{ position: [0, 1, 5], fov: 50 }}
-        dpr={deviceTier === "mobile" ? 1 : [1, 1.5]}
+        dpr={deviceTier === "mobile" ? 1 : [1, 2]}
         shadows={deviceTier === "desktop"}
         gl={{
           powerPreference: "high-performance",
-          antialias: false,
+          antialias: true,
           stencil: false,
           depth: true,
         }}

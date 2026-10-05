@@ -238,7 +238,7 @@ export default function SponsorsPage() {
                       </span>
                     </Link>
                     <Link
-                      href="/sponsors/CodeWar_7.0_Sponsorship_Brochure.pdf"
+                      href="/sponsors/CodeWar_8.0_Sponsorship_Brochure.pdf"
                       target="_blank"
                       className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-2 md:px-3 py-1 md:py-1.5 rounded"
                     >
@@ -259,7 +259,7 @@ export default function SponsorsPage() {
 
       {/* System label */}
       <div className="hidden md:block absolute bottom-4 left-4 text-[10px] font-mono text-cyan-500/30 tracking-widest">
-        SPONSOR_REGISTRY_v7.0
+        SPONSOR REGISTRY / 8.0
       </div>
     </main>
   );

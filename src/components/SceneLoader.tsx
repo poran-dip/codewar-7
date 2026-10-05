@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, useImperativeHandle, useState } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 
 export type SceneLoaderHandle = {
   finish: () => void;
@@ -9,12 +9,22 @@ export type SceneLoaderHandle = {
 const SceneLoader = forwardRef<SceneLoaderHandle, { onDone?: () => void }>(
   ({ onDone }, ref) => {
     const [fading, setFading] = useState(false);
+    const finishedRef = useRef(false);
+
+    const finishLoading = () => {
+      if (finishedRef.current) return;
+      finishedRef.current = true;
+      setFading(true);
+      setTimeout(() => onDone?.(), 700);
+    };
+
+    useEffect(() => {
+      const fallback = setTimeout(finishLoading, 1800);
+      return () => clearTimeout(fallback);
+    }, []);
 
     useImperativeHandle(ref, () => ({
-      finish: () => {
-        setFading(true);
-        setTimeout(() => onDone?.(), 700);
-      },
+      finish: finishLoading,
     }));
 
     return (
@@ -26,8 +36,8 @@ const SceneLoader = forwardRef<SceneLoaderHandle, { onDone?: () => void }>(
             transform: rotateX(65deg);
             transform-origin: 50% 100%;
             background-image:
-              linear-gradient(to right, rgba(0,229,255,0.18) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(123,44,191,0.18) 1px, transparent 1px);
+              linear-gradient(to right, rgba(43,27,18,0.12) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(255,255,255,0.2) 1px, transparent 1px);
             background-size: 64px 64px;
             -webkit-mask-image: linear-gradient(to top, black 0%, transparent 75%);
             mask-image: linear-gradient(to top, black 0%, transparent 75%);
@@ -36,8 +46,8 @@ const SceneLoader = forwardRef<SceneLoaderHandle, { onDone?: () => void }>(
             position: absolute;
             inset: 30px;
             border-radius: 50%;
-            background: radial-gradient(circle at 35% 35%, #e0aaff, #9c27b0 50%, #4a0072);
-            box-shadow: 0 0 16px 4px rgba(156,39,176,0.7), 0 0 32px 8px rgba(156,39,176,0.3);
+            background: radial-gradient(circle at 35% 35%, #fff8b5, #ffd34e 50%, #c86c35);
+            box-shadow: 0 0 16px 4px rgba(255,211,78,0.7), 0 0 32px 8px rgba(200,108,53,0.3);
             animation: slFloat 3s ease-in-out infinite;
           }
           @keyframes slSpinCW  { to { transform: rotate(360deg); } }
@@ -50,12 +60,20 @@ const SceneLoader = forwardRef<SceneLoaderHandle, { onDone?: () => void }>(
           .sl-spin-ccw-18 { animation: slSpinCCW 1.8s linear infinite; }
           .sl-spin-cw-24  { animation: slSpinCW  2.4s linear infinite; }
           .sl-float       { animation: slFloat   3s ease-in-out infinite; }
+          .sl-mushroom-cap {
+            animation: slCapSpin 2.2s linear infinite;
+            transform-origin: 50% 100%;
+          }
+          @keyframes slCapSpin {
+            0%, 100% { transform: rotateY(0deg) rotateZ(-3deg); }
+            50% { transform: rotateY(180deg) rotateZ(3deg); }
+          }
         `}</style>
 
         <div
           className="fixed inset-0 z-9999 flex items-center justify-center overflow-hidden transition-opacity duration-700"
           style={{
-            background: "#0a0118",
+            background: "#67c9ed",
             opacity: fading ? 0 : 1,
             pointerEvents: fading ? "none" : "all",
           }}
@@ -70,7 +88,7 @@ const SceneLoader = forwardRef<SceneLoaderHandle, { onDone?: () => void }>(
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(to bottom, #0a0118 0%, transparent 35%, transparent 65%, #0a0118 100%)",
+                "linear-gradient(to bottom, rgba(103,201,237,0.9) 0%, transparent 35%, transparent 65%, rgba(78,175,85,0.65) 100%)",
             }}
           />
 
@@ -79,24 +97,20 @@ const SceneLoader = forwardRef<SceneLoaderHandle, { onDone?: () => void }>(
             className="absolute size-90 rounded-full blur-2xl"
             style={{
               background:
-                "radial-gradient(circle, rgba(156,39,176,0.3) 0%, transparent 70%)",
+                "radial-gradient(circle, rgba(255,211,78,0.35) 0%, transparent 70%)",
             }}
           />
 
-          {/* Orb */}
-          <div className="relative z-10 size-24">
-            {/* Ring 1 */}
-            <div className="sl-spin-cw-14 absolute inset-0 rounded-full border border-[rgba(0,229,255,0.4)] border-t-transparent" />
-            {/* Ring 2 */}
-            <div className="sl-spin-ccw-18 absolute inset-2.5 rounded-full border border-[rgba(156,39,176,0.55)] border-b-transparent" />
-            {/* Ring 3 */}
-            <div className="sl-spin-cw-24 absolute inset-5 rounded-full border border-[rgba(0,229,255,0.3)] border-l-transparent" />
-
-            {/* Core */}
-            <div className="sl-core" />
-
-            {/* Center dot */}
-            <div className="sl-float absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_6px_3px_rgba(255,255,255,0.9)]" />
+          <div className="relative z-10 flex h-36 w-36 flex-col items-center justify-end">
+            <div className="sl-mushroom-cap relative z-10 h-20 w-32 rounded-t-full rounded-b-[42%] border-4 border-[var(--ink)] bg-[#d94335] shadow-[5px_5px_0_var(--ink)]">
+              <span className="absolute left-6 top-5 h-4 w-4 rounded-full border-2 border-[var(--ink)] bg-[#fff8df]" />
+              <span className="absolute right-7 top-4 h-5 w-5 rounded-full border-2 border-[var(--ink)] bg-[#fff8df]" />
+              <span className="absolute left-1/2 top-2 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-[var(--ink)] bg-[#fff8df]" />
+            </div>
+            <div className="relative -mt-1 h-16 w-20 rounded-b-[35%] rounded-t-[18%] border-4 border-[var(--ink)] bg-[#fff1c7] shadow-[5px_5px_0_var(--ink)]">
+              <span className="absolute left-5 top-5 h-3 w-2 rounded-full bg-[var(--ink)]" />
+              <span className="absolute right-5 top-5 h-3 w-2 rounded-full bg-[var(--ink)]" />
+            </div>
           </div>
         </div>
       </>

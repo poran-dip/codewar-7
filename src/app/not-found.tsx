@@ -89,7 +89,7 @@ export default function NotFound() {
 
       {/* System label */}
       <div className="hidden md:block absolute bottom-4 left-4 text-[10px] font-mono text-purple-500/30 tracking-widest">
-        ERR_404_v7.0
+        ERR_404_v8.0
       </div>
     </section>
   );

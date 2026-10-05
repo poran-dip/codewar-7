@@ -2,9 +2,9 @@ import IntroHero from "@/components/intro/IntroHero";
 
 const IntroPage = () => {
   return (
-    <main className="relative h-screen w-screen text-white">
-      <div className="h-[200vh]">
-        <div className="sticky top-0 h-screen w-screen flex items-center justify-center">
+    <main className="relative h-screen w-screen overflow-hidden text-white">
+      <div className="h-full">
+        <div className="flex h-full w-screen items-center justify-center">
           <IntroHero />
         </div>
       </div>

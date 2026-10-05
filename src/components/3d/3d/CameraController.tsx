@@ -47,13 +47,13 @@ export default function CameraController({
       );
     } else if (pathname.includes("/tracks/codestellation")) {
       setCameraView(
-        new THREE.Vector3(isMobile ? -4 : -3, 1, isMobile ? 7 : 3),
-        new THREE.Vector3(isMobile ? -3 : -4, 1, 0),
+        new THREE.Vector3(isMobile ? -4 : -2, 1, isMobile ? 7 : 3),
+        new THREE.Vector3(isMobile ? -3 : -3, 1, 0),
       );
     } else if (pathname.includes("/tracks/decode")) {
       setCameraView(
-        new THREE.Vector3(isMobile ? 4 : 3, 1, isMobile ? 7 : 3),
-        new THREE.Vector3(isMobile ? 3 : 4, 1, 0),
+        new THREE.Vector3(isMobile ? 4 : 2, 1, isMobile ? 7 : 3),
+        new THREE.Vector3(isMobile ? 3 : 3, 1, 0),
       );
     }
   }, [pathname, deviceTier]);

@@ -1,9 +1,10 @@
 "use client";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Coins } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { EVENT_CONFIG } from "@/config/event";
 
 const IntroNavbar = () => {
   const pathname = usePathname();
@@ -36,7 +37,11 @@ const IntroNavbar = () => {
       }}
       className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50"
     >
-      <div className="flex items-center gap-2 md:gap-3">
+      <div className="flex w-[min(100vw-1.5rem,54rem)] items-center justify-center gap-2 md:gap-3">
+        <div className="hidden items-center gap-2 border-2 border-[var(--ink)] bg-[rgba(255,248,223,0.78)] px-3 py-2 font-[family-name:var(--font-pixel)] text-[9px] text-[var(--ink)] shadow-[4px_4px_0_var(--ink)] backdrop-blur-sm lg:flex">
+          <span>{EVENT_CONFIG.eventName} {EVENT_CONFIG.edition}</span>
+          <span className="flex items-center gap-1"><Coins size={13} aria-hidden="true" /> ×128</span>
+        </div>
         {/* Left Arrow Hint */}
         <motion.button
           onClick={() =>
@@ -48,13 +53,12 @@ const IntroNavbar = () => {
           className={`
             hidden md:flex items-center justify-center
             w-7 h-7 md:w-8 md:h-8 rounded
-            bg-black/60 backdrop-blur-sm
-            border border-cyan-500/30
+            border-2 border-[var(--ink)] bg-[rgba(255,248,223,0.72)]
             ${canScrollLeft ? "cursor-pointer" : "cursor-not-allowed"}
           `}
         >
           <ChevronLeft
-            className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-colors ${canScrollLeft ? "text-cyan-400" : "text-cyan-600/30"}`}
+            className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-colors ${canScrollLeft ? "text-[var(--brick)]" : "text-[var(--ink)]/20"}`}
           />
         </motion.button>
 
@@ -62,23 +66,20 @@ const IntroNavbar = () => {
         <div
           className="
           relative
-          bg-black/40 backdrop-blur-md
-          border-2 border-cyan-500/50
-          rounded-lg
+          bg-[rgba(255,248,223,0.78)] backdrop-blur-sm
+          border-2 border-[var(--ink)]
           px-0.5 py-0.5 md:px-1 md:py-1
-          shadow-[0_0_20px_rgba(6,182,212,0.3)]
+          shadow-[4px_4px_0_var(--ink)]
         "
         >
           {/* Corner decorations */}
-          <div className="absolute -top-0.5 -left-0.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-l-2 border-cyan-400" />
-          <div className="absolute -top-0.5 -right-0.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-r-2 border-cyan-400" />
-          <div className="absolute -bottom-0.5 -left-0.5 w-2 h-2 md:w-3 md:h-3 border-b-2 border-l-2 border-cyan-400" />
-          <div className="absolute -bottom-0.5 -right-0.5 w-2 h-2 md:w-3 md:h-3 border-b-2 border-r-2 border-cyan-400" />
+          <div className="absolute -top-0.5 -left-0.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-l-2 border-[var(--brick)]" />
+          <div className="absolute -top-0.5 -right-0.5 w-2 h-2 md:w-3 md:h-3 border-t-2 border-r-2 border-[var(--brick)]" />
+          <div className="absolute -bottom-0.5 -left-0.5 w-2 h-2 md:w-3 md:h-3 border-b-2 border-l-2 border-[var(--brick)]" />
+          <div className="absolute -bottom-0.5 -right-0.5 w-2 h-2 md:w-3 md:h-3 border-b-2 border-r-2 border-[var(--brick)]" />
 
           {/* Scanline effect */}
-          <div className="absolute inset-0 bg-linear-to-b from-transparent via-cyan-500/5 to-transparent pointer-events-none" />
-
-          <ul className="flex items-center gap-0.5 md:gap-1">
+          <ul className="flex w-full items-center justify-center gap-0.5 md:gap-1">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link href={item.href}>
@@ -91,15 +92,15 @@ const IntroNavbar = () => {
                       className={`
                       relative
                       px-3 py-1.5 md:px-6 md:py-2.5
-                      font-mono text-[10px] md:text-sm font-bold
+                      font-[family-name:var(--font-pixel)] text-[8px] md:text-[10px] font-bold
                       tracking-wider
                       transition-all duration-200
                       clip-path-[polygon(6px_0,100%_0,100%_calc(100%-6px),calc(100%-6px)_100%,0_100%,0_6px)]
                       md:clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)]
                       ${
                         isActive(item.href)
-                          ? "bg-linear-to-br from-cyan-500/30 to-blue-600/30 text-cyan-300 shadow-[inset_0_0_20px_rgba(6,182,212,0.4)]"
-                          : "bg-gray-900/50 text-gray-400 group-hover:text-cyan-400 group-hover:bg-cyan-500/10"
+                          ? "bg-[var(--sun)] text-[var(--ink)]"
+                          : "text-[var(--ink)]/65 group-hover:bg-[rgba(200,108,53,0.14)] group-hover:text-[var(--brick)]"
                       }
                     `}
                     >
@@ -107,7 +108,7 @@ const IntroNavbar = () => {
                       {isActive(item.href) && (
                         <motion.div
                           layoutId="activeTab"
-                          className="absolute inset-0 border border-cyan-400/50 clip-path-[polygon(6px_0,100%_0,100%_calc(100%-6px),calc(100%-6px)_100%,0_100%,0_6px)] md:clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)]"
+                          className="absolute inset-0 border-2 border-[var(--brick)] clip-path-[polygon(6px_0,100%_0,100%_calc(100%-6px),calc(100%-6px)_100%,0_100%,0_6px)] md:clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)]"
                           transition={{
                             type: "spring",
                             stiffness: 300,
@@ -120,15 +121,15 @@ const IntroNavbar = () => {
                       <div
                         className={`
                         absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity
-                        bg-linear-to-br from-cyan-500/10 to-transparent
+                        bg-[rgba(200,108,53,0.12)]
                         clip-path-[polygon(6px_0,100%_0,100%_calc(100%-6px),calc(100%-6px)_100%,0_100%,0_6px)]
                         md:clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)]
                       `}
                       />
 
-                      <span className="relative flex items-center gap-1.5 md:gap-2">
+                        <span className="relative flex items-center justify-center gap-1.5 md:gap-2 whitespace-nowrap">
                         {item.label}
-                        <span className="text-[8px] md:text-[10px] text-cyan-500/60">
+                        <span className="text-[8px] md:text-[10px] text-[var(--brick)]/70">
                           {item.key}
                         </span>
                       </span>
@@ -138,7 +139,7 @@ const IntroNavbar = () => {
                         className={`
                         absolute top-0 right-0 w-1.5 h-1.5 md:w-2 md:h-2
                         border-t border-r
-                        ${isActive(item.href) ? "border-cyan-400" : "border-cyan-600/30"}
+                        ${isActive(item.href) ? "border-[var(--brick)]" : "border-[var(--ink)]/25"}
                         transition-colors
                       `}
                       />
@@ -150,7 +151,7 @@ const IntroNavbar = () => {
           </ul>
 
           {/* Bottom accent line */}
-          <div className="absolute -bottom-1.5 md:-bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-px bg-linear-to-r from-transparent via-cyan-500/50 to-transparent" />
+          <div className="absolute -bottom-1.5 md:-bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-px bg-[var(--ink)]" />
         </div>
 
         {/* Right Arrow Hint */}
@@ -164,21 +165,17 @@ const IntroNavbar = () => {
           className={`
             hidden md:flex items-center justify-center
             w-7 h-7 md:w-8 md:h-8 rounded
-            bg-black/60 backdrop-blur-sm
-            border border-cyan-500/30
+            border-2 border-[var(--ink)] bg-[rgba(255,248,223,0.72)]
             ${canScrollRight ? "cursor-pointer" : "cursor-not-allowed"}
           `}
         >
           <ChevronRight
-            className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-colors ${canScrollRight ? "text-cyan-400" : "text-cyan-600/30"}`}
+            className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-colors ${canScrollRight ? "text-[var(--brick)]" : "text-[var(--ink)]/20"}`}
           />
         </motion.button>
       </div>
 
       {/* HUD-style info - hidden on mobile */}
-      <div className="hidden md:block absolute -bottom-5 left-0 text-[10px] font-mono text-cyan-500/40 tracking-widest">
-        NAV_SYSTEM
-      </div>
     </motion.nav>
   );
 };

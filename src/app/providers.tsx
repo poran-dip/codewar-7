@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
-import Background3D from "@/components/3d/Background3D";
+import Background3D from "@/components/3d/3d/Background3D";
 import SceneContainer from "@/components/SceneContainer";
 import SceneLoader, { type SceneLoaderHandle } from "@/components/SceneLoader";
 import { unlock } from "@/engine/transitionLock";

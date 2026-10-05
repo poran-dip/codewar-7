@@ -313,7 +313,7 @@ export default function TracksNavbar() {
       <div
         className={`hidden md:block absolute -bottom-5 left-0 text-[10px] font-mono tracking-widest ${accentColor === "purple" ? "text-purple-500/40" : "text-cyan-500/40"}`}
       >
-        TRACK_NAV_SYS
+        WORLD NAVIGATION
       </div>
     </motion.nav>
   );

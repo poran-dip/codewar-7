@@ -1,221 +1,41 @@
 "use client";
 
 import { motion } from "motion/react";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { unlock } from "@/engine/transitionLock";
-import TrackSelector from "./TrackSelector";
+import Link from "next/link";
+import { useState } from "react";
+import { EVENT_CONFIG, type EventTrack } from "@/config/event";
 
 export default function IntroHero() {
-  const [selectedTrack, setSelectedTrack] = useState<
-    "codestellation" | "decode" | null
-  >(null);
-
-  useEffect(() => {
-    if (selectedTrack) {
-      const event = new CustomEvent("trackSelected", { detail: selectedTrack });
-      window.dispatchEvent(event);
-    } else {
-      unlock();
-    }
-  }, [selectedTrack]);
+  const [selectedTrack, setSelectedTrack] = useState<EventTrack | null>(null);
+  const tracks = Object.entries(EVENT_CONFIG.events) as [EventTrack, (typeof EVENT_CONFIG.events)[EventTrack]][];
 
   return (
-    <section className="mb-12 md:-mb-10 relative z-10 h-full w-full flex flex-col items-center justify-center px-4 md:px-6">
-      {/* Dynamic Background Color Overlay */}
-      <motion.div
-        className="fixed inset-0 -z-10 pointer-events-none"
-        animate={{
-          background:
-            selectedTrack === "codestellation"
-              ? "radial-gradient(circle at center, rgba(88, 28, 135, 0.3) 0%, rgba(49, 46, 129, 0.2) 50%, transparent 100%)"
-              : selectedTrack === "decode"
-                ? "radial-gradient(circle at center, rgba(8, 145, 178, 0.3) 0%, rgba(30, 64, 175, 0.2) 50%, transparent 100%)"
-                : "radial-gradient(circle at center, transparent 0%, transparent 100%)",
-        }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-      />
-
-      {/* TOP HUD - Logos */}
-      <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-        className="mb-1.5 md:mb-2 w-full"
-      >
-        {/* Udbhavanam - top left */}
-        <div className="hidden md:block absolute top-4 left-4">
-          <Image
-            src="/branding/udbhavanam.png"
-            alt="Udbhavanam 13.0"
-            width={64}
-            height={64}
-            className="w-16 h-16 object-contain"
-          />
-        </div>
-
-        {/* Pyrokinesis - top right */}
-        <div className="hidden md:block absolute top-4 right-4">
-          <Image
-            src="/branding/pyrokinesis.png"
-            alt="Pyrokinesis 2026"
-            width={64}
-            height={64}
-            className="w-16 h-16 object-contain"
-          />
-        </div>
-
-        <div className="flex flex-col items-center">
-          <div className="grid grid-cols-2 gap-2 md:gap-3 w-fit">
-            <p className="text-center text-[9px] md:text-xs font-mono text-cyan-400/60 tracking-widest uppercase">
-              POWERED BY
-            </p>
-            <p className="text-center text-[9px] md:text-xs font-mono text-cyan-400/60 tracking-widest uppercase">
-              CO-POWERED BY
-            </p>
-
-            <div className="relative">
-              {/* Glow backdrop - same as title */}
-              <div className="absolute inset-0 blur-xl bg-cyan-500/20" />
-
-              <div
-                className="relative bg-white/90 backdrop-blur-md border border-cyan-500/50 px-3 py-1 md:px-4 md:py-2
-                clip-path-[polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)]
-                md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
-                flex items-center justify-center"
-              >
-                {/* corner brackets */}
-                <div className="absolute -top-1.5 -left-1.5 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-cyan-400" />
-                <div className="hidden md:block absolute -top-1.5 -right-1.5 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-cyan-400" />
-
-                <Image
-                  src="/sponsors/GeeksforGeeks.png"
-                  alt="GeeksforGeeks"
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  className="h-6 w-auto object-contain drop-shadow-[0_0_8px_rgba(6,182,212,0.6)]"
-                />
-              </div>
-            </div>
-            <div className="relative">
-              {/* Glow backdrop - same as title */}
-              <div className="absolute inset-0 blur-xl bg-cyan-500/20" />
-
-              <div
-                className="relative bg-white/90 backdrop-blur-md border border-cyan-500/50 px-3 py-1 md:px-4 md:py-2
-                clip-path-[polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)]
-                md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
-                flex items-center justify-center"
-              >
-                {/* corner brackets */}
-                <div className="hidden md:block absolute -top-1.5 -left-1.5 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-cyan-400" />
-                <div className="absolute -top-1.5 -right-1.5 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-cyan-400" />
-
-                <Image
-                  src="/sponsors/XT_Academy.png"
-                  alt="XT Academy"
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  className="h-6 w-auto object-contain drop-shadow-[0_0_8px_rgba(6,182,212,0.6)]"
-                />
-              </div>
-            </div>
+    <main className="relative h-full min-h-0 w-full overflow-y-auto px-3 pb-16 pt-24 text-[var(--ink)] sm:px-5 md:px-8">
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,248,223,0.08),rgba(255,248,223,0.62)_75%,rgba(255,248,223,0.95))]" />
+      <section className="relative mx-auto flex min-h-[calc(100svh-7rem)] w-full max-w-7xl flex-col justify-center">
+        <motion.div initial={{ opacity: 0, y: -18 }} animate={{ opacity: 1, y: 0 }} className="mb-8 flex flex-wrap items-center justify-between gap-3 text-[9px] font-[family-name:var(--font-pixel)] uppercase tracking-[0.12em] sm:text-[10px] md:text-xs">
+          <span className="bg-[var(--cream)] px-2.5 py-2 shadow-[4px_4px_0_var(--ink)] sm:px-3">WORLD 1 / LEVEL 08</span>
+          <span className="bg-[var(--sun)] px-2.5 py-2 shadow-[4px_4px_0_var(--ink)]">STATUS: OPEN FOR PLAY</span>
+        </motion.div>
+        <div className="grid min-w-0 items-end gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
+          <div>
+            <motion.p initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }} className="mb-4 font-[family-name:var(--font-pixel)] text-[10px] uppercase tracking-[0.13em] text-[#b33d2e] sm:text-xs md:text-sm">AEC CODING CLUB PRESENTS</motion.p>
+            <motion.h1 initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2, type: "spring", stiffness: 110 }} className="max-w-4xl font-[family-name:var(--font-pixel)] text-[clamp(2rem,12vw,5rem)] leading-[1.35] tracking-[0.02em] text-[var(--ink)] drop-shadow-[5px_5px_0_#fff8df]">CODEWAR <span className="text-[#c04b35]">8.0</span></motion.h1>
+            <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} className="mt-5 max-w-xl font-[family-name:var(--font-pixel)] text-[11px] leading-[2] sm:text-sm md:text-lg">ENTER THE WORLD OF CODE</motion.p>
+            <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row"><Link href={EVENT_CONFIG.registrationUrl} className="pixel-button w-full bg-[#c04b35] text-white shadow-[6px_6px_0_var(--ink)] sm:w-auto">START ADVENTURE</Link><a href="#worlds" className="pixel-button w-full bg-[var(--cream)] text-[var(--ink)] shadow-[6px_6px_0_var(--ink)] sm:w-auto">EXPLORE EVENTS</a></div>
           </div>
+          <motion.aside initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }} className="pixel-panel min-w-0 bg-[rgba(255,248,223,0.78)] p-4 backdrop-blur-sm sm:p-5 md:p-7">
+            <div className="mb-5 flex items-center justify-between border-b-2 border-dashed border-[#b88957] pb-4 font-[family-name:var(--font-pixel)] text-[10px] uppercase tracking-[0.14em]"><span>ADVENTURE BRIEF</span><span>★ 128</span></div>
+            <p className="font-sans text-sm font-semibold leading-7 sm:text-base">Two worlds. One quest. Build boldly, solve quickly, and find your route through the CodeWar map.</p>
+            <div className="mt-6 grid grid-cols-3 gap-2 text-center font-[family-name:var(--font-pixel)] text-[9px] uppercase"><div className="bg-[#f4d990] p-3"><strong className="block text-lg">02</strong>worlds</div><div className="bg-[#a8d36c] p-3"><strong className="block text-lg">01</strong>quest</div><div className="bg-[#f4ad6f] p-3"><strong className="block text-lg">∞</strong>ideas</div></div>
+          </motion.aside>
         </div>
-      </motion.div>
-
-      {/* MAIN TITLE - Center */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.4, type: "spring", stiffness: 120 }}
-        className="relative z-20 mb-3 md:mb-6"
-      >
-        <div className="relative">
-          <div className="absolute inset-0 blur-xl md:blur-3xl bg-cyan-500/20" />
-
-          <div className="relative bg-black/40 backdrop-blur-md border-2 border-cyan-500/50 px-4 py-2 md:px-8 md:py-4 clip-path-[polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]">
-            <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-cyan-400" />
-            <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-cyan-400" />
-            <div className="absolute bottom-0 left-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-l-2 border-cyan-400" />
-            <div className="absolute bottom-0 right-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-r-2 border-cyan-400" />
-
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-black tracking-tight font-mono text-cyan-300 drop-shadow-[0_0_30px_rgba(6,182,212,0.8)]">
-              CODEWAR 7.0
-            </h1>
-          </div>
-
-          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-0.5 bg-linear-to-r from-transparent via-cyan-500/60 to-transparent" />
-        </div>
-      </motion.div>
-
-      {/* TRACK SELECTOR - Bounded */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
-        className="relative z-20 w-full max-w-5xl"
-      >
-        <TrackSelector
-          onTrackChange={setSelectedTrack}
-          selectedTrack={selectedTrack}
-        />
-      </motion.div>
-
-      {/* BOTTOM HUD - Controls */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8 }}
-        className="mt-3 md:mt-6"
-      >
-        <div className="relative bg-black/80 backdrop-blur-sm border border-cyan-500/30 px-2.5 py-1 md:px-4 md:py-2 font-mono">
-          <div className="absolute -bottom-0.5 -left-0.5 md:-bottom-1 md:-left-1 w-2 h-2 md:w-2.5 md:h-2.5 border-b-2 border-l-2 border-cyan-400/60" />
-          <div className="absolute -bottom-0.5 -right-0.5 md:-bottom-1 md:-right-1 w-2 h-2 md:w-2.5 md:h-2.5 border-b-2 border-r-2 border-cyan-400/60" />
-
-          <div className="flex items-center gap-1.5 md:gap-2 text-[8px] md:text-[10px] text-cyan-400/70">
-            <kbd className="px-1.5 py-0.5 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-300 hidden md:inline font-bold">
-              Q
-            </kbd>
-            <kbd className="px-1.5 py-0.5 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-300 hidden md:inline font-bold">
-              E
-            </kbd>
-            <span className="text-cyan-500/50 hidden md:inline">|</span>
-            <kbd className="px-1.5 py-0.5 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-300 hidden md:inline font-bold">
-              ENTER
-            </kbd>
-            <span className="text-cyan-500/50 hidden md:inline">|</span>
-            <span className="text-cyan-400/50 inline">2x CLICK</span>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* System label - hidden on mobile */}
-      <div className="hidden md:block absolute bottom-6 left-4 text-[10px] font-mono text-cyan-500/30 tracking-widest">
-        TRACK_SELECT_v7.0
-      </div>
-
-      {/* Credits + CC Attribution */}
-      <div className="fixed bottom-0 right-4 flex flex-col items-end gap-1">
-        <a
-          href="https://porandip.vercel.app"
-          target="_blank"
-          className="text-[9px] md:text-[10px] font-mono text-cyan-500/50 tracking-wide hover:text-cyan-500/80 transition-colors"
-          rel="noopener"
-        >
-          Designed & developed by Poran Dip
-        </a>
-        <a
-          href="https://poly.pizza/m/8AJVYPEBVqt"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:block text-[10px] font-mono text-cyan-500/50 tracking-wide hover:text-cyan-500/80 transition-colors"
-        >
-          &quot;Simple Pillar&quot; by Troctzul [CC-BY]
-        </a>
-      </div>
-    </section>
+      </section>
+      <section id="worlds" className="relative mx-auto w-full max-w-7xl scroll-mt-20 pt-10">
+        <div className="mb-7 flex items-end justify-between gap-4"><div><p className="font-[family-name:var(--font-pixel)] text-xs uppercase tracking-[0.16em] text-[#b33d2e]">SELECT YOUR LOADOUT</p><h2 className="mt-3 font-[family-name:var(--font-pixel)] text-2xl md:text-4xl">CHOOSE YOUR WORLD</h2></div><span className="hidden font-[family-name:var(--font-pixel)] text-xs md:block">COINS × 128</span></div>
+        <div className="grid min-w-0 gap-5 lg:grid-cols-2">{tracks.map(([key, track], index) => { const active = selectedTrack === key; return <motion.article key={key} whileHover={{ y: -8 }} className={`pixel-panel relative min-w-0 overflow-hidden p-4 sm:p-6 md:p-8 ${active ? "ring-4 ring-[var(--sun)]" : ""} ${index === 0 ? "bg-[#fff0bd]" : "bg-[#d9f1ed]"}`}><div className="absolute right-4 top-4 font-[family-name:var(--font-pixel)] text-2xl opacity-25 sm:right-5 sm:top-5 sm:text-3xl">{index === 0 ? "✦" : "⌘"}</div><p className="font-[family-name:var(--font-pixel)] text-[9px] uppercase tracking-[0.1em] text-[#b33d2e] sm:text-[10px]">{track.world} / {track.track}</p><h3 className="mt-4 font-[family-name:var(--font-pixel)] text-lg leading-[1.6] sm:text-xl md:text-3xl">{track.name}</h3><p className="mt-3 text-base font-bold sm:text-lg">{track.tagline}</p><dl className="mt-5 grid gap-2 border-y-2 border-dashed border-[#b88957] py-4 font-[family-name:var(--font-pixel)] text-[9px] uppercase leading-[1.7] sm:text-[10px] sm:leading-[1.8]"><div className="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-2 sm:flex sm:justify-between sm:gap-4"><dt>TYPE</dt><dd className="min-w-0 break-words text-left sm:text-right">{track.type}</dd></div><div className="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-2 sm:flex sm:justify-between sm:gap-4"><dt>DATE</dt><dd className="min-w-0 break-words text-left sm:text-right">{track.date}</dd></div>{track.details.map((detail) => <div key={detail} className="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-2 sm:flex sm:justify-between sm:gap-4"><dt>INFO</dt><dd className="min-w-0 break-words text-left sm:text-right">{detail}</dd></div>)}</dl><div className="mt-5 flex w-full flex-col gap-3 sm:flex-row"><button type="button" onClick={() => setSelectedTrack(active ? null : key)} className="pixel-button w-full bg-[var(--sun)] text-[var(--ink)] sm:w-auto">{active ? "WORLD READY" : "SELECT WORLD"}</button><Link href={track.href} className="pixel-button w-full bg-[var(--ink)] text-white sm:w-auto">ENTER WORLD</Link></div></motion.article>; })}</div>
+      </section>
+      <section id="registration" className="relative mx-auto mt-16 max-w-7xl border-t-4 border-[var(--ink)] py-14 text-center"><p className="font-[family-name:var(--font-pixel)] text-xs uppercase tracking-[0.16em] text-[#b33d2e]">TREASURE CHECKPOINT</p><h2 className="mt-4 font-[family-name:var(--font-pixel)] text-2xl leading-[1.7] md:text-4xl">READY PLAYER?</h2><p className="mx-auto mt-4 max-w-lg text-lg font-bold">₹30,000 CASH + courses + goodies</p><Link href={EVENT_CONFIG.registrationUrl} className="pixel-button mt-7 inline-block bg-[#c04b35] text-white shadow-[6px_6px_0_var(--ink)]">REGISTER NOW</Link></section>
+    </main>
   );
 }
