@@ -118,7 +118,7 @@ export default function TracksNavbar() {
             className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-colors ${
               canScrollLeft
                 ? accentColor === "purple"
-                  ? "text-purple-400"
+                  ? "text-red-400"
                   : "text-cyan-400"
                 : "text-gray-600/30"
             }`}
@@ -156,7 +156,7 @@ export default function TracksNavbar() {
 
           {/* Scanline effect */}
           <div
-            className={`absolute inset-0 bg-linear-to-b from-transparent to-transparent pointer-events-none ${accentColor === "purple" ? "via-purple-500/5" : "via-cyan-500/5"}`}
+            className={`absolute inset-0 bg-linear-to-b from-transparent to-transparent pointer-events-none ${accentColor === "purple" ? "via-red-500/5" : "via-cyan-500/5"}`}
           />
 
           <ul className="flex items-center gap-0.5 md:gap-1">
@@ -172,7 +172,7 @@ export default function TracksNavbar() {
                   <div
                     className={`
                       absolute top-0 right-0 w-1.5 h-1.5 md:w-2 md:h-2 border-t border-r
-                      ${accentColor === "purple" ? "border-purple-600/30" : "border-cyan-600/30"}
+                      ${accentColor === "purple" ? "border-red-600/30" : "border-cyan-600/30"}
                     `}
                   />
                   <X className="w-4 h-4" />
@@ -255,10 +255,10 @@ export default function TracksNavbar() {
                           ${
                             isActive(item.href)
                               ? accentColor === "purple"
-                                ? "border-purple-400"
+                                ? "border-red-400"
                                 : "border-cyan-400"
                               : accentColor === "purple"
-                                ? "border-purple-600/30"
+                                ? "border-red-600/30"
                                 : "border-cyan-600/30"
                           }
                         `}
@@ -273,7 +273,7 @@ export default function TracksNavbar() {
 
           {/* Bottom accent line */}
           <div
-            className={`absolute -bottom-1.5 md:-bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-px bg-linear-to-r from-transparent to-transparent ${accentColor === "purple" ? "via-purple-500/50" : "via-cyan-500/50"}`}
+            className={`absolute -bottom-1.5 md:-bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-px bg-linear-to-r from-transparent to-transparent ${accentColor === "purple" ? "via-red-500/50" : "via-cyan-500/50"}`}
           />
         </div>
 

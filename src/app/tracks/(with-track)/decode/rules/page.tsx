@@ -33,8 +33,8 @@ export default function DecodeStackRules() {
     {
       icon: ShieldCheck,
       title: "Platform & Proctoring Rules",
-      text: "The contest will be conducted exclusively on the GeeksforGeeks platform. All participants are subject to the platform’s built-in proctoring and anti-cheat mechanisms.",
-      shortText: "GeeksforGeeks platform rules and proctoring apply.",
+      text: "The contest will be conducted on Codeforces. All participants must follow the platform’s contest and anti-cheat rules.",
+      shortText: "Codeforces contest and anti-cheat rules apply.",
     },
     {
       icon: MonitorOff,

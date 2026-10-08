@@ -1,6 +1,6 @@
 "use client";
 
-import { FileText, Mail, Phone, Sparkles, Trophy } from "lucide-react";
+import { Mail, Phone, Sparkles, Trophy } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,6 +15,12 @@ export default function SponsorsPage() {
       border: "border-yellow-600/30",
       text: "text-yellow-800",
       glow: "via-yellow-500/5",
+    },
+    powered: {
+      bg: "bg-purple-500/20",
+      border: "border-purple-600/30",
+      text: "text-purple-800",
+      glow: "via-purple-500/5",
     },
     associate: {
       bg: "bg-purple-500/20",
@@ -50,46 +56,20 @@ export default function SponsorsPage() {
 
   const sponsors = [
     {
-      tier: "title",
-      name: "GeeksforGeeks",
-      image: "/sponsors/GeeksforGeeks.png",
+      tier: "powered",
+      label: "powered by Unstop • not a sponsor",
+      name: "Unstop",
+      image: "/sponsors/unstop.jpg",
       corner: "border-yellow-400/70",
       cn: "border-yellow-400/50 hover:border-yellow-400/80",
     },
     {
-      tier: "associate",
-      name: "XT Academy",
-      image: "/sponsors/XT_Academy.png",
-      corner: "border-purple-400/70",
-      cn: "border-purple-400/50 hover:border-purple-400/80",
-    },
-    {
-      tier: "learning",
-      name: "Coding Panda",
-      image: "/sponsors/Coding_Pandas.png",
-      corner: "border-blue-400/70",
-      cn: "border-blue-400/50 hover:border-blue-400/80",
-    },
-    {
-      tier: "gifting",
-      name: "Loti Ghoti",
-      image: "/sponsors/Loti_Ghoti.png",
-      corner: "border-blue-400/70",
-      cn: "border-blue-400/50 hover:border-blue-400/80",
-    },
-    {
       tier: "food",
+      label: "food sponsor",
       name: "Quick Bites",
       image: "/sponsors/Quick_Bites.png",
       corner: "border-blue-400/70",
       cn: "border-blue-400/50 hover:border-blue-400/80",
-    },
-    {
-      tier: "past",
-      name: "Digital Ocean",
-      image: "/sponsors/Digital_Ocean.png",
-      corner: "border-zinc-400/70",
-      cn: "border-zinc-400/50 hover:border-zinc-400/80",
     },
   ];
 
@@ -170,7 +150,7 @@ export default function SponsorsPage() {
                     <div
                       className={`absolute top-1 right-1 z-10 px-1.5 py-0.5 text-[7px] font-mono tracking-widest uppercase ${colors.bg} border ${colors.border} ${colors.text}`}
                     >
-                      {sponsor.tier}
+                      {sponsor.label}
                     </div>
 
                     {/* Logo container with per-sponsor bg */}
@@ -229,22 +209,12 @@ export default function SponsorsPage() {
                       </span>
                     </Link>
                     <Link
-                      href="tel:+919435553309"
+                      href="tel:+918811864964"
                       className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-2 md:px-3 py-1 md:py-1.5 rounded"
                     >
                       <Phone className="w-2.5 md:w-3 h-2.5 md:h-3 text-purple-400" />
                       <span className="font-mono text-purple-200">
-                        +91 94355 53309
-                      </span>
-                    </Link>
-                    <Link
-                      href="/sponsors/CodeWar_8.0_Sponsorship_Brochure.pdf"
-                      target="_blank"
-                      className="flex items-center gap-2 bg-purple-500/10 border border-purple-400/30 px-2 md:px-3 py-1 md:py-1.5 rounded"
-                    >
-                      <FileText className="w-2.5 md:w-3 h-2.5 md:h-3 text-purple-400" />
-                      <span className="font-mono text-purple-200">
-                        View Brochure
+                        +91 88118 64964
                       </span>
                     </Link>
                   </div>

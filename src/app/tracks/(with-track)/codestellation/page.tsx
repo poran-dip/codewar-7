@@ -12,8 +12,10 @@ import {
   Zap,
 } from "lucide-react";
 import { motion } from "motion/react";
+import { useRegistrationClosed } from "@/hooks/useRegistrationClosed";
 
 export default function CodestellationInfo() {
+  const isRegistrationClosed = useRegistrationClosed();
   const features = [
     { icon: Code2, text: "Build innovative tech solutions" },
     { icon: Lightbulb, text: "Real-world problem statements" },
@@ -157,7 +159,7 @@ export default function CodestellationInfo() {
                         Date
                       </p>
                       <p className="text-xs md:text-sm font-mono text-purple-200">
-                        February 25-26, 2026
+                        24 Hours — 10 Sept 2026
                       </p>
                     </div>
                   </div>
@@ -187,7 +189,7 @@ export default function CodestellationInfo() {
                         Location
                       </p>
                       <p className="text-xs md:text-sm font-mono text-purple-200">
-                        ETE Department, AEC
+                        Online Hackathon
                       </p>
                     </div>
                   </div>
@@ -202,7 +204,7 @@ export default function CodestellationInfo() {
                         Prizes
                       </p>
                       <p className="text-xs md:text-sm font-mono text-purple-200">
-                        ₹18,000+ in cash & sponsor perks
+                        ₹12,000 + certificates & goodies
                       </p>
                     </div>
                   </div>
@@ -211,21 +213,25 @@ export default function CodestellationInfo() {
             </div>
 
             {/* CTA Button */}
-            <div className="relative w-full block mx-auto cursor-not-allowed">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeWIs6fMFzMb8QnGXLCX-wdK6Rgc42ltjI0P0lhgpWOhtSC5A/viewform"
+              target="_blank"
+              rel="noreferrer"
+              className="relative w-full block mx-auto"
+            >
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 className="
                   relative overflow-hidden
-                  border-2 border-gray-400/50
+                  border-2 border-purple-400/50
                   clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
                   py-2 md:py-2.5
                   font-mono font-bold text-sm md:text-lg
-                  text-gray-500/50
+                  text-purple-900
                   shadow-[0_0_8px_rgba(168,85,247,0.15),inset_0_0_8px_rgba(168,85,247,0.05)]
                   transition-all duration-300
                   group
-                  pointer-events-none
                 "
               >
                 {/* Animated background fill */}
@@ -245,20 +251,26 @@ export default function CodestellationInfo() {
 
                 <span className="relative flex items-center justify-center gap-2 md:gap-3 uppercase">
                   <Rocket className="w-4 h-4 md:w-5 md:h-5" />
-                  <span className="hidden sm:inline line-through">
-                    Register for Codestellation
+                  <span
+                    className={`hidden sm:inline ${isRegistrationClosed ? "line-through" : ""}`}
+                  >
+                    Register for CODESTELLATION
                   </span>
-                  <span className="sm:hidden line-through">Register Now</span>
+                  <span
+                    className={`sm:hidden ${isRegistrationClosed ? "line-through" : ""}`}
+                  >
+                    Register Now
+                  </span>
                   <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white/40 rounded-full" />
                 </span>
               </motion.div>
-            </div>
+            </a>
 
             {/* Info note */}
             <div className="hidden md:block text-center">
               <div className="inline-block bg-black/60 backdrop-blur-sm border border-purple-500/20 px-3 py-1.5 md:px-4 md:py-2 font-mono text-[10px] md:text-xs text-purple-400/50 rounded">
-                <span className="text-purple-400/70">NOTE:</span> Registrations
-                have closed!
+                <span className="text-purple-400/70">NOTE:</span>
+                Registrations are open.
               </div>
             </div>
           </motion.div>

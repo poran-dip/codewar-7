@@ -7,13 +7,13 @@ import { useState } from "react";
 import { useNavMeta } from "@/store/useNavMeta";
 
 const tracks = [
-  { id: "codestellation", label: "CODESTE LLATION", color: "purple" },
-  { id: "decode", label: "DECODE STACK", color: "cyan" },
+  { id: "codestellation", label: "CODESTE LLATION", color: "red" },
+  { id: "decode", label: "DECODE_STACK", color: "cyan" },
 ];
 
 const mobileTracks = [
-  { id: "codestellation", label: "CODESTELLATION", color: "purple" },
-  { id: "decode", label: "DECODE STACK", color: "cyan" },
+  { id: "codestellation", label: "CODESTELLATION", color: "red" },
+  { id: "decode", label: "DECODE_STACK", color: "cyan" },
 ];
 
 export default function MiniTrackSelector() {
@@ -51,7 +51,7 @@ export default function MiniTrackSelector() {
             ${
               currentTrack === "codestellation"
                 ? "border-gray-600/20 cursor-not-allowed"
-                : "border-purple-500/30 cursor-pointer hover:border-purple-400/60"
+                : "border-red-500/30 cursor-pointer hover:border-red-400/60"
             }
           `}
           >
@@ -59,7 +59,7 @@ export default function MiniTrackSelector() {
               className={`w-5 h-5 transition-colors rotate-90 ${
                 currentTrack === "codestellation"
                   ? "text-gray-600/30"
-                  : "text-purple-400"
+                  : "text-red-400"
               }`}
             />
           </div>
@@ -72,13 +72,13 @@ export default function MiniTrackSelector() {
           const colors =
             track.color === "purple"
               ? {
-                  border: "border-purple-500/50",
-                  borderHover: "border-purple-400/80",
-                  bg: "bg-purple-500/20",
-                  text: "text-purple-300",
-                  corner: "border-purple-400",
-                  glow: "shadow-[0_0_20px_rgba(168,85,247,0.4)]",
-                  scanline: "via-purple-500/5",
+                  border: "border-red-500/50",
+                  borderHover: "border-red-400/80",
+                  bg: "bg-red-500/20",
+                  text: "text-red-300",
+                  corner: "border-red-400",
+                  glow: "shadow-[0_0_20px_rgba(239,68,98,0.4)]",
+                  scanline: "via-red-500/5",
                 }
               : {
                   border: "border-cyan-500/50",

@@ -11,8 +11,10 @@ import {
   Zap,
 } from "lucide-react";
 import { motion } from "motion/react";
+import { useRegistrationClosed } from "@/hooks/useRegistrationClosed";
 
 export default function DecodeStackInfo() {
+  const isRegistrationClosed = useRegistrationClosed();
   const features = [
     { icon: Terminal, text: "Competitive programming showdown" },
     { icon: BrainCircuit, text: "7 carefully curated problems" },
@@ -42,7 +44,7 @@ export default function DecodeStackInfo() {
               <div className="flex items-center gap-2 md:gap-3">
                 <Zap className="w-3 h-3 md:w-4 md:h-4 text-cyan-400 animate-pulse" />
                 <h1 className="text-xl md:text-3xl font-black font-mono tracking-tight text-cyan-300">
-                  DECODE STACK
+                  DECODE_STACK
                 </h1>
               </div>
               <div className="hidden md:block text-[10px] font-mono text-cyan-500/50 tracking-widest">
@@ -86,9 +88,9 @@ export default function DecodeStackInfo() {
               </div>
 
               <p className="text-xs md:text-base text-cyan-100/80 font-mono leading-relaxed mb-3 md:mb-6">
-                A high-intensity competitive programming contest hosted online
-                on GeeksforGeeks. Solve algorithmic challenges under pressure
-                and race against teams across India.
+                A high-intensity competitive programming contest hosted on
+                Codeforces. Solve algorithmic challenges under pressure and
+                race against teams across India.
               </p>
 
               {/* Features Grid - Hidden on mobile */}
@@ -156,7 +158,7 @@ export default function DecodeStackInfo() {
                         Date
                       </p>
                       <p className="text-xs md:text-sm font-mono text-cyan-200">
-                        February 25, 2026
+                        10 Sept 2026
                       </p>
                     </div>
                   </div>
@@ -171,7 +173,7 @@ export default function DecodeStackInfo() {
                         Mode
                       </p>
                       <p className="text-xs md:text-sm font-mono text-cyan-200">
-                        Online (GeeksforGeeks)
+                        Offline — ETE Seminar Hall
                       </p>
                     </div>
                   </div>
@@ -186,7 +188,7 @@ export default function DecodeStackInfo() {
                         Duration
                       </p>
                       <p className="text-xs md:text-sm font-mono text-cyan-200">
-                        3 Hours
+                        10:00 AM – 1:00 PM IST
                       </p>
                     </div>
                   </div>
@@ -201,7 +203,7 @@ export default function DecodeStackInfo() {
                         Prizes
                       </p>
                       <p className="text-xs md:text-sm font-mono text-cyan-200">
-                        ₹12,000+ in cash & sponsor perks
+                        ₹6,000 + certificates, trophies & goodies
                       </p>
                     </div>
                   </div>
@@ -210,21 +212,25 @@ export default function DecodeStackInfo() {
             </div>
 
             {/* CTA Button */}
-            <div className="relative w-full block mx-auto cursor-not-allowed">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeWIs6fMFzMb8QnGXLCX-wdK6Rgc42ltjI0P0lhgpWOhtSC5A/viewform"
+              target="_blank"
+              rel="noreferrer"
+              className="relative w-full block mx-auto"
+            >
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 className="
                   relative overflow-hidden
-                  border-2 border-gray-400/50
+                  border-2 border-cyan-400/50
                   clip-path-[polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)] md:clip-path-[polygon(12px_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%,0_12px)]
                   py-2 md:py-2.5
                   font-mono font-bold text-sm md:text-lg
-                  text-gray-500/50
+                  text-cyan-900
                   shadow-[0_0_8px_rgba(168,85,247,0.15),inset_0_0_8px_rgba(168,85,247,0.05)]
                   transition-all duration-300
                   group
-                  pointer-events-none
                 "
               >
                 {/* Animated background fill */}
@@ -244,20 +250,26 @@ export default function DecodeStackInfo() {
 
                 <span className="relative flex items-center justify-center gap-2 md:gap-3 uppercase">
                   <Terminal className="w-4 h-4 md:w-5 md:h-5" />
-                  <span className="hidden sm:inline line-through">
-                    Register for Decode Stack
+                  <span
+                    className={`hidden sm:inline ${isRegistrationClosed ? "line-through" : ""}`}
+                  >
+                    Register for DECODE_STACK
                   </span>
-                  <span className="sm:hidden line-through">Register Now</span>
+                  <span
+                    className={`sm:hidden ${isRegistrationClosed ? "line-through" : ""}`}
+                  >
+                    Register Now
+                  </span>
                   <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white/40 animate-pulse rounded-full" />
                 </span>
               </motion.div>
-            </div>
+            </a>
 
             {/* Info note */}
             <div className="hidden md:block text-center">
               <div className="inline-block bg-black/60 backdrop-blur-sm border border-cyan-500/20 px-3 py-1.5 md:px-4 md:py-2 font-mono text-[10px] md:text-xs text-cyan-400/50 rounded">
-                <span className="text-cyan-400/70">NOTE:</span> Registrations
-                have closed!
+                <span className="text-cyan-400/70">NOTE:</span>
+                Registrations are open.
               </div>
             </div>
           </motion.div>
@@ -265,7 +277,7 @@ export default function DecodeStackInfo() {
 
         {/* System label */}
         <div className="mb-8 md:mb-0 md:mt-6 text-center text-[8px] md:text-[10px] font-mono text-cyan-500/30 tracking-widest">
-          DECODE STACK WORLD
+          DECODE_STACK WORLD
         </div>
       </motion.div>
     </section>

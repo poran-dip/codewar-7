@@ -19,7 +19,7 @@ export default function PSItem({ ps }: { ps: ProblemStatement }) {
   const { openModal } = usePSModal();
   const categoryColor =
     CATEGORY_COLORS[ps.category] ??
-    "text-purple-300 bg-purple-500/10 border-purple-400/20";
+    "text-red-300 bg-red-500/10 border-red-400/20";
 
   return (
     <motion.div

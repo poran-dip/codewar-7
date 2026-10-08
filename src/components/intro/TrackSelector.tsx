@@ -112,7 +112,7 @@ export default function TrackSelector({
               CODESTELLATION
             </h2>
             <p className="text-[11px] md:text-sm lg:text-base text-purple-200/70 font-mono mb-2 md:mb-3">
-              Navigate the Stars of Code
+              A 24-HOUR ONLINE SOFTWARE DEVELOPMENT HACKATHON
             </p>
 
             {/* Select/Enter */}
@@ -147,7 +147,7 @@ export default function TrackSelector({
           )}
         </motion.div>
 
-        {/* DECODE STACK Card */}
+        {/* DECODE_STACK Card */}
         <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
@@ -193,10 +193,10 @@ export default function TrackSelector({
             </div>
 
             <h2 className="text-lg md:text-xl lg:text-3xl font-black font-mono tracking-tight text-cyan-300 mb-1 md:mb-2">
-              DECODE STACK
+              DECODE_STACK
             </h2>
             <p className="text-[11px] md:text-sm lg:text-base text-cyan-200/70 font-mono mb-2 md:mb-3">
-              Unravel the Digital Mystery
+              A BRAINSTORMING COMPETITIVE CODING CONTEST
             </p>
 
             {/* Select/Enter */}

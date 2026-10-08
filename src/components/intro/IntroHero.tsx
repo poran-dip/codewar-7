@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { EVENT_CONFIG, type EventTrack } from "@/config/event";
@@ -25,6 +26,14 @@ export default function IntroHero() {
             <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row"><Link href={EVENT_CONFIG.registrationUrl} className="pixel-button w-full bg-[#c04b35] text-white shadow-[6px_6px_0_var(--ink)] sm:w-auto">START ADVENTURE</Link><a href="#worlds" className="pixel-button w-full bg-[var(--cream)] text-[var(--ink)] shadow-[6px_6px_0_var(--ink)] sm:w-auto">EXPLORE EVENTS</a></div>
           </div>
           <motion.aside initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }} className="pixel-panel min-w-0 bg-[rgba(255,248,223,0.78)] p-4 backdrop-blur-sm sm:p-5 md:p-7">
+            <Image
+              src="/codewar.png"
+              alt="CODEWAR 8.0"
+              width={720}
+              height={360}
+              priority
+              className="mx-auto mb-5 h-auto w-full max-w-[min(100%,36rem)] object-contain"
+            />
             <div className="mb-5 flex items-center justify-between border-b-2 border-dashed border-[#b88957] pb-4 font-[family-name:var(--font-pixel)] text-[10px] uppercase tracking-[0.14em]"><span>ADVENTURE BRIEF</span><span>★ 128</span></div>
             <p className="font-sans text-sm font-semibold leading-7 sm:text-base">Two worlds. One quest. Build boldly, solve quickly, and find your route through the CodeWar map.</p>
             <div className="mt-6 grid grid-cols-3 gap-2 text-center font-[family-name:var(--font-pixel)] text-[9px] uppercase"><div className="bg-[#f4d990] p-3"><strong className="block text-lg">02</strong>worlds</div><div className="bg-[#a8d36c] p-3"><strong className="block text-lg">01</strong>quest</div><div className="bg-[#f4ad6f] p-3"><strong className="block text-lg">∞</strong>ideas</div></div>
@@ -35,7 +44,7 @@ export default function IntroHero() {
         <div className="mb-7 flex items-end justify-between gap-4"><div><p className="font-[family-name:var(--font-pixel)] text-xs uppercase tracking-[0.16em] text-[#b33d2e]">SELECT YOUR LOADOUT</p><h2 className="mt-3 font-[family-name:var(--font-pixel)] text-2xl md:text-4xl">CHOOSE YOUR WORLD</h2></div><span className="hidden font-[family-name:var(--font-pixel)] text-xs md:block">COINS × 128</span></div>
         <div className="grid min-w-0 gap-5 lg:grid-cols-2">{tracks.map(([key, track], index) => { const active = selectedTrack === key; return <motion.article key={key} whileHover={{ y: -8 }} className={`pixel-panel relative min-w-0 overflow-hidden p-4 sm:p-6 md:p-8 ${active ? "ring-4 ring-[var(--sun)]" : ""} ${index === 0 ? "bg-[#fff0bd]" : "bg-[#d9f1ed]"}`}><div className="absolute right-4 top-4 font-[family-name:var(--font-pixel)] text-2xl opacity-25 sm:right-5 sm:top-5 sm:text-3xl">{index === 0 ? "✦" : "⌘"}</div><p className="font-[family-name:var(--font-pixel)] text-[9px] uppercase tracking-[0.1em] text-[#b33d2e] sm:text-[10px]">{track.world} / {track.track}</p><h3 className="mt-4 font-[family-name:var(--font-pixel)] text-lg leading-[1.6] sm:text-xl md:text-3xl">{track.name}</h3><p className="mt-3 text-base font-bold sm:text-lg">{track.tagline}</p><dl className="mt-5 grid gap-2 border-y-2 border-dashed border-[#b88957] py-4 font-[family-name:var(--font-pixel)] text-[9px] uppercase leading-[1.7] sm:text-[10px] sm:leading-[1.8]"><div className="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-2 sm:flex sm:justify-between sm:gap-4"><dt>TYPE</dt><dd className="min-w-0 break-words text-left sm:text-right">{track.type}</dd></div><div className="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-2 sm:flex sm:justify-between sm:gap-4"><dt>DATE</dt><dd className="min-w-0 break-words text-left sm:text-right">{track.date}</dd></div>{track.details.map((detail) => <div key={detail} className="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-2 sm:flex sm:justify-between sm:gap-4"><dt>INFO</dt><dd className="min-w-0 break-words text-left sm:text-right">{detail}</dd></div>)}</dl><div className="mt-5 flex w-full flex-col gap-3 sm:flex-row"><button type="button" onClick={() => setSelectedTrack(active ? null : key)} className="pixel-button w-full bg-[var(--sun)] text-[var(--ink)] sm:w-auto">{active ? "WORLD READY" : "SELECT WORLD"}</button><Link href={track.href} className="pixel-button w-full bg-[var(--ink)] text-white sm:w-auto">ENTER WORLD</Link></div></motion.article>; })}</div>
       </section>
-      <section id="registration" className="relative mx-auto mt-16 max-w-7xl border-t-4 border-[var(--ink)] py-14 text-center"><p className="font-[family-name:var(--font-pixel)] text-xs uppercase tracking-[0.16em] text-[#b33d2e]">TREASURE CHECKPOINT</p><h2 className="mt-4 font-[family-name:var(--font-pixel)] text-2xl leading-[1.7] md:text-4xl">READY PLAYER?</h2><p className="mx-auto mt-4 max-w-lg text-lg font-bold">₹30,000 CASH + courses + goodies</p><Link href={EVENT_CONFIG.registrationUrl} className="pixel-button mt-7 inline-block bg-[#c04b35] text-white shadow-[6px_6px_0_var(--ink)]">REGISTER NOW</Link></section>
+      <section id="registration" className="relative mx-auto mt-16 max-w-7xl border-t-4 border-[var(--ink)] py-14 text-center"><p className="font-[family-name:var(--font-pixel)] text-xs uppercase tracking-[0.16em] text-[#b33d2e]">TREASURE CHECKPOINT</p><h2 className="mt-4 font-[family-name:var(--font-pixel)] text-2xl leading-[1.7] md:text-4xl">READY PLAYER?</h2><p className="mx-auto mt-4 max-w-lg text-lg font-bold">₹18,000 CASH + certificates + goodies</p><Link href={EVENT_CONFIG.registrationUrl} target="_blank" rel="noreferrer" className="pixel-button mt-7 inline-block bg-[#c04b35] text-white shadow-[6px_6px_0_var(--ink)]">REGISTER NOW</Link></section>
     </main>
   );
 }

@@ -12,12 +12,12 @@ export default function DecodeStackFAQ() {
     {
       question: "How do I register for Decode Stack?",
       answer:
-        "Click the Register button and fill out the Google Form. After submission, you will be redirected to the GeeksforGeeks platform to finalize your registration.",
+        "Click the Register button and fill out the Google Form. Contest access and Codeforces details will be shared with registered participants.",
     },
     {
       question: "Which programming languages are allowed?",
       answer:
-        "Participants may use any programming language supported by the GeeksforGeeks platform.",
+        "Participants may use any programming language supported by Codeforces.",
     },
     {
       question: "Can I switch between problems or submit multiple times?",

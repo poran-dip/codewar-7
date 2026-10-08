@@ -23,10 +23,10 @@ export default function ContactPage() {
     },
     {
       title: "COORDINATORS",
-      content: "+91 94355 53309",
+      content: "+91 88118 64964",
       icon: Phone,
       color: "purple",
-      href: "tel:+919435553309",
+      href: "tel:+918811864964",
     },
     {
       title: "LOCATION",

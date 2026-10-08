@@ -25,9 +25,9 @@ export default function CodestellationRules() {
     },
     {
       icon: MapPin,
-      title: "Mandatory Offline Presence",
-      text: "All registered teams must be physically present at the venue for the final offline presentation and evaluation.",
-      shortText: "Offline presence required for final evaluation.",
+      title: "Online Participation",
+      text: "CODESTELLATION is an online hackathon. Teams may participate remotely throughout the 24-hour event.",
+      shortText: "Participate online for the full 24-hour hackathon.",
     },
     {
       icon: FileText,
