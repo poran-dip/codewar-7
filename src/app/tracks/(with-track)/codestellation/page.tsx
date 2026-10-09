@@ -159,7 +159,7 @@ export default function CodestellationInfo() {
                         Date
                       </p>
                       <p className="text-xs md:text-sm font-mono text-purple-200">
-                        24 Hours — 10 Sept 2026
+                        24 Hours — 10 Oct 2026
                       </p>
                     </div>
                   </div>

@@ -158,7 +158,7 @@ export default function DecodeStackInfo() {
                         Date
                       </p>
                       <p className="text-xs md:text-sm font-mono text-cyan-200">
-                        10 Sept 2026
+                        10 Oct 2026
                       </p>
                     </div>
                   </div>
