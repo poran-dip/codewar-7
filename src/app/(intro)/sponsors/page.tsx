@@ -71,6 +71,40 @@ export default function SponsorsPage() {
       corner: "border-blue-400/70",
       cn: "border-blue-400/50 hover:border-blue-400/80",
     },
+    {
+      tier: "associate",
+      label: "sponsor",
+      name: "NSOC",
+      image: "/sponsors/nsoc.jpeg",
+      href: "https://www.nsoc.in",
+      corner: "border-purple-400/70",
+      cn: "border-purple-400/50 hover:border-purple-400/80",
+    },
+    {
+      tier: "associate",
+      label: "sponsor",
+      name: "Ghy Getaway",
+      image: "/sponsors/ghygetaway.jpeg",
+      corner: "border-purple-400/70",
+      cn: "border-purple-400/50 hover:border-purple-400/80",
+    },
+    {
+      tier: "associate",
+      label: "sponsor",
+      name: "CDX",
+      image: "/sponsors/cdx.jpeg",
+      href: "https://www.cosmodex.in",
+      corner: "border-purple-400/70",
+      cn: "border-purple-400/50 hover:border-purple-400/80",
+    },
+    {
+      tier: "associate",
+      label: "sponsor",
+      name: "Camcon",
+      image: "/sponsors/camcon.jpeg",
+      corner: "border-purple-400/70",
+      cn: "border-purple-400/50 hover:border-purple-400/80",
+    },
   ];
 
   return (
@@ -155,13 +189,31 @@ export default function SponsorsPage() {
 
                     {/* Logo container with per-sponsor bg */}
                     <div className="relative h-16 md:h-28 flex items-center justify-center p-3 md:p-5 rounded-sm backdrop-blur-3xl bg-white/60">
-                      <Image
-                        src={sponsor.image}
-                        alt={sponsor.name}
-                        width={200}
-                        height={112}
-                        className="max-h-16 md:max-h-28 w-auto object-contain opacity-90 group-hover:opacity-100 transition"
-                      />
+                      {sponsor.href ? (
+                        <a
+                          href={sponsor.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`Visit ${sponsor.name} website`}
+                          className="flex h-full w-full items-center justify-center"
+                        >
+                          <Image
+                            src={sponsor.image}
+                            alt={sponsor.name}
+                            width={200}
+                            height={112}
+                            className="max-h-16 md:max-h-28 w-auto object-contain opacity-90 group-hover:opacity-100 transition"
+                          />
+                        </a>
+                      ) : (
+                        <Image
+                          src={sponsor.image}
+                          alt={sponsor.name}
+                          width={200}
+                          height={112}
+                          className="max-h-16 md:max-h-28 w-auto object-contain opacity-90 group-hover:opacity-100 transition"
+                        />
+                      )}
                     </div>
 
                     <div
